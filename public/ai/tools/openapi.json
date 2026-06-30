@@ -1,0 +1,210 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "EML AI Tool API",
+    "version": "0.1.0",
+    "summary": "Bounded, machine-callable tools for EML.",
+    "description": "Bounded machine-callable tools for EML parsing, transpilation (both directions), interpretation, phosphor-jsonl-v1 trace generation, and round-trip validation. The transpiler/interpreter are deterministic and contain no LLM. No arbitrary code execution, no filesystem, no shell, no outbound network. Inputs are capped at 20000 characters. Aligned with EML-LANG-2026-v1.0.",
+    "contact": { "name": "Neo.K / EveMissLab", "url": "https://efficientnewlanguage.org/ai/" },
+    "license": { "name": "Apache-2.0", "identifier": "Apache-2.0" }
+  },
+  "servers": [{ "url": "https://efficientnewlanguage.org" }],
+  "tags": [{ "name": "tools", "description": "Bounded EML tools" }],
+  "paths": {
+    "/ai/tools/parse": {
+      "post": {
+        "tags": ["tools"],
+        "operationId": "eml_parse",
+        "summary": "Parse EML source into the normalized AST",
+        "requestBody": { "$ref": "#/components/requestBodies/ToolRequest" },
+        "responses": {
+          "200": { "description": "Parse result", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "413": { "$ref": "#/components/responses/PayloadTooLarge" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/ai/tools/transpile-python": {
+      "post": {
+        "tags": ["tools"],
+        "operationId": "eml_transpile_python",
+        "summary": "Transpile EML to Python",
+        "requestBody": { "$ref": "#/components/requestBodies/ToolRequest" },
+        "responses": {
+          "200": { "description": "Python transpilation result", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "413": { "$ref": "#/components/responses/PayloadTooLarge" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/ai/tools/transpile-eml": {
+      "post": {
+        "tags": ["tools"],
+        "operationId": "eml_transpile_eml",
+        "summary": "Reverse-transpile a supported subset of Python to EML",
+        "requestBody": { "$ref": "#/components/requestBodies/ToolRequest" },
+        "responses": {
+          "200": { "description": "EML reverse-transpilation result", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "413": { "$ref": "#/components/responses/PayloadTooLarge" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/ai/tools/interpret": {
+      "post": {
+        "tags": ["tools"],
+        "operationId": "eml_interpret",
+        "summary": "Interpret bounded EML input (execution-truth)",
+        "requestBody": { "$ref": "#/components/requestBodies/ToolRequest" },
+        "responses": {
+          "200": { "description": "Interpretation result", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "413": { "$ref": "#/components/responses/PayloadTooLarge" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/ai/tools/trace": {
+      "post": {
+        "tags": ["tools"],
+        "operationId": "eml_trace",
+        "summary": "Generate a phosphor-jsonl-v1 trace",
+        "requestBody": { "$ref": "#/components/requestBodies/ToolRequest" },
+        "responses": {
+          "200": { "description": "Trace result", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "413": { "$ref": "#/components/responses/PayloadTooLarge" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/ai/tools/roundtrip": {
+      "post": {
+        "tags": ["tools"],
+        "operationId": "eml_roundtrip",
+        "summary": "Run round-trip fixpoint validation",
+        "requestBody": { "$ref": "#/components/requestBodies/ToolRequest" },
+        "responses": {
+          "200": { "description": "Round-trip validation result", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "413": { "$ref": "#/components/responses/PayloadTooLarge" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/ai/tools/health": {
+      "get": {
+        "tags": ["tools"],
+        "operationId": "eml_health",
+        "summary": "Liveness, version, and declared limits",
+        "responses": {
+          "200": { "description": "Healthy", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/HealthResponse" } } } }
+        }
+      }
+    }
+  },
+  "components": {
+    "requestBodies": {
+      "ToolRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ToolRequest" },
+            "examples": {
+              "summation": { "value": { "source": "N^+100\nΣ(i^2, i in [1:N]) => r\nr^0" } }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Malformed request (not JSON, or missing `source`).",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } }
+      },
+      "PayloadTooLarge": {
+        "description": "`source` exceeds 20000 characters.",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } }
+      },
+      "MethodNotAllowed": {
+        "description": "Wrong HTTP method (use POST with a JSON body).",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } }
+      },
+      "InternalError": {
+        "description": "Unexpected internal error (E_INTERNAL).",
+        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } }
+      }
+    },
+    "schemas": {
+      "ToolRequest": {
+        "type": "object",
+        "required": ["source"],
+        "properties": {
+          "source": { "type": "string", "maxLength": 20000, "description": "EML source (or Python, for transpile-eml)." },
+          "options": {
+            "type": "object",
+            "description": "Reserved for forward-compatibility (e.g. trace, roundtrip, strict). Ignored in v0.1.",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Version": {
+        "type": "object",
+        "properties": {
+          "eml_lang": { "type": "string", "examples": ["EML-LANG-2026-v1.0"] },
+          "eml_impl": { "type": "string", "examples": ["0.1.0"] },
+          "ai_layer_version": { "type": "string", "examples": ["0.1.0"] },
+          "tool_version": { "type": "string", "examples": ["0.1.0"] }
+        }
+      },
+      "ToolError": {
+        "type": "object",
+        "required": ["code", "message"],
+        "properties": {
+          "code": { "type": "string", "examples": ["E_PARSE", "E_PAYLOAD_TOO_LARGE", "E_METHOD_NOT_ALLOWED", "E_RESOURCE_LIMIT", "E_INTERNAL", "W_AUG_UNDECLARED"] },
+          "message": { "type": "string" },
+          "position": {
+            "type": "object",
+            "properties": { "line": { "type": "integer" }, "column": { "type": "integer" } }
+          },
+          "recoverable": { "type": "boolean" }
+        }
+      },
+      "ToolResponse": {
+        "type": "object",
+        "required": ["ok", "tool", "version", "errors", "warnings"],
+        "properties": {
+          "ok": { "type": "boolean" },
+          "tool": { "type": "string", "examples": ["eml.parse", "eml.transpile_python"] },
+          "version": { "$ref": "#/components/schemas/Version" },
+          "input_hash": { "type": "string", "examples": ["sha256:..."] },
+          "result": { "type": ["object", "null"], "description": "Tool-specific result (see /ai/tools/tool-catalog.json result_shape). Best-effort; may be present with ok=false." },
+          "warnings": { "type": "array", "items": { "$ref": "#/components/schemas/ToolError" } },
+          "errors": { "type": "array", "items": { "$ref": "#/components/schemas/ToolError" } },
+          "trace_id": { "type": "string", "examples": ["eml-trace-..."] }
+        }
+      },
+      "HealthResponse": {
+        "type": "object",
+        "properties": {
+          "ok": { "type": "boolean" },
+          "status": { "type": "string", "examples": ["healthy"] },
+          "version": { "$ref": "#/components/schemas/Version" },
+          "trace_proto": { "type": "string", "examples": ["phosphor-jsonl-v1"] },
+          "tools": { "type": "array", "items": { "type": "string" } },
+          "limits": { "type": "object", "additionalProperties": true }
+        }
+      }
+    }
+  }
+}

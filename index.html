@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EML 2026 — Efficient New Language</title>
+    <meta
+      name="description"
+      content="EML (Efficient New Language) is a deterministic semantic-overlay programming layer: it compresses high-frequency program intent into symbols and transpiles, rule-based and reversibly, to standard languages. Try it in the browser."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href="https://efficientnewlanguage.org/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Social / link previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://efficientnewlanguage.org/" />
+    <meta property="og:site_name" content="EML — Efficient New Language" />
+    <meta property="og:title" content="EML — Efficient New Language" />
+    <meta
+      property="og:description"
+      content="A deterministic semantic-overlay programming layer — compress program intent into symbols and transpile, reversibly, to Python. Try it in the browser."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="EML — Efficient New Language" />
+    <meta
+      name="twitter:description"
+      content="A deterministic semantic-overlay that transpiles compact symbols to Python — for humans and AI agents."
+    />
+
+    <!-- Apply the saved theme before paint to avoid a flash. Default is dark. -->
+    <script>
+      try {
+        if (localStorage.getItem('eml.theme') === 'light') {
+          var el = document.documentElement;
+          el.classList.remove('dark');
+          el.classList.add('light');
+          el.style.colorScheme = 'light';
+        }
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

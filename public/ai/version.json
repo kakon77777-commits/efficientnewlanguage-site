@@ -1,0 +1,21 @@
+{
+  "project": "Efficient New Language",
+  "short_name": "EML",
+  "canonical_domain": "efficientnewlanguage.org",
+  "spec": "EML-LANG-2026-v1.0",
+  "eml_lang": "EML-LANG-2026-v1.0",
+  "eml_impl": "0.1.0",
+  "ai_layer_version": "0.1.0",
+  "tool_version": "0.1.0",
+  "trace_proto": "phosphor-jsonl-v1",
+  "status": "active-experimental",
+  "updated": "2026-06-30",
+  "tools_available": [
+    "eml.parse",
+    "eml.transpile_python",
+    "eml.transpile_eml",
+    "eml.interpret",
+    "eml.trace",
+    "eml.roundtrip"
+  ]
+}

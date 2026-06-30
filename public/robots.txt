@@ -1,0 +1,34 @@
+# Efficient New Language (EML) — https://efficientnewlanguage.org
+# Machine-readable AI-native interface: /llms.txt and /ai/  (see /ai/manifest.json)
+# AI crawlers and agents are explicitly welcome. No cloaking: humans and machines
+# are served from distinct public entrypoints, not different content per User-Agent.
+
+User-agent: *
+Allow: /
+
+# Common AI / LLM crawlers — explicitly allowed (documentation; Allow: / already covers them).
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://efficientnewlanguage.org/sitemap.xml

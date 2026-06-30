@@ -1,0 +1,109 @@
+{
+  "project": {
+    "name": "Efficient New Language",
+    "short_name": "EML",
+    "canonical_domain": "efficientnewlanguage.org",
+    "maintainer": "Neo.K / EveMissLab",
+    "license": "Apache-2.0",
+    "patent": "Taiwan Utility Model M672933 (Taiwan only)",
+    "repository": "https://github.com/kakon77777-commits/efficientnewlanguage",
+    "status": "active-experimental",
+    "spec": "EML-LANG-2026-v1.0",
+    "eml_impl": "0.1.0",
+    "ai_layer_version": "0.1.0",
+    "updated": "2026-06-30"
+  },
+  "purpose": {
+    "summary": "Machine-readable corpus and bounded tool interface for EML — a deterministic semantic-overlay layer that compresses high-frequency program intent into symbols and transpiles, rule-based and reversibly, to Python.",
+    "target_consumers": [
+      "LLM crawlers",
+      "autonomous agents",
+      "reasoning systems",
+      "documentation agents",
+      "future model ingestion pipelines",
+      "programmatic clients"
+    ]
+  },
+  "entrypoints": {
+    "human_home": "/",
+    "playground": "/app",
+    "docs": "/docs",
+    "llms": "/llms.txt",
+    "ai_index": "/ai/index.md",
+    "manifest": "/ai/manifest.json",
+    "version": "/ai/version.json"
+  },
+  "corpus": [
+    { "id": "eml-origin", "path": "/ai/corpus/eml-origin.md", "format": "markdown", "role": "conceptual genealogy" },
+    { "id": "eml-current", "path": "/ai/corpus/eml-current.md", "format": "markdown", "role": "current implementation explanation" },
+    { "id": "eml-design-history", "path": "/ai/corpus/eml-design-history.md", "format": "markdown", "role": "evolution from concept to implementation" },
+    { "id": "eml-engineering-notes", "path": "/ai/corpus/eml-engineering-notes.md", "format": "markdown", "role": "behavioral facts & invariants for generators" }
+  ],
+  "specs": [
+    { "id": "eml-v1", "path": "/ai/specs/eml-v1.md", "format": "markdown", "role": "v1.0 spec digest" },
+    { "id": "eml-grammar", "path": "/ai/specs/eml-grammar.ebnf", "format": "ebnf", "role": "normative grammar" },
+    { "id": "eml-ast-schema", "path": "/ai/specs/eml-ast-schema.json", "format": "json-schema", "role": "AST schema" },
+    { "id": "eml-trace-schema", "path": "/ai/specs/eml-trace-schema.json", "format": "json-schema", "role": "phosphor-jsonl-v1 trace schema" },
+    { "id": "eml-error-schema", "path": "/ai/specs/eml-error-schema.json", "format": "json-schema", "role": "diagnostics & tool error schema" }
+  ],
+  "examples": [
+    { "id": "000-arithmetic", "path": "/ai/examples/000-arithmetic.eml.md" },
+    { "id": "001-summation", "path": "/ai/examples/001-summation.eml.md" },
+    { "id": "002-conditional", "path": "/ai/examples/002-conditional.eml.md" },
+    { "id": "003-coldhot", "path": "/ai/examples/003-coldhot.eml.md" },
+    { "id": "004-closure", "path": "/ai/examples/004-closure.eml.md" },
+    { "id": "005-recursion", "path": "/ai/examples/005-recursion.eml.md" }
+  ],
+  "tools": {
+    "guide": "/ai/tools/tools.md",
+    "catalog": "/ai/tools/tool-catalog.json",
+    "openapi": "/ai/tools/openapi.json",
+    "health": "/ai/tools/health",
+    "docs": {
+      "parse": "/ai/tools/parse.md",
+      "transpile_python": "/ai/tools/transpile-python.md",
+      "transpile_eml": "/ai/tools/transpile-eml.md",
+      "interpret": "/ai/tools/interpret.md",
+      "trace": "/ai/tools/trace.md",
+      "roundtrip": "/ai/tools/roundtrip.md"
+    },
+    "available": [
+      "eml.parse",
+      "eml.transpile_python",
+      "eml.transpile_eml",
+      "eml.interpret",
+      "eml.trace",
+      "eml.roundtrip"
+    ],
+    "limits": {
+      "max_source_length": 20000,
+      "allow_network": false,
+      "allow_filesystem": false,
+      "allow_shell": false,
+      "arbitrary_code_execution": false
+    }
+  },
+  "changelog": "/ai/changelog/index.md",
+  "snapshots": [
+    { "id": "latest", "path": "/ai/snapshots/latest.md" },
+    { "id": "2026-06-30-site-state", "path": "/ai/snapshots/2026-06-30-eml-site-state.md" },
+    { "id": "2026-06-30-public-corpus", "path": "/ai/snapshots/2026-06-30-eml-public-corpus.jsonl", "format": "jsonl" }
+  ],
+  "reading_order": [
+    "/ai/index.md",
+    "/ai/corpus/eml-origin.md",
+    "/ai/corpus/eml-current.md",
+    "/ai/specs/eml-v1.md",
+    "/ai/specs/eml-grammar.ebnf",
+    "/ai/examples/001-summation.eml.md",
+    "/ai/tools/tool-catalog.json"
+  ],
+  "agent_guidance": [
+    "Fetch this manifest first, then follow reading_order.",
+    "Prefer structured schemas (AST/trace/error) over UI text.",
+    "ASCII canonical form is normative; Unicode (Σ ∈ ⇒ ²) is a display projection.",
+    "Do not infer unsupported syntax; the EBNF grammar is the authority.",
+    "Call tools only with bounded EML input (<= 20000 chars).",
+    "Function definitions, @cold/@hot, @temporal_loop, async/await, and matrices are forward-only (not round-trippable)."
+  ]
+}

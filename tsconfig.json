@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@eml/types": ["D:/Ai/work together/EML/packages/types/src/index.ts"],
+      "@eml/parser": ["D:/Ai/work together/EML/packages/parser/src/index.ts"],
+      "@eml/transpiler-python": ["D:/Ai/work together/EML/packages/transpiler-python/src/index.ts"],
+      "@eml/transpiler-eml": ["D:/Ai/work together/EML/packages/transpiler-eml/src/index.ts"],
+      "@eml/interp": ["D:/Ai/work together/EML/packages/interp/src/index.ts"],
+      "@eml/trace": ["D:/Ai/work together/EML/packages/trace/src/index.ts"]
+    }
+  },
+  "include": ["src", "vite.config.ts"]
+}

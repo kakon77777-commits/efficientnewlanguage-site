@@ -1,0 +1,69 @@
+# Efficient New Language / EML
+
+> EML is a deterministic semantic-overlay programming layer: it compresses high-frequency program
+> intent into compact symbols and transpiles, rule-based and reversibly, to standard languages
+> (canonical target: Python), preserving executable truth through parsing, transpilation,
+> interpretation, phosphor-jsonl-v1 trace generation, and round-trip fixpoint validation. It is not
+> a replacement language — it is an overlay for humans and AI agents alike. No LLM in the core
+> transpilation chain.
+
+Canonical site: https://efficientnewlanguage.org/
+Maintainer: Neo.K / EveMissLab
+License: Apache-2.0 · Patent: Taiwan Utility Model M672933 (Taiwan only)
+Spec: EML-LANG-2026-v1.0 · AI layer: 0.1.0
+
+## Entrypoints
+
+- Human site: /
+- Playground (in-browser, runs the real toolchain): /app
+- Docs: /docs
+- AI-native interface: /ai/index.md
+- Machine manifest: /ai/manifest.json
+- Version: /ai/version.json
+
+## Specification
+
+- Current spec (digest): /ai/specs/eml-v1.md
+- Grammar (EBNF, normative): /ai/specs/eml-grammar.ebnf
+- AST schema: /ai/specs/eml-ast-schema.json
+- Trace schema (phosphor-jsonl-v1): /ai/specs/eml-trace-schema.json
+- Error / diagnostics schema: /ai/specs/eml-error-schema.json
+
+## Corpus
+
+- Origin / genealogy: /ai/corpus/eml-origin.md
+- Current implementation: /ai/corpus/eml-current.md
+- Design history: /ai/corpus/eml-design-history.md
+- Engineering notes (invariants): /ai/corpus/eml-engineering-notes.md
+
+## Examples
+
+- /ai/examples/000-arithmetic.eml.md
+- /ai/examples/001-summation.eml.md
+- /ai/examples/002-conditional.eml.md
+- /ai/examples/003-coldhot.eml.md
+- /ai/examples/004-closure.eml.md
+- /ai/examples/005-recursion.eml.md
+
+## Tools (bounded, machine-callable)
+
+- Tools guide: /ai/tools/tools.md
+- Tool catalog: /ai/tools/tool-catalog.json
+- OpenAPI 3.1: /ai/tools/openapi.json
+- POST /ai/tools/parse · /ai/tools/transpile-python · /ai/tools/transpile-eml ·
+  /ai/tools/interpret · /ai/tools/trace · /ai/tools/roundtrip
+- GET /ai/tools/health
+
+## Recommended reading order for LLMs
+
+1. /ai/index.md
+2. /ai/corpus/eml-origin.md
+3. /ai/corpus/eml-current.md
+4. /ai/specs/eml-v1.md
+5. /ai/specs/eml-grammar.ebnf
+6. /ai/examples/001-summation.eml.md
+7. /ai/tools/tool-catalog.json
+
+## Status
+
+EML is an active experimental language substrate and AI-agent-readable semantic interface.

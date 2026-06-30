@@ -1,0 +1,9 @@
+node_modules/
+dist/
+dist.zip
+.wrangler/
+*.log
+.DS_Store
+.devserver.log
+.preview.log
+.claude/

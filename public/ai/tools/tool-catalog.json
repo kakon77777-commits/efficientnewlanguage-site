@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-canonical-domain": "efficientnewlanguage.org",
+  "ai_layer_version": "0.1.0",
+  "tool_version": "0.1.0",
+  "eml_lang": "EML-LANG-2026-v1.0",
+  "eml_impl": "0.1.0",
+  "updated": "2026-06-30",
+  "base_url": "https://efficientnewlanguage.org",
+  "contract": {
+    "request": "POST application/json with body { source: string (<= 20000 chars), options?: object }. GET for health/version.",
+    "response_envelope": {
+      "ok": "boolean",
+      "tool": "string (e.g. eml.parse)",
+      "version": { "eml_lang": "string", "eml_impl": "string", "ai_layer_version": "string", "tool_version": "string" },
+      "input_hash": "string (sha256:...)",
+      "result": "object (tool-specific; present when ok=true or best-effort)",
+      "warnings": "ToolError[]",
+      "errors": "ToolError[]",
+      "trace_id": "string (eml-trace-...)"
+    },
+    "status_codes": "200 for well-formed requests, even when ok=false due to EML-level diagnostics or an E_RESOURCE_LIMIT rejection (read the body). 400 E_BAD_REQUEST, 405 E_METHOD_NOT_ALLOWED, 413 E_PAYLOAD_TOO_LARGE, 404 E_NOT_FOUND, 500 E_INTERNAL.",
+    "cors": "Access-Control-Allow-Origin: * (GET, POST, OPTIONS). No credentials.",
+    "error_schema": "/ai/specs/eml-error-schema.json"
+  },
+  "limits": {
+    "max_source_length": 20000,
+    "max_nesting_depth": 256,
+    "max_exponent": 4096,
+    "max_eval_steps": 2000000,
+    "allow_network": false,
+    "allow_filesystem": false,
+    "allow_shell": false,
+    "arbitrary_code_execution": false,
+    "note": "Integer arithmetic is exact (arbitrary-precision); the interpret/trace tools statically reject programs whose computed integer magnitude, range span, or nesting would exceed the sandbox, returning E_RESOURCE_LIMIT (HTTP 200, ok:false). The deterministic toolchain has no wall-clock timeout; cost is bounded structurally by the limits above."
+  },
+  "tools": [
+    {
+      "name": "eml.parse",
+      "method": "POST",
+      "path": "/ai/tools/parse",
+      "doc": "/ai/tools/parse.md",
+      "description": "Parse EML source into the normalized AST (and ASCII-normalized source).",
+      "input_schema": {
+        "type": "object",
+        "required": ["source"],
+        "properties": { "source": { "type": "string", "maxLength": 20000 } }
+      },
+      "result_shape": { "ast": "Program (see eml-ast-schema.json)", "normalized": "string", "tokenCount": "integer" }
+    },
+    {
+      "name": "eml.transpile_python",
+      "method": "POST",
+      "path": "/ai/tools/transpile-python",
+      "doc": "/ai/tools/transpile-python.md",
+      "description": "Transpile EML source into Python (deterministic, rule-based; no LLM).",
+      "input_schema": {
+        "type": "object",
+        "required": ["source"],
+        "properties": { "source": { "type": "string", "maxLength": 20000 } }
+      },
+      "result_shape": { "python": "string", "imports": "string[]", "metadata": "object (symbolsUsed, declaredNames, emlLines, pythonLines)" }
+    },
+    {
+      "name": "eml.transpile_eml",
+      "method": "POST",
+      "path": "/ai/tools/transpile-eml",
+      "doc": "/ai/tools/transpile-eml.md",
+      "description": "Reverse: transpile a supported subset of Python back into EML. Fails loudly on inexpressible constructs.",
+      "input_schema": {
+        "type": "object",
+        "required": ["source"],
+        "properties": { "source": { "type": "string", "maxLength": 20000 } }
+      },
+      "result_shape": { "eml": "string" }
+    },
+    {
+      "name": "eml.interpret",
+      "method": "POST",
+      "path": "/ai/tools/interpret",
+      "doc": "/ai/tools/interpret.md",
+      "description": "Execute supported EML in a bounded, browser-safe interpreter whose stdout is gated to equal CPython's.",
+      "input_schema": {
+        "type": "object",
+        "required": ["source"],
+        "properties": { "source": { "type": "string", "maxLength": 20000 } }
+      },
+      "result_shape": { "output": "string", "outputLines": "string[]", "unsupported": "string[]", "eventCount": "integer" }
+    },
+    {
+      "name": "eml.trace",
+      "method": "POST",
+      "path": "/ai/tools/trace",
+      "doc": "/ai/tools/trace.md",
+      "description": "Generate a phosphor-jsonl-v1 trace of an EML run, plus a summary and anomalies.",
+      "input_schema": {
+        "type": "object",
+        "required": ["source"],
+        "properties": { "source": { "type": "string", "maxLength": 20000 } }
+      },
+      "result_shape": { "jsonl": "string (NDJSON)", "summary": "object", "anomalies": "PhosphorEvent[]", "eventCount": "integer" }
+    },
+    {
+      "name": "eml.roundtrip",
+      "method": "POST",
+      "path": "/ai/tools/roundtrip",
+      "doc": "/ai/tools/roundtrip.md",
+      "description": "Run EML -> Python -> EML -> Python and report whether a byte-identical fixpoint is reached.",
+      "input_schema": {
+        "type": "object",
+        "required": ["source"],
+        "properties": { "source": { "type": "string", "maxLength": 20000 } }
+      },
+      "result_shape": { "ok": "boolean", "steps": "object", "message": "string" }
+    },
+    {
+      "name": "eml.health",
+      "method": "GET",
+      "path": "/ai/tools/health",
+      "doc": "/ai/tools/tools.md",
+      "description": "Liveness + version + declared limits.",
+      "input_schema": null,
+      "result_shape": { "status": "string", "version": "object", "tools": "string[]", "limits": "object" }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+EML — Efficient New Language · website
+Copyright 2026 Neo.K (許筌崴) / EveMissLab (一言諾科技有限公司)
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This is the marketing + in-browser-playground website for EML
+(Efficient New Language). The playground runs the real EML toolchain, whose
+source and patent notice live with the EML project.
+
+Attribution: please respect and credit Neo.K (許筌崴) / EveMissLab as the
+original author of EML.
+
+Patent: aspects of EML's prototype are covered by Taiwan Utility Model Patent
+M672933 (Taiwan only). Released under Apache-2.0, which includes a patent-license
+grant — use, modification, and commercial use are permitted under those terms.
