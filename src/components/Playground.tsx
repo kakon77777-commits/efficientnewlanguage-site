@@ -108,14 +108,18 @@ export function Playground() {
 
   const roundTrip = useMemo<{ tone: string; label: string }>(() => {
     try {
-      if (dir === 'eml2py') {
-        if (!fwd) return { tone: 'muted', label: '⇄' };
-        if (fwd.metadata.functions.length > 0) return { tone: 'muted', label: c.play.rtNa };
-        return roundTripFromEml(src).ok
-          ? { tone: 'run', label: c.play.rtOk }
-          : { tone: 'bad', label: c.play.rtBad };
+      if (dir === 'eml2py' && !fwd) return { tone: 'muted', label: '⇄' };
+      // A forward-only construct (functions, if/while/for, class, try/except,
+      // dict/set/subscript, import, ...) makes the reverse Python->EML leg
+      // decline by design, not by bug — its own error message always starts
+      // with "reverse Python->EML failed". Recognizing that signal directly
+      // (rather than pre-guessing which AST shapes are forward-only) means
+      // the badge doesn't go stale every time the forward-only surface grows.
+      const rt = dir === 'eml2py' ? roundTripFromEml(src) : roundTripFromPython(src);
+      if (!rt.ok && rt.message.startsWith('reverse Python->EML failed')) {
+        return { tone: 'muted', label: c.play.rtNa };
       }
-      return roundTripFromPython(src).ok ? { tone: 'run', label: c.play.rtOk } : { tone: 'bad', label: c.play.rtBad };
+      return rt.ok ? { tone: 'run', label: c.play.rtOk } : { tone: 'bad', label: c.play.rtBad };
     } catch {
       return { tone: 'muted', label: c.play.rtNa };
     }
