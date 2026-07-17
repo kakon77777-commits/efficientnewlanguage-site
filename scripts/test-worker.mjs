@@ -40,7 +40,12 @@ async function check(name, fn) {
 }
 
 const SUM = 'N^+100\nΣ(i^2, i in [1:N]) => r\nr^0';
-const COLDHOT = '@cold\ndef square_sum(N):\n    Σ(i^2, i in [1:N]) => r\n    return r\n\nsquare_sum(100) => total\ntotal^0';
+// `@cold` functions round-trip as of the language repo's Phase E1 (function
+// definitions) — only `@hot` remains a PERMANENT round-trip gap (the forward
+// emitter renders it as a bare comment, never a real decorator, so the
+// reverse lexer — which never tokenizes comments — can't recover it). Use
+// `@hot` here, not `@cold`, to keep testing the actually-still-true invariant.
+const HOT = '@hot\ndef greet(name):\n    name^0\n    return name\n\ngreet(5)\n';
 
 await check('health ok + honest limits', async () => {
   const j = await (await get('/ai/tools/health')).json();
@@ -62,8 +67,8 @@ await check('roundtrip sum -> fixpoint', async () => {
   const j = await (await post('/ai/tools/roundtrip', { source: SUM })).json();
   return j.ok && j.result.ok === true;
 });
-await check('roundtrip coldhot -> ok:false (forward-only)', async () => {
-  const j = await (await post('/ai/tools/roundtrip', { source: COLDHOT })).json();
+await check('roundtrip hot -> ok:false (permanent forward-only)', async () => {
+  const j = await (await post('/ai/tools/roundtrip', { source: HOT })).json();
   return j.ok === false && j.result.ok === false;
 });
 await check('parse sum -> Program ast (3 stmts)', async () => {
