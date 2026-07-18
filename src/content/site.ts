@@ -6,7 +6,7 @@ import type { Lang } from '../i18n';
  * `useContent()`. Sourced from the EML whitepaper, README, and v1.0 spec.
  */
 export interface SiteContent {
-  nav: { links: { id: string; label: string }[]; tryIt: string };
+  nav: { links: { id: string; label: string }[]; tryIt: string; cases: string };
   hero: {
     badge: string;
     titleA: string;
@@ -78,7 +78,7 @@ const NAV_IDS = [
 
 export const CONTENT: Record<Lang, SiteContent> = {
   en: {
-    nav: { links: NAV_IDS.map((n) => ({ id: n.id, label: n.en })), tryIt: 'Try it' },
+    nav: { links: NAV_IDS.map((n) => ({ id: n.id, label: n.en })), tryIt: 'Try it', cases: 'Cases' },
     hero: {
       badge: 'EML 2026 · Efficient New Language',
       titleA: 'Symbolic in.',
@@ -223,7 +223,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
   },
 
   zh: {
-    nav: { links: NAV_IDS.map((n) => ({ id: n.id, label: n.zh })), tryIt: '立即試用' },
+    nav: { links: NAV_IDS.map((n) => ({ id: n.id, label: n.zh })), tryIt: '立即試用', cases: '案例庫' },
     hero: {
       badge: 'EML 2026 · 高效新語言',
       titleA: '輸入符號，',

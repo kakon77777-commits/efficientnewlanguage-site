@@ -54,10 +54,12 @@ greet(total)
 
 ## Round-trip
 
-`ok: false` — **expected**. Function definitions, `@cold`/`@hot`, `async`/`await`, `@temporal_loop`,
-and matrices are **forward-only** constructs: they transpile EML → Python but are not part of the
-round-trip invariant. The reverse path fails loudly (the literal message reports the decorator `@`
-as inexpressible in the supported Python→EML subset).
+`ok: false` — **expected, but narrower than it looks**. Function definitions and `class` ARE fully
+bidirectional (added later); the ONLY reason this specific example doesn't round-trip is `@hot`,
+which has no Python equivalent and is rendered forward as a bare comment
+(`# @hot: dynamic state — not cached`) for human readability. Comments aren't tokenized, so the
+reverse leg can't recover the decorator — a permanent, purely cosmetic one-line difference, not a
+functional one. `async`/`await`/`@temporal_loop` and matrices remain genuinely forward-only.
 
 ## Trace event types
 

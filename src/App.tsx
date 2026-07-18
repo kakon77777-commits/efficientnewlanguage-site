@@ -8,11 +8,13 @@ import { ThemeProvider } from './theme';
 const Showcase = lazy(() => import('./pages/Showcase'));
 const Engineering = lazy(() => import('./pages/Engineering'));
 const Docs = lazy(() => import('./pages/Docs'));
+const Cases = lazy(() => import('./pages/Cases'));
 
 function currentPage() {
   const p = window.location.pathname.replace(/\/+$/, '') || '/';
   if (p === '/app' || p.startsWith('/app/')) return <Engineering />;
   if (p === '/docs' || p.startsWith('/docs/')) return <Docs />;
+  if (p === '/cases' || p.startsWith('/cases/')) return <Cases />;
   return <Showcase />;
 }
 

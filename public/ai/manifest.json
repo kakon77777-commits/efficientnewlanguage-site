@@ -34,25 +34,130 @@
     "version": "/ai/version.json"
   },
   "corpus": [
-    { "id": "eml-origin", "path": "/ai/corpus/eml-origin.md", "format": "markdown", "role": "conceptual genealogy" },
-    { "id": "eml-current", "path": "/ai/corpus/eml-current.md", "format": "markdown", "role": "current implementation explanation" },
-    { "id": "eml-design-history", "path": "/ai/corpus/eml-design-history.md", "format": "markdown", "role": "evolution from concept to implementation" },
-    { "id": "eml-engineering-notes", "path": "/ai/corpus/eml-engineering-notes.md", "format": "markdown", "role": "behavioral facts & invariants for generators" }
+    {
+      "id": "eml-origin",
+      "path": "/ai/corpus/eml-origin.md",
+      "format": "markdown",
+      "role": "conceptual genealogy"
+    },
+    {
+      "id": "eml-current",
+      "path": "/ai/corpus/eml-current.md",
+      "format": "markdown",
+      "role": "current implementation explanation"
+    },
+    {
+      "id": "eml-design-history",
+      "path": "/ai/corpus/eml-design-history.md",
+      "format": "markdown",
+      "role": "evolution from concept to implementation"
+    },
+    {
+      "id": "eml-engineering-notes",
+      "path": "/ai/corpus/eml-engineering-notes.md",
+      "format": "markdown",
+      "role": "behavioral facts & invariants for generators"
+    }
   ],
   "specs": [
-    { "id": "eml-v1", "path": "/ai/specs/eml-v1.md", "format": "markdown", "role": "v1.0 spec digest" },
-    { "id": "eml-grammar", "path": "/ai/specs/eml-grammar.ebnf", "format": "ebnf", "role": "normative grammar" },
-    { "id": "eml-ast-schema", "path": "/ai/specs/eml-ast-schema.json", "format": "json-schema", "role": "AST schema" },
-    { "id": "eml-trace-schema", "path": "/ai/specs/eml-trace-schema.json", "format": "json-schema", "role": "phosphor-jsonl-v1 trace schema" },
-    { "id": "eml-error-schema", "path": "/ai/specs/eml-error-schema.json", "format": "json-schema", "role": "diagnostics & tool error schema" }
+    {
+      "id": "eml-v1",
+      "path": "/ai/specs/eml-v1.md",
+      "format": "markdown",
+      "role": "v1.0 spec digest"
+    },
+    {
+      "id": "eml-grammar",
+      "path": "/ai/specs/eml-grammar.ebnf",
+      "format": "ebnf",
+      "role": "normative grammar"
+    },
+    {
+      "id": "eml-ast-schema",
+      "path": "/ai/specs/eml-ast-schema.json",
+      "format": "json-schema",
+      "role": "AST schema"
+    },
+    {
+      "id": "eml-trace-schema",
+      "path": "/ai/specs/eml-trace-schema.json",
+      "format": "json-schema",
+      "role": "phosphor-jsonl-v1 trace schema"
+    },
+    {
+      "id": "eml-error-schema",
+      "path": "/ai/specs/eml-error-schema.json",
+      "format": "json-schema",
+      "role": "diagnostics & tool error schema"
+    }
   ],
   "examples": [
-    { "id": "000-arithmetic", "path": "/ai/examples/000-arithmetic.eml.md" },
-    { "id": "001-summation", "path": "/ai/examples/001-summation.eml.md" },
-    { "id": "002-conditional", "path": "/ai/examples/002-conditional.eml.md" },
-    { "id": "003-coldhot", "path": "/ai/examples/003-coldhot.eml.md" },
-    { "id": "004-closure", "path": "/ai/examples/004-closure.eml.md" },
-    { "id": "005-recursion", "path": "/ai/examples/005-recursion.eml.md" }
+    {
+      "id": "000-arithmetic",
+      "path": "/ai/examples/000-arithmetic.eml.md",
+      "title": "Arithmetic & augmented assign",
+      "description": "Demonstrates the two-stage `^+` rule (declare then augment) and `^*` / `^0`."
+    },
+    {
+      "id": "001-summation",
+      "path": "/ai/examples/001-summation.eml.md",
+      "title": "Summation (Σ) over an inclusive range",
+      "description": "The canonical EML demo: an algebraic-sum intent compressed into one symbol."
+    },
+    {
+      "id": "002-conditional",
+      "path": "/ai/examples/002-conditional.eml.md",
+      "title": "Conditional & membership",
+      "description": "Ternary `?:` and inclusive-range membership (`in [1:100]` → `range(1, 101)`)."
+    },
+    {
+      "id": "003-coldhot",
+      "path": "/ai/examples/003-coldhot.eml.md",
+      "title": "Cold / hot functions",
+      "description": "`@cold` pure logic becomes cacheable (`@functools.cache`, auto-imported); `@hot` is a marker only. Functions are **forward-only** (see Round-trip)."
+    },
+    {
+      "id": "004-closure",
+      "path": "/ai/examples/004-closure.eml.md",
+      "title": "Closures (nested functions)",
+      "description": "A nested `def` captures the enclosing parameter `n` (lexical closure). Forward-only."
+    },
+    {
+      "id": "005-recursion",
+      "path": "/ai/examples/005-recursion.eml.md",
+      "title": "Recursion",
+      "description": "Self-recursive factorial via the ternary `?:`. `loopKind: recursive` (deterministic; not statically proven terminating). Forward-only."
+    },
+    {
+      "id": "006-mvp-number-guessing-game",
+      "path": "/ai/examples/006-mvp-number-guessing-game.eml.md",
+      "title": "MVP proof: a second real, recognizable program ported to EML",
+      "description": "`number_guessing_game.eml` is the second \"does EML actually work for something real\" test (see [`examples/mvp-tic-tac-toe/`](../mvp-tic-tac-toe/) for the first) — a genuine, independently-authored small program expressed end to end in EML: transpiled to Python, executed, and verified against real Python via the interpreter equivalence gate."
+    },
+    {
+      "id": "007-mvp-tic-tac-toe",
+      "path": "/ai/examples/007-mvp-tic-tac-toe.eml.md",
+      "title": "MVP proof: a real, recognizable program ported to EML",
+      "description": "`tic_tac_toe.eml` is a \"does EML actually work for something real\" test — not a new-language-feature regression fixture like the other `examples/phaseN-*` directories, but a demonstration that a genuine, independently-authored small program can be expressed end to end in EML: transpiled to Python, executed, and verified against real Python via the interpreter equivalence gate."
+    },
+    {
+      "id": "008-todo-list-manager",
+      "path": "/ai/examples/008-todo-list-manager.eml.md",
+      "title": "Case corpus: a self-authored class-based todo-list manager",
+      "description": "`todo_list_manager.eml` is the third case in a self-authored batch (see [`examples/unit-temperature-converter/`](../unit-temperature-converter/) and [`examples/word-frequency-counter/`](../word-frequency-counter/) for the other two) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "009-unit-temperature-converter",
+      "path": "/ai/examples/009-unit-temperature-converter.eml.md",
+      "title": "Case corpus: a self-authored unit-conversion program",
+      "description": "`temperature_converter.eml` is the first case in a self-authored batch (see [`examples/word-frequency-counter/`](../word-frequency-counter/) and [`examples/todo-list-manager/`](../todo-list-manager/) for the other two) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "010-word-frequency-counter",
+      "path": "/ai/examples/010-word-frequency-counter.eml.md",
+      "title": "Case corpus: a self-authored word-frequency counter",
+      "description": "`word_frequency_counter.eml` is the second case in a self-authored batch (see [`examples/unit-temperature-converter/`](../unit-temperature-converter/) and [`examples/todo-list-manager/`](../todo-list-manager/) for the other two) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    }
   ],
   "tools": {
     "guide": "/ai/tools/tools.md",
@@ -85,9 +190,19 @@
   },
   "changelog": "/ai/changelog/index.md",
   "snapshots": [
-    { "id": "latest", "path": "/ai/snapshots/latest.md" },
-    { "id": "2026-06-30-site-state", "path": "/ai/snapshots/2026-06-30-eml-site-state.md" },
-    { "id": "2026-06-30-public-corpus", "path": "/ai/snapshots/2026-06-30-eml-public-corpus.jsonl", "format": "jsonl" }
+    {
+      "id": "latest",
+      "path": "/ai/snapshots/latest.md"
+    },
+    {
+      "id": "2026-06-30-site-state",
+      "path": "/ai/snapshots/2026-06-30-eml-site-state.md"
+    },
+    {
+      "id": "2026-06-30-public-corpus",
+      "path": "/ai/snapshots/2026-06-30-eml-public-corpus.jsonl",
+      "format": "jsonl"
+    }
   ],
   "reading_order": [
     "/ai/index.md",
@@ -104,6 +219,6 @@
     "ASCII canonical form is normative; Unicode (Σ ∈ ⇒ ²) is a display projection.",
     "Do not infer unsupported syntax; the EBNF grammar is the authority.",
     "Call tools only with bounded EML input (<= 20000 chars).",
-    "Function definitions, @cold/@hot, @temporal_loop, async/await, and matrices are forward-only (not round-trippable)."
+    "Function definitions and class are fully round-trippable. Only @hot's comment-only marker (cosmetic, not functional), @temporal_loop, async/await, and matrices remain forward-only (not round-trippable)."
   ]
 }
