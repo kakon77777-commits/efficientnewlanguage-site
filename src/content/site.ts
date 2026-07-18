@@ -41,6 +41,7 @@ export interface SiteContent {
     rtOk: string;
     rtBad: string;
     rtNa: string;
+    rtHot: string;
     copy: string;
     copied: string;
     transpiled: string;
@@ -128,6 +129,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
       rtOk: '⇄ round-trip fixpoint',
       rtBad: '⇄ mismatch',
       rtNa: '⇄ n/a · functions are forward-only',
+      rtHot: '⇄ n/a · @hot marker is comment-only (permanent, cosmetic)',
       copy: 'copy JSONL',
       copied: 'copied ✓',
       transpiled: 'transpiled',
@@ -272,6 +274,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
       rtOk: '⇄ 往返回到不動點',
       rtBad: '⇄ 兩邊不一致',
       rtNa: '⇄ 不適用 · 函數為單向',
+      rtHot: '⇄ 不適用 · @hot 僅為註解標記（永久性、無實質差異）',
       copy: '複製 JSONL',
       copied: '已複製 ✓',
       transpiled: '已轉譯',

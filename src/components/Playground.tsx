@@ -21,6 +21,21 @@ type Tab = 'python' | 'trace' | 'ast';
 
 const EDITOR_MAX_STEPS = 500_000;
 
+/**
+ * `@hot` has no real Python equivalent, so the forward emitter renders it as
+ * this exact bare comment for human readability. Comments aren't tokenized,
+ * so the reverse leg can never recover it — a permanent, documented, purely
+ * cosmetic gap (see docs/agent-handoff.md). Recognizing this ONE known line
+ * keeps a `@hot` demo from reading as "broken" when it's actually a
+ * deliberate, non-functional difference.
+ */
+const HOT_MARKER_LINE = '# @hot: dynamic state — not cached';
+
+function isHotMarkerOnlyDiff(python1: string, python2: string): boolean {
+  const strip = (s: string) => s.split('\n').filter((line) => line !== HOT_MARKER_LINE).join('\n');
+  return python1 !== python2 && strip(python1) === strip(python2);
+}
+
 /** Compact, colour-coded presentation for one phosphor-jsonl-v1 event. */
 function describe(e: PhosphorEvent): { label: string; detail: string; tone: string } {
   const f = e as Record<string, unknown>;
@@ -118,6 +133,9 @@ export function Playground() {
       const rt = dir === 'eml2py' ? roundTripFromEml(src) : roundTripFromPython(src);
       if (!rt.ok && rt.message.startsWith('reverse Python->EML failed')) {
         return { tone: 'muted', label: c.play.rtNa };
+      }
+      if (!rt.ok && rt.steps.python1 && rt.steps.python2 && isHotMarkerOnlyDiff(rt.steps.python1, rt.steps.python2)) {
+        return { tone: 'muted', label: c.play.rtHot };
       }
       return rt.ok ? { tone: 'run', label: c.play.rtOk } : { tone: 'bad', label: c.play.rtBad };
     } catch {
