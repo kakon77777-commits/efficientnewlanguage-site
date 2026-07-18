@@ -63,7 +63,7 @@ conceptual semantic compression
   → Python transpilation (the hard closed loop)
   → reverse EML transpilation + round-trip fixpoint validation
   → browser-safe execution-truth interpreter
-  → PHOSPHOR `phosphor-jsonl-v1` trace
+  → `phosphor-jsonl-v1` trace (frozen compatibility wire-format id)
   → C++20 prototype back end (same resolved AST, second target)
   → AI-Native Interface Layer (this `/ai/` surface)
 ```

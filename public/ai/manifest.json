@@ -67,6 +67,12 @@
       "role": "v1.0 spec digest"
     },
     {
+      "id": "eml-semantic-model-v1.5",
+      "path": "/ai/specs/eml-semantic-model-v1.5.md",
+      "format": "markdown",
+      "role": "self-contained AI-semantic spec: status vocabulary, twelve-loop taxonomy, bug/repair/criticality models"
+    },
+    {
       "id": "eml-grammar",
       "path": "/ai/specs/eml-grammar.ebnf",
       "format": "ebnf",
@@ -114,19 +120,19 @@
       "id": "003-coldhot",
       "path": "/ai/examples/003-coldhot.eml.md",
       "title": "Cold / hot functions",
-      "description": "`@cold` pure logic becomes cacheable (`@functools.cache`, auto-imported); `@hot` is a marker only. Functions are **forward-only** (see Round-trip)."
+      "description": "`@cold` pure logic becomes cacheable (`@functools.cache`, auto-imported); `@hot` is a marker only. Function definitions and `@cold` round-trip. `@hot` has one documented cosmetic exception."
     },
     {
       "id": "004-closure",
       "path": "/ai/examples/004-closure.eml.md",
       "title": "Closures (nested functions)",
-      "description": "A nested `def` captures the enclosing parameter `n` (lexical closure). Forward-only."
+      "description": "A nested `def` captures the enclosing parameter `n` (lexical closure)."
     },
     {
       "id": "005-recursion",
       "path": "/ai/examples/005-recursion.eml.md",
       "title": "Recursion",
-      "description": "Self-recursive factorial via the ternary `?:`. `loopKind: recursive` (deterministic; not statically proven terminating). Forward-only."
+      "description": "Self-recursive factorial via the ternary `?:`. `loopKind: recursive` (deterministic; not statically proven terminating)."
     },
     {
       "id": "006-mvp-number-guessing-game",
@@ -219,6 +225,6 @@
     "ASCII canonical form is normative; Unicode (Σ ∈ ⇒ ²) is a display projection.",
     "Do not infer unsupported syntax; the EBNF grammar is the authority.",
     "Call tools only with bounded EML input (<= 20000 chars).",
-    "Function definitions and class are fully round-trippable. Only @hot's comment-only marker (cosmetic, not functional), @temporal_loop, async/await, and matrices remain forward-only (not round-trippable)."
+    "Function definitions, class, @cold, and matrices (<M>/np.array) are fully round-trippable. Only @hot's comment-only marker (cosmetic, not functional), @temporal_loop, and async/await remain forward-only (not round-trippable)."
   ]
 }

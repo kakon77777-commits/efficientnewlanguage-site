@@ -8,4 +8,4 @@ export { transpileEmlToPython } from '@eml/transpiler-python';
 export { transpilePythonToEml, roundTripFromEml, roundTripFromPython } from '@eml/transpiler-eml';
 export { interpret, type InterpResult } from '@eml/interp';
 export { parse } from '@eml/parser';
-export { findAnomalies, summarize, toJsonl, type PhosphorEvent } from '@eml/trace';
+export { findAnomalies, summarize, toJsonl, type TraceEvent } from '@eml/trace';

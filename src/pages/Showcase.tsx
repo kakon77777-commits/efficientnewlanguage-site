@@ -24,7 +24,7 @@ const AI_LINKS: [string, string][] = [
   ['OpenAPI', '/ai/tools/openapi.json'],
 ];
 
-/** 華麗版 — the "magic in one second" showcase. Cinematic + PHOSPHOR terminal.
+/** 華麗版 — the "magic in one second" showcase. Cinematic + trace terminal.
  * Content renders without JS (SEO/reduced-motion safe); GSAP only enhances. */
 export default function Showcase() {
   const { lang, setLang } = useLang();
@@ -254,7 +254,7 @@ export default function Showcase() {
           </div>
         </Act>
 
-        {/* ── Act 4 — Real execution (PHOSPHOR) ────────────────────────── */}
+        {/* ── Act 4 — Real execution (trace) ────────────────────────────── */}
         <LiveExecution t={t} />
 
         {/* ── Act 5 — Human × Agent ────────────────────────────────────── */}
@@ -476,8 +476,8 @@ function LiveExecution({ t }: { t: (en: string, zh: string) => string }) {
         <h2 className="font-display text-2xl font-bold tracking-tight sm:text-4xl">{t('It actually runs. Right here.', '它真的會跑。就在這裡。')}</h2>
         <p className="mt-3 text-[15px] leading-7 text-muted">
           {t(
-            'No video, no mockup. The program below executes in your browser via EML’s execution-truth interpreter, emitting a PHOSPHOR trace.',
-            '不是影片，不是假圖。下面這段程式由 EML 的「執行真相」直譯器在你的瀏覽器裡執行，並送出 PHOSPHOR trace。',
+            'No video, no mockup. The program below executes in your browser via EML’s execution-truth interpreter, emitting a phosphor-jsonl-v1 trace.',
+            '不是影片，不是假圖。下面這段程式由 EML 的「執行真相」直譯器在你的瀏覽器裡執行，並送出 phosphor-jsonl-v1 trace。',
           )}
         </p>
       </div>

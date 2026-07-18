@@ -47,7 +47,8 @@ guessing.
 
 An execution-truth **interpreter** (`@eml/interp`) made EML runnable in the browser with no Python
 runtime, computing exactly what CPython would (gated by an `interp ≡ python` test). It emits a
-**PHOSPHOR `phosphor-jsonl-v1`** trace as it runs. Cold/hot temperature, crystallization,
+**`phosphor-jsonl-v1`** trace as it runs — a frozen compatibility wire-format id; EML has no
+runtime or theoretical dependency on any external project. Cold/hot temperature, crystallization,
 `@temporal_loop`, loop classification, and a 5-level bug classifier were layered on — and a C++20
 prototype proved the *same resolved AST* can target a second back end.
 

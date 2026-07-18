@@ -11,8 +11,9 @@ const root = resolve(here, '..');
 
 // The EML monorepo (same path as vite.config.ts). Its browser-safe packages have
 // no node: imports in the chain we use (the node file sink is @eml/trace/node,
-// which is never imported).
-const EML = 'D:/Ai/work together/EML';
+// which is never imported). Override with the EML_REPO env var for a different
+// machine/checkout layout.
+const EML = process.env.EML_REPO || 'D:/Ai/work together/EML';
 const emlPkg = (name) => `${EML}/packages/${name}/src/index.ts`;
 
 await build({

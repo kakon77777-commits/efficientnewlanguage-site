@@ -1,4 +1,4 @@
-import { FileText, BookOpen, Github } from 'lucide-react';
+import { FileText, Sparkles, BookOpen, Github } from 'lucide-react';
 import { Nav } from '../components/Nav';
 import { SymbolsSection, CliSection, ArchSection, OssSection } from '../components/Sections';
 import { Footer } from '../components/Footer';
@@ -19,6 +19,15 @@ export default function Docs() {
       title: t('Language spec v1.0', '語言規格 v1.0'),
       desc: t('The normative grammar, semantics and diagnostics.', '正式的語法、語意與診斷定義。'),
       href: `${REPO}/blob/main/docs/EML-LANG-2026-v1.0.md`,
+    },
+    {
+      icon: Sparkles,
+      title: t('AI-semantic spec v1.5', 'AI 語義規格 v1.5'),
+      desc: t(
+        'Self-contained status vocabulary, the twelve-loop taxonomy, and the bug/repair/criticality models.',
+        '自足的狀態詞彙、十二種迴圈分類，以及錯誤／修復／關鍵度模型。',
+      ),
+      href: `${REPO}/blob/main/docs/EML-AI-SEMANTIC-SPEC-v1.5.md`,
     },
     {
       icon: BookOpen,
@@ -48,7 +57,7 @@ export default function Docs() {
               '證據層：正式語言規格、符號表、架構，以及開源授權。這裡的一切都收在公開的版本庫裡。',
             )}
           </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {cards.map((c) => (
               <a
                 key={c.title}

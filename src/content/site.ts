@@ -59,7 +59,21 @@ export interface SiteContent {
     curlNote: string;
     note: string;
   };
-  symbols: { kicker: string; title: string; lead: string; colSym: string; colPy: string; colDesc: string };
+  symbols: {
+    kicker: string;
+    title: string;
+    lead: string;
+    colSym: string;
+    colPy: string;
+    colDesc: string;
+    colFamily: string;
+    colStatus: string;
+    note: string;
+    fullSpec: string;
+    loopTitle: string;
+    loopLead: string;
+    loopCol: { id: string; name: string; rule: string; status: string };
+  };
   cli: { kicker: string; title: string; lead: string; commands: { cmd: string; desc: string }[] };
   arch: { kicker: string; title: string; lead: string; packages: { name: string; role: string }[]; principle: string };
   oss: { kicker: string; title: string; lead: string; points: { title: string; body: string }[]; note: string; github: string };
@@ -112,7 +126,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
     play: {
       kicker: 'Interactive',
       title: 'The playground',
-      lead: 'Type EML on the left, watch the Python expansion on the right, then run it — the program actually executes in your browser and emits a PHOSPHOR trace. This in-browser playground needs no backend server and no local Python install.',
+      lead: 'Type EML on the left, watch the Python expansion on the right, then run it — the program actually executes in your browser and emits a phosphor-jsonl-v1 trace. This in-browser playground needs no backend server and no local Python install.',
       dirEml: 'EML → Python',
       dirPy: 'Python → EML',
       example: 'Example',
@@ -145,7 +159,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
         { phase: 'Phase 2', title: 'Cold / hot + crystallization', body: '@cold pure logic becomes cacheable (@functools.cache); interprocedural purity, structural AST-hash caching, importance scoring.' },
         { phase: 'Phase 3', title: 'Temporal loops + BUG classifier', body: '@temporal_loop: a no-busy-wait asyncio runtime with a hard deadline. Errors classify into 5 levels, mapped back to EML source.' },
         { phase: 'Phase 4', title: 'loopKind + C⁺⁺⁺', body: 'Static loop-classification metadata, and a C++20 prototype from the same resolved AST — proving one overlay can target many back ends.' },
-        { phase: 'Phase 5', title: 'Execution truth + PHOSPHOR trace', body: 'A browser-safe interpreter computes exactly what Python would (gated by tests) and emits a phosphor-jsonl-v1 trace. It powers this playground.' },
+        { phase: 'Phase 5', title: 'Execution truth + trace', body: 'A browser-safe interpreter computes exactly what Python would (gated by tests) and emits a phosphor-jsonl-v1 trace. It powers this playground.' },
       ],
     },
     ai: {
@@ -170,6 +184,13 @@ export const CONTENT: Record<Lang, SiteContent> = {
       colSym: 'EML / Py⁺',
       colPy: 'Python',
       colDesc: 'Meaning',
+      colFamily: 'Family',
+      colStatus: 'Status',
+      note: 'This is a compact, hand-picked slice of the full registry (eml-symbols.json), grouped by syntax family with an implementation-status label — implemented, partial, conceptual, or planned.',
+      fullSpec: 'Full self-contained AI-semantic spec (status vocabulary, twelve-loop taxonomy, bug/repair/criticality models)',
+      loopTitle: 'The twelve-loop semantic taxonomy',
+      loopLead: 'EML classifies loops by intent and dynamics, not only by surface keyword — a plain while can be several of these classes. Only 5 of the 12 classes have accepted surface syntax today; the rest are conceptual.',
+      loopCol: { id: 'ID', name: 'Loop class', rule: 'Semantic rule', status: 'Status' },
     },
     cli: {
       kicker: 'Command line',
@@ -257,7 +278,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
     play: {
       kicker: '互動體驗',
       title: '線上示範區',
-      lead: '左邊打 EML，右邊立刻看到展開後的 Python，再按執行——程式會真的在你的瀏覽器裡跑起來，並產生一份 PHOSPHOR trace。這個線上 Playground 不需要後端伺服器，也不需要在本機安裝 Python。',
+      lead: '左邊打 EML，右邊立刻看到展開後的 Python，再按執行——程式會真的在你的瀏覽器裡跑起來，並產生一份 phosphor-jsonl-v1 trace。這個線上 Playground 不需要後端伺服器，也不需要在本機安裝 Python。',
       dirEml: 'EML → Python',
       dirPy: 'Python → EML',
       example: '範例',
@@ -290,7 +311,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
         { phase: '階段 2', title: '冷熱分離 + 結晶化', body: '@cold 的純邏輯可以被快取（@functools.cache）；含跨函數純度分析、以結構雜湊做快取、以及重要度評分。' },
         { phase: '階段 3', title: '時間迴圈 + 錯誤分類', body: '@temporal_loop 是一套不空轉等待、且有硬性時限的 asyncio 執行期。錯誤分成五級，並對應回 EML 原始碼。' },
         { phase: '階段 4', title: 'loopKind + C⁺⁺⁺', body: '靜態的迴圈分類資訊；並由同一份 AST 產出 C++20 原型——證明一層疊加可以對應到多種後端。' },
-        { phase: '階段 5', title: '執行真相 + PHOSPHOR trace', body: '一個瀏覽器安全的直譯器，算出與 Python 完全一致的結果（有測試把關），並輸出 phosphor-jsonl-v1 trace。這個示範區就是它驅動的。' },
+        { phase: '階段 5', title: '執行真相 + trace', body: '一個瀏覽器安全的直譯器，算出與 Python 完全一致的結果（有測試把關），並輸出 phosphor-jsonl-v1 trace。這個示範區就是它驅動的。' },
       ],
     },
     ai: {
@@ -315,6 +336,13 @@ export const CONTENT: Record<Lang, SiteContent> = {
       colSym: 'EML / Py⁺',
       colPy: 'Python',
       colDesc: '含義',
+      colFamily: '類別',
+      colStatus: '狀態',
+      note: '這裡只是完整符號登記表（eml-symbols.json）中精選出的一小部分，依語法類別分組，並標示實作狀態——implemented（已實作）、partial（部分實作）、conceptual（僅概念）或 planned（規劃中）。',
+      fullSpec: '完整、自足的 AI 語義規格（狀態詞彙、十二種迴圈分類、錯誤/修復/關鍵度模型）',
+      loopTitle: '十二種迴圈語義分類',
+      loopLead: 'EML 依「意圖與動態行為」而非單純表面關鍵字來分類迴圈——同一個 while 可能對應多種語義類別。目前 12 類中只有 5 類擁有可接受的表面語法，其餘仍屬概念層級。',
+      loopCol: { id: 'ID', name: '迴圈類別', rule: '語義規則', status: '狀態' },
     },
     cli: {
       kicker: '命令列',

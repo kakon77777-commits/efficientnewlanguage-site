@@ -14,7 +14,10 @@ updated: 2026-06-30
 
 This document describes the **current** engineering state of EML. The normative language
 reference is [`/ai/specs/eml-v1.md`](../specs/eml-v1.md) (digest of `EML-LANG-2026-v1.0`, the
-single source of truth). For origin see [`eml-origin.md`](./eml-origin.md).
+single source of truth). The self-contained AI-semantic spec (status vocabulary, twelve-loop
+taxonomy, bug/repair/criticality models) is
+[`/ai/specs/eml-semantic-model-v1.5.md`](../specs/eml-semantic-model-v1.5.md). For origin see
+[`eml-origin.md`](./eml-origin.md).
 
 ## Current definition
 
@@ -39,7 +42,7 @@ public playground and the live tools in this `/ai/` layer:
 | `@eml/interp` | execution-truth interpreter (faithful to CPython, test-gated) + trace producer |
 | `@eml/trace` | `phosphor-jsonl-v1` emitter/parser (browser-safe; node sink isolated) |
 | `@eml/bug-classifier` | 5-level error classifier (CRITICAL · MAJOR · MINOR · TRIVIAL · COSMETIC) |
-| `@eml/cts-generator`, `@eml/symbols`, `@eml/cli`, `@eml/cogni-editor` | CTS, symbol table, the `eml` command, editor |
+| `@eml/cts-generator`, `@eml/symbols`, `@eml/cli`, `@eml/workbench` | CTS, symbol table, the `eml` command, the EML Workbench editor |
 
 Feature surface, by phase (each shipped with tests, not promises):
 
@@ -53,7 +56,7 @@ Feature surface, by phase (each shipped with tests, not promises):
   with a hard deadline. Errors classify into 5 levels, mapped back to EML source.
 - **Phase 4 — loopKind + C⁺⁺⁺.** Static loop-classification metadata; a C++20 prototype from the
   same resolved AST (one overlay → multiple back ends).
-- **Phase 5 — Execution truth + PHOSPHOR trace.** A browser-safe interpreter computes exactly what
+- **Phase 5 — Execution truth + trace.** A browser-safe interpreter computes exactly what
   Python would (gated by tests) and emits a `phosphor-jsonl-v1` trace.
 
 The reference test suite enforces these behaviors (300+ cases, including an `interp ≡ python`

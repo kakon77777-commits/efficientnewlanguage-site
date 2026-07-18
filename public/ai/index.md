@@ -43,6 +43,7 @@ syntax — the grammar is the authority. Call tools only with bounded EML input.
 | Design history | [`/ai/corpus/eml-design-history.md`](./corpus/eml-design-history.md) |
 | Engineering notes | [`/ai/corpus/eml-engineering-notes.md`](./corpus/eml-engineering-notes.md) |
 | Spec (digest) | [`/ai/specs/eml-v1.md`](./specs/eml-v1.md) |
+| Self-contained AI-semantic spec | [`/ai/specs/eml-semantic-model-v1.5.md`](./specs/eml-semantic-model-v1.5.md) |
 | Grammar (EBNF) | [`/ai/specs/eml-grammar.ebnf`](./specs/eml-grammar.ebnf) |
 | AST schema | [`/ai/specs/eml-ast-schema.json`](./specs/eml-ast-schema.json) |
 | Trace schema | [`/ai/specs/eml-trace-schema.json`](./specs/eml-trace-schema.json) |

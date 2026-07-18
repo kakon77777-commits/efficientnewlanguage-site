@@ -24,6 +24,8 @@ Spec: EML-LANG-2026-v1.0 · AI layer: 0.1.0
 ## Specification
 
 - Current spec (digest): /ai/specs/eml-v1.md
+- Self-contained AI-semantic spec (status vocabulary, twelve-loop taxonomy, bug/repair/criticality
+  models): /ai/specs/eml-semantic-model-v1.5.md
 - Grammar (EBNF, normative): /ai/specs/eml-grammar.ebnf
 - AST schema: /ai/specs/eml-ast-schema.json
 - Trace schema (phosphor-jsonl-v1): /ai/specs/eml-trace-schema.json

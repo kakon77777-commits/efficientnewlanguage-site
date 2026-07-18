@@ -3,7 +3,7 @@
 # Example 003 — Cold / hot functions
 
 `@cold` pure logic becomes cacheable (`@functools.cache`, auto-imported); `@hot` is a marker only.
-Functions are **forward-only** (see Round-trip).
+Function definitions and `@cold` round-trip. `@hot` has one documented cosmetic exception.
 
 ## EML
 
@@ -59,7 +59,8 @@ bidirectional (added later); the ONLY reason this specific example doesn't round
 which has no Python equivalent and is rendered forward as a bare comment
 (`# @hot: dynamic state — not cached`) for human readability. Comments aren't tokenized, so the
 reverse leg can't recover the decorator — a permanent, purely cosmetic one-line difference, not a
-functional one. `async`/`await`/`@temporal_loop` and matrices remain genuinely forward-only.
+functional one. Matrices (`<M>`/`np.array`) round-trip too; only `@temporal_loop` and `async`/
+`await` remain genuinely forward-only (the reverse transpiler does not support them).
 
 ## Trace event types
 

@@ -9,7 +9,7 @@ import {
   parse,
   findAnomalies,
   toJsonl,
-  type PhosphorEvent,
+  type TraceEvent,
 } from '../lib/eml';
 import { EML_EXAMPLES, PY_EXAMPLES } from '../lib/examples';
 import { useLang } from '../i18n';
@@ -37,7 +37,7 @@ function isHotMarkerOnlyDiff(python1: string, python2: string): boolean {
 }
 
 /** Compact, colour-coded presentation for one phosphor-jsonl-v1 event. */
-function describe(e: PhosphorEvent): { label: string; detail: string; tone: string } {
+function describe(e: TraceEvent): { label: string; detail: string; tone: string } {
   const f = e as Record<string, unknown>;
   const s = (k: string) => (f[k] === undefined ? '' : String(f[k]));
   const t = e.type.replace(/^eml:/, '');
@@ -124,12 +124,14 @@ export function Playground() {
   const roundTrip = useMemo<{ tone: string; label: string }>(() => {
     try {
       if (dir === 'eml2py' && !fwd) return { tone: 'muted', label: '⇄' };
-      // A forward-only construct (functions, if/while/for, class, try/except,
-      // dict/set/subscript, import, ...) makes the reverse Python->EML leg
-      // decline by design, not by bug — its own error message always starts
-      // with "reverse Python->EML failed". Recognizing that signal directly
-      // (rather than pre-guessing which AST shapes are forward-only) means
-      // the badge doesn't go stale every time the forward-only surface grows.
+      // A genuinely forward-only construct (@temporal_loop, async/await, or
+      // Python syntax outside EML's supported subset) makes the reverse
+      // Python->EML leg decline by design, not by bug — its own error message
+      // always starts with "reverse Python->EML failed". Recognizing that
+      // signal directly (rather than pre-guessing which AST shapes are
+      // forward-only) means the badge doesn't go stale as the round-trippable
+      // surface grows — most control flow (if/while/for, class, try/except,
+      // dict/set/subscript, import, function definitions) already round-trips.
       const rt = dir === 'eml2py' ? roundTripFromEml(src) : roundTripFromPython(src);
       if (!rt.ok && rt.message.startsWith('reverse Python->EML failed')) {
         return { tone: 'muted', label: c.play.rtNa };

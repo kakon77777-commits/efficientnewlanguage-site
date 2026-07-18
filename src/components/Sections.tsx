@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { useLang } from '../i18n';
 import { useContent } from '../lib/useContent';
-import { SYMBOLS } from '../lib/examples';
+import { SYMBOLS, LOOP_TAXONOMY, type SymbolStatus } from '../lib/examples';
 import { LINKS } from '../lib/links';
 import { Section, SectionHead, Code, cn } from './ui';
 
@@ -205,6 +205,26 @@ export function AiLayerSection() {
   );
 }
 
+const STATUS_STYLE: Record<SymbolStatus, string> = {
+  implemented: 'border-symbol/40 bg-symbol/10 text-symbol',
+  partial: 'border-amber-500/40 bg-amber-500/10 text-amber-500',
+  conceptual: 'border-line bg-panel/50 text-faint',
+  planned: 'border-line bg-panel/50 text-faint',
+};
+
+function StatusBadge({ status }: { status: SymbolStatus }) {
+  return (
+    <span
+      className={cn(
+        'inline-block rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider',
+        STATUS_STYLE[status],
+      )}
+    >
+      {status}
+    </span>
+  );
+}
+
 export function SymbolsSection() {
   const { lang } = useLang();
   const c = useContent();
@@ -217,7 +237,9 @@ export function SymbolsSection() {
             <tr className="bg-panel/50 text-[11px] uppercase tracking-wider text-faint">
               <th className="px-4 py-3 font-medium">{c.symbols.colSym}</th>
               <th className="hidden px-4 py-3 font-medium sm:table-cell">{c.symbols.colPy}</th>
+              <th className="hidden px-4 py-3 font-medium md:table-cell">{c.symbols.colFamily}</th>
               <th className="px-4 py-3 font-medium">{c.symbols.colDesc}</th>
+              <th className="px-4 py-3 font-medium">{c.symbols.colStatus}</th>
             </tr>
           </thead>
           <tbody>
@@ -225,11 +247,53 @@ export function SymbolsSection() {
               <tr key={i} className={cn('border-t border-line', i % 2 === 1 && 'bg-panel/20')}>
                 <td className="px-4 py-3 font-mono text-[13px] text-symbol">{r.sym}</td>
                 <td className="hidden px-4 py-3 font-mono text-[12.5px] text-code sm:table-cell">{r.py}</td>
+                <td className="hidden px-4 py-3 text-xs text-faint md:table-cell">{r.family}</td>
                 <td className="px-4 py-3 text-sm text-muted">{r.desc[lang]}</td>
+                <td className="px-4 py-3">
+                  <StatusBadge status={r.status} />
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+      <p className="mt-4 max-w-3xl text-sm leading-6 text-faint">
+        {c.symbols.note}{' '}
+        <a
+          href="/ai/specs/eml-semantic-model-v1.5.md"
+          className="text-symbol underline decoration-symbol/30 underline-offset-2 hover:decoration-symbol"
+        >
+          {c.symbols.fullSpec}
+        </a>
+      </p>
+
+      <div className="mt-12">
+        <h3 className="text-lg font-semibold text-fg">{c.symbols.loopTitle}</h3>
+        <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">{c.symbols.loopLead}</p>
+        <div className="mt-6 overflow-hidden rounded-xl border border-line">
+          <table className="w-full border-collapse text-left">
+            <thead>
+              <tr className="bg-panel/50 text-[11px] uppercase tracking-wider text-faint">
+                <th className="px-4 py-3 font-medium">{c.symbols.loopCol.id}</th>
+                <th className="px-4 py-3 font-medium">{c.symbols.loopCol.name}</th>
+                <th className="hidden px-4 py-3 font-medium sm:table-cell">{c.symbols.loopCol.rule}</th>
+                <th className="px-4 py-3 font-medium">{c.symbols.loopCol.status}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {LOOP_TAXONOMY.map((r, i) => (
+                <tr key={r.id} className={cn('border-t border-line', i % 2 === 1 && 'bg-panel/20')}>
+                  <td className="px-4 py-3 font-mono text-[13px] text-symbol">{r.id}</td>
+                  <td className="px-4 py-3 text-sm text-fg">{r.name[lang]}</td>
+                  <td className="hidden px-4 py-3 text-sm text-muted sm:table-cell">{r.rule[lang]}</td>
+                  <td className="px-4 py-3">
+                    <StatusBadge status={r.status} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </Section>
   );

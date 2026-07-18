@@ -11,7 +11,7 @@ import { mkdirSync } from 'node:fs';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '..');
 
-const EML = 'D:/Ai/work together/EML';
+const EML = process.env.EML_REPO || 'D:/Ai/work together/EML';
 const emlPkg = (name) => `${EML}/packages/${name}/src/index.ts`;
 
 const bundleDir = resolve(root, 'node_modules/.cache/generate-corpus');

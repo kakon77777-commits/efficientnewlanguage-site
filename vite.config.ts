@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import type { IncomingMessage, ServerResponse } from 'node:http';
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -12,10 +13,10 @@ const here = dirname(fileURLToPath(import.meta.url));
 // the encoding and renders UTF-8 (e.g. any non-ASCII) as mojibake. Patches
 // res.setHeader so it wins regardless of when the static handler sets the type.
 function utf8TextHeaders(): Plugin {
-  const mw = (req: { url?: string }, res: { setHeader: (n: string, v: unknown) => unknown }, next: () => void) => {
+  const mw = (req: IncomingMessage, res: ServerResponse, next: () => void) => {
     const url = (req.url || '').split('?')[0];
     const orig = res.setHeader.bind(res);
-    res.setHeader = (name: string, value: unknown) => {
+    res.setHeader = (name: string, value: number | string | readonly string[]) => {
       if (String(name).toLowerCase() === 'content-type') {
         if (typeof value === 'string' && /^(text\/|application\/(json|x-ndjson))/.test(value) && !/charset/i.test(value)) {
           value = `${value}; charset=utf-8`;
@@ -43,7 +44,8 @@ function utf8TextHeaders(): Plugin {
 // aliases below (no build, single source of truth — the playground runs the real
 // transpiler/interpreter in the browser). For an eventual standalone deploy these
 // would be published packages instead; for now this points at the local repo.
-const EML = 'D:/Ai/work together/EML';
+// Override with the EML_REPO env var for a different machine/checkout layout.
+const EML = process.env.EML_REPO || 'D:/Ai/work together/EML';
 const emlPkg = (name: string) => `${EML}/packages/${name}/src/index.ts`;
 
 export default defineConfig({
