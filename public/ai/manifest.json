@@ -163,6 +163,240 @@
       "path": "/ai/examples/010-word-frequency-counter.eml.md",
       "title": "Case corpus: a self-authored word-frequency counter",
       "description": "`word_frequency_counter.eml` is the second case in a self-authored batch (see [`examples/unit-temperature-converter/`](../unit-temperature-converter/) and [`examples/todo-list-manager/`](../todo-list-manager/) for the other two) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "011-anagram-checker",
+      "path": "/ai/examples/011-anagram-checker.eml.md",
+      "title": "Anagram checker",
+      "description": "`anagram_checker.eml` checks five sample word pairs — `listen`/`silent`, `evil`/`vile`, `dormitory`/`dirtyroom`, `night`/`thing`, and `cat`/`dog` — for whether each pair is an anagram of the other."
+    },
+    {
+      "id": "012-armstrong-number-checker",
+      "path": "/ai/examples/012-armstrong-number-checker.eml.md",
+      "title": "Armstrong number checker",
+      "description": "`armstrong_number_checker.eml` checks whether each of four sample numbers (153, 370, 9474 — all genuine Armstrong numbers — and 123, which is not) is an Armstrong number: the sum of its digits, each raised to the power of the digit count, equals the number itself."
+    },
+    {
+      "id": "013-bank-account-simulator",
+      "path": "/ai/examples/013-bank-account-simulator.eml.md",
+      "title": "Case corpus: a self-authored bank account simulator",
+      "description": "`bank_account_simulator.eml` is a class-based case in a self-authored batch of six OOP utilities (alongside `examples/simple-stack/`, `examples/simple-queue/`, `examples/inventory-tracker/`, `examples/library-catalog/`, and `examples/parking-lot-tracker/`) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "014-base-converter",
+      "path": "/ai/examples/014-base-converter.eml.md",
+      "title": "Base converter (decimal to binary/octal)",
+      "description": "`base_converter.eml` converts three sample decimal integers (156, 2024, 45) to their binary and octal string representations by manual repeated-division-and-remainder — no `bin()`/`oct()`/`hex()` call is used; the digit string is built by hand."
+    },
+    {
+      "id": "015-caesar-cipher",
+      "path": "/ai/examples/015-caesar-cipher.eml.md",
+      "title": "Caesar cipher",
+      "description": "`caesar_cipher.eml` encodes the sample message `\"Meet me at the old bridge at midnight\"` with a fixed shift-7 Caesar cipher, then decodes the result back to the original, printing all three lines (original / encoded / decoded) to demonstrate the round trip."
+    },
+    {
+      "id": "016-collatz-sequence",
+      "path": "/ai/examples/016-collatz-sequence.eml.md",
+      "title": "Collatz sequence",
+      "description": "`collatz_sequence.eml` runs the Collatz conjecture step (halve if even, `3n + 1` if odd) from three starting numbers — 6, 11, and the famously long-running 27 (111 steps) — until each reaches 1, printing the full sequence and step count for every run."
+    },
+    {
+      "id": "017-contact-book",
+      "path": "/ai/examples/017-contact-book.eml.md",
+      "title": "Contact book",
+      "description": "`contact_book.eml` is a small class-based `ContactBook` — add a contact, look one up, remove one — backed by a `self.contacts` dict mapping name to phone number."
+    },
+    {
+      "id": "018-dice-roll-tally",
+      "path": "/ai/examples/018-dice-roll-tally.eml.md",
+      "title": "Case corpus: a self-authored dice roll tally",
+      "description": "`dice_roll_tally.eml` is one of a six-case self-authored batch of deterministic simulations and pattern generators (see [`examples/fizzbuzz/`](../fizzbuzz/), [`examples/multiplication-table-generator/`](../multiplication-table-generator/), [`examples/triangle-pattern-printer/`](../triangle-pattern-printer/), [`examples/simple-calculator/`](../simple-calculator/), and [`examples/rock-paper-scissors-simulator/`](../rock-paper-scissors-simulator/) for the other five) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project. EML's interpreter models no random-number generation, so the dice rolls here are a fixed, hardcoded 20-value list, not real randomness."
+    },
+    {
+      "id": "019-digit-sum-calculator",
+      "path": "/ai/examples/019-digit-sum-calculator.eml.md",
+      "title": "Digit sum + digital root calculator",
+      "description": "`digit_sum_calculator.eml` takes a small list of sample integers and, for each one, computes its digit sum (the sum of its base-10 digits) and its \"digital root\" — the single digit left after repeatedly re-summing digits until only one remains."
+    },
+    {
+      "id": "020-duplicate-remover",
+      "path": "/ai/examples/020-duplicate-remover.eml.md",
+      "title": "Duplicate remover",
+      "description": "`duplicate_remover.eml` removes duplicates from a sample grocery-basket list while preserving first-seen order — one of a seven-case self-authored batch of list/collection utilities for the EML case corpus (see [`examples/list-statistics/`](../list-statistics/), [`examples/list-rotator/`](../list-rotator/), [`examples/matrix-transpose-manual/`](../matrix-transpose-manual/), [`examples/intersection-union-finder/`](../intersection-union-finder/), [`examples/second-largest-finder/`](../second-largest-finder/), and [`examples/shopping-cart-total/`](../shopping-cart-total/) for the other six)."
+    },
+    {
+      "id": "021-fibonacci-sequence",
+      "path": "/ai/examples/021-fibonacci-sequence.eml.md",
+      "title": "Fibonacci sequence (iterative)",
+      "description": "`fibonacci_sequence.eml` generates the first 15 Fibonacci numbers using a `while` loop with two running variables (`a`, `b`) that are swapped and advanced each iteration — deliberately iterative, since recursion is already covered elsewhere in this corpus (`examples/phase6-control-flow/` covers a similar iterative shape for a single Fibonacci value; this case generates the whole sequence as a list and prints both the full sequence and its last term)."
+    },
+    {
+      "id": "022-fizzbuzz",
+      "path": "/ai/examples/022-fizzbuzz.eml.md",
+      "title": "Case corpus: a self-authored FizzBuzz",
+      "description": "`fizzbuzz.eml` is one of a six-case self-authored batch of deterministic simulations and pattern generators (see [`examples/multiplication-table-generator/`](../multiplication-table-generator/), [`examples/triangle-pattern-printer/`](../triangle-pattern-printer/), [`examples/simple-calculator/`](../simple-calculator/), [`examples/rock-paper-scissors-simulator/`](../rock-paper-scissors-simulator/), and [`examples/dice-roll-tally/`](../dice-roll-tally/) for the other five) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "023-gcd-lcm-calculator",
+      "path": "/ai/examples/023-gcd-lcm-calculator.eml.md",
+      "title": "GCD/LCM calculator",
+      "description": "`gcd_lcm_calculator.eml` computes the greatest common divisor of two numbers via the classic iterative Euclidean algorithm, then derives the least common multiple from the GCD, for three realistic number pairs (e.g. two recurring events on 48-day and 18-day cycles next line up on their LCM)."
+    },
+    {
+      "id": "024-intersection-union-finder",
+      "path": "/ai/examples/024-intersection-union-finder.eml.md",
+      "title": "Intersection / union finder",
+      "description": "`intersection_union_finder.eml` computes the intersection and union of two sample lists of team-roster names — one of a seven-case self-authored batch of list/collection utilities for the EML case corpus (see [`examples/list-statistics/`](../list-statistics/), [`examples/duplicate-remover/`](../duplicate-remover/), [`examples/list-rotator/`](../list-rotator/), [`examples/matrix-transpose-manual/`](../matrix-transpose-manual/), [`examples/second-largest-finder/`](../second-largest-finder/), and [`examples/shopping-cart-total/`](../shopping-cart-total/) for the other six)."
+    },
+    {
+      "id": "025-inventory-tracker",
+      "path": "/ai/examples/025-inventory-tracker.eml.md",
+      "title": "Case corpus: a self-authored stock inventory tracker",
+      "description": "`inventory_tracker.eml` is a class-based case in a self-authored batch of six OOP utilities (alongside `examples/bank-account-simulator/`, `examples/simple-stack/`, `examples/simple-queue/`, `examples/library-catalog/`, and `examples/parking-lot-tracker/`) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "026-library-catalog",
+      "path": "/ai/examples/026-library-catalog.eml.md",
+      "title": "Case corpus: a self-authored library checkout catalog",
+      "description": "`library_catalog.eml` is a class-based case in a self-authored batch of six OOP utilities (alongside `examples/bank-account-simulator/`, `examples/simple-stack/`, `examples/simple-queue/`, `examples/inventory-tracker/`, and `examples/parking-lot-tracker/`) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "027-list-rotator",
+      "path": "/ai/examples/027-list-rotator.eml.md",
+      "title": "List rotator",
+      "description": "`list_rotator.eml` rotates two sample lists — a song playlist and a job queue — left and right by a given amount, using slice concatenation — one of a seven-case self-authored batch of list/collection utilities for the EML case corpus (see [`examples/list-statistics/`](../list-statistics/), [`examples/duplicate-remover/`](../duplicate-remover/), [`examples/matrix-transpose-manual/`](../matrix-transpose-manual/), [`examples/intersection-union-finder/`](../intersection-union-finder/), [`examples/second-largest-finder/`](../second-largest-finder/), and [`examples/shopping-cart-total/`](../shopping-cart-total/) for the other six)."
+    },
+    {
+      "id": "028-list-statistics",
+      "path": "/ai/examples/028-list-statistics.eml.md",
+      "title": "List statistics",
+      "description": "`list_statistics.eml` computes the minimum, maximum, sum, and average of a sample list of hourly temperature readings — one of a seven-case self-authored batch of list/collection utilities for the EML case corpus (see [`examples/duplicate-remover/`](../duplicate-remover/), [`examples/list-rotator/`](../list-rotator/), [`examples/matrix-transpose-manual/`](../matrix-transpose-manual/), [`examples/intersection-union-finder/`](../intersection-union-finder/), [`examples/second-largest-finder/`](../second-largest-finder/), and [`examples/shopping-cart-total/`](../shopping-cart-total/) for the other six)."
+    },
+    {
+      "id": "029-matrix-transpose-manual",
+      "path": "/ai/examples/029-matrix-transpose-manual.eml.md",
+      "title": "Matrix transpose (manual)",
+      "description": "`matrix_transpose_manual.eml` transposes a small 2x3 matrix, represented as a plain list of lists, via nested loops and manual index bookkeeping — one of a seven-case self-authored batch of list/collection utilities for the EML case corpus (see [`examples/list-statistics/`](../list-statistics/), [`examples/duplicate-remover/`](../duplicate-remover/), [`examples/list-rotator/`](../list-rotator/), [`examples/intersection-union-finder/`](../intersection-union-finder/), [`examples/second-largest-finder/`](../second-largest-finder/), and [`examples/shopping-cart-total/`](../shopping-cart-total/) for the other six)."
+    },
+    {
+      "id": "030-multiplication-table-generator",
+      "path": "/ai/examples/030-multiplication-table-generator.eml.md",
+      "title": "Case corpus: a self-authored multiplication table generator",
+      "description": "`multiplication_table_generator.eml` is one of a six-case self-authored batch of deterministic simulations and pattern generators (see [`examples/fizzbuzz/`](../fizzbuzz/), [`examples/triangle-pattern-printer/`](../triangle-pattern-printer/), [`examples/simple-calculator/`](../simple-calculator/), [`examples/rock-paper-scissors-simulator/`](../rock-paper-scissors-simulator/), and [`examples/dice-roll-tally/`](../dice-roll-tally/) for the other five) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "031-palindrome-checker",
+      "path": "/ai/examples/031-palindrome-checker.eml.md",
+      "title": "Palindrome checker",
+      "description": "`palindrome_checker.eml` checks whether each of six sample words — `level`, `radar`, `python`, `deified`, `civic`, `transpiler` — reads the same forwards and backwards, printing a verdict for each one."
+    },
+    {
+      "id": "032-parking-lot-tracker",
+      "path": "/ai/examples/032-parking-lot-tracker.eml.md",
+      "title": "Case corpus: a self-authored parking lot tracker",
+      "description": "`parking_lot_tracker.eml` is a class-based case in a self-authored batch of six OOP utilities (alongside `examples/bank-account-simulator/`, `examples/simple-stack/`, `examples/simple-queue/`, `examples/inventory-tracker/`, and `examples/library-catalog/`) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "033-prime-checker",
+      "path": "/ai/examples/033-prime-checker.eml.md",
+      "title": "Prime checker",
+      "description": "`prime_checker.eml` checks primality by trial division (dividing up to `sqrt(n)`, computed without a square-root call by comparing `divisor * divisor <= n`) for a handful of sample numbers, then separately builds the full list of primes up to 30 by looping over an inclusive range and growing a list."
+    },
+    {
+      "id": "034-quadratic-solver",
+      "path": "/ai/examples/034-quadratic-solver.eml.md",
+      "title": "Quadratic equation solver",
+      "description": "`quadratic_solver.eml` solves `ax^2 + bx + c = 0` via the quadratic formula for three sample coefficient triples that all have real roots — `(1, -3, 2)` -> roots 1 and 2, `(2, -7, 3)` -> roots 0.5 and 3, `(1, -5, 6)` -> roots 2 and 3. The discriminant-negative (complex-root) case is deliberately skipped, as scoped for this case."
+    },
+    {
+      "id": "035-rock-paper-scissors-simulator",
+      "path": "/ai/examples/035-rock-paper-scissors-simulator.eml.md",
+      "title": "Case corpus: a self-authored rock-paper-scissors simulator",
+      "description": "`rock_paper_scissors_simulator.eml` is one of a six-case self-authored batch of deterministic simulations and pattern generators (see [`examples/fizzbuzz/`](../fizzbuzz/), [`examples/multiplication-table-generator/`](../multiplication-table-generator/), [`examples/triangle-pattern-printer/`](../triangle-pattern-printer/), [`examples/simple-calculator/`](../simple-calculator/), and [`examples/dice-roll-tally/`](../dice-roll-tally/) for the other five) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project. EML's interpreter models no random-number generation, so the \"simulation\" here is a fixed, hardcoded sequence of six rounds, not real randomness."
+    },
+    {
+      "id": "036-run-length-encoder",
+      "path": "/ai/examples/036-run-length-encoder.eml.md",
+      "title": "Run-length encoder",
+      "description": "`run_length_encoder.eml` run-length-encodes the DNA-style base sequence `\"AAAAGGGGCCCCTTTTAAAAGGA\"` (a genuine RLE use case — simple compression of repeated-symbol sequences, e.g. in bioinformatics or fax-style bitmap rows), producing `4A4G4C4T4A2G1A`."
+    },
+    {
+      "id": "037-second-largest-finder",
+      "path": "/ai/examples/037-second-largest-finder.eml.md",
+      "title": "Second-largest finder",
+      "description": "`second_largest_finder.eml` finds the largest and second-largest *distinct* values in a sample list of exam scores (with repeats) via a manual single-pass loop tracking two running maxima — one of a seven-case self-authored batch of list/collection utilities for the EML case corpus (see [`examples/list-statistics/`](../list-statistics/), [`examples/duplicate-remover/`](../duplicate-remover/), [`examples/list-rotator/`](../list-rotator/), [`examples/matrix-transpose-manual/`](../matrix-transpose-manual/), [`examples/intersection-union-finder/`](../intersection-union-finder/), and [`examples/shopping-cart-total/`](../shopping-cart-total/) for the other six)."
+    },
+    {
+      "id": "038-shopping-cart-total",
+      "path": "/ai/examples/038-shopping-cart-total.eml.md",
+      "title": "Shopping cart total",
+      "description": "`shopping_cart_total.eml` models a shopping cart as a list of `(item_name, unit_price, quantity)` tuples and prints an itemized receipt with a grand total — one of a seven-case self-authored batch of list/collection utilities for the EML case corpus (see [`examples/list-statistics/`](../list-statistics/), [`examples/duplicate-remover/`](../duplicate-remover/), [`examples/list-rotator/`](../list-rotator/), [`examples/matrix-transpose-manual/`](../matrix-transpose-manual/), [`examples/intersection-union-finder/`](../intersection-union-finder/), and [`examples/second-largest-finder/`](../second-largest-finder/) for the other six)."
+    },
+    {
+      "id": "039-simple-calculator",
+      "path": "/ai/examples/039-simple-calculator.eml.md",
+      "title": "Case corpus: a self-authored simple calculator",
+      "description": "`simple_calculator.eml` is one of a six-case self-authored batch of deterministic simulations and pattern generators (see [`examples/fizzbuzz/`](../fizzbuzz/), [`examples/multiplication-table-generator/`](../multiplication-table-generator/), [`examples/triangle-pattern-printer/`](../triangle-pattern-printer/), [`examples/rock-paper-scissors-simulator/`](../rock-paper-scissors-simulator/), and [`examples/dice-roll-tally/`](../dice-roll-tally/) for the other five) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "040-simple-queue",
+      "path": "/ai/examples/040-simple-queue.eml.md",
+      "title": "Case corpus: a self-authored FIFO queue",
+      "description": "`simple_queue.eml` is a class-based case in a self-authored batch of six OOP utilities (alongside `examples/bank-account-simulator/`, `examples/simple-stack/`, `examples/inventory-tracker/`, `examples/library-catalog/`, and `examples/parking-lot-tracker/`) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "041-simple-quiz-grader",
+      "path": "/ai/examples/041-simple-quiz-grader.eml.md",
+      "title": "Simple quiz grader",
+      "description": "`simple_quiz_grader.eml` grades a 5-question quiz from `(question, correct_answer, given_answer)` tuples, printing per-question feedback and a final percentage score."
+    },
+    {
+      "id": "042-simple-stack",
+      "path": "/ai/examples/042-simple-stack.eml.md",
+      "title": "Case corpus: a self-authored LIFO stack",
+      "description": "`simple_stack.eml` is a class-based case in a self-authored batch of six OOP utilities (alongside `examples/bank-account-simulator/`, `examples/simple-queue/`, `examples/inventory-tracker/`, `examples/library-catalog/`, and `examples/parking-lot-tracker/`) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "043-string-reverser",
+      "path": "/ai/examples/043-string-reverser.eml.md",
+      "title": "String reverser",
+      "description": "`string_reverser.eml` reverses four sample strings — `\"Hello World\"`, `\"EML Transpiler\"`, `\"Neo.K\"`, `\"EveMissLab 2026\"`."
+    },
+    {
+      "id": "044-survey-score-analyzer",
+      "path": "/ai/examples/044-survey-score-analyzer.eml.md",
+      "title": "Survey score analyzer",
+      "description": "`survey_score_analyzer.eml` analyzes a small customer-satisfaction survey — `(respondent_name, score)` tuples on a 1-10 scale — splitting respondents into satisfied/unsatisfied groups, averaging all scores, and previewing the first couple of responses."
+    },
+    {
+      "id": "045-task-priority-bucketer",
+      "path": "/ai/examples/045-task-priority-bucketer.eml.md",
+      "title": "Task priority bucketer",
+      "description": "`task_priority_bucketer.eml` takes a sample task list — `(task_name, priority_number)` tuples on a 1-10 scale — and sorts them into high/medium/low priority buckets for a simple daily triage report."
+    },
+    {
+      "id": "046-temperature-alert-system",
+      "path": "/ai/examples/046-temperature-alert-system.eml.md",
+      "title": "Temperature alert system",
+      "description": "`temperature_alert_system.eml` classifies a day's worth of hourly Celsius readings from a weather station into \"cold\"/\"mild\"/\"hot\" bands, prints a per-reading alert line (flagging severe extremes), and tallies how many readings landed in each band."
+    },
+    {
+      "id": "047-triangle-pattern-printer",
+      "path": "/ai/examples/047-triangle-pattern-printer.eml.md",
+      "title": "Case corpus: a self-authored triangle pattern printer",
+      "description": "`triangle_pattern_printer.eml` is one of a six-case self-authored batch of deterministic simulations and pattern generators (see [`examples/fizzbuzz/`](../fizzbuzz/), [`examples/multiplication-table-generator/`](../multiplication-table-generator/), [`examples/simple-calculator/`](../simple-calculator/), [`examples/rock-paper-scissors-simulator/`](../rock-paper-scissors-simulator/), and [`examples/dice-roll-tally/`](../dice-roll-tally/) for the other five) — part of growing the EML case corpus toward AI-native training scale, not a port of an existing project."
+    },
+    {
+      "id": "048-vowel-consonant-counter",
+      "path": "/ai/examples/048-vowel-consonant-counter.eml.md",
+      "title": "Vowel/consonant counter",
+      "description": "`vowel_consonant_counter.eml` counts vowels, consonants, and spaces in the sample sentence `\"the quick brown fox jumps over the lazy dog\"` and prints a small report."
+    },
+    {
+      "id": "049-word-capitalizer",
+      "path": "/ai/examples/049-word-capitalizer.eml.md",
+      "title": "Word capitalizer",
+      "description": "`word_capitalizer.eml` title-cases the sample sentence `\"the quick brown fox jumps over the lazy dog\"` into `\"The Quick Brown Fox Jumps Over The Lazy Dog\"` without using a `.title()`/`.capitalize()` builtin."
     }
   ],
   "tools": {

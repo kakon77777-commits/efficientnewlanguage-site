@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Nav } from '../components/Nav';
 import { Footer } from '../components/Footer';
-import { Section, Kicker } from '../components/ui';
+import { Section, Kicker, cn } from '../components/ui';
 import { useLang } from '../i18n';
 
 interface CaseEntry {
@@ -11,16 +11,24 @@ interface CaseEntry {
   description?: string;
 }
 
+const PAGE_SIZE = 12;
+
+function readPageFromUrl(): number {
+  const n = Number(new URLSearchParams(window.location.search).get('page'));
+  return Number.isInteger(n) && n > 0 ? n : 1;
+}
+
 /** The case-index (/cases) — a simple, generated list of every verified EML
- *  case in the corpus, human-browsable. Deliberately simple (no search/
- *  filter/pagination) — those are additions for once volume justifies them.
- *  Data comes from /ai/manifest.json, the same manifest the machine/agent
- *  layer reads, so this page and the crawler-facing corpus never drift. */
+ *  case in the corpus, human-browsable, paginated 12-per-page once the corpus
+ *  outgrows a single screen. Data comes from /ai/manifest.json, the same
+ *  manifest the machine/agent layer reads, so this page and the
+ *  crawler-facing corpus never drift. */
 export default function Cases() {
   const { lang } = useLang();
   const t = (en: string, zh: string) => (lang === 'zh' ? zh : en);
   const [cases, setCases] = useState<CaseEntry[] | null>(null);
   const [error, setError] = useState(false);
+  const [page, setPage] = useState(() => readPageFromUrl());
 
   useEffect(() => {
     fetch('/ai/manifest.json')
@@ -28,6 +36,26 @@ export default function Cases() {
       .then((m) => setCases(m.examples ?? []))
       .catch(() => setError(true));
   }, []);
+
+  const totalPages = cases ? Math.max(1, Math.ceil(cases.length / PAGE_SIZE)) : 1;
+
+  // Clamp once the real case count is known (e.g. a stale ?page=99 link).
+  useEffect(() => {
+    if (cases && page > totalPages) setPage(totalPages);
+  }, [cases, page, totalPages]);
+
+  const pageCases = useMemo(
+    () => (cases ? cases.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE) : []),
+    [cases, page],
+  );
+
+  function goToPage(n: number): void {
+    const clamped = Math.min(Math.max(1, n), totalPages);
+    setPage(clamped);
+    const url = clamped === 1 ? '/cases' : `/cases?page=${clamped}`;
+    window.history.replaceState(null, '', url);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
@@ -57,23 +85,71 @@ export default function Cases() {
           )}
 
           {cases && (
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {cases.map((c) => (
-                <a
-                  key={c.id}
-                  href={c.path}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex flex-col rounded-xl border border-line bg-surface/60 p-5 transition-colors duration-200 hover:border-symbol/40"
+            <>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {pageCases.map((c) => (
+                  <a
+                    key={c.id}
+                    href={c.path}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex flex-col rounded-xl border border-line bg-surface/60 p-5 transition-colors duration-200 hover:border-symbol/40"
+                  >
+                    <span className="font-mono text-xs text-symbol">{c.id}</span>
+                    <h3 className="mt-2 text-base font-semibold text-fg">{c.title ?? c.id}</h3>
+                    {c.description && (
+                      <p className="mt-1.5 line-clamp-3 text-sm leading-6 text-muted">{c.description}</p>
+                    )}
+                  </a>
+                ))}
+              </div>
+
+              {totalPages > 1 && (
+                <nav
+                  aria-label={t('Case pages', '案例分頁')}
+                  className="mt-10 flex flex-wrap items-center justify-center gap-2"
                 >
-                  <span className="font-mono text-xs text-symbol">{c.id}</span>
-                  <h3 className="mt-2 text-base font-semibold text-fg">{c.title ?? c.id}</h3>
-                  {c.description && (
-                    <p className="mt-1.5 line-clamp-3 text-sm leading-6 text-muted">{c.description}</p>
-                  )}
-                </a>
-              ))}
-            </div>
+                  <button
+                    type="button"
+                    onClick={() => goToPage(page - 1)}
+                    disabled={page === 1}
+                    className="rounded-md border border-line bg-surface/60 px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:border-symbol/40 hover:text-fg disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    {t('Previous', '上一頁')}
+                  </button>
+
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                    <button
+                      key={n}
+                      type="button"
+                      onClick={() => goToPage(n)}
+                      aria-current={n === page ? 'page' : undefined}
+                      className={cn(
+                        'h-9 min-w-9 rounded-md border px-2.5 text-sm font-mono transition-colors duration-200',
+                        n === page
+                          ? 'border-symbol/40 bg-symbol/10 text-symbol'
+                          : 'border-line bg-surface/60 text-muted hover:border-symbol/40 hover:text-fg',
+                      )}
+                    >
+                      {n}
+                    </button>
+                  ))}
+
+                  <button
+                    type="button"
+                    onClick={() => goToPage(page + 1)}
+                    disabled={page === totalPages}
+                    className="rounded-md border border-line bg-surface/60 px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:border-symbol/40 hover:text-fg disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    {t('Next', '下一頁')}
+                  </button>
+
+                  <span className="ml-2 font-mono text-xs text-faint">
+                    {t(`Page ${page} of ${totalPages}`, `第 ${page} / ${totalPages} 頁`)}
+                  </span>
+                </nav>
+              )}
+            </>
           )}
         </Section>
       </main>
