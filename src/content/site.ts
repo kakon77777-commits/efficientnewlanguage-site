@@ -46,6 +46,12 @@ export interface SiteContent {
     copied: string;
     transpiled: string;
     errors: string;
+    reset: string;
+    downloadEml: string;
+    downloadPy: string;
+    downloadTrace: string;
+    loadedCase: string;
+    caseLoadFailed: string;
   };
   features: { kicker: string; title: string; lead: string; items: { phase: string; title: string; body: string }[] };
   ai: {
@@ -148,6 +154,12 @@ export const CONTENT: Record<Lang, SiteContent> = {
       copied: 'copied ✓',
       transpiled: 'transpiled',
       errors: 'error(s)',
+      reset: 'Reset',
+      downloadEml: 'Download .eml',
+      downloadPy: 'Download .py',
+      downloadTrace: 'Download trace',
+      loadedCase: 'Loaded from case:',
+      caseLoadFailed: "Could not load that case — showing the default example instead.",
     },
     features: {
       kicker: 'Capabilities',
@@ -300,6 +312,12 @@ export const CONTENT: Record<Lang, SiteContent> = {
       copied: '已複製 ✓',
       transpiled: '已轉譯',
       errors: '個錯誤',
+      reset: '重設',
+      downloadEml: '下載 .eml',
+      downloadPy: '下載 .py',
+      downloadTrace: '下載 trace',
+      loadedCase: '案例載入自：',
+      caseLoadFailed: '無法載入該案例，改顯示預設範例。',
     },
     features: {
       kicker: '能力',

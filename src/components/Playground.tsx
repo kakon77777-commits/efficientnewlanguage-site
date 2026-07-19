@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { Clipboard, Check, ArrowLeftRight } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { Clipboard, Check, ArrowLeftRight, Download, RotateCcw } from 'lucide-react';
 import {
   transpileEmlToPython,
   transpilePythonToEml,
@@ -34,6 +34,24 @@ const HOT_MARKER_LINE = '# @hot: dynamic state — not cached';
 function isHotMarkerOnlyDiff(python1: string, python2: string): boolean {
   const strip = (s: string) => s.split('\n').filter((line) => line !== HOT_MARKER_LINE).join('\n');
   return python1 !== python2 && strip(python1) === strip(python2);
+}
+
+/** Pulls the raw EML source out of a generated case doc's fenced ```eml block
+ *  (see public/ai/examples/*.eml.md) — the same source the case-corpus test
+ *  suite verified, so /app?case=<id> always runs the real thing. */
+function extractEmlSource(doc: string): string | null {
+  const m = doc.match(/```eml\n([\s\S]*?)```/);
+  return m ? m[1].trimEnd() : null;
+}
+
+function downloadText(filename: string, content: string): void {
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 /** Compact, colour-coded presentation for one phosphor-jsonl-v1 event. */
@@ -83,6 +101,38 @@ export function Playground() {
   const [exId, setExId] = useState(EML_EXAMPLES[0].id);
   const [src, setSrc] = useState(EML_EXAMPLES[0].eml);
   const [copied, setCopied] = useState(false);
+  const [loadedCase, setLoadedCase] = useState<{ id: string; original: string } | null>(null);
+  const [caseLoadError, setCaseLoadError] = useState(false);
+
+  // /app?case=<id> — load a real case-corpus program straight from the same
+  // manifest /cases reads, so "Run" on a case card lands on its actual source.
+  useEffect(() => {
+    const caseId = new URLSearchParams(window.location.search).get('case');
+    if (!caseId) return;
+    let cancelled = false;
+    fetch('/ai/manifest.json')
+      .then((r) => r.json())
+      .then((m) => {
+        const entry = ((m.examples ?? []) as Array<{ id: string; path: string }>).find((e) => e.id === caseId);
+        if (!entry) throw new Error('case not found');
+        return fetch(entry.path);
+      })
+      .then((r) => r.text())
+      .then((doc) => {
+        const source = extractEmlSource(doc);
+        if (!source) throw new Error('no eml block');
+        if (cancelled) return;
+        setDir('eml2py');
+        setSrc(source);
+        setLoadedCase({ id: caseId, original: source });
+      })
+      .catch(() => {
+        if (!cancelled) setCaseLoadError(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const examples = dir === 'eml2py' ? EML_EXAMPLES : PY_EXAMPLES;
 
@@ -92,6 +142,7 @@ export function Playground() {
     setDir(next);
     setExId(ex.id);
     setSrc(ex.eml);
+    setLoadedCase(null);
     setTab(next === 'eml2py' ? 'python' : 'trace');
   };
 
@@ -100,7 +151,25 @@ export function Playground() {
     if (ex) {
       setExId(id);
       setSrc(ex.eml);
+      setLoadedCase(null);
     }
+  };
+
+  const resetSrc = () => {
+    if (loadedCase) {
+      setSrc(loadedCase.original);
+      return;
+    }
+    const ex = examples.find((e) => e.id === exId);
+    if (ex) setSrc(ex.eml);
+  };
+
+  const downloadEml = () => downloadText(`${loadedCase?.id ?? exId}.eml`, src);
+  const downloadPy = () => {
+    if (dir === 'eml2py' && fwd?.ok) downloadText(`${loadedCase?.id ?? exId}.py`, fwd.python);
+  };
+  const downloadTrace = () => {
+    if (run) downloadText(`${loadedCase?.id ?? exId}.trace.jsonl`, toJsonl(run.events));
   };
 
   const fwd = useMemo(() => (dir === 'eml2py' ? transpileEmlToPython(src) : null), [src, dir]);
@@ -199,6 +268,53 @@ export function Playground() {
             </select>
           </label>
 
+          {loadedCase && (
+            <span className="rounded-full border border-symbol/30 bg-symbol/10 px-2.5 py-1 font-mono text-[11px] text-symbol">
+              {c.play.loadedCase} {loadedCase.id}
+            </span>
+          )}
+
+          <button
+            type="button"
+            onClick={resetSrc}
+            className="inline-flex cursor-pointer items-center gap-1.5 rounded-md border border-line bg-panel/60 px-2.5 py-1.5 text-xs text-muted transition-colors duration-200 hover:border-symbol/50 hover:text-symbol"
+          >
+            <RotateCcw size={13} />
+            {c.play.reset}
+          </button>
+
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={downloadEml}
+              title={c.play.downloadEml}
+              className="inline-flex cursor-pointer items-center gap-1 rounded-md border border-line bg-panel/60 px-2 py-1.5 text-xs text-muted transition-colors duration-200 hover:border-symbol/50 hover:text-symbol"
+            >
+              <Download size={13} />
+              .eml
+            </button>
+            <button
+              type="button"
+              onClick={downloadPy}
+              title={c.play.downloadPy}
+              disabled={dir !== 'eml2py' || !fwd?.ok}
+              className="inline-flex cursor-pointer items-center gap-1 rounded-md border border-line bg-panel/60 px-2 py-1.5 text-xs text-muted transition-colors duration-200 hover:border-symbol/50 hover:text-symbol disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              <Download size={13} />
+              .py
+            </button>
+            <button
+              type="button"
+              onClick={downloadTrace}
+              title={c.play.downloadTrace}
+              disabled={!run}
+              className="inline-flex cursor-pointer items-center gap-1 rounded-md border border-line bg-panel/60 px-2 py-1.5 text-xs text-muted transition-colors duration-200 hover:border-symbol/50 hover:text-symbol disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              <Download size={13} />
+              trace
+            </button>
+          </div>
+
           <span
             className={cn(
               'ml-auto rounded-full px-2.5 py-1 font-mono text-[11px]',
@@ -210,6 +326,10 @@ export function Playground() {
             {roundTrip.label}
           </span>
         </div>
+
+        {caseLoadError && (
+          <div className="border-b border-line bg-amber/10 px-4 py-2 text-xs text-amber">{c.play.caseLoadFailed}</div>
+        )}
 
         {/* Panes */}
         <div className="grid lg:grid-cols-2">

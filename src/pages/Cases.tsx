@@ -88,19 +88,24 @@ export default function Cases() {
             <>
               <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {pageCases.map((c) => (
-                  <a
+                  <div
                     key={c.id}
-                    href={c.path}
-                    target="_blank"
-                    rel="noreferrer"
                     className="group flex flex-col rounded-xl border border-line bg-surface/60 p-5 transition-colors duration-200 hover:border-symbol/40"
                   >
-                    <span className="font-mono text-xs text-symbol">{c.id}</span>
-                    <h3 className="mt-2 text-base font-semibold text-fg">{c.title ?? c.id}</h3>
-                    {c.description && (
-                      <p className="mt-1.5 line-clamp-3 text-sm leading-6 text-muted">{c.description}</p>
-                    )}
-                  </a>
+                    <a href={c.path} target="_blank" rel="noreferrer" className="flex-1">
+                      <span className="font-mono text-xs text-symbol">{c.id}</span>
+                      <h3 className="mt-2 text-base font-semibold text-fg">{c.title ?? c.id}</h3>
+                      {c.description && (
+                        <p className="mt-1.5 line-clamp-3 text-sm leading-6 text-muted">{c.description}</p>
+                      )}
+                    </a>
+                    <a
+                      href={`/app?case=${c.id}`}
+                      className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-md border border-symbol/30 bg-symbol/10 px-3 py-1.5 text-xs font-medium text-symbol transition-colors duration-200 hover:border-symbol/50 hover:bg-symbol/20"
+                    >
+                      {t('Run in Playground →', '在示範區執行 →')}
+                    </a>
+                  </div>
                 ))}
               </div>
 
