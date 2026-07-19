@@ -1,6 +1,8 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { I18nProvider } from './i18n';
 import { ThemeProvider } from './theme';
+import { AppErrorBoundary } from './app/AppErrorBoundary';
+import { AppLoading } from './app/AppLoading';
 
 // Code-split per route so the showcase landing doesn't bundle the engineering
 // app / docs (and vice versa). Cross-route navigation uses plain links (full
@@ -36,7 +38,9 @@ export default function App() {
   return (
     <ThemeProvider>
       <I18nProvider>
-        <Suspense fallback={<div className="min-h-screen bg-base" />}>{currentPage()}</Suspense>
+        <AppErrorBoundary>
+          <Suspense fallback={<AppLoading />}>{currentPage()}</Suspense>
+        </AppErrorBoundary>
       </I18nProvider>
     </ThemeProvider>
   );

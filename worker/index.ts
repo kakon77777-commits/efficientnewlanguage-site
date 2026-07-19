@@ -311,6 +311,29 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
+    // 1b. Health / readiness / version — checked early so monitoring never
+    // depends on anything downstream (SPA fallback, tool layer, etc).
+    if (pathname === '/healthz') {
+      return json({ ok: true, service: 'eml-site-worker' });
+    }
+    if (pathname === '/readyz') {
+      try {
+        const [idx, manifest] = await Promise.all([
+          env.ASSETS.fetch(new Request(new URL('/index.html', url), request)),
+          env.ASSETS.fetch(new Request(new URL('/ai/manifest.json', url), request)),
+        ]);
+        const ok = idx.ok && manifest.ok;
+        return json({ ok, index_html: idx.ok, manifest_json: manifest.ok }, ok ? 200 : 503);
+      } catch {
+        return json({ ok: false, error: 'readiness check failed' }, 503);
+      }
+    }
+    if (pathname === '/version') {
+      const res = await env.ASSETS.fetch(new Request(new URL('/build-info.json', url), request));
+      if (res.ok) return json(await res.json());
+      return json({ build_id: 'unknown' });
+    }
+
     // CORS preflight for the tool layer.
     if (request.method === 'OPTIONS' && (pathname.startsWith('/ai/tools/') || pathname === '/api/geo')) {
       return new Response(null, { status: 204, headers: corsHeaders() });

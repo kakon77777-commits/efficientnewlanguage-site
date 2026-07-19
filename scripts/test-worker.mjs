@@ -13,6 +13,8 @@ const ASSET_BODIES = {
   '/ai/index.md': '# EML AI-Native Interface Layer\n',
   '/llms.txt': '# Efficient New Language / EML\n',
   '/index.html': '<!doctype html><div id="root"></div>',
+  '/ai/manifest.json': JSON.stringify({ examples: [{ id: '000-arithmetic' }] }),
+  '/build-info.json': JSON.stringify({ build_id: 'eml-site-test-build', site_sha: 'abc1234', eml_core_sha: 'def5678' }),
 };
 const env = {
   ASSETS: {
@@ -47,6 +49,18 @@ const SUM = 'N^+100\nΣ(i^2, i in [1:N]) => r\nr^0';
 // `@hot` here, not `@cold`, to keep testing the actually-still-true invariant.
 const HOT = '@hot\ndef greet(name):\n    name^0\n    return name\n\ngreet(5)\n';
 
+await check('/healthz -> ok', async () => {
+  const j = await (await get('/healthz')).json();
+  return j.ok === true && j.service === 'eml-site-worker';
+});
+await check('/readyz -> ok when index+manifest present', async () => {
+  const j = await (await get('/readyz')).json();
+  return j.ok === true && j.index_html === true && j.manifest_json === true;
+});
+await check('/version -> mirrors build-info.json', async () => {
+  const j = await (await get('/version')).json();
+  return j.build_id === 'eml-site-test-build' && j.site_sha === 'abc1234' && j.eml_core_sha === 'def5678';
+});
 await check('health ok + honest limits', async () => {
   const j = await (await get('/ai/tools/health')).json();
   return j.ok && j.status === 'healthy' && j.tools.length === 6 && j.limits.max_exponent && !('max_execution_time_ms' in j.limits);

@@ -48,7 +48,29 @@
     />
   </head>
   <body>
-    <div id="root"></div>
+    <noscript>
+      <div style="max-width:32rem;margin:20vh auto;padding:0 1.5rem;text-align:center;font-family:system-ui,sans-serif;color:#e2e8f0;">
+        <div style="font-family:monospace;font-size:.875rem;color:#38bdf8;">EML</div>
+        <h1 style="margin-top:.75rem;font-size:1.125rem;font-weight:600;">JavaScript is required</h1>
+        <p style="margin-top:.5rem;font-size:.875rem;color:#94a3b8;">
+          This page needs JavaScript to run the in-browser transpiler and Playground.
+          Read the spec and docs at <a href="/ai/index.md" style="color:#38bdf8;">/ai/index.md</a>.
+        </p>
+      </div>
+    </noscript>
+    <div id="root">
+      <!-- Static boot fallback: React's render() replaces this the moment it mounts
+           successfully (even just to show the loading screen). If this text is still
+           on screen after a few seconds, JS never ran at all (EML-FE-BOOT) — a
+           distinct failure from a chunk load or render error, which the mounted
+           app's own Error Boundary handles instead. -->
+      <div style="display:grid;min-height:100vh;place-items:center;background:#0f172a;color:#e2e8f0;">
+        <div style="max-width:28rem;padding:0 1.5rem;text-align:center;font-family:system-ui,sans-serif;">
+          <div style="font-family:monospace;font-size:.875rem;color:#38bdf8;">EML</div>
+          <p style="margin-top:.75rem;font-size:.875rem;color:#94a3b8;">Starting…</p>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

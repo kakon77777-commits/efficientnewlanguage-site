@@ -3,9 +3,17 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 
 const here = dirname(fileURLToPath(import.meta.url));
+
+// scripts/build-meta.mjs writes this before `vite build` runs; in dev (no build
+// step) fall back to a clearly-labeled placeholder rather than failing.
+const buildInfoPath = resolve(here, 'public/build-info.json');
+const buildInfo = existsSync(buildInfoPath)
+  ? JSON.parse(readFileSync(buildInfoPath, 'utf8'))
+  : { build_id: 'dev', site_sha: 'unknown', eml_core_sha: 'unknown', built_at: new Date().toISOString() };
 
 // Dev/preview only: serve text/markdown, text/plain, .ebnf, .jsonl, .json with an
 // explicit `charset=utf-8`, matching the production Cloudflare worker. Vite's
@@ -49,6 +57,12 @@ const EML = process.env.EML_REPO || 'D:/Ai/work together/EML';
 const emlPkg = (name: string) => `${EML}/packages/${name}/src/index.ts`;
 
 export default defineConfig({
+  define: {
+    __BUILD_ID__: JSON.stringify(buildInfo.build_id),
+    __SITE_SHA__: JSON.stringify(buildInfo.site_sha),
+    __EML_CORE_SHA__: JSON.stringify(buildInfo.eml_core_sha),
+    __BUILT_AT__: JSON.stringify(buildInfo.built_at),
+  },
   plugins: [utf8TextHeaders(), react(), tailwindcss()],
   resolve: {
     alias: {

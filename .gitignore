@@ -2,6 +2,7 @@ node_modules/
 dist/
 dist.zip
 .wrangler/
+public/build-info.json
 *.log
 .DS_Store
 .devserver.log
