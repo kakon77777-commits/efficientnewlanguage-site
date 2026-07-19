@@ -12,6 +12,7 @@ const worker = (await import(pathToFileURL(workerPath).href)).default;
 const ASSET_BODIES = {
   '/ai/index.md': '# EML AI-Native Interface Layer\n',
   '/llms.txt': '# Efficient New Language / EML\n',
+  '/': '<!doctype html><div id="root"></div>',
   '/index.html': '<!doctype html><div id="root"></div>',
   '/ai/manifest.json': JSON.stringify({ examples: [{ id: '000-arithmetic' }] }),
   '/build-info.json': JSON.stringify({ build_id: 'eml-site-test-build', site_sha: 'abc1234', eml_core_sha: 'def5678' }),

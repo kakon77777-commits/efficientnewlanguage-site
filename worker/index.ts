@@ -318,8 +318,11 @@ export default {
     }
     if (pathname === '/readyz') {
       try {
+        // Fetch '/', not '/index.html' — the ASSETS binding 308-redirects the
+        // latter to the former, and a redirect response's `.ok` is false even
+        // though the site is perfectly healthy.
         const [idx, manifest] = await Promise.all([
-          env.ASSETS.fetch(new Request(new URL('/index.html', url), request)),
+          env.ASSETS.fetch(new Request(new URL('/', url), request)),
           env.ASSETS.fetch(new Request(new URL('/ai/manifest.json', url), request)),
         ]);
         const ok = idx.ok && manifest.ok;
