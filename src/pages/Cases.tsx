@@ -62,6 +62,8 @@ export default function Cases() {
                 <a
                   key={c.id}
                   href={c.path}
+                  target="_blank"
+                  rel="noreferrer"
                   className="group flex flex-col rounded-xl border border-line bg-surface/60 p-5 transition-colors duration-200 hover:border-symbol/40"
                 >
                   <span className="font-mono text-xs text-symbol">{c.id}</span>
