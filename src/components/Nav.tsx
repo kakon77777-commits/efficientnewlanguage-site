@@ -31,7 +31,7 @@ export function Nav() {
           scrolled ? 'border-line bg-base/85 backdrop-blur-md' : 'border-transparent bg-transparent',
         )}
       >
-        <a href="#top" className="flex items-center gap-2.5">
+        <a href="/" className="flex items-center gap-2.5">
           <span className="grid h-7 w-7 place-items-center rounded-md bg-symbol/15 font-mono text-sm font-bold text-symbol">
             Σ
           </span>
@@ -43,7 +43,7 @@ export function Nav() {
           {c.nav.links.map((l) => (
             <a
               key={l.id}
-              href={`#${l.id}`}
+              href={hrefFor(l.id)}
               className="cursor-pointer rounded-md px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:bg-panel hover:text-fg"
             >
               {l.label}
@@ -94,7 +94,7 @@ export function Nav() {
             ))}
           </div>
           <a
-            href="#playground"
+            href="/app#playground"
             className="hidden cursor-pointer items-center rounded-lg bg-run px-3.5 py-1.5 text-sm font-semibold text-base transition-colors duration-200 hover:bg-run/90 sm:inline-flex"
           >
             {c.nav.tryIt}
