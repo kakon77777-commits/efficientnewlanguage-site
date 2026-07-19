@@ -10,7 +10,7 @@
   "tool_version": "0.1.0",
   "trace_proto": "phosphor-jsonl-v1",
   "status": "active-experimental",
-  "updated": "2026-06-30",
+  "updated": "2026-07-19",
   "tools_available": [
     "eml.parse",
     "eml.transpile_python",

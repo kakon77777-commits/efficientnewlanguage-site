@@ -6,7 +6,7 @@ project_alias: EML
 maintainer: Neo.K / EveMissLab
 status: active-experimental
 ai_layer_version: 0.1.0
-updated: 2026-06-30
+updated: 2026-07-19
 -->
 
 # EML AI-Native Interface Layer
