@@ -4,6 +4,7 @@ dist-ssr/
 dist.zip
 .wrangler/
 public/build-info.json
+deploy-report.json
 *.log
 .DS_Store
 .devserver.log
