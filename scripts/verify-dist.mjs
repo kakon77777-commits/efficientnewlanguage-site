@@ -83,6 +83,24 @@ if (manifestPath) {
   }
 }
 
+// 8. Prerendered routes (scripts/prerender.mjs) — must contain real page
+// content in #root, not just the static boot-fallback markup the source
+// index.html ships with (~4KB). A silent no-op prerender (e.g. a template
+// structure change breaking the script's regex match) would otherwise still
+// produce a validly-sized, validly-linked index.html and pass every check
+// above undetected.
+function mustPrerendered(relPath, minBytes, mustContain) {
+  const p = must(relPath, minBytes);
+  if (!p) return;
+  const html = readFileSync(p, 'utf8');
+  if (!html.includes(mustContain)) {
+    fail(`${relPath} doesn't look prerendered (missing "${mustContain}") — prerender.mjs may have no-op'd`);
+  }
+}
+mustPrerendered('index.html', 10_000, 'Efficient New Language');
+mustPrerendered('docs/index.html', 10_000, 'id="symbols"');
+mustPrerendered('cases/index.html', 10_000, 'eml-cases-data');
+
 if (failures.length > 0) {
   console.error(`[verify-dist] FAILED (${failures.length}):`);
   for (const f of failures) console.error(`  - ${f}`);

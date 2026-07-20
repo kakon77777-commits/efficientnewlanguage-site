@@ -3,6 +3,7 @@ import { I18nProvider } from './i18n';
 import { ThemeProvider } from './theme';
 import { AppErrorBoundary } from './app/AppErrorBoundary';
 import { AppLoading } from './app/AppLoading';
+import { matchRoute } from './routes';
 
 // Code-split per route so the showcase landing doesn't bundle the engineering
 // app / docs (and vice versa). Cross-route navigation uses plain links (full
@@ -12,12 +13,17 @@ const Engineering = lazy(() => import('./pages/Engineering'));
 const Docs = lazy(() => import('./pages/Docs'));
 const Cases = lazy(() => import('./pages/Cases'));
 
-function currentPage() {
-  const p = window.location.pathname.replace(/\/+$/, '') || '/';
-  if (p === '/app' || p.startsWith('/app/')) return <Engineering />;
-  if (p === '/docs' || p.startsWith('/docs/')) return <Docs />;
-  if (p === '/cases' || p.startsWith('/cases/')) return <Cases />;
-  return <Showcase />;
+function currentPage(pathname: string = window.location.pathname) {
+  switch (matchRoute(pathname)) {
+    case 'engineering':
+      return <Engineering />;
+    case 'docs':
+      return <Docs />;
+    case 'cases':
+      return <Cases />;
+    default:
+      return <Showcase />;
+  }
 }
 
 export default function App() {

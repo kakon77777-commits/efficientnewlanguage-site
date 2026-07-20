@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer';
 import { Section, Kicker, cn } from '../components/ui';
 import { useLang } from '../i18n';
 
-interface CaseEntry {
+export interface CaseEntry {
   id: string;
   path: string;
   title?: string;
@@ -14,8 +14,33 @@ interface CaseEntry {
 const PAGE_SIZE = 12;
 
 function readPageFromUrl(): number {
+  if (typeof window === 'undefined') return 1;
   const n = Number(new URLSearchParams(window.location.search).get('page'));
   return Number.isInteger(n) && n > 0 ? n : 1;
+}
+
+/** Reads the case data the prerender script embedded as a JSON island
+ *  (scripts/prerender.mjs) — present only on a real hydrating client page
+ *  load of the prerendered /cases HTML, absent under SSR (no `document`)
+ *  and absent in plain `vite dev`/non-prerendered builds. */
+function readCasesFromDom(): CaseEntry[] | null {
+  if (typeof document === 'undefined') return null;
+  const el = document.getElementById('eml-cases-data');
+  if (!el?.textContent) return null;
+  try {
+    return JSON.parse(el.textContent);
+  } catch {
+    return null;
+  }
+}
+
+interface CasesProps {
+  /** Pre-loaded case data — only ever passed by entry-server.tsx's SSR
+   *  render call (which has no `document` to read a data island from).
+   *  The client's own hydration path instead finds the same data via
+   *  readCasesFromDom(). Absent in plain `vite dev`/non-prerendered builds,
+   *  where the existing client fetch below is the only data source. */
+  initialCases?: CaseEntry[];
 }
 
 /** The case-index (/cases) — a simple, generated list of every verified EML
@@ -23,18 +48,20 @@ function readPageFromUrl(): number {
  *  outgrows a single screen. Data comes from /ai/manifest.json, the same
  *  manifest the machine/agent layer reads, so this page and the
  *  crawler-facing corpus never drift. */
-export default function Cases() {
+export default function Cases({ initialCases }: CasesProps = {}) {
   const { lang } = useLang();
   const t = (en: string, zh: string) => (lang === 'zh' ? zh : en);
-  const [cases, setCases] = useState<CaseEntry[] | null>(null);
+  const [cases, setCases] = useState<CaseEntry[] | null>(() => initialCases ?? readCasesFromDom());
   const [error, setError] = useState(false);
   const [page, setPage] = useState(() => readPageFromUrl());
 
   useEffect(() => {
+    if (cases) return; // already have real data (SSR prop or hydrated data island)
     fetch('/ai/manifest.json')
       .then((r) => r.json())
       .then((m) => setCases(m.examples ?? []))
       .catch(() => setError(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const totalPages = cases ? Math.max(1, Math.ceil(cases.length / PAGE_SIZE)) : 1;

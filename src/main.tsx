@@ -1,10 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { matchRoute } from './routes';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')!;
+const app = (
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
+
+// Showcase/Docs/Cases arrive as real prerendered HTML (scripts/prerender.mjs)
+// and must hydrate, not re-render from scratch. /app (Engineering) is never
+// prerendered — it's a plain client render, same as before this existed.
+if (matchRoute(window.location.pathname) === 'engineering') {
+  ReactDOM.createRoot(root).render(app);
+} else {
+  ReactDOM.hydrateRoot(root, app);
+}
