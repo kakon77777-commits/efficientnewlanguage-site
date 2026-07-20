@@ -95,6 +95,26 @@ jobs:
         run: |
           URL="${{ steps.deploy.outputs.url }}"
           echo "Smoke testing $URL"
+
+          # A fresh Cloudflare Pages deployment isn't instantly live everywhere
+          # (observed: every route 404s for well under a second right after
+          # "Deployment complete") — poll /healthz until it's actually up
+          # before running the real checks, instead of failing on the first try.
+          ready=0
+          for attempt in $(seq 1 10); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$URL/healthz")
+            if [ "$code" -ge 200 ] && [ "$code" -lt 300 ]; then
+              ready=1
+              break
+            fi
+            echo "not ready yet (attempt $attempt, /healthz -> $code), retrying..."
+            sleep 2
+          done
+          if [ "$ready" -ne 1 ]; then
+            echo "::error::Deployment never became ready after 10 attempts"
+            exit 1
+          fi
+
           fail=0
           for path in / /app /docs /cases /healthz /readyz /version; do
             code=$(curl -s -o /dev/null -w '%{http_code}' "$URL$path")
