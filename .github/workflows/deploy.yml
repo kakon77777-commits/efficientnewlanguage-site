@@ -96,30 +96,28 @@ jobs:
           URL="${{ steps.deploy.outputs.url }}"
           echo "Smoke testing $URL"
 
-          # A fresh Cloudflare Pages deployment isn't instantly live everywhere
-          # (observed: every route 404s for well under a second right after
-          # "Deployment complete") — poll /healthz until it's actually up
-          # before running the real checks, instead of failing on the first try.
-          ready=0
-          for attempt in $(seq 1 10); do
-            code=$(curl -s -o /dev/null -w '%{http_code}' "$URL/healthz")
-            if [ "$code" -ge 200 ] && [ "$code" -lt 300 ]; then
-              ready=1
-              break
-            fi
-            echo "not ready yet (attempt $attempt, /healthz -> $code), retrying..."
-            sleep 2
-          done
-          if [ "$ready" -ne 1 ]; then
-            echo "::error::Deployment never became ready after 10 attempts"
-            exit 1
-          fi
-
+          # Cloudflare Pages propagates a new deployment per-edge-node, not as
+          # one global on/off switch — back-to-back requests can land on
+          # different PoPs at different rollout states (observed: a /healthz
+          # check that already returns 200 does NOT guarantee the very next
+          # request, to the same path, also gets the new deployment). So retry
+          # each path independently with backoff instead of gating once
+          # upfront. -L follows redirects: /docs and /cases correctly 308 to
+          # their trailing-slash form (verified against a real Preview
+          # deployment) — check the FINAL status, not the redirect's own code.
           fail=0
           for path in / /app /docs /cases /healthz /readyz /version; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' "$URL$path")
-            if [ "$code" -lt 200 ] || [ "$code" -ge 300 ]; then
-              echo "::error::$path returned HTTP $code"
+            ok=0
+            for attempt in $(seq 1 8); do
+              code=$(curl -sL -o /dev/null -w '%{http_code}' "$URL$path")
+              if [ "$code" -ge 200 ] && [ "$code" -lt 300 ]; then
+                ok=1
+                break
+              fi
+              sleep 2
+            done
+            if [ "$ok" -ne 1 ]; then
+              echo "::error::$path returned HTTP $code after 8 attempts"
               fail=1
             else
               echo "$path -> $code"
