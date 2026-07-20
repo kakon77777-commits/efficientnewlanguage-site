@@ -5,6 +5,7 @@
 import { build } from 'esbuild';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { resolveEmlRepo } from './lib/eml-repo.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '..');
@@ -13,7 +14,7 @@ const root = resolve(here, '..');
 // no node: imports in the chain we use (the node file sink is @eml/trace/node,
 // which is never imported). Override with the EML_REPO env var for a different
 // machine/checkout layout.
-const EML = process.env.EML_REPO || 'D:/Ai/work together/EML';
+const EML = resolveEmlRepo();
 const emlPkg = (name) => `${EML}/packages/${name}/src/index.ts`;
 
 await build({

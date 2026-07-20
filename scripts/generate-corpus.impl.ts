@@ -14,8 +14,9 @@ import { join } from 'node:path';
 import { transpileEmlToPython } from '@eml/transpiler-python';
 import { roundTripFromEml } from '@eml/transpiler-eml';
 import { interpret } from '@eml/interp';
+import { resolveEmlRepo } from './lib/eml-repo.mjs';
 
-const EML_REPO = process.env.EML_REPO || 'D:/Ai/work together/EML';
+const EML_REPO = resolveEmlRepo();
 const EXAMPLES_DIR = join(EML_REPO, 'examples');
 const SITE_ROOT = process.cwd();
 const CORPUS_DIR = join(SITE_ROOT, 'public/ai/examples');

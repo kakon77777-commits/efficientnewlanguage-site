@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "type": "module",
   "description": "EML 2026 — engineering-version marketing site + in-browser playground",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "node scripts/build-meta.mjs && node scripts/generate-corpus.mjs && vite build && node scripts/build-worker.mjs && node scripts/verify-dist.mjs",

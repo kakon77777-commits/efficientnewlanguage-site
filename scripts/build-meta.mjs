@@ -6,6 +6,7 @@ import { execSync } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { resolveEmlRepo } from './lib/eml-repo.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '..');
@@ -18,7 +19,7 @@ function sha(cwd) {
   }
 }
 
-const EML_REPO = process.env.EML_REPO || 'D:/Ai/work together/EML';
+const EML_REPO = resolveEmlRepo();
 const siteSha = sha(root);
 const emlCoreSha = sha(EML_REPO);
 const buildId = `eml-site-${siteSha.slice(0, 7)}-${emlCoreSha.slice(0, 7)}`;

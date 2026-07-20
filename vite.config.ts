@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { existsSync, readFileSync } from 'node:fs';
 import type { IncomingMessage, ServerResponse } from 'node:http';
+import { resolveEmlRepo } from './scripts/lib/eml-repo.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -53,7 +54,7 @@ function utf8TextHeaders(): Plugin {
 // transpiler/interpreter in the browser). For an eventual standalone deploy these
 // would be published packages instead; for now this points at the local repo.
 // Override with the EML_REPO env var for a different machine/checkout layout.
-const EML = process.env.EML_REPO || 'D:/Ai/work together/EML';
+const EML = resolveEmlRepo();
 const emlPkg = (name: string) => `${EML}/packages/${name}/src/index.ts`;
 
 export default defineConfig({

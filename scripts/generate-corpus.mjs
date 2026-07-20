@@ -7,11 +7,12 @@ import { build } from 'esbuild';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { mkdirSync } from 'node:fs';
+import { resolveEmlRepo } from './lib/eml-repo.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '..');
 
-const EML = process.env.EML_REPO || 'D:/Ai/work together/EML';
+const EML = resolveEmlRepo();
 const emlPkg = (name) => `${EML}/packages/${name}/src/index.ts`;
 
 const bundleDir = resolve(root, 'node_modules/.cache/generate-corpus');
