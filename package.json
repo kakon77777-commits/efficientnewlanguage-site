@@ -9,12 +9,14 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-meta.mjs && node scripts/generate-corpus.mjs && vite build && node scripts/build-worker.mjs && node scripts/verify-dist.mjs",
+    "postinstall": "node scripts/sync-tsconfig-paths.mjs",
+    "build": "node scripts/sync-tsconfig-paths.mjs && node scripts/build-meta.mjs && node scripts/generate-corpus.mjs && vite build && node scripts/build-worker.mjs && node scripts/verify-dist.mjs",
     "build:site": "vite build",
     "build:worker": "node scripts/build-worker.mjs",
     "build:corpus": "node scripts/generate-corpus.mjs",
     "build:meta": "node scripts/build-meta.mjs",
     "verify:dist": "node scripts/verify-dist.mjs",
+    "sync:tsconfig": "node scripts/sync-tsconfig-paths.mjs",
     "test:worker": "node scripts/build-worker.mjs && node scripts/test-worker.mjs",
     "preview": "vite preview"
   },

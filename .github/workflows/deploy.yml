@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 concurrency:
   group: deploy-${{ github.ref }}
@@ -12,6 +13,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # Job-level so it's already set during `npm ci`'s postinstall step
+      # (which syncs tsconfig.json's @eml/* paths) — not just the later
+      # build/test steps.
+      EML_REPO: ${{ github.workspace }}/eml-core
     steps:
       - name: Checkout site repo
         uses: actions/checkout@v4
@@ -32,15 +38,11 @@ jobs:
 
       - name: Build (typecheck happens separately; this runs corpus + vite + worker + verify-dist)
         run: npm run build
-        env:
-          EML_REPO: ${{ github.workspace }}/eml-core
 
       - run: npx tsc --noEmit
 
       - name: Worker smoke tests
         run: npm run test:worker
-        env:
-          EML_REPO: ${{ github.workspace }}/eml-core
 
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
@@ -62,7 +64,10 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      - run: npm ci
+      # --ignore-scripts: this job only needs the pinned `wrangler` binary from
+      # node_modules — it never checks out eml-core, so the postinstall
+      # tsconfig sync (which needs EML_REPO) would fail here otherwise.
+      - run: npm ci --ignore-scripts
 
       - name: Download dist artifact (deploy the exact artifact build verified — don't rebuild)
         uses: actions/download-artifact@v4
