@@ -70,6 +70,9 @@ export interface SiteContent {
     noDiagnostics: string;
     noTrace: string;
     helpHint: string;
+    pythonIdle: string;
+    pythonLoading: string;
+    pythonReady: string;
   };
   features: { kicker: string; title: string; lead: string; items: { phase: string; title: string; body: string }[] };
   ai: {
@@ -196,6 +199,9 @@ export const CONTENT: Record<Lang, SiteContent> = {
       noDiagnostics: 'No diagnostics for the last command.',
       noTrace: 'No trace for the last command — try "eml run" or "eml trace".',
       helpHint: 'Type "help" for the command list.',
+      pythonIdle: 'Python: not loaded',
+      pythonLoading: 'Python: loading…',
+      pythonReady: 'Python: ready',
     },
     features: {
       kicker: 'Capabilities',
@@ -372,6 +378,9 @@ export const CONTENT: Record<Lang, SiteContent> = {
       noDiagnostics: '上一個指令沒有診斷訊息。',
       noTrace: '上一個指令沒有 trace——試試「eml run」或「eml trace」。',
       helpHint: '輸入「help」查看指令清單。',
+      pythonIdle: 'Python：尚未載入',
+      pythonLoading: 'Python：載入中…',
+      pythonReady: 'Python：就緒',
     },
     features: {
       kicker: '能力',

@@ -58,6 +58,12 @@ const EML = resolveEmlRepo();
 const emlPkg = (name: string) => `${EML}/packages/${name}/src/index.ts`;
 
 export default defineConfig({
+  // Vite bundles Web Worker entry chunks as IIFE by default, which turns
+  // python.worker.ts's static CDN import (https://cdn.jsdelivr.net/...) into a
+  // broken external global reference instead of a real ES module import —
+  // the worker throws at startup and never attaches its onmessage handler.
+  // `es` matches the `{ type: 'module' }` passed to `new Worker(...)`.
+  worker: { format: 'es' },
   define: {
     __BUILD_ID__: JSON.stringify(buildInfo.build_id),
     __SITE_SHA__: JSON.stringify(buildInfo.site_sha),

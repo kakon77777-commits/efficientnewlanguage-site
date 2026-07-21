@@ -13,6 +13,7 @@ import {
 } from './eml-runtime';
 import { listCases, loadCaseSource } from './cases';
 import { vfsList, buildSnapshot, downloadJson, type Vfs } from './vfs';
+import { runPython } from './python-runtime';
 
 export interface TerminalContext {
   vfs: Vfs;
@@ -39,6 +40,10 @@ function basename(path: string): string {
   return path.slice(path.lastIndexOf('/') + 1);
 }
 
+function toPyPath(emlPath: string): string {
+  return emlPath.replace(/\.eml$/i, '') + '.py';
+}
+
 const HELP_TEXT = `Core commands:
   help                    this text
   clear                   clear the scrollback
@@ -51,10 +56,12 @@ const HELP_TEXT = `Core commands:
   cases open <id>         load a case's source into the current file
   eml check <file>        transpile diagnostics only
   eml parse <file>        AST (JSON)
-  eml transpile <file>    EML -> Python
+  eml transpile <file>    EML -> Python (also writes <file>.py into the VFS)
   eml run <file>          transpile + execute, show stdout
   eml trace <file>        run and show the phosphor-jsonl-v1 trace
   eml roundtrip <file>    EML -> Py -> EML -> Py fixpoint check
+  eml equiv <file>        compare EML interpreter output against real Python
+  python <file.py>        run a Python file in the browser (Pyodide, Web Worker)
   export workspace        download a WorkspaceSnapshot .json
   reset                   restore the default workspace`;
 
@@ -134,17 +141,58 @@ export async function runCommand(line: string, ctx: TerminalContext): Promise<Co
         case 'parse':
         case 'ast':
           return parseSource(source);
-        case 'transpile':
-          return transpileToPython(source);
+        case 'transpile': {
+          const transpiled = transpileToPython(source);
+          if (transpiled.ok) {
+            ctx.setVfs({ ...ctx.vfs, [toPyPath(path)]: transpiled.stdout });
+          }
+          return transpiled;
+        }
         case 'run':
           return runSource(source);
         case 'trace':
           return traceSource(source);
         case 'roundtrip':
           return roundtripSource(source);
+        case 'equiv': {
+          const interp = runSource(source);
+          const transpiled = transpileToPython(source);
+          if (!transpiled.ok) {
+            return fail(`eml equiv: transpile failed\n${transpiled.stderr}`);
+          }
+          const py = await runPython(transpiled.stdout);
+          const interpreterOutput = interp.stdout;
+          const pythonOutput = py.stdout;
+          const matches = interpreterOutput.trim() === pythonOutput.trim();
+          const equivOk = interp.ok && py.ok && matches;
+          return {
+            ok: equivOk,
+            code: equivOk ? 0 : 1,
+            stdout: JSON.stringify({ type: 'eml:equiv', ok: equivOk, interpreterOutput, pythonOutput }, null, 2),
+            stderr: equivOk ? '' : py.error ? `${py.error.type}: ${py.error.message}` : '',
+            metadata: { interpreterOk: interp.ok, pythonOk: py.ok, matches },
+          };
+        }
         default:
-          return fail(`eml: unknown subcommand "${sub ?? ''}" — try: check, parse, transpile, run, trace, roundtrip`);
+          return fail(
+            `eml: unknown subcommand "${sub ?? ''}" — try: check, parse, transpile, run, trace, roundtrip, equiv`,
+          );
       }
+    }
+
+    case 'python': {
+      if (!args[0]) return fail('usage: python <file.py>');
+      const path = resolvePath(ctx.cwd, args[0]);
+      const source = ctx.vfs[path];
+      if (source === undefined) return fail(`python: ${args[0]}: no such file`);
+      const result = await runPython(source);
+      return {
+        ok: result.ok,
+        code: result.ok ? 0 : 1,
+        stdout: result.stdout,
+        stderr: result.error ? `${result.error.type}: ${result.error.message}` : result.stderr,
+        metadata: { durationMs: result.durationMs },
+      };
     }
 
     case 'export': {

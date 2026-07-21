@@ -8,6 +8,7 @@ import { loadCaseSource } from '../lib/cases';
 import { defaultVfs, loadVfs, saveVfs, vfsList, buildSnapshot, downloadJson, DEFAULT_ENTRY, type Vfs } from '../lib/vfs';
 import { runCommand, type TerminalContext } from '../lib/terminal-commands';
 import type { CommandResult } from '../lib/eml-runtime';
+import { getPythonStatus, onStatusChange, type PythonStatus } from '../lib/python-runtime';
 
 const CWD = '/workspace';
 
@@ -29,7 +30,10 @@ export default function Terminal() {
   const [outputTab, setOutputTab] = useState<'stdout' | 'diagnostics' | 'trace'>('stdout');
   const [loadedCaseId, setLoadedCaseId] = useState<string | null>(null);
   const [caseLoadError, setCaseLoadError] = useState(false);
+  const [pythonStatus, setPythonStatus] = useState<PythonStatus>(() => getPythonStatus());
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => onStatusChange(setPythonStatus), []);
 
   // Restore the saved workspace, then apply a ?case= deep link on top of it
   // (deep link wins over whatever was previously saved — matches Playground's
@@ -122,6 +126,18 @@ export default function Terminal() {
                   {c.loadedCase} {loadedCaseId}
                 </span>
               )}
+              <span
+                className={cn(
+                  'rounded-full border px-2.5 py-1 font-mono text-[11px]',
+                  pythonStatus === 'ready'
+                    ? 'border-symbol/30 bg-symbol/10 text-symbol'
+                    : pythonStatus === 'loading'
+                      ? 'border-amber/30 bg-amber/10 text-amber'
+                      : 'border-line bg-panel/60 text-faint',
+                )}
+              >
+                {pythonStatus === 'ready' ? c.pythonReady : pythonStatus === 'loading' ? c.pythonLoading : c.pythonIdle}
+              </span>
               <button
                 type="button"
                 onClick={resetWorkspace}
