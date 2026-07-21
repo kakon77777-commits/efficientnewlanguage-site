@@ -13,7 +13,7 @@ import Docs from './pages/Docs';
 import Cases, { type CaseEntry } from './pages/Cases';
 import type { Route } from './routes';
 
-export function renderRoute(route: Exclude<Route, 'engineering'>, data?: { cases?: CaseEntry[] }): string {
+export function renderRoute(route: Extract<Route, 'showcase' | 'docs' | 'cases'>, data?: { cases?: CaseEntry[] }): string {
   const page =
     route === 'docs' ? <Docs /> : route === 'cases' ? <Cases initialCases={data?.cases} /> : <Showcase />;
 

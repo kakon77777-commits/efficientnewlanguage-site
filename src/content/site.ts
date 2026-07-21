@@ -53,6 +53,24 @@ export interface SiteContent {
     loadedCase: string;
     caseLoadFailed: string;
   };
+  terminal: {
+    kicker: string;
+    title: string;
+    lead: string;
+    filesLabel: string;
+    editorLabel: string;
+    outputLabel: string;
+    tabs: { stdout: string; diagnostics: string; trace: string };
+    reset: string;
+    exportWorkspace: string;
+    loadedCase: string;
+    caseLoadFailed: string;
+    commandPlaceholder: string;
+    noOutputYet: string;
+    noDiagnostics: string;
+    noTrace: string;
+    helpHint: string;
+  };
   features: { kicker: string; title: string; lead: string; items: { phase: string; title: string; body: string }[] };
   ai: {
     kicker: string;
@@ -160,6 +178,24 @@ export const CONTENT: Record<Lang, SiteContent> = {
       downloadTrace: 'Download trace',
       loadedCase: 'Loaded from case:',
       caseLoadFailed: "Could not load that case — showing the default example instead.",
+    },
+    terminal: {
+      kicker: 'Web Terminal',
+      title: 'A real EML workspace, in your browser',
+      lead: 'Type commands, edit files, run the real toolchain — no local install. Everything here calls the same parser, transpiler, interpreter and trace emitter that power the Playground, routed through explicit, structured commands instead of eval\'d strings.',
+      filesLabel: 'Files',
+      editorLabel: 'Editor',
+      outputLabel: 'Output',
+      tabs: { stdout: 'stdout', diagnostics: 'Diagnostics', trace: 'Trace' },
+      reset: 'Reset workspace',
+      exportWorkspace: 'Export workspace',
+      loadedCase: 'Loaded case:',
+      caseLoadFailed: 'Could not load that case — the workspace was left as-is.',
+      commandPlaceholder: 'eml run main.eml',
+      noOutputYet: 'Run a command to see output here.',
+      noDiagnostics: 'No diagnostics for the last command.',
+      noTrace: 'No trace for the last command — try "eml run" or "eml trace".',
+      helpHint: 'Type "help" for the command list.',
     },
     features: {
       kicker: 'Capabilities',
@@ -318,6 +354,24 @@ export const CONTENT: Record<Lang, SiteContent> = {
       downloadTrace: '下載 trace',
       loadedCase: '案例載入自：',
       caseLoadFailed: '無法載入該案例，改顯示預設範例。',
+    },
+    terminal: {
+      kicker: 'Web Terminal',
+      title: '一個真正的 EML 工作區，就在瀏覽器裡',
+      lead: '打指令、編輯檔案、跑真正的工具鏈——不用裝任何東西。這裡呼叫的是驅動示範區的同一套解析器、轉譯器、直譯器與 trace 產生器，只是改用明確、結構化的指令路由，而不是把字串丟給 eval。',
+      filesLabel: '檔案',
+      editorLabel: '編輯器',
+      outputLabel: '輸出',
+      tabs: { stdout: 'stdout', diagnostics: '診斷', trace: 'Trace' },
+      reset: '重設工作區',
+      exportWorkspace: '匯出工作區',
+      loadedCase: '已載入案例：',
+      caseLoadFailed: '無法載入該案例——工作區維持原樣。',
+      commandPlaceholder: 'eml run main.eml',
+      noOutputYet: '執行一個指令後，這裡會顯示輸出。',
+      noDiagnostics: '上一個指令沒有診斷訊息。',
+      noTrace: '上一個指令沒有 trace——試試「eml run」或「eml trace」。',
+      helpHint: '輸入「help」查看指令清單。',
     },
     features: {
       kicker: '能力',

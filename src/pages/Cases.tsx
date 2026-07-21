@@ -126,12 +126,20 @@ export default function Cases({ initialCases }: CasesProps = {}) {
                         <p className="mt-1.5 line-clamp-3 text-sm leading-6 text-muted">{c.description}</p>
                       )}
                     </a>
-                    <a
-                      href={`/app?case=${c.id}`}
-                      className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-md border border-symbol/30 bg-symbol/10 px-3 py-1.5 text-xs font-medium text-symbol transition-colors duration-200 hover:border-symbol/50 hover:bg-symbol/20"
-                    >
-                      {t('Run in Playground →', '在示範區執行 →')}
-                    </a>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <a
+                        href={`/app?case=${c.id}`}
+                        className="inline-flex w-fit items-center gap-1.5 rounded-md border border-symbol/30 bg-symbol/10 px-3 py-1.5 text-xs font-medium text-symbol transition-colors duration-200 hover:border-symbol/50 hover:bg-symbol/20"
+                      >
+                        {t('Run in Playground →', '在示範區執行 →')}
+                      </a>
+                      <a
+                        href={`/terminal?case=${c.id}`}
+                        className="inline-flex w-fit items-center gap-1.5 rounded-md border border-line bg-panel/60 px-3 py-1.5 text-xs font-medium text-muted transition-colors duration-200 hover:border-symbol/40 hover:text-fg"
+                      >
+                        {t('Open in Terminal →', '在終端機開啟 →')}
+                      </a>
+                    </div>
                   </div>
                 ))}
               </div>
