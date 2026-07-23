@@ -397,6 +397,96 @@
       "path": "/ai/examples/049-word-capitalizer.eml.md",
       "title": "Word capitalizer",
       "description": "`word_capitalizer.eml` title-cases the sample sentence `\"the quick brown fox jumps over the lazy dog\"` into `\"The Quick Brown Fox Jumps Over The Lazy Dog\"` without using a `.title()`/`.capitalize()` builtin."
+    },
+    {
+      "id": "050-binary-search",
+      "path": "/ai/examples/050-binary-search.eml.md",
+      "title": "Binary search",
+      "description": "`binary_search.eml` searches for five sample targets (`34, 100, 3, 91, 50`) in the fixed pre-sorted list `[3, 8, 15, 22, 34, 41, 56, 63, 79, 91]` using a manual `while`-loop binary search — no `bisect` module."
+    },
+    {
+      "id": "051-bubble-sort",
+      "path": "/ai/examples/051-bubble-sort.eml.md",
+      "title": "Bubble sort",
+      "description": "`bubble_sort.eml` sorts the sample list `[64, 34, 25, 12, 22, 11, 90]` into ascending order using a classic bubble sort — a manual double loop with an index-based adjacent-element swap — instead of the `sorted()`/`.sort()` builtins."
+    },
+    {
+      "id": "052-elevator-simulator",
+      "path": "/ai/examples/052-elevator-simulator.eml.md",
+      "title": "Elevator simulator",
+      "description": "`elevator_simulator.eml` simulates a single elevator serving a fixed queue of floor requests (`5, 1, 8, 3`), starting at floor 0 and moving one floor per step toward its current target."
+    },
+    {
+      "id": "053-factorial-recursive",
+      "path": "/ai/examples/053-factorial-recursive.eml.md",
+      "title": "Factorial (recursive)",
+      "description": "`factorial_recursive.eml` computes `0!` through `10!` via genuine self-recursion — a `factorial` function that calls itself — rather than an iterative loop."
+    },
+    {
+      "id": "054-insertion-sort",
+      "path": "/ai/examples/054-insertion-sort.eml.md",
+      "title": "Insertion sort",
+      "description": "`insertion_sort.eml` sorts the sample list `[29, 10, 14, 37, 14, 5, 88]` (with a deliberate duplicate, `14`) into ascending order using insertion sort: builds the sorted prefix one element at a time by shifting larger elements right — the third simple sort in the corpus alongside [`examples/bubble-sort/`](../bubble-sort/) and [`examples/selection-sort/`](../selection-sort/)."
+    },
+    {
+      "id": "055-linear-search",
+      "path": "/ai/examples/055-linear-search.eml.md",
+      "title": "Linear search",
+      "description": "`linear_search.eml` searches for five sample targets (`56, 100, 47, 89, 71`) in the fixed unsorted list `[47, 12, 89, 3, 56, 23, 89, 71]` via a single scanning loop with `break` on the first match — the natural counterpart to [`examples/binary-search/`](../binary-search/)'s pre-sorted, divide-and-conquer approach. The value `89` is deliberately repeated to demonstrate that linear search returns the *first* occurrence (index 2, not 6)."
+    },
+    {
+      "id": "056-merge-two-sorted-lists",
+      "path": "/ai/examples/056-merge-two-sorted-lists.eml.md",
+      "title": "Merge two sorted lists",
+      "description": "`merge_two_sorted_lists.eml` merges two already-sorted sample lists (`[1, 4, 6, 9, 15]` and `[2, 3, 5, 8, 10, 20]`) into one sorted list via the classic two-pointer merge — the building block behind merge sort."
+    },
+    {
+      "id": "057-pascals-triangle",
+      "path": "/ai/examples/057-pascals-triangle.eml.md",
+      "title": "Pascal's triangle",
+      "description": "`pascals_triangle.eml` generates the first 8 rows of Pascal's triangle, each row built from the previous one."
+    },
+    {
+      "id": "058-perfect-number-checker",
+      "path": "/ai/examples/058-perfect-number-checker.eml.md",
+      "title": "Perfect number checker",
+      "description": "`perfect_number_checker.eml` checks whether six sample numbers (`6, 28, 12, 496, 100, 8128`) are perfect numbers — numbers whose proper divisors sum back to the number itself — via trial division. `6`, `28`, `496`, and `8128` are the first four perfect numbers; `12` and `100` are not."
+    },
+    {
+      "id": "059-power-recursive",
+      "path": "/ai/examples/059-power-recursive.eml.md",
+      "title": "Power (recursive)",
+      "description": "`power_recursive.eml` computes `base^exponent` for five sample pairs (`2^10, 3^4, 5^0, 7^3, 10^6`) via genuine recursion — a `power` function that calls itself, decrementing the exponent each time."
+    },
+    {
+      "id": "060-prime-factorization",
+      "path": "/ai/examples/060-prime-factorization.eml.md",
+      "title": "Prime factorization",
+      "description": "`prime_factorization.eml` finds the prime factorization (with multiplicity) of five sample numbers (`60, 97, 360, 1000000, 17`) via trial division — a manual nested `while` loop — no external number-theory library."
+    },
+    {
+      "id": "061-selection-sort",
+      "path": "/ai/examples/061-selection-sort.eml.md",
+      "title": "Selection sort",
+      "description": "`selection_sort.eml` sorts the sample list `[64, 25, 12, 22, 11, 90, 34]` into ascending order using selection sort: for each position, scan the remainder for the minimum and swap it into place once — a different strategy from [`examples/bubble-sort/`](../bubble-sort/)'s repeated adjacent-element swap."
+    },
+    {
+      "id": "062-sum-of-digits-recursive",
+      "path": "/ai/examples/062-sum-of-digits-recursive.eml.md",
+      "title": "Sum of digits (recursive)",
+      "description": "`sum_of_digits_recursive.eml` computes the digit sum of five sample numbers (`4527, 918273, 60, 999999, 7`) via genuine recursion — a `digit_sum` function that calls itself on the number with its last digit stripped off."
+    },
+    {
+      "id": "063-traffic-light-simulator",
+      "path": "/ai/examples/063-traffic-light-simulator.eml.md",
+      "title": "Traffic light simulator",
+      "description": "`traffic_light_simulator.eml` simulates a traffic light cycling Red -> Green -> Yellow -> Red over 20 steps, each state held for a fixed number of steps (Red: 3, Green: 4, Yellow: 1)."
+    },
+    {
+      "id": "064-vending-machine-simulator",
+      "path": "/ai/examples/064-vending-machine-simulator.eml.md",
+      "title": "Vending machine simulator",
+      "description": "`vending_machine_simulator.eml` simulates a vending machine processing four fixed purchases against a small product catalog (Soda 150, Chips 200, Candy 100, Water 125, in arbitrary currency units) — each purchase inserts a list of coins, accumulates a balance, and either dispenses the item with change or reports the shortfall."
     }
   ],
   "tools": {
