@@ -7,7 +7,7 @@ document: corpus/eml-design-history
 maintainer: Neo.K / EveMissLab
 status: active-experimental
 ai_layer_version: 0.1.0
-updated: 2026-07-19
+updated: 2026-07-23
 -->
 
 # EML Design History
@@ -68,3 +68,12 @@ a public, non-visual, versioned, machine-readable surface (corpus + specs + exam
 **plus** bounded, machine-callable tools (`parse`, `transpile-python`, `transpile-eml`,
 `interpret`, `trace`, `roundtrip`). Engineering completeness does not regress; semantic
 readability is re-released and becomes an agent-callable interface.
+
+## Note: the original scope beyond these stages
+
+Stages 0–6 above are **EML-P's** engineering history — the practical, linear, executable subset.
+They are not the full original scope. The broader idea (multi-position overlays, non-linear
+syntax, semantic graphs, multi-host projection, AI-native interfaces) was never abandoned; it is
+formally preserved as **EML-U**, currently in a theory-preservation stage with no engineering of
+its own. See [`eml-u-profile.md`](./eml-u-profile.md) and
+[`eml-p-eml-u-compatibility.md`](./eml-p-eml-u-compatibility.md).

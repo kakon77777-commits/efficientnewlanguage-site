@@ -1,4 +1,7 @@
 import type { Lang } from '../i18n';
+import { LINKS } from '../lib/links';
+
+const REPO = LINKS.github;
 
 /**
  * All site copy, EN (primary) + ZH-Hant (hand-written, not machine-translated),
@@ -6,7 +9,7 @@ import type { Lang } from '../i18n';
  * `useContent()`. Sourced from the EML whitepaper, README, and v1.0 spec.
  */
 export interface SiteContent {
-  nav: { links: { id: string; label: string }[]; tryIt: string; cases: string };
+  nav: { links: { id: string; label: string }[]; tryIt: string; cases: string; origins: string };
   hero: {
     badge: string;
     titleA: string;
@@ -104,6 +107,34 @@ export interface SiteContent {
   cli: { kicker: string; title: string; lead: string; commands: { cmd: string; desc: string }[] };
   arch: { kicker: string; title: string; lead: string; packages: { name: string; role: string }[]; principle: string };
   oss: { kicker: string; title: string; lead: string; points: { title: string; body: string }[]; note: string; github: string };
+  origins: {
+    kicker: string;
+    title: string;
+    lead: string;
+    definition: { kicker: string; title: string; lead: string; body: string; statusNote: string };
+    capabilities: { kicker: string; title: string; lead: string; clusters: { title: string; items: string[] }[] };
+    relation: {
+      kicker: string;
+      title: string;
+      lead: string;
+      subsetNote: string;
+      projectionLead: string;
+      projectionSteps: { title: string; body: string }[];
+      noLossNote: string;
+      directionNote: string;
+    };
+    roadmap: {
+      kicker: string;
+      title: string;
+      lead: string;
+      colPhase: string;
+      colName: string;
+      colDesc: string;
+      colStatus: string;
+      note: string;
+    };
+    sources: { kicker: string; title: string; lead: string; links: { title: string; desc: string; href: string }[]; deepLink: string };
+  };
   footer: { tagline: string; rights: string; madeWith: string; contact: string; forAgents: string };
 }
 
@@ -119,7 +150,7 @@ const NAV_IDS = [
 
 export const CONTENT: Record<Lang, SiteContent> = {
   en: {
-    nav: { links: NAV_IDS.map((n) => ({ id: n.id, label: n.en })), tryIt: 'Try it', cases: 'Cases' },
+    nav: { links: NAV_IDS.map((n) => ({ id: n.id, label: n.en })), tryIt: 'Try it', cases: 'Cases', origins: 'Origins' },
     hero: {
       badge: 'EML 2026 · Efficient New Language',
       titleA: 'Symbolic in.',
@@ -288,6 +319,87 @@ export const CONTENT: Record<Lang, SiteContent> = {
       note: 'Built in the open. Commercial use, forks, and adaptations are all welcome under Apache-2.0.',
       github: 'View on GitHub',
     },
+    origins: {
+      kicker: 'Origins',
+      title: 'EML-U — the original vision',
+      lead: 'EML formally splits into two profiles. EML-P is what is built and shipping today — see Docs and the Workbench. This page preserves EML-U: the original, broader idea EML-P was drawn from, and the direction future work may take.',
+      definition: {
+        kicker: 'Definition',
+        title: 'What EML-U is',
+        lead: 'EML-U is EML’s complete original Profile: universal semantic attachment, high-density symbols, structural and intent compression, non-linear representation, cross-host and AI-native collaboration.',
+        body: 'EML-P ⊆ EML-U. EML-P (see Docs) is EML-U’s stable, linear, low-ambiguity, engineered subset. Every EML-P program should have an EML-U semantic representation; EML-U can contain semantics EML-P does not support yet.',
+        statusNote: 'Current status: theory-preservation stage. Zero code, zero engineering directory. This page and the linked documents are the preservation work itself.',
+      },
+      capabilities: {
+        kicker: 'Original capabilities',
+        title: 'What EML-U preserves',
+        lead: 'None of this is implemented. It is recorded here so it is not forgotten while EML-P keeps getting engineered.',
+        clusters: [
+          {
+            title: 'Position & structure',
+            items: [
+              'Multi-position semantic attachment — upper-right, upper-left, lower-right, lower-left',
+              'Layers of meaning above and below the code',
+              'Two-dimensional syntax, non-linear reading order',
+              'Multi-layer symbols, structural folding',
+            ],
+          },
+          {
+            title: 'Semantic modeling',
+            items: ['Semantic graphs', 'Intent nodes', 'Host-neutral Semantic IR'],
+          },
+          {
+            title: 'Cross-host & cross-media',
+            items: [
+              'Multi-host projection — one semantics, projected to Python / C++ / JS / natural-language explanation / Agent JSON',
+              'Natural-language attachment (e.g. “ship v1 next week” carrying deadline semantics)',
+              'Data-field attachment — unit, type, source, privacy, quality',
+              'Workflow-node attachment — retryable, idempotent, needs human review, risk, cost',
+              'Multimedia time/space attachment — audio, image, video timelines, 3D scenes, game worlds',
+            ],
+          },
+          {
+            title: 'AI-native',
+            items: ['AI-adaptive display', 'Domain-specific semantic packages', 'Multiple reader-projections of the same semantics'],
+          },
+        ],
+      },
+      relation: {
+        kicker: 'Relation to EML-P',
+        title: 'How EML-P and EML-U relate',
+        lead: 'The two profiles are not competing designs — one is the engineered projection of the other.',
+        subsetNote: 'EML-P ⊆ EML-U — EML-P is a linear projection of EML-U.',
+        projectionLead: 'Any EML-U structure downgrades through the projection function Π_P into one of three outcomes:',
+        projectionSteps: [
+          { title: 'Fully expressible', body: 'Downgrades completely into EML-P.' },
+          { title: 'Executable, not preservable', body: 'Becomes EML-P plus explicit metadata.' },
+          { title: 'Unsafe to express', body: 'Marked unsupported — never silently dropped.' },
+        ],
+        noLossNote: 'No silent loss: if EML-P cannot represent something EML-U expresses, the system must report it explicitly — never quietly leave only the surface code behind.',
+        directionNote: 'EML-U may understand, import, and generate EML-P. EML-P specs may never retroactively delete EML-U theory, and what EML-P’s parser happens to support today must never be read back as EML-U’s boundary.',
+      },
+      roadmap: {
+        kicker: 'Roadmap',
+        title: 'EML-U’s own roadmap (U0–U4)',
+        lead: 'Separate from EML-P’s own roadmap (see Docs) and from the deeper source document’s system-wide migration steps — EML-U’s U-numbering is its own.',
+        colPhase: 'Phase',
+        colName: 'Name',
+        colDesc: 'Description',
+        colStatus: 'Status',
+        note: 'EML-U engineering, when it starts, is meant to live in an independent experimental directory — not mixed into EML-P’s current packages.',
+      },
+      sources: {
+        kicker: 'Read the source',
+        title: 'The normative documents',
+        lead: 'This page is a readable summary. These three documents are the actual source — read them before building anything on EML-U.',
+        links: [
+          { title: 'EML-P Profile', desc: 'What is built and shipping today.', href: `${REPO}/blob/main/docs/EML-P-PROFILE.md` },
+          { title: 'EML-U Profile', desc: 'The full original vision, in detail.', href: `${REPO}/blob/main/docs/EML-U-PROFILE.md` },
+          { title: 'EML-P ↔ EML-U Compatibility', desc: 'The subset relation, the projection function, the no-silent-loss rule.', href: `${REPO}/blob/main/docs/EML-P-EML-U-COMPATIBILITY.md` },
+        ],
+        deepLink: 'Read the full formal model (Semantic IR, layered architecture, TypeScript interface drafts)',
+      },
+    },
     footer: {
       tagline: 'Efficient New Language — a high-density semantic overlay for humans and AI agents.',
       rights: '© 2026 EveMissLab (一言諾科技有限公司) / Neo.K. All rights reserved.',
@@ -298,7 +410,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
   },
 
   zh: {
-    nav: { links: NAV_IDS.map((n) => ({ id: n.id, label: n.zh })), tryIt: '立即試用', cases: '案例庫' },
+    nav: { links: NAV_IDS.map((n) => ({ id: n.id, label: n.zh })), tryIt: '立即試用', cases: '案例庫', origins: '緣起' },
     hero: {
       badge: 'EML 2026 · 高效新語言',
       titleA: '輸入符號，',
@@ -466,6 +578,82 @@ export const CONTENT: Record<Lang, SiteContent> = {
       ],
       note: '在開放中打造。商業使用、fork、改編，在 Apache-2.0 之下一律歡迎。',
       github: '在 GitHub 上查看',
+    },
+    origins: {
+      kicker: '緣起',
+      title: 'EML-U——最初的構想',
+      lead: 'EML 正式分成兩個 Profile。EML-P 是現在做出來、正在運作的一切——見文件與 Workbench。這頁保存 EML-U：EML-P 脫胎於此的原始、更廣義構想，以及未來可能的方向。',
+      definition: {
+        kicker: '定義',
+        title: 'EML-U 是什麼',
+        lead: 'EML-U 是 EML 原始理論的完整 Profile：通用語意附加、高密度符號、結構與意圖壓縮、非線性表示、跨宿主與 AI 原生協作。',
+        body: 'EML-P ⊆ EML-U。EML-P（見文件）是 EML-U 的穩定、線性、低歧義、已工程化的子集。每個 EML-P 程式都應該有對應的 EML-U 語意表示；EML-U 可以包含 EML-P 尚未支援的語意。',
+        statusNote: '目前狀態：理論封存階段。零程式碼、沒有獨立的工程目錄。這個頁面跟連結的文件本身，就是封存工作。',
+      },
+      capabilities: {
+        kicker: '原始能力',
+        title: 'EML-U 保留的原始能力',
+        lead: '以下都還沒有實作。記錄在這裡，是為了在 EML-P 持續施工的同時，不遺忘它們。',
+        clusters: [
+          {
+            title: '位置與結構',
+            items: ['多位置語意附加——右上、左上、右下、左下', '程式碼上方與下方的語意層', '二維語法，非線性閱讀順序', '多層符號，結構折疊'],
+          },
+          {
+            title: '語意建模',
+            items: ['語意圖（Semantic Graph）', '意圖節點', '宿主中立的 Semantic IR'],
+          },
+          {
+            title: '跨宿主與跨媒介',
+            items: [
+              '多宿主投影——同一語意，投影成 Python／C++／JS／自然語言說明／Agent JSON',
+              '自然語言附加（例如「下週完成初版」帶有 deadline 語意）',
+              '資料欄位附加——單位、型別、來源、隱私、品質',
+              '工作流節點附加——可重試、冪等、需人工確認、風險、成本',
+              '多媒體時空附加——音訊、圖片、影片時間軸、3D 場景、遊戲世界',
+            ],
+          },
+          {
+            title: 'AI 原生',
+            items: ['AI 自適應顯示', '領域專用語意包', '同一語意的多種讀者投影'],
+          },
+        ],
+      },
+      relation: {
+        kicker: '與 EML-P 的關係',
+        title: 'EML-P 與 EML-U 如何關聯',
+        lead: '這兩個 Profile 不是互相競爭的設計——一個是另一個的工程化投影。',
+        subsetNote: 'EML-P ⊆ EML-U——EML-P 是 EML-U 的一種線性投影。',
+        projectionLead: '任何 EML-U 結構，透過投影函數 Π_P 降級，會得到以下三種結果之一：',
+        projectionSteps: [
+          { title: '可以完整表達', body: '完整降級為 EML-P。' },
+          { title: '可執行但無法保存', body: '轉成 EML-P，外加明確的 metadata。' },
+          { title: '無法安全表達', body: '明確標示為 unsupported——絕不悄悄遺失。' },
+        ],
+        noLossNote: '不允許靜默遺失：如果 EML-P 無法表示 EML-U 表達的內容，系統必須明確回報——絕不能只悄悄留下表面程式碼。',
+        directionNote: 'EML-U 可以理解、匯入、生成 EML-P。EML-P 規格不能反過來刪除 EML-U 理論，EML-P 現行 parser 剛好能解析什麼，也不能被反推當成 EML-U 的邊界。',
+      },
+      roadmap: {
+        kicker: '路線圖',
+        title: 'EML-U 自己的路線圖（U0–U4）',
+        lead: '跟 EML-P 自己的路線圖（見文件）是分開的，跟更深層來源文件裡「整個系統」的遷移步驟編號也不一樣——EML-U 的 U 編號是它自己的。',
+        colPhase: '階段',
+        colName: '名稱',
+        colDesc: '說明',
+        colStatus: '狀態',
+        note: 'EML-U 的工程，未來啟動時，應該放在獨立的實驗性目錄——不會跟 EML-P 現行的 packages 混在一起。',
+      },
+      sources: {
+        kicker: '延伸閱讀',
+        title: '規範性文件',
+        lead: '這個頁面是給人讀的摘要。真正的來源是這三份文件——在 EML-U 上做任何事之前，先讀它們。',
+        links: [
+          { title: 'EML-P Profile', desc: '現在做出來、正在運作的一切。', href: `${REPO}/blob/main/docs/EML-P-PROFILE.md` },
+          { title: 'EML-U Profile', desc: '完整的原始構想細節。', href: `${REPO}/blob/main/docs/EML-U-PROFILE.md` },
+          { title: 'EML-P ↔ EML-U 相容性規範', desc: '子集關係、投影函數、不允許靜默遺失規則。', href: `${REPO}/blob/main/docs/EML-P-EML-U-COMPATIBILITY.md` },
+        ],
+        deepLink: '閱讀完整形式模型（Semantic IR、分層架構、TypeScript 介面草案）',
+      },
     },
     footer: {
       tagline: '高效新語言——給人類與 AI 代理的高密度語意疊加層。',

@@ -12,9 +12,13 @@ import {
   Terminal,
   FileJson,
   ArrowUpRight,
+  LayoutGrid,
+  Share2,
+  Globe,
+  FileText,
   type LucideIcon,
 } from 'lucide-react';
-import { useLang } from '../i18n';
+import { useLang, type Lang } from '../i18n';
 import { useContent } from '../lib/useContent';
 import { SYMBOLS, LOOP_TAXONOMY, type SymbolStatus } from '../lib/examples';
 import { LINKS } from '../lib/links';
@@ -373,6 +377,211 @@ export function OssSection() {
         <Github size={16} />
         {c.oss.github}
       </a>
+    </Section>
+  );
+}
+
+// --- /origins (EML-U) ---------------------------------------------------
+// EML-U is the theory-preservation profile: no engineering, no runtime, no
+// tools to call. These sections are read-only prose/reference, unlike every
+// other Sections.tsx export above which fronts something that actually runs.
+
+export function EmlUDefinitionSection() {
+  const c = useContent();
+  return (
+    <Section id="eml-u" className="py-16 sm:py-24">
+      <SectionHead kicker={c.origins.definition.kicker} title={c.origins.definition.title} lead={c.origins.definition.lead} />
+      <div className="mt-6 max-w-3xl rounded-xl border border-line bg-surface/60 p-5">
+        <p className="text-sm leading-7 text-muted">{c.origins.definition.body}</p>
+      </div>
+      <p className="mt-6 max-w-3xl rounded-lg border border-amber/30 bg-amber/[0.06] px-4 py-3 text-sm leading-6 text-amber">
+        {c.origins.definition.statusNote}
+      </p>
+    </Section>
+  );
+}
+
+const CAPABILITY_ICONS: LucideIcon[] = [LayoutGrid, Share2, Globe, Bot];
+
+export function EmlUCapabilitiesSection() {
+  const c = useContent();
+  return (
+    <Section className="py-16 sm:py-20">
+      <SectionHead kicker={c.origins.capabilities.kicker} title={c.origins.capabilities.title} lead={c.origins.capabilities.lead} />
+      <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        {c.origins.capabilities.clusters.map((cluster, i) => {
+          const Icon = CAPABILITY_ICONS[i] ?? LayoutGrid;
+          return (
+            <div key={i} className="rounded-xl border border-line bg-surface/60 p-5">
+              <div className="flex items-center gap-3">
+                <span className="grid h-9 w-9 place-items-center rounded-lg bg-symbol/10 text-symbol">
+                  <Icon size={18} />
+                </span>
+                <h3 className="text-base font-semibold text-fg">{cluster.title}</h3>
+              </div>
+              <ul className="mt-4 space-y-2.5">
+                {cluster.items.map((item, j) => (
+                  <li key={j} className="flex gap-2.5 text-sm leading-6 text-muted">
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-faint" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+    </Section>
+  );
+}
+
+export function EmlPEmlURelationSection() {
+  const c = useContent();
+  return (
+    <Section className="py-16 sm:py-20">
+      <SectionHead kicker={c.origins.relation.kicker} title={c.origins.relation.title} lead={c.origins.relation.lead} />
+      <p className="mt-6 max-w-3xl font-mono text-sm text-symbol">{c.origins.relation.subsetNote}</p>
+      <p className="mt-6 max-w-3xl text-sm leading-6 text-muted">{c.origins.relation.projectionLead}</p>
+      <div className="mt-4 grid gap-4 sm:grid-cols-3">
+        {c.origins.relation.projectionSteps.map((step, i) => (
+          <div
+            key={i}
+            className="rounded-xl border border-line bg-surface/60 p-5 transition-colors duration-200 hover:border-symbol/40"
+          >
+            <div className="font-mono text-sm font-semibold text-symbol">{String(i + 1).padStart(2, '0')}</div>
+            <h3 className="mt-2 text-base font-semibold text-fg">{step.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-muted">{step.body}</p>
+          </div>
+        ))}
+      </div>
+      <Code className="mt-6 max-w-3xl text-[12px] text-code">
+        {`{
+  "status": "partial_projection",
+  "preserved": ["core_operation"],
+  "metadata": ["confidence", "authority"],
+  "unsupported": ["two_dimensional_branch"]
+}`}
+      </Code>
+      <p className="mt-3 max-w-3xl text-sm leading-6 text-faint">{c.origins.relation.noLossNote}</p>
+      <p className="mt-6 max-w-3xl rounded-lg border border-line bg-panel/30 px-4 py-3 text-sm leading-6 text-muted">
+        {c.origins.relation.directionNote}
+      </p>
+    </Section>
+  );
+}
+
+type RoadmapPhase = { id: string; name: Record<Lang, string>; desc: Record<Lang, string>; status: SymbolStatus };
+
+const EMLU_ROADMAP: RoadmapPhase[] = [
+  {
+    id: 'U0',
+    name: { en: 'Theory preservation', zh: '理論封存' },
+    desc: {
+      en: 'Archive the original documents, build a version timeline, mark what is implemented vs. not.',
+      zh: '保存原始文件、建立版本時間線、標記哪些構想已實作、哪些尚未實作。',
+    },
+    status: 'partial',
+  },
+  {
+    id: 'U1',
+    name: { en: 'Semantic ontology', zh: '語意本體' },
+    desc: {
+      en: 'Semantic ID, Anchor Model, Overlay Node, Projection, Policy, Provenance, Semantic Graph.',
+      zh: 'Semantic ID、Anchor Model、Overlay Node、Projection、Policy、Provenance、Semantic Graph。',
+    },
+    status: 'planned',
+  },
+  {
+    id: 'U2',
+    name: { en: '2D & multi-position syntax', zh: '二維與多位置語法' },
+    desc: {
+      en: 'Upper/lower semantic layers, two-dimensional flow, folding nodes, graph projection.',
+      zh: '上下語意層、二維流程、折疊節點、圖形投影。',
+    },
+    status: 'planned',
+  },
+  {
+    id: 'U3',
+    name: { en: 'Cross-host', zh: '跨宿主' },
+    desc: {
+      en: 'Code, natural language, tables, JSON, workflow, image, audio, video, game worlds.',
+      zh: '程式碼、自然語言、表格、JSON、工作流、圖像、音訊、影片、遊戲世界。',
+    },
+    status: 'planned',
+  },
+  {
+    id: 'U4',
+    name: { en: 'AI-native interface', zh: 'AI 原生介面' },
+    desc: {
+      en: 'Agent semantic graph, intent compression, adaptive projection, semantic negotiation, human/AI dual view.',
+      zh: 'Agent 語意圖、意圖壓縮、自適應投影、語意協商、人類／AI 雙重視圖。',
+    },
+    status: 'planned',
+  },
+];
+
+export function EmlURoadmapSection() {
+  const { lang } = useLang();
+  const c = useContent();
+  return (
+    <Section className="py-16 sm:py-20">
+      <SectionHead kicker={c.origins.roadmap.kicker} title={c.origins.roadmap.title} lead={c.origins.roadmap.lead} />
+      <div className="mt-8 overflow-hidden rounded-xl border border-line">
+        <table className="w-full border-collapse text-left">
+          <thead>
+            <tr className="bg-panel/50 text-[11px] uppercase tracking-wider text-faint">
+              <th className="px-4 py-3 font-medium">{c.origins.roadmap.colPhase}</th>
+              <th className="px-4 py-3 font-medium">{c.origins.roadmap.colName}</th>
+              <th className="hidden px-4 py-3 font-medium sm:table-cell">{c.origins.roadmap.colDesc}</th>
+              <th className="px-4 py-3 font-medium">{c.origins.roadmap.colStatus}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {EMLU_ROADMAP.map((r, i) => (
+              <tr key={r.id} className={cn('border-t border-line', i % 2 === 1 && 'bg-panel/20')}>
+                <td className="px-4 py-3 font-mono text-[13px] text-symbol">{r.id}</td>
+                <td className="px-4 py-3 text-sm text-fg">{r.name[lang]}</td>
+                <td className="hidden px-4 py-3 text-sm text-muted sm:table-cell">{r.desc[lang]}</td>
+                <td className="px-4 py-3">
+                  <StatusBadge status={r.status} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-4 max-w-3xl text-sm leading-6 text-faint">{c.origins.roadmap.note}</p>
+    </Section>
+  );
+}
+
+const REPO = LINKS.github;
+
+export function EmlUSourcesSection() {
+  const c = useContent();
+  return (
+    <Section className="py-16 sm:py-24">
+      <SectionHead kicker={c.origins.sources.kicker} title={c.origins.sources.title} lead={c.origins.sources.lead} />
+      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        {c.origins.sources.links.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            target="_blank"
+            rel="noreferrer"
+            className="group cursor-pointer rounded-xl border border-line bg-surface/60 p-5 transition-colors duration-200 hover:border-symbol/40"
+          >
+            <FileText size={20} className="text-symbol" />
+            <h3 className="mt-3 text-base font-semibold text-fg">{l.title}</h3>
+            <p className="mt-1.5 text-sm leading-6 text-muted">{l.desc}</p>
+          </a>
+        ))}
+      </div>
+      <p className="mt-6 max-w-3xl text-sm leading-6 text-faint">
+        <a href={`${REPO}/blob/main/docs/EML_Dual_Profile_Architecture_EML-P_EML-U_v1.0.md`} target="_blank" rel="noreferrer" className="text-symbol underline decoration-symbol/30 underline-offset-2 hover:decoration-symbol">
+          {c.origins.sources.deepLink}
+        </a>
+      </p>
     </Section>
   );
 }

@@ -1,5 +1,6 @@
-// Prerenders Showcase (/), Docs (/docs), and Cases (/cases) to real static
-// HTML after the normal `vite build` has already produced dist/index.html
+// Prerenders Showcase (/), Docs (/docs), Cases (/cases), and Origins
+// (/origins) to real static HTML after the normal `vite build` has already
+// produced dist/index.html
 // (the client template + hashed asset tags) and dist/ai/manifest.json (the
 // case data). /app (Engineering) is never prerendered — it stays a pure
 // client React app.
@@ -66,6 +67,7 @@ function writeRoute(relDir, html) {
 
 writeRoute('', pageHtml(renderRoute('showcase')));
 writeRoute('docs', pageHtml(renderRoute('docs')));
+writeRoute('origins', pageHtml(renderRoute('origins')));
 
 const casesDataScript = `<script id="eml-cases-data" type="application/json">${JSON.stringify(manifest.examples ?? [])}</script>`;
 const casesHtml = pageHtml(renderRoute('cases', { cases: manifest.examples ?? [] }));

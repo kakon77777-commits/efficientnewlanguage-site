@@ -28,6 +28,7 @@
     "human_home": "/",
     "playground": "/app",
     "docs": "/docs",
+    "origins": "/origins",
     "llms": "/llms.txt",
     "ai_index": "/ai/index.md",
     "manifest": "/ai/manifest.json",
@@ -39,6 +40,18 @@
       "path": "/ai/corpus/eml-origin.md",
       "format": "markdown",
       "role": "conceptual genealogy"
+    },
+    {
+      "id": "eml-u-profile",
+      "path": "/ai/corpus/eml-u-profile.md",
+      "format": "markdown",
+      "role": "EML-U (Universal Semantic Profile) — the original, broader vision; theory-preservation stage, no engineering yet"
+    },
+    {
+      "id": "eml-p-eml-u-compatibility",
+      "path": "/ai/corpus/eml-p-eml-u-compatibility.md",
+      "format": "markdown",
+      "role": "subset relation, projection function, and no-silent-loss rule between EML-P and EML-U"
     },
     {
       "id": "eml-current",

@@ -13,6 +13,7 @@ const Engineering = lazy(() => import('./pages/Engineering'));
 const Docs = lazy(() => import('./pages/Docs'));
 const Cases = lazy(() => import('./pages/Cases'));
 const Terminal = lazy(() => import('./pages/Terminal'));
+const Origins = lazy(() => import('./pages/Origins'));
 
 function currentPage(pathname: string = window.location.pathname) {
   switch (matchRoute(pathname)) {
@@ -24,6 +25,8 @@ function currentPage(pathname: string = window.location.pathname) {
       return <Cases />;
     case 'terminal':
       return <Terminal />;
+    case 'origins':
+      return <Origins />;
     default:
       return <Showcase />;
   }

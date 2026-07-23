@@ -100,6 +100,7 @@ function mustPrerendered(relPath, minBytes, mustContain) {
 mustPrerendered('index.html', 10_000, 'Efficient New Language');
 mustPrerendered('docs/index.html', 10_000, 'id="symbols"');
 mustPrerendered('cases/index.html', 10_000, 'eml-cases-data');
+mustPrerendered('origins/index.html', 10_000, 'id="eml-u"');
 
 if (failures.length > 0) {
   console.error(`[verify-dist] FAILED (${failures.length}):`);

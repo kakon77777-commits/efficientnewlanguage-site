@@ -7,7 +7,7 @@ document: corpus/eml-origin
 maintainer: Neo.K / EveMissLab
 status: active-experimental
 ai_layer_version: 0.1.0
-updated: 2026-07-19
+updated: 2026-07-23
 -->
 
 # EML Origin Layer
@@ -71,6 +71,17 @@ conceptual semantic compression
 The last step is what this directory is: EML is no longer only a human-facing site and
 playground — it now publishes a public, non-visual, machine-readable surface so AI systems can
 read the concept genealogy, the current spec, and call bounded tools directly.
+
+## The broader original vision: EML-U
+
+This page describes how the semantic-overlay idea began and was driven into the practical
+toolchain described in [`eml-current.md`](./eml-current.md) — that toolchain is EML's **stable,
+executable subset**, now formally named **EML-P**, not the whole of the original idea. The full
+original vision — multi-position semantic attachment, two-dimensional syntax, semantic graphs,
+host-neutral projection, AI-native interfaces — is preserved, currently unimplemented, as **EML-U
+(Universal Semantic Profile)**. See [`eml-u-profile.md`](./eml-u-profile.md) and
+[`eml-p-eml-u-compatibility.md`](./eml-p-eml-u-compatibility.md). Human-readable version:
+[`/origins`](https://efficientnewlanguage.org/origins).
 
 ## Authorship & license
 

@@ -39,6 +39,8 @@ syntax — the grammar is the authority. Call tools only with bounded EML input.
 | Manifest | [`/ai/manifest.json`](./manifest.json) |
 | Version | [`/ai/version.json`](./version.json) |
 | Origin | [`/ai/corpus/eml-origin.md`](./corpus/eml-origin.md) |
+| EML-U profile (the original, broader vision) | [`/ai/corpus/eml-u-profile.md`](./corpus/eml-u-profile.md) |
+| EML-P ↔ EML-U compatibility | [`/ai/corpus/eml-p-eml-u-compatibility.md`](./corpus/eml-p-eml-u-compatibility.md) |
 | Current | [`/ai/corpus/eml-current.md`](./corpus/eml-current.md) |
 | Design history | [`/ai/corpus/eml-design-history.md`](./corpus/eml-design-history.md) |
 | Engineering notes | [`/ai/corpus/eml-engineering-notes.md`](./corpus/eml-engineering-notes.md) |
@@ -58,17 +60,18 @@ syntax — the grammar is the authority. Call tools only with bounded EML input.
 
 1. `/ai/index.md` (this file)
 2. `/ai/corpus/eml-origin.md`
-3. `/ai/corpus/eml-current.md`
-4. `/ai/specs/eml-v1.md`
-5. `/ai/specs/eml-grammar.ebnf`
-6. `/ai/examples/001-summation.eml.md`
-7. `/ai/tools/tool-catalog.json`
+3. `/ai/corpus/eml-u-profile.md` — EML's original, broader vision; the practical toolchain below is its engineered subset, EML-P
+4. `/ai/corpus/eml-current.md`
+5. `/ai/specs/eml-v1.md`
+6. `/ai/specs/eml-grammar.ebnf`
+7. `/ai/examples/001-summation.eml.md`
+8. `/ai/tools/tool-catalog.json`
 
 ## Three-layer site model
 
 | Layer | Audience | Format | Where |
 | --- | --- | --- | --- |
-| Human UI | people, engineers, investors | HTML / React / Playground | `/`, `/app`, `/docs` |
+| Human UI | people, engineers, investors | HTML / React / Playground | `/`, `/app`, `/docs`, `/origins` |
 | Machine Corpus | LLMs, crawlers, agents | Markdown / JSON / EBNF / JSONL | `/ai/` |
 | Agent Tools | agents, IDEs, CLIs, MCP clients | REST / OpenAPI | `/ai/tools/*` |
 

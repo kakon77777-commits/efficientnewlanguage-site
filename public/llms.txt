@@ -17,6 +17,7 @@ Spec: EML-LANG-2026-v1.0 · AI layer: 0.1.0
 - Human site: /
 - Playground (in-browser, runs the real toolchain): /app
 - Docs: /docs
+- Origins / EML-U (the original, broader vision — human + AI page): /origins
 - AI-native interface: /ai/index.md
 - Machine manifest: /ai/manifest.json
 - Version: /ai/version.json
@@ -34,6 +35,8 @@ Spec: EML-LANG-2026-v1.0 · AI layer: 0.1.0
 ## Corpus
 
 - Origin / genealogy: /ai/corpus/eml-origin.md
+- EML-U (universal semantic profile — the original, broader vision): /ai/corpus/eml-u-profile.md
+- EML-P ↔ EML-U compatibility (projection function, no-silent-loss rule): /ai/corpus/eml-p-eml-u-compatibility.md
 - Current implementation: /ai/corpus/eml-current.md
 - Design history: /ai/corpus/eml-design-history.md
 - Engineering notes (invariants): /ai/corpus/eml-engineering-notes.md
@@ -60,11 +63,12 @@ Spec: EML-LANG-2026-v1.0 · AI layer: 0.1.0
 
 1. /ai/index.md
 2. /ai/corpus/eml-origin.md
-3. /ai/corpus/eml-current.md
-4. /ai/specs/eml-v1.md
-5. /ai/specs/eml-grammar.ebnf
-6. /ai/examples/001-summation.eml.md
-7. /ai/tools/tool-catalog.json
+3. /ai/corpus/eml-u-profile.md
+4. /ai/corpus/eml-current.md
+5. /ai/specs/eml-v1.md
+6. /ai/specs/eml-grammar.ebnf
+7. /ai/examples/001-summation.eml.md
+8. /ai/tools/tool-catalog.json
 
 ## Status
 

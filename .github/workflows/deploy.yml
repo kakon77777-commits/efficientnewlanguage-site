@@ -106,7 +106,7 @@ jobs:
           # their trailing-slash form (verified against a real Preview
           # deployment) — check the FINAL status, not the redirect's own code.
           fail=0
-          for path in / /app /docs /cases /healthz /readyz /version; do
+          for path in / /app /docs /cases /origins /healthz /readyz /version; do
             ok=0
             for attempt in $(seq 1 8); do
               code=$(curl -sL -o /dev/null -w '%{http_code}' "$URL$path")
