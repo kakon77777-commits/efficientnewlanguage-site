@@ -500,6 +500,96 @@
       "path": "/ai/examples/064-vending-machine-simulator.eml.md",
       "title": "Vending machine simulator",
       "description": "`vending_machine_simulator.eml` simulates a vending machine processing four fixed purchases against a small product catalog (Soda 150, Chips 200, Candy 100, Water 125, in arbitrary currency units) — each purchase inserts a list of coins, accumulates a balance, and either dispenses the item with change or reports the shortfall."
+    },
+    {
+      "id": "065-binary-search-recursive",
+      "path": "/ai/examples/065-binary-search-recursive.eml.md",
+      "title": "Binary search (recursive)",
+      "description": "`binary_search_recursive.eml` searches for the exact same five targets (`34, 100, 3, 91, 50`) in the exact same fixed pre-sorted list as [`examples/binary-search/`](../binary-search/) — same algorithm, same inputs, expressed via self-recursion instead of a `while` loop."
+    },
+    {
+      "id": "066-collatz-recursive",
+      "path": "/ai/examples/066-collatz-recursive.eml.md",
+      "title": "Collatz steps (recursive)",
+      "description": "`collatz_recursive.eml` counts the number of Collatz-conjecture steps needed to reach `1`, for four sample starting numbers (`6, 11, 27, 1`)."
+    },
+    {
+      "id": "067-counting-sort",
+      "path": "/ai/examples/067-counting-sort.eml.md",
+      "title": "Counting sort",
+      "description": "`counting_sort.eml` sorts a fixed sample list `[4, 2, 2, 8, 3, 3, 1, 0, 5]` (values known to be in `0..8`) via counting sort."
+    },
+    {
+      "id": "068-digital-root-recursive",
+      "path": "/ai/examples/068-digital-root-recursive.eml.md",
+      "title": "Digital root (recursive)",
+      "description": "`digital_root_recursive.eml` computes the digital root (repeated digit-sum until one digit remains) of five sample numbers (`12345, 999, 8, 0, 132189`)."
+    },
+    {
+      "id": "069-door-lock-keypad-simulator",
+      "path": "/ai/examples/069-door-lock-keypad-simulator.eml.md",
+      "title": "Door lock keypad simulator",
+      "description": "`door_lock_keypad_simulator.eml` simulates a keypad door lock through a fixed sequence of 6 PIN attempts, ending in a lockout."
+    },
+    {
+      "id": "070-euclidean-gcd-recursive",
+      "path": "/ai/examples/070-euclidean-gcd-recursive.eml.md",
+      "title": "Euclidean GCD (recursive)",
+      "description": "`euclidean_gcd_recursive.eml` computes the greatest common divisor of five sample pairs (`(48,18)`, `(1071,462)`, `(17,5)`, `(100,75)`, `(0,9)`) via Euclid's algorithm."
+    },
+    {
+      "id": "071-fibonacci-recursive",
+      "path": "/ai/examples/071-fibonacci-recursive.eml.md",
+      "title": "Fibonacci (recursive)",
+      "description": "`fibonacci_recursive.eml` prints `fib(0)` through `fib(10)` via genuine double-call self-recursion."
+    },
+    {
+      "id": "072-is-palindrome-recursive",
+      "path": "/ai/examples/072-is-palindrome-recursive.eml.md",
+      "title": "Is palindrome (recursive)",
+      "description": "`is_palindrome_recursive.eml` checks six sample strings (`\"racecar\"`, `\"hello\"`, `\"level\"`, `\"python\"`, `\"a\"`, `\"\"`) for whether they read the same forwards and backwards."
+    },
+    {
+      "id": "073-jump-search",
+      "path": "/ai/examples/073-jump-search.eml.md",
+      "title": "Jump search",
+      "description": "`jump_search.eml` searches for five sample targets (`34, 100, 3, 91, 999`) in the fixed pre-sorted list `[3, 8, 15, 22, 34, 41, 56, 63, 79, 91, 100, 108, 121]` via jump search."
+    },
+    {
+      "id": "074-merge-sort",
+      "path": "/ai/examples/074-merge-sort.eml.md",
+      "title": "Merge sort",
+      "description": "`merge_sort.eml` sorts a fixed sample list `[8, 3, 5, 1, 9, 2, 7, 4, 6]` via classic recursive divide-and-conquer merge sort — no `sorted()` builtin."
+    },
+    {
+      "id": "075-quicksort-recursive",
+      "path": "/ai/examples/075-quicksort-recursive.eml.md",
+      "title": "Quicksort (recursive)",
+      "description": "`quicksort_recursive.eml` sorts a fixed sample list `[5, 2, 9, 1, 5, 6, 3, 8, 4]` (with a repeated value) via recursive quicksort with Lomuto-style in-place partitioning."
+    },
+    {
+      "id": "076-reverse-string-recursive",
+      "path": "/ai/examples/076-reverse-string-recursive.eml.md",
+      "title": "Reverse string (recursive)",
+      "description": "`reverse_string_recursive.eml` reverses five sample strings (`\"hello\"`, `\"EML\"`, `\"a\"`, `\"\"`, `\"racecar\"`)."
+    },
+    {
+      "id": "077-tower-of-hanoi",
+      "path": "/ai/examples/077-tower-of-hanoi.eml.md",
+      "title": "Tower of Hanoi",
+      "description": "`tower_of_hanoi.eml` solves the classic Tower of Hanoi puzzle for 3 disks, moving them from peg `A` to peg `C` using peg `B` as auxiliary."
+    },
+    {
+      "id": "078-turnstile-simulator",
+      "path": "/ai/examples/078-turnstile-simulator.eml.md",
+      "title": "Turnstile simulator",
+      "description": "`turnstile_simulator.eml` simulates a subway turnstile through a fixed sequence of 8 `push`/`coin` events, tracking coins collected and rejected pushes."
+    },
+    {
+      "id": "079-washing-machine-cycle-simulator",
+      "path": "/ai/examples/079-washing-machine-cycle-simulator.eml.md",
+      "title": "Washing machine cycle simulator",
+      "description": "`washing_machine_cycle_simulator.eml` steps a washing machine through its fixed cycle (`fill -> wash -> rinse -> spin -> done`), each stage with its own duration, accumulating a running total."
     }
   ],
   "tools": {
