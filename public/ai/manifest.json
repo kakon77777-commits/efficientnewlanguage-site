@@ -590,6 +590,96 @@
       "path": "/ai/examples/079-washing-machine-cycle-simulator.eml.md",
       "title": "Washing machine cycle simulator",
       "description": "`washing_machine_cycle_simulator.eml` steps a washing machine through its fixed cycle (`fill -> wash -> rinse -> spin -> done`), each stage with its own duration, accumulating a running total."
+    },
+    {
+      "id": "080-balanced-brackets-checker",
+      "path": "/ai/examples/080-balanced-brackets-checker.eml.md",
+      "title": "Balanced brackets checker",
+      "description": "`balanced_brackets_checker.eml` checks seven sample strings for correctly nested and matched brackets, covering the mismatched (`\"(]\"`), unclosed (`\"(((\"`), closer-before-opener (`\")(\"`), and empty (`\"\"`) edge cases as well as the well-formed ones."
+    },
+    {
+      "id": "081-binary-search-tree",
+      "path": "/ai/examples/081-binary-search-tree.eml.md",
+      "title": "Binary search tree",
+      "description": "`binary_search_tree.eml` inserts `[50, 30, 70, 20, 40, 60, 80, 35]` into a BST, then walks it in-order to recover `[20, 30, 35, 40, 50, 60, 70, 80]` — the tree's defining property, demonstrated rather than asserted."
+    },
+    {
+      "id": "082-coin-change-dp",
+      "path": "/ai/examples/082-coin-change-dp.eml.md",
+      "title": "Coin change (dynamic programming)",
+      "description": "`coin_change_dp.eml` finds the fewest coins that make a given amount, using a 1D DP table filled from 1 up to the target."
+    },
+    {
+      "id": "083-edit-distance",
+      "path": "/ai/examples/083-edit-distance.eml.md",
+      "title": "Edit distance (Levenshtein)",
+      "description": "`edit_distance.eml` computes the fewest single-character insertions, deletions or substitutions needed to turn one string into another, for five sample pairs — including the canonical `'kitten' -> 'sitting' : 3`."
+    },
+    {
+      "id": "084-fibonacci-memoized",
+      "path": "/ai/examples/084-fibonacci-memoized.eml.md",
+      "title": "Fibonacci (memoized)",
+      "description": "`fibonacci_memoized.eml` prints `fib(0)`..`fib(15)` and then `fib(50) = 12586269025`, using recursion with a dict cache."
+    },
+    {
+      "id": "085-graph-bfs-traversal",
+      "path": "/ai/examples/085-graph-bfs-traversal.eml.md",
+      "title": "Graph BFS traversal",
+      "description": "`graph_bfs_traversal.eml` visits a small directed graph breadth-first from node `A`, reaching all 6 nodes in order `A, B, C, D, E, F`."
+    },
+    {
+      "id": "086-graph-dfs-recursive",
+      "path": "/ai/examples/086-graph-dfs-recursive.eml.md",
+      "title": "Graph DFS traversal (recursive)",
+      "description": "`graph_dfs_recursive.eml` visits the **same graph** as [`examples/graph-bfs-traversal/`](../graph-bfs-traversal/) depth-first from node `A`, so the two orders can be read side by side:"
+    },
+    {
+      "id": "087-happy-number",
+      "path": "/ai/examples/087-happy-number.eml.md",
+      "title": "Happy number",
+      "description": "`happy_number.eml` tests six numbers for \"happiness\": repeatedly replace a number with the sum of the squares of its digits, and it is happy if that process reaches 1 (`19 -> 82 -> 68 -> 100 -> 1`)."
+    },
+    {
+      "id": "088-longest-common-subsequence",
+      "path": "/ai/examples/088-longest-common-subsequence.eml.md",
+      "title": "Longest common subsequence",
+      "description": "`longest_common_subsequence.eml` finds the longest sequence of characters appearing in both strings in order (not necessarily adjacent), for four sample pairs — including the textbook `'AGGTAB' & 'GXTXAYB' -> 'GTAB'`."
+    },
+    {
+      "id": "089-luhn-algorithm",
+      "path": "/ai/examples/089-luhn-algorithm.eml.md",
+      "title": "Luhn algorithm",
+      "description": "`luhn_algorithm.eml` validates five numbers with the Luhn check-digit algorithm — the checksum behind credit-card and IMEI numbers."
+    },
+    {
+      "id": "090-matrix-multiplication",
+      "path": "/ai/examples/090-matrix-multiplication.eml.md",
+      "title": "Matrix multiplication",
+      "description": "`matrix_multiplication.eml` multiplies a 2x3 matrix by a 3x2 matrix, producing the 2x2 product `[[58, 64], [139, 154]]`."
+    },
+    {
+      "id": "091-max-subarray-kadane",
+      "path": "/ai/examples/091-max-subarray-kadane.eml.md",
+      "title": "Maximum subarray (Kadane's algorithm)",
+      "description": "`max_subarray_kadane.eml` finds the largest sum obtainable from any contiguous run of a list, for five samples — including the classic `[-2, 1, -3, 4, -1, 2, 1, -5, 4] -> 6`."
+    },
+    {
+      "id": "092-roman-numeral-converter",
+      "path": "/ai/examples/092-roman-numeral-converter.eml.md",
+      "title": "Roman numeral converter",
+      "description": "`roman_numeral_converter.eml` converts ten sample integers to Roman numerals, spanning every subtractive form (`1994 -> MCMXCIV`, `3999 -> MMMCMXCIX`)."
+    },
+    {
+      "id": "093-rpn-evaluator",
+      "path": "/ai/examples/093-rpn-evaluator.eml.md",
+      "title": "Reverse Polish Notation evaluator",
+      "description": "`rpn_evaluator.eml` evaluates four RPN expressions, e.g. `[3, 4, '+', 2, '*', 7, '/'] = 2` and `[5, 1, 2, '+', 4, '*', '+', 3, '-'] = 14`."
+    },
+    {
+      "id": "094-sieve-of-eratosthenes",
+      "path": "/ai/examples/094-sieve-of-eratosthenes.eml.md",
+      "title": "Sieve of Eratosthenes",
+      "description": "`sieve_of_eratosthenes.eml` lists every prime up to 50 (15 of them) via the classic sieve."
     }
   ],
   "tools": {
