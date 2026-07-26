@@ -680,6 +680,96 @@
       "path": "/ai/examples/094-sieve-of-eratosthenes.eml.md",
       "title": "Sieve of Eratosthenes",
       "description": "`sieve_of_eratosthenes.eml` lists every prime up to 50 (15 of them) via the classic sieve."
+    },
+    {
+      "id": "095-bin-packing-first-fit",
+      "path": "/ai/examples/095-bin-packing-first-fit.eml.md",
+      "title": "Bin packing (first-fit)",
+      "description": "`bin_packing_first_fit.eml` packs seven items into bins of capacity 10 by dropping each item into the first bin it still fits in, printing the resulting contents of every bin."
+    },
+    {
+      "id": "096-binary-heap",
+      "path": "/ai/examples/096-binary-heap.eml.md",
+      "title": "Binary heap (min-heap priority queue)",
+      "description": "`binary_heap.eml` pushes `[5, 3, 8, 1, 9, 2, 7]` into a min-heap one at a time (printing the array after each push, so the heap property is visible) then drains it, recovering `[1, 2, 3, 5, 7, 8, 9]`."
+    },
+    {
+      "id": "097-conway-game-of-life",
+      "path": "/ai/examples/097-conway-game-of-life.eml.md",
+      "title": "Conway's Game of Life",
+      "description": "`conway_game_of_life.eml` evolves a glider on a 6x6 grid for four generations, printing every generation."
+    },
+    {
+      "id": "098-day-of-week-zeller",
+      "path": "/ai/examples/098-day-of-week-zeller.eml.md",
+      "title": "Day of week (Zeller's congruence)",
+      "description": "`day_of_week_zeller.eml` computes which weekday a calendar date falls on, arithmetically, with no date library — and checks all five results against independently known answers."
+    },
+    {
+      "id": "099-flood-fill",
+      "path": "/ai/examples/099-flood-fill.eml.md",
+      "title": "Flood fill",
+      "description": "`flood_fill.eml` is the paint-bucket tool: starting from one cell, spread into the four orthogonal neighbors for as long as they still hold the original color. Prints the grid before and after, filling 13 cells from `(0,2)`."
+    },
+    {
+      "id": "100-hamming-distance",
+      "path": "/ai/examples/100-hamming-distance.eml.md",
+      "title": "Hamming distance",
+      "description": "`hamming_distance.eml` counts how many positions two equal-length strings differ in, for five sample pairs — including the classic `'karolin' vs 'kathrin' : 3`."
+    },
+    {
+      "id": "101-linked-list-operations",
+      "path": "/ai/examples/101-linked-list-operations.eml.md",
+      "title": "Linked list operations",
+      "description": "`linked_list_operations.eml` builds a four-node singly linked list, prints it, reverses it in place, and prints it again — showing the internal link array before and after."
+    },
+    {
+      "id": "102-longest-common-prefix",
+      "path": "/ai/examples/102-longest-common-prefix.eml.md",
+      "title": "Longest common prefix",
+      "description": "`longest_common_prefix.eml` finds the longest starting string every word in a list shares, e.g. `['flower', 'flow', 'flight'] -> 'fl'`."
+    },
+    {
+      "id": "103-roman-to-integer",
+      "path": "/ai/examples/103-roman-to-integer.eml.md",
+      "title": "Roman numeral to integer",
+      "description": "`roman_to_integer.eml` converts Roman numerals back to integers, and reports `10 of 10 round-tripped back to the original integer`."
+    },
+    {
+      "id": "104-spiral-matrix-traversal",
+      "path": "/ai/examples/104-spiral-matrix-traversal.eml.md",
+      "title": "Spiral matrix traversal",
+      "description": "`spiral_matrix_traversal.eml` reads a matrix in a clockwise inward spiral, e.g. the 3x4 grid `1..12` comes out as `[1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7]`."
+    },
+    {
+      "id": "105-stock-buy-sell-profit",
+      "path": "/ai/examples/105-stock-buy-sell-profit.eml.md",
+      "title": "Best single buy/sell profit",
+      "description": "`stock_buy_sell_profit.eml` finds the best profit obtainable from buying once and selling once later, across five price series — e.g. `[7, 1, 5, 3, 6, 4] -> best profit 5` (buy at 1, sell at 6)."
+    },
+    {
+      "id": "106-substring-search",
+      "path": "/ai/examples/106-substring-search.eml.md",
+      "title": "Substring search (all positions)",
+      "description": "`substring_search.eml` slides a pattern along a text and collects **every** match position, not just the first — e.g. `'aba' in 'abababa' -> [0, 2, 4]`."
+    },
+    {
+      "id": "107-topological-sort",
+      "path": "/ai/examples/107-topological-sort.eml.md",
+      "title": "Topological sort (Kahn's algorithm)",
+      "description": "`topological_sort.eml` orders a course-prerequisite graph so every prerequisite comes before whatever needs it, then runs the same function against a deliberately impossible cyclic graph."
+    },
+    {
+      "id": "108-tournament-bracket",
+      "path": "/ai/examples/108-tournament-bracket.eml.md",
+      "title": "Tournament bracket",
+      "description": "`tournament_bracket.eml` runs a single-elimination tournament: pair up adjacent teams, the stronger rating advances, repeat on the surviving half until one team is left. Eight teams take exactly three rounds."
+    },
+    {
+      "id": "109-vigenere-cipher",
+      "path": "/ai/examples/109-vigenere-cipher.eml.md",
+      "title": "Vigenère cipher",
+      "description": "`vigenere_cipher.eml` encodes `\"attack at dawn\"` with the key `\"lemon\"` to `\"lxfopv ef rnhr\"`, then decodes it back — the textbook example, letter for letter."
     }
   ],
   "tools": {
