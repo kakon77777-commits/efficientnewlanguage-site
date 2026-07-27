@@ -770,6 +770,96 @@
       "path": "/ai/examples/109-vigenere-cipher.eml.md",
       "title": "Vigenère cipher",
       "description": "`vigenere_cipher.eml` encodes `\"attack at dawn\"` with the key `\"lemon\"` to `\"lxfopv ef rnhr\"`, then decodes it back — the textbook example, letter for letter."
+    },
+    {
+      "id": "110-bisection-root-finder",
+      "path": "/ai/examples/110-bisection-root-finder.eml.md",
+      "title": "Bisection root finder",
+      "description": "`bisection_root_finder.eml` finds roots by halving an interval whose endpoints give the function opposite signs — a root must lie between them."
+    },
+    {
+      "id": "111-days-between-dates",
+      "path": "/ai/examples/111-days-between-dates.eml.md",
+      "title": "Days between dates",
+      "description": "`days_between_dates.eml` counts the days between two calendar dates by converting each to a day number since a fixed epoch and subtracting."
+    },
+    {
+      "id": "112-fraction-arithmetic",
+      "path": "/ai/examples/112-fraction-arithmetic.eml.md",
+      "title": "Fraction arithmetic (exact rationals)",
+      "description": "`fraction_arithmetic.eml` adds and multiplies fractions held as `[numerator, denominator]` pairs, always reduced by their greatest common divisor."
+    },
+    {
+      "id": "113-histogram-builder",
+      "path": "/ai/examples/113-histogram-builder.eml.md",
+      "title": "Histogram builder",
+      "description": "`histogram_builder.eml` buckets 20 scores into equal-width ranges and draws each bucket as a bar:"
+    },
+    {
+      "id": "114-manual-csv-parser",
+      "path": "/ai/examples/114-manual-csv-parser.eml.md",
+      "title": "Manual CSV parser",
+      "description": "`manual_csv_parser.eml` splits CSV lines into fields one character at a time, tracking whether the scan is currently inside a quoted region."
+    },
+    {
+      "id": "115-matrix-determinant",
+      "path": "/ai/examples/115-matrix-determinant.eml.md",
+      "title": "Matrix determinant (cofactor expansion)",
+      "description": "`matrix_determinant.eml` computes determinants by expanding along the top row and recursing on each minor, checked against five independently known answers."
+    },
+    {
+      "id": "116-maze-solver-backtracking",
+      "path": "/ai/examples/116-maze-solver-backtracking.eml.md",
+      "title": "Maze solver (backtracking)",
+      "description": "`maze_solver_backtracking.eml` finds a route through a 6x6 maze from the top-left to the bottom-right, then renders the board with the path marked:"
+    },
+    {
+      "id": "117-modular-exponentiation",
+      "path": "/ai/examples/117-modular-exponentiation.eml.md",
+      "title": "Modular exponentiation",
+      "description": "`modular_exponentiation.eml` computes `base^exponent mod m` by repeated squaring — the operation underneath RSA and Diffie-Hellman."
+    },
+    {
+      "id": "118-moving-average",
+      "path": "/ai/examples/118-moving-average.eml.md",
+      "title": "Moving average (sliding window)",
+      "description": "`moving_average.eml` computes a moving average incrementally — the first window is summed once, and every window after it adds the entering value and subtracts the leaving one."
+    },
+    {
+      "id": "119-n-queens",
+      "path": "/ai/examples/119-n-queens.eml.md",
+      "title": "N-Queens",
+      "description": "`n_queens.eml` places N queens on an NxN board so none attacks another, for N = 4, 5, 6 — then renders all four 6-queens solutions."
+    },
+    {
+      "id": "120-newton-sqrt",
+      "path": "/ai/examples/120-newton-sqrt.eml.md",
+      "title": "Newton's method for square roots",
+      "description": "`newton_sqrt.eml` computes square roots by repeatedly averaging a guess with `value / guess`, and prints the convergence step by step:"
+    },
+    {
+      "id": "121-permutations-generator",
+      "path": "/ai/examples/121-permutations-generator.eml.md",
+      "title": "Permutations generator",
+      "description": "`permutations_generator.eml` produces every ordering of a list — all 6 of `[\"A\",\"B\",\"C\"]`, then confirms 24 for a four-item list."
+    },
+    {
+      "id": "122-rank-with-ties",
+      "path": "/ai/examples/122-rank-with-ties.eml.md",
+      "title": "Ranking with ties",
+      "description": "`rank_with_ties.eml` ranks a leaderboard containing two pairs of tied scores, under both standard conventions at once:"
+    },
+    {
+      "id": "123-subset-sum-backtracking",
+      "path": "/ai/examples/123-subset-sum-backtracking.eml.md",
+      "title": "Subset sum (backtracking)",
+      "description": "`subset_sum_backtracking.eml` finds every subset of `[3, 34, 4, 12, 5, 2]` adding up to 9 — `[3, 4, 2]` and `[4, 5]` — then shows that nothing reaches 100."
+    },
+    {
+      "id": "124-sudoku-solver-4x4",
+      "path": "/ai/examples/124-sudoku-solver-4x4.eml.md",
+      "title": "Sudoku solver (4x4)",
+      "description": "`sudoku_solver_4x4.eml` solves a 4x4 Sudoku from four clues, then checks its own answer with an independent validator."
     }
   ],
   "tools": {
