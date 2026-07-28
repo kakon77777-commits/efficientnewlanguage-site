@@ -56,11 +56,15 @@ greet(total)
 
 `ok: false` — **expected, but narrower than it looks**. Function definitions and `class` ARE fully
 bidirectional (added later); the ONLY reason this specific example doesn't round-trip is `@hot`,
-which has no Python equivalent and is rendered forward as a bare comment
-(`# @hot: dynamic state — not cached`) for human readability. Comments aren't tokenized, so the
-reverse leg can't recover the decorator — a permanent, purely cosmetic one-line difference, not a
-functional one. Matrices (`<M>`/`np.array`) round-trip too; only `@temporal_loop` and `async`/
-`await` remain genuinely forward-only (the reverse transpiler does not support them).
+which has no Python equivalent and is rendered forward as a marker comment
+(`# @hot: dynamic state — not cached`) for human readability.
+
+**This example now round-trips.** The paragraph above used to end "comments aren't tokenized, so
+the reverse leg can't recover the decorator — a permanent difference". That was true of the lexer,
+not of the Python: the annotation was sitting right there in the emitted text. The reverse lexer
+now tokenizes that one comment shape, so `@hot` survives instead of silently downgrading to an
+unannotated function. Matrices (`<M>`/`np.array`) round-trip too; only `@temporal_loop` and
+`async`/`await` remain genuinely forward-only (the reverse transpiler does not support them).
 
 ## Trace event types
 

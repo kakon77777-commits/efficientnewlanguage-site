@@ -45,11 +45,16 @@ behavioral facts of the reference implementation, aligned with `EML-LANG-2026-v1
 
 ## Forward-only constructs (NOT round-trippable)
 
-`@hot`, `@temporal_loop`, and `async`/`await` are **forward-only**: they transpile EML → Python but
+`@temporal_loop` and `async`/`await` are **forward-only**: they transpile EML → Python but
 are not part of the round-trip invariant. A roundtrip call on a program containing them will
-report a mismatch with a clear reason — this is expected, not a bug. `@hot` is a *permanent*
-exception (the forward emitter renders it as a bare comment marker, not a reconstructable
-decorator); `@temporal_loop`/`async`/`await` are exceptions because the reverse transpiler does not
+report a mismatch with a clear reason — this is expected, not a bug.
+
+`@hot` used to be listed here as a *permanent* exception, on the grounds that the forward emitter
+renders it as a comment marker rather than a reconstructable decorator. **That is no longer true**:
+the reverse lexer now tokenizes that one comment shape, so `@hot` round-trips like `@cold` does.
+The old behaviour was not merely cosmetic — it silently downgraded an author's `@hot` to an
+unannotated function, which is exactly the "no silent loss" rule the profile split forbids.
+`@temporal_loop`/`async`/`await` remain exceptions because the reverse transpiler does not
 support them. Plain function definitions (`def`)/`return`, `@cold`, `class`, and matrices
 (`<M>`/`np.array`) round-trip normally — do not assume otherwise. (See the `interpret`/`roundtrip`
 examples under `/ai/examples/`.)

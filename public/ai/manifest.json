@@ -860,6 +860,96 @@
       "path": "/ai/examples/124-sudoku-solver-4x4.eml.md",
       "title": "Sudoku solver (4x4)",
       "description": "`sudoku_solver_4x4.eml` solves a 4x4 Sudoku from four clues, then checks its own answer with an independent validator."
+    },
+    {
+      "id": "125-arithmetic-series-sigma",
+      "path": "/ai/examples/125-arithmetic-series-sigma.eml.md",
+      "title": "Arithmetic series (Σ)",
+      "description": "`arithmetic_series_sigma.eml` sums arithmetic progressions with EML's summation operator, checking every result against a closed form."
+    },
+    {
+      "id": "126-bank-account-invariant",
+      "path": "/ai/examples/126-bank-account-invariant.eml.md",
+      "title": "A class that defends an invariant",
+      "description": "`bank_account_invariant.eml` keeps one rule — the balance is never negative — and raises rather than returning a status when asked to break it."
+    },
+    {
+      "id": "127-cold-cache-key-identity",
+      "path": "/ai/examples/127-cold-cache-key-identity.eml.md",
+      "title": "What counts as \"the same arguments\"",
+      "description": "`cold_cache_key_identity.eml` measures which argument values share a `@cold` cache entry. The obvious guess — Python equality, so `1 == 1.0 == True` is one entry — is wrong, and wrong in a way that depends on **how many arguments the function takes**."
+    },
+    {
+      "id": "128-cold-memoization-visible",
+      "path": "/ai/examples/128-cold-memoization-visible.eml.md",
+      "title": "@cold, made visible",
+      "description": "`cold_memoization_visible.eml` is the corpus's **first use of EML's temperature model**. The 124 programs before it used neither `@cold` nor `@hot`, despite those being among EML's most distinctive features."
+    },
+    {
+      "id": "129-cold-stale-state",
+      "path": "/ai/examples/129-cold-stale-state.eml.md",
+      "title": "When @cold changes the answer",
+      "description": "`cold_stale_state.eml` is the other half of [`examples/cold-vs-hot-fibonacci/`](../cold-vs-hot-fibonacci/). That case makes the reassuring point — for a genuinely pure function, `@cold` and `@hot` agree on every value and differ only in cost. This one makes the point that actually bites."
+    },
+    {
+      "id": "130-cold-vs-hot-fibonacci",
+      "path": "/ai/examples/130-cold-vs-hot-fibonacci.eml.md",
+      "title": "@cold vs @hot: same answers, different costs",
+      "description": "`cold_vs_hot_fibonacci.eml` writes the same recursive Fibonacci twice — once `@cold`, once `@hot` — to separate two things the temperature model does not confuse."
+    },
+    {
+      "id": "131-dot-product-sigma",
+      "path": "/ai/examples/131-dot-product-sigma.eml.md",
+      "title": "Dot product (Σ)",
+      "description": "`dot_product_sigma.eml` computes vector dot products as a summation over paired list positions."
+    },
+    {
+      "id": "132-duck-typed-shapes",
+      "path": "/ai/examples/132-duck-typed-shapes.eml.md",
+      "title": "Polymorphism without inheritance",
+      "description": "`duck_typed_shapes.eml` dispatches `area()` across five unrelated classes."
+    },
+    {
+      "id": "133-exception-finally-ordering",
+      "path": "/ai/examples/133-exception-finally-ordering.eml.md",
+      "title": "try / except / finally ordering",
+      "description": "`exception_finally_ordering.eml` prints the order these actually run in, rather than describing it."
+    },
+    {
+      "id": "134-harmonic-series-sigma",
+      "path": "/ai/examples/134-harmonic-series-sigma.eml.md",
+      "title": "Harmonic series (Σ)",
+      "description": "`harmonic_series_sigma.eml` computes harmonic numbers `H(n) = Σ(1/i, i in [1:n])` — a summation over a **float** summand."
+    },
+    {
+      "id": "135-hot-mutable-input",
+      "path": "/ai/examples/135-hot-mutable-input.eml.md",
+      "title": "Why @hot exists",
+      "description": "`hot_mutable_input.eml` argues that `@hot` is a **correctness** annotation that happens to disable an optimisation — not an optimisation annotation that happens to be a no-op."
+    },
+    {
+      "id": "136-retry-until-success",
+      "path": "/ai/examples/136-retry-until-success.eml.md",
+      "title": "Retry loops",
+      "description": "`retry_until_success.eml` uses exceptions for control flow rather than for reporting a crash."
+    },
+    {
+      "id": "137-sum-of-squares-sigma",
+      "path": "/ai/examples/137-sum-of-squares-sigma.eml.md",
+      "title": "Sum of squares (Σ)",
+      "description": "`sum_of_squares_sigma.eml` computes `Σ(i^2, i in [1:n])` for five values of `n`, checking each against the closed form `n(n+1)(2n+1)/6`."
+    },
+    {
+      "id": "138-ternary-decision-table",
+      "path": "/ai/examples/138-ternary-decision-table.eml.md",
+      "title": "Ternary chains",
+      "description": "`ternary_decision_table.eml` exercises EML's `cond ? a : b`, which the corpus had almost no coverage of before this."
+    },
+    {
+      "id": "139-variance-with-sigma",
+      "path": "/ai/examples/139-variance-with-sigma.eml.md",
+      "title": "Variance two ways (Σ)",
+      "description": "`variance_with_sigma.eml` computes population variance with two algebraically identical summations, and shows them disagreeing."
     }
   ],
   "tools": {
@@ -922,6 +1012,6 @@
     "ASCII canonical form is normative; Unicode (Σ ∈ ⇒ ²) is a display projection.",
     "Do not infer unsupported syntax; the EBNF grammar is the authority.",
     "Call tools only with bounded EML input (<= 20000 chars).",
-    "Function definitions, class, @cold, and matrices (<M>/np.array) are fully round-trippable. Only @hot's comment-only marker (cosmetic, not functional), @temporal_loop, and async/await remain forward-only (not round-trippable)."
+    "Function definitions, class, @cold, @hot, and matrices (<M>/np.array) are fully round-trippable. Only @temporal_loop and async/await remain forward-only (not round-trippable). @hot joined the round-trippable set once the reverse lexer learned to read its marker comment; it was previously listed as a permanent exception."
   ]
 }

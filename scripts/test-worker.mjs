@@ -49,6 +49,7 @@ const SUM = 'N^+100\nΣ(i^2, i in [1:N]) => r\nr^0';
 // reverse lexer — which never tokenizes comments — can't recover it). Use
 // `@hot` here, not `@cold`, to keep testing the actually-still-true invariant.
 const HOT = '@hot\ndef greet(name):\n    name^0\n    return name\n\ngreet(5)\n';
+const RETRY_DECORATED = '@retry\ndef greet(name):\n    name^0\n    return name\n\ngreet(5)\n';
 
 await check('/healthz -> ok', async () => {
   const j = await (await get('/healthz')).json();
@@ -82,8 +83,19 @@ await check('roundtrip sum -> fixpoint', async () => {
   const j = await (await post('/ai/tools/roundtrip', { source: SUM })).json();
   return j.ok && j.result.ok === true;
 });
-await check('roundtrip hot -> ok:false (permanent forward-only)', async () => {
+// `@hot` used to be a guaranteed round-trip MISMATCH: it compiles to a marker
+// comment (there is no Python decorator for "do not cache"), the reverse lexer
+// dropped it like any other comment, and the annotation silently vanished. The
+// reverse lexer now tokenizes that one comment shape, so it survives.
+await check('roundtrip hot -> fixpoint (@hot now survives)', async () => {
   const j = await (await post('/ai/tools/roundtrip', { source: HOT })).json();
+  return j.ok === true && j.result.ok === true;
+});
+// A custom decorator is what @hot used to be — preserved outbound as an
+// informational comment, with nothing to read it back. Keeps the "a real
+// round-trip failure is reported via result.ok, not errors[]" path covered.
+await check('roundtrip custom decorator -> ok:false (still forward-only)', async () => {
+  const j = await (await post('/ai/tools/roundtrip', { source: RETRY_DECORATED })).json();
   return j.ok === false && j.result.ok === false;
 });
 await check('parse sum -> Program ast (3 stmts)', async () => {
