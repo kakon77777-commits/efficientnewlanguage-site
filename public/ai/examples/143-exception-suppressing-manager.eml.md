@@ -26,15 +26,18 @@
 # is how a retry or circuit-breaker wrapper behaves: absorb a few failures,
 # then stop lying and let one through.
 #
-# A LIMITATION worth knowing, and the reason the budget is counted rather than
-# switched on the exception's type: EML-P has no first-class exception objects.
-# `__exit__`'s first parameter is a plain STRING here (`"ValueError"`), and
-# CPython passes the class object `<class 'ValueError'>`; the third parameter is
-# None here and a traceback object there. So `exc_type == ValueError` cannot be
-# written - `ValueError` is not a value you can name - and printing exc_type or
-# the traceback would produce different text in the interpreter than in the
-# transpiled Python. Comparing against None DOES agree, and that is the one
-# check used below.
+# The third manager selects on the EXCEPTION TYPE, which is worth pointing out
+# because it did not used to be possible. EML-P had no first-class exception
+# objects: `__exit__`'s first parameter arrived as a plain string, so
+# `exc_type == ValueError` could not be written at all, and printing exc_type
+# produced `ValueError` where CPython prints `<class 'ValueError'>`. Exception
+# classes and instances are real values now, so both work and both match.
+#
+# One gap remains and is deliberate: the third parameter (the traceback) is
+# None here and a traceback object in CPython. A real traceback's only
+# printable form embeds a memory address that differs between runs of CPython
+# itself, so there is no reproducible value to supply - inventing one would be
+# a fabrication, not a fix.
 
 class SwallowAll:
     def __enter__(self):
@@ -48,10 +51,10 @@ class PropagateAll:
     def __exit__(self, exc_type, exc_value, tb):
         return False
 
-class Budgeted:
-    def __init__(self, budget):
-        budget => self.budget
+class SwallowOnlyValueError:
+    def __init__(self):
         0 => self.absorbed
+        0 => self.forwarded
         0 => self.clean
     def __enter__(self):
         return self
@@ -59,9 +62,12 @@ class Budgeted:
         if exc_type == None:
             self.clean + 1 => self.clean
             return False
-        if self.absorbed < self.budget:
+        if exc_type == ValueError:
             self.absorbed + 1 => self.absorbed
+            ("    absorbing a " + str(exc_type) + ": " + str(exc_value))^0
             return True
+        self.forwarded + 1 => self.forwarded
+        ("    forwarding a " + str(exc_type) + ": " + str(exc_value))^0
         return False
 
 0 => reached_after
@@ -90,30 +96,37 @@ except ValueError:
     b2^0
 ""^0
 
-"C. suppression on a budget of 2" => h3
+"C. selective: absorb ValueError, forward everything else" => h3
 h3^0
-Budgeted(2) => guard
+SwallowOnlyValueError() => guard
 
-0 => escaped
-for attempt in [1:4]:
-    try:
-        with guard as g:
-            if attempt < 4:
-                ("  attempt " + str(attempt) + ": failing")^0
-                raise ValueError("attempt " + str(attempt))
-            ("  attempt " + str(attempt) + ": succeeded")^0
-    except ValueError:
-        escaped + 1 => escaped
-        ("  attempt " + str(attempt) + ": escaped to the caller")^0
+with guard as g:
+    "  raising a ValueError inside the block" => c1
+    c1^0
+    raise ValueError("expected, handled here")
+"  ...and execution continued past the block" => c2
+c2^0
+
+try:
+    with guard as g:
+        "  raising a TypeError inside the block" => c3
+        c3^0
+        raise TypeError("unexpected, not ours to swallow")
+except TypeError as e:
+    ("  reached the outer handler: " + repr(e))^0
+
+with guard as g:
+    "  a clean block - __exit__ sees exc_type None" => c4
+    c4^0
 
 ""^0
-("Budget 2: absorbed " + str(guard.absorbed) + ", escaped " + str(escaped) + ", clean exits " + str(guard.clean) + ".")^0
-("Code after the swallowing block ran: " + str(reached_after == 1))^0
-"Attempts 1 and 2 were absorbed, attempt 3 exhausted the budget and escaped," => n1
+("Selective guard: absorbed " + str(guard.absorbed) + ", forwarded " + str(guard.forwarded) + ", clean " + str(guard.clean) + ".")^0
+("Code after the swallowing block in A ran: " + str(reached_after == 1))^0
+"The selective manager reads exc_type as a CLASS and compares it to" => n1
 n1^0
-"and attempt 4 left cleanly. The only difference between A and B is one" => n2
+"ValueError directly. The only difference between A and B is one boolean," => n2
 n2^0
-"boolean, and it decides whether a failure is invisible or fatal." => n3
+"and it decides whether a failure is invisible or fatal." => n3
 n3^0
 ```
 
@@ -132,10 +145,10 @@ class PropagateAll:
     def __exit__(self, exc_type, exc_value, tb):
         return False
 
-class Budgeted:
-    def __init__(self, budget):
-        self.budget = budget
+class SwallowOnlyValueError:
+    def __init__(self):
         self.absorbed = 0
+        self.forwarded = 0
         self.clean = 0
     def __enter__(self):
         return self
@@ -143,9 +156,12 @@ class Budgeted:
         if exc_type == None:
             self.clean = self.clean + 1
             return False
-        if self.absorbed < self.budget:
+        if exc_type == ValueError:
             self.absorbed = self.absorbed + 1
+            print("    absorbing a " + str(exc_type) + ": " + str(exc_value))
             return True
+        self.forwarded = self.forwarded + 1
+        print("    forwarding a " + str(exc_type) + ": " + str(exc_value))
         return False
 
 reached_after = 0
@@ -172,28 +188,33 @@ except ValueError:
     b2 = "  caught outside, as expected"
     print(b2)
 print("")
-h3 = "C. suppression on a budget of 2"
+h3 = "C. selective: absorb ValueError, forward everything else"
 print(h3)
-guard = Budgeted(2)
-escaped = 0
-for attempt in range(1, 5):
-    try:
-        with guard as g:
-            if attempt < 4:
-                print("  attempt " + str(attempt) + ": failing")
-                raise ValueError("attempt " + str(attempt))
-            print("  attempt " + str(attempt) + ": succeeded")
-    except ValueError:
-        escaped = escaped + 1
-        print("  attempt " + str(attempt) + ": escaped to the caller")
+guard = SwallowOnlyValueError()
+with guard as g:
+    c1 = "  raising a ValueError inside the block"
+    print(c1)
+    raise ValueError("expected, handled here")
+c2 = "  ...and execution continued past the block"
+print(c2)
+try:
+    with guard as g:
+        c3 = "  raising a TypeError inside the block"
+        print(c3)
+        raise TypeError("unexpected, not ours to swallow")
+except TypeError as e:
+    print("  reached the outer handler: " + repr(e))
+with guard as g:
+    c4 = "  a clean block - __exit__ sees exc_type None"
+    print(c4)
 print("")
-print("Budget 2: absorbed " + str(guard.absorbed) + ", escaped " + str(escaped) + ", clean exits " + str(guard.clean) + ".")
-print("Code after the swallowing block ran: " + str(reached_after == 1))
-n1 = "Attempts 1 and 2 were absorbed, attempt 3 exhausted the budget and escaped,"
+print("Selective guard: absorbed " + str(guard.absorbed) + ", forwarded " + str(guard.forwarded) + ", clean " + str(guard.clean) + ".")
+print("Code after the swallowing block in A ran: " + str(reached_after == 1))
+n1 = "The selective manager reads exc_type as a CLASS and compares it to"
 print(n1)
-n2 = "and attempt 4 left cleanly. The only difference between A and B is one"
+n2 = "ValueError directly. The only difference between A and B is one boolean,"
 print(n2)
-n3 = "boolean, and it decides whether a failure is invisible or fatal."
+n3 = "and it decides whether a failure is invisible or fatal."
 print(n3)
 ```
 
@@ -208,18 +229,20 @@ B. __exit__ returns False
   raising inside the block
   caught outside, as expected
 
-C. suppression on a budget of 2
-  attempt 1: failing
-  attempt 2: failing
-  attempt 3: failing
-  attempt 3: escaped to the caller
-  attempt 4: succeeded
+C. selective: absorb ValueError, forward everything else
+  raising a ValueError inside the block
+    absorbing a <class 'ValueError'>: expected, handled here
+  ...and execution continued past the block
+  raising a TypeError inside the block
+    forwarding a <class 'TypeError'>: unexpected, not ours to swallow
+  reached the outer handler: TypeError('unexpected, not ours to swallow')
+  a clean block - __exit__ sees exc_type None
 
-Budget 2: absorbed 2, escaped 1, clean exits 1.
-Code after the swallowing block ran: True
-Attempts 1 and 2 were absorbed, attempt 3 exhausted the budget and escaped,
-and attempt 4 left cleanly. The only difference between A and B is one
-boolean, and it decides whether a failure is invisible or fatal.
+Selective guard: absorbed 1, forwarded 1, clean 1.
+Code after the swallowing block in A ran: True
+The selective manager reads exc_type as a CLASS and compares it to
+ValueError directly. The only difference between A and B is one boolean,
+and it decides whether a failure is invisible or fatal.
 ```
 
 ## Round-trip

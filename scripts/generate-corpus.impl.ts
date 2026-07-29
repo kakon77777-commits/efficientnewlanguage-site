@@ -68,14 +68,17 @@ function extractTitleAndDescription(markdown: string): { title: string; descript
   return { title, description: para.join(' ').trim() };
 }
 
-function existingSlugs(): Set<string> {
-  if (!existsSync(CORPUS_DIR)) return new Set();
-  const slugs = new Set<string>();
+/** slug -> the numbered id it was first published under. The id is STABLE:
+ *  `/ai/examples/143-exception-suppressing-manager` is a canonical URL that
+ *  agents may have already read, so regenerating must never renumber. */
+function existingIds(): Map<string, string> {
+  const ids = new Map<string, string>();
+  if (!existsSync(CORPUS_DIR)) return ids;
   for (const f of readdirSync(CORPUS_DIR)) {
-    const m = f.match(/^\d{3}-(.+)\.eml\.md$/);
-    if (m) slugs.add(m[1]!);
+    const m = f.match(/^(\d{3}-(.+))\.eml\.md$/);
+    if (m) ids.set(m[2]!, m[1]!);
   }
-  return slugs;
+  return ids;
 }
 
 function nextId(): number {
@@ -125,15 +128,35 @@ ${eventTypes.join(' · ')}
 `;
 }
 
-function generateNewCases(): void {
-  const known = existingSlugs();
-  const cases = findCaseDirs().filter((c) => !known.has(c.slug));
-  if (cases.length === 0) {
-    console.log('[generate-corpus] no new case directories to generate.');
-    return;
-  }
+/** Everything after the frontmatter comment — the part that carries meaning.
+ *  Compared instead of the whole file so that the `updated:` date only moves
+ *  when the CONTENT moved, rather than on every build. */
+function bodyOf(doc: string): string {
+  const nl = doc.indexOf('\n');
+  return nl === -1 ? doc : doc.slice(nl + 1);
+}
+
+/**
+ * Generate new cases AND refresh existing ones.
+ *
+ * This used to only ever ADD: any case whose slug was already published was
+ * filtered out and never looked at again. So when a case's .eml or README was
+ * edited in the language repo, the site kept serving the old doc forever, with
+ * no diff and no warning — `143-exception-suppressing-manager` was publishing
+ * Python that no longer matched its source, and a prose claim ("`exc_type ==
+ * ValueError` cannot be written") that the language had since made false.
+ *
+ * Silent staleness in a doc that AI agents are invited to read as ground truth
+ * is worse than a missing doc. So every case is now re-rendered every build and
+ * compared; the file is only rewritten when its body actually differs.
+ */
+function generateCases(): void {
+  const known = existingIds();
+  const all = findCaseDirs();
+  const fresh = all.filter((c) => !known.has(c.slug));
+  let regenerated = 0;
   let id = nextId();
-  for (const c of cases) {
+  for (const c of all) {
     const emlSrc = readFileSync(c.emlPath, 'utf8');
     const readmeSrc = readFileSync(c.readmePath, 'utf8');
     const { title, description } = extractTitleAndDescription(readmeSrc);
@@ -150,12 +173,27 @@ function generateNewCases(): void {
       if (!eventTypes.includes(e.type)) eventTypes.push(e.type);
     }
 
-    const paddedId = `${String(id).padStart(3, '0')}-${c.slug}`;
+    const existing = known.get(c.slug);
+    const paddedId = existing ?? `${String(id).padStart(3, '0')}-${c.slug}`;
+    const path = join(CORPUS_DIR, `${paddedId}.eml.md`);
     const doc = renderCaseDoc(paddedId, title, description, emlSrc, fwd.python, runResult.output, rt.ok, rt.message, eventTypes);
-    writeFileSync(join(CORPUS_DIR, `${paddedId}.eml.md`), doc);
+
+    if (existing) {
+      const prior = readFileSync(path, 'utf8');
+      if (bodyOf(prior) === bodyOf(doc)) continue; // unchanged — leave its `updated:` date alone
+      writeFileSync(path, doc);
+      console.log(`[generate-corpus] REGENERATED ${paddedId}.eml.md (source changed)`);
+      regenerated += 1;
+      continue;
+    }
+
+    writeFileSync(path, doc);
     console.log(`[generate-corpus] wrote ${paddedId}.eml.md`);
     id += 1;
   }
+  console.log(
+    `[generate-corpus] ${all.length} case(s): ${fresh.length} new, ${regenerated} regenerated, ${all.length - fresh.length - regenerated} already current.`,
+  );
 }
 
 function regenerateManifestAndSitemap(): void {
@@ -194,5 +232,5 @@ function regenerateManifestAndSitemap(): void {
   console.log(`[generate-corpus] sitemap.xml: ${examples.length} example entries`);
 }
 
-generateNewCases();
+generateCases();
 regenerateManifestAndSitemap();
