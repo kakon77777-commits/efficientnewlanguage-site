@@ -950,6 +950,96 @@
       "path": "/ai/examples/139-variance-with-sigma.eml.md",
       "title": "Variance two ways (Σ)",
       "description": "`variance_with_sigma.eml` computes population variance with two algebraically identical summations, and shows them disagreeing."
+    },
+    {
+      "id": "140-comprehension-pipeline",
+      "path": "/ai/examples/140-comprehension-pipeline.eml.md",
+      "title": "List comprehensions, and what they do differently",
+      "description": "`comprehension_pipeline.eml` examines list comprehensions — four corpus programs had used one, none had looked at it."
+    },
+    {
+      "id": "141-continue-and-break-filters",
+      "path": "/ai/examples/141-continue-and-break-filters.eml.md",
+      "title": "`continue` and `break` are not symmetric",
+      "description": "`continue_and_break_filters.eml` pins the interaction of the two loop escapes — used by two and nine corpus programs respectively, and never examined together."
+    },
+    {
+      "id": "142-dict-inventory-report",
+      "path": "/ai/examples/142-dict-inventory-report.eml.md",
+      "title": "Dictionaries as the primary structure",
+      "description": "`dict_inventory_report.eml` builds an inventory around a dict — seven corpus programs used a dict literal, none of them centrally."
+    },
+    {
+      "id": "143-exception-suppressing-manager",
+      "path": "/ai/examples/143-exception-suppressing-manager.eml.md",
+      "title": "`__exit__`'s return value decides everything",
+      "description": "`exception_suppressing_manager.eml` isolates the part of the context-manager protocol that surprises people."
+    },
+    {
+      "id": "144-indented-report-writer",
+      "path": "/ai/examples/144-indented-report-writer.eml.md",
+      "title": "A context manager that isn't about resources",
+      "description": "`indented_report_writer.eml` uses `with` to manage the *shape of output* rather than to release anything."
+    },
+    {
+      "id": "145-manager-enter-failure",
+      "path": "/ai/examples/145-manager-enter-failure.eml.md",
+      "title": "When cleanup does *not* run",
+      "description": "`manager_enter_failure.eml` covers the context-manager rule almost nobody states, and the one that decides whether \"cleanup always runs\" is actually true."
+    },
+    {
+      "id": "146-multiline-help-text",
+      "path": "/ai/examples/146-multiline-help-text.eml.md",
+      "title": "Triple-quoted strings, and the whitespace they capture",
+      "description": "`multiline_help_text.eml` uses triple-quoted string literals, which EML has supported since Phase 9 and which no corpus program had used."
+    },
+    {
+      "id": "147-receipt-formatter",
+      "path": "/ai/examples/147-receipt-formatter.eml.md",
+      "title": "A receipt, and what `%` rounding actually does",
+      "description": "`receipt_formatter.eml` is the smallest honest excuse to use every part of `%`-formatting at once: left-aligned names, right-aligned integers, fixed two-decimal money, and a percentage."
+    },
+    {
+      "id": "148-resource-guard-with",
+      "path": "/ai/examples/148-resource-guard-with.eml.md",
+      "title": "Cleanup that cannot be skipped (`with`)",
+      "description": "`resource_guard_with.eml` is the corpus's **first use of `with`**. EML has had context managers with a real `__enter__`/`__exit__` protocol since Phase 9, and in 134 programs not one of them used it."
+    },
+    {
+      "id": "149-run-length-encoding",
+      "path": "/ai/examples/149-run-length-encoding.eml.md",
+      "title": "A round-trip property that found a broken format",
+      "description": "`run_length_encoding.eml` implements RLE and its inverse, and checks them against each other rather than against hand-written expected strings."
+    },
+    {
+      "id": "150-set-membership-dedup",
+      "path": "/ai/examples/150-set-membership-dedup.eml.md",
+      "title": "What a set is for, and what it costs",
+      "description": "`set_membership_dedup.eml` covers set literals — used incidentally by the corpus, never examined — and the one thing they are unambiguously for: asking *have I seen this before* without scanning."
+    },
+    {
+      "id": "151-slice-toolkit",
+      "path": "/ai/examples/151-slice-toolkit.eml.md",
+      "title": "Slicing is half-open, and that's the whole story",
+      "description": "`slice_toolkit.eml` works through slicing, which five corpus programs had touched only in passing."
+    },
+    {
+      "id": "152-text-banner-builder",
+      "path": "/ai/examples/152-text-banner-builder.eml.md",
+      "title": "Sequence repetition",
+      "description": "`text_banner_builder.eml` covers `\"-\" * n` and `[0] * n` — which no corpus program had used, and which is the workhorse behind every box, rule, bar chart and padded column."
+    },
+    {
+      "id": "153-transaction-rollback-with",
+      "path": "/ai/examples/153-transaction-rollback-with.eml.md",
+      "title": "All-or-nothing, with rollback",
+      "description": "`transaction_rollback_with.eml` is the pattern `with` exists for: a change that either fully happens or fully doesn't, decided by how the block was left."
+    },
+    {
+      "id": "154-word-wrap",
+      "path": "/ai/examples/154-word-wrap.eml.md",
+      "title": "Greedy word wrap",
+      "description": "`word_wrap.eml` implements the algorithm behind every terminal that reflows text, using the string tools EML actually has."
     }
   ],
   "tools": {
