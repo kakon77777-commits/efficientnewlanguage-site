@@ -92,7 +92,7 @@
       "method": "POST",
       "path": "/ai/tools/trace",
       "doc": "/ai/tools/trace.md",
-      "description": "Generate a phosphor-jsonl-v1 trace of an EML run, plus a summary and anomalies.",
+      "description": "Generate a eml-trace-v1 trace of an EML run, plus a summary and anomalies.",
       "input_schema": {
         "type": "object",
         "required": ["source"],

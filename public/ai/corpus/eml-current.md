@@ -40,7 +40,7 @@ public playground and the live tools in this `/ai/` layer:
 | `@eml/transpiler-eml` | reverse Python→EML + round-trip fixpoint validators |
 | `@eml/transpiler-cpp` | C++20 prototype back end (non-normative) |
 | `@eml/interp` | execution-truth interpreter (faithful to CPython, test-gated) + trace producer |
-| `@eml/trace` | `phosphor-jsonl-v1` emitter/parser (browser-safe; node sink isolated) |
+| `@eml/trace` | `eml-trace-v1` emitter/parser (browser-safe; node sink isolated) |
 | `@eml/bug-classifier` | 5-level error classifier (CRITICAL · MAJOR · MINOR · TRIVIAL · COSMETIC) |
 | `@eml/cts-generator`, `@eml/symbols`, `@eml/cli`, `@eml/workbench` | CTS, symbol table, the `eml` command, the EML Workbench editor |
 
@@ -57,7 +57,7 @@ Feature surface, by phase (each shipped with tests, not promises):
 - **Phase 4 — loopKind + C⁺⁺⁺.** Static loop-classification metadata; a C++20 prototype from the
   same resolved AST (one overlay → multiple back ends).
 - **Phase 5 — Execution truth + trace.** A browser-safe interpreter computes exactly what
-  Python would (gated by tests) and emits a `phosphor-jsonl-v1` trace.
+  Python would (gated by tests) and emits a `eml-trace-v1` trace.
 
 The reference test suite enforces these behaviors (300+ cases, including an `interp ≡ python`
 stdout-equivalence gate).

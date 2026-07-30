@@ -184,7 +184,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
     play: {
       kicker: 'Interactive',
       title: 'The playground',
-      lead: 'Type EML on the left, watch the Python expansion on the right, then run it — the program actually executes in your browser and emits a phosphor-jsonl-v1 trace. This in-browser playground needs no backend server and no local Python install.',
+      lead: 'Type EML on the left, watch the Python expansion on the right, then run it — the program actually executes in your browser and emits a eml-trace-v1 trace. This in-browser playground needs no backend server and no local Python install.',
       dirEml: 'EML → Python',
       dirPy: 'Python → EML',
       example: 'Example',
@@ -244,7 +244,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
         { phase: 'Phase 2', title: 'Cold / hot + crystallization', body: '@cold pure logic becomes cacheable (@functools.cache); interprocedural purity, structural AST-hash caching, importance scoring.' },
         { phase: 'Phase 3', title: 'Temporal loops + BUG classifier', body: '@temporal_loop: a no-busy-wait asyncio runtime with a hard deadline. Errors classify into 5 levels, mapped back to EML source.' },
         { phase: 'Phase 4', title: 'loopKind + C⁺⁺⁺', body: 'Static loop-classification metadata, and a C++20 prototype from the same resolved AST — proving one overlay can target many back ends.' },
-        { phase: 'Phase 5', title: 'Execution truth + trace', body: 'A browser-safe interpreter computes exactly what Python would (gated by tests) and emits a phosphor-jsonl-v1 trace. It powers this playground.' },
+        { phase: 'Phase 5', title: 'Execution truth + trace', body: 'A browser-safe interpreter computes exactly what Python would (gated by tests) and emits a eml-trace-v1 trace. It powers this playground.' },
       ],
     },
     ai: {
@@ -284,7 +284,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
       commands: [
         { cmd: 'eml run f.eml', desc: 'transpile and execute via Python' },
         { cmd: 'eml transpile f.eml --target cpp', desc: 'EML → Python, or the C⁺⁺⁺ prototype' },
-        { cmd: 'eml trace f.eml --run', desc: 'phosphor-jsonl-v1 trace; bakes in an interp≡Python check' },
+        { cmd: 'eml trace f.eml --run', desc: 'eml-trace-v1 trace; bakes in an interp≡Python check' },
         { cmd: 'eml compress f.py', desc: 'reverse: Python (subset) → EML' },
         { cmd: 'eml roundtrip f.eml', desc: 'EML → Py → EML → Py fixpoint check' },
         { cmd: 'eml bugs f.eml --run', desc: 'classify errors (5 levels), mapped to source' },
@@ -300,7 +300,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
         { name: '@eml/transpiler-eml', role: 'reverse + round-trip validators' },
         { name: '@eml/transpiler-cpp', role: 'C⁺⁺⁺ prototype back end' },
         { name: '@eml/interp', role: 'execution-truth interpreter + trace' },
-        { name: '@eml/trace', role: 'phosphor-jsonl-v1 emitter' },
+        { name: '@eml/trace', role: 'eml-trace-v1 emitter' },
         { name: '@eml/bug-classifier', role: '5-level BUG classifier' },
         { name: '@eml/cli', role: 'the eml command' },
       ],
@@ -444,7 +444,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
     play: {
       kicker: '互動體驗',
       title: '線上示範區',
-      lead: '左邊打 EML，右邊立刻看到展開後的 Python，再按執行——程式會真的在你的瀏覽器裡跑起來，並產生一份 phosphor-jsonl-v1 trace。這個線上 Playground 不需要後端伺服器，也不需要在本機安裝 Python。',
+      lead: '左邊打 EML，右邊立刻看到展開後的 Python，再按執行——程式會真的在你的瀏覽器裡跑起來，並產生一份 eml-trace-v1 trace。這個線上 Playground 不需要後端伺服器，也不需要在本機安裝 Python。',
       dirEml: 'EML → Python',
       dirPy: 'Python → EML',
       example: '範例',
@@ -504,7 +504,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
         { phase: '階段 2', title: '冷熱分離 + 結晶化', body: '@cold 的純邏輯可以被快取（@functools.cache）；含跨函數純度分析、以結構雜湊做快取、以及重要度評分。' },
         { phase: '階段 3', title: '時間迴圈 + 錯誤分類', body: '@temporal_loop 是一套不空轉等待、且有硬性時限的 asyncio 執行期。錯誤分成五級，並對應回 EML 原始碼。' },
         { phase: '階段 4', title: 'loopKind + C⁺⁺⁺', body: '靜態的迴圈分類資訊；並由同一份 AST 產出 C++20 原型——證明一層疊加可以對應到多種後端。' },
-        { phase: '階段 5', title: '執行真相 + trace', body: '一個瀏覽器安全的直譯器，算出與 Python 完全一致的結果（有測試把關），並輸出 phosphor-jsonl-v1 trace。這個示範區就是它驅動的。' },
+        { phase: '階段 5', title: '執行真相 + trace', body: '一個瀏覽器安全的直譯器，算出與 Python 完全一致的結果（有測試把關），並輸出 eml-trace-v1 trace。這個示範區就是它驅動的。' },
       ],
     },
     ai: {
@@ -544,7 +544,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
       commands: [
         { cmd: 'eml run f.eml', desc: '轉譯後直接用 Python 執行' },
         { cmd: 'eml transpile f.eml --target cpp', desc: '轉成 Python，或 C⁺⁺⁺ 原型' },
-        { cmd: 'eml trace f.eml --run', desc: '產生 phosphor-jsonl-v1 trace，並內建 interp≡Python 比對' },
+        { cmd: 'eml trace f.eml --run', desc: '產生 eml-trace-v1 trace，並內建 interp≡Python 比對' },
         { cmd: 'eml compress f.py', desc: '反向：把 Python（子集）壓回 EML' },
         { cmd: 'eml roundtrip f.eml', desc: 'EML → Py → EML → Py 不動點檢查' },
         { cmd: 'eml bugs f.eml --run', desc: '錯誤分五級，並對應回原始碼' },
@@ -560,7 +560,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
         { name: '@eml/transpiler-eml', role: '反向轉譯 + 往返驗證' },
         { name: '@eml/transpiler-cpp', role: 'C⁺⁺⁺ 原型後端' },
         { name: '@eml/interp', role: '執行真相直譯器 + trace' },
-        { name: '@eml/trace', role: 'phosphor-jsonl-v1 輸出器' },
+        { name: '@eml/trace', role: 'eml-trace-v1 輸出器' },
         { name: '@eml/bug-classifier', role: '五級錯誤分類器' },
         { name: '@eml/cli', role: 'eml 指令' },
       ],

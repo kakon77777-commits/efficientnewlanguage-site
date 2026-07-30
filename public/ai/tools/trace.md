@@ -2,7 +2,7 @@
 
 # eml.trace — `POST /ai/tools/trace`
 
-Run EML and return a **phosphor-jsonl-v1** trace (one JSON event per line), plus a summary and any
+Run EML and return a **eml-trace-v1** trace (one JSON event per line), plus a summary and any
 anomalies. See [`eml-trace-schema.json`](../specs/eml-trace-schema.json).
 
 ## Request

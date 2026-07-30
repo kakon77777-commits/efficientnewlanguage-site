@@ -58,7 +58,7 @@ const HELP_TEXT = `Core commands:
   eml parse <file>        AST (JSON)
   eml transpile <file>    EML -> Python (also writes <file>.py into the VFS)
   eml run <file>          transpile + execute, show stdout
-  eml trace <file>        run and show the phosphor-jsonl-v1 trace
+  eml trace <file>        run and show the eml-trace-v1 trace
   eml roundtrip <file>    EML -> Py -> EML -> Py fixpoint check
   eml equiv <file>        compare EML interpreter output against real Python
   python <file.py>        run a Python file in the browser (Pyodide, Web Worker)

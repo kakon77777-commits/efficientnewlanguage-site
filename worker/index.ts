@@ -286,7 +286,7 @@ async function handleTool(toolName: string, request: Request): Promise<Response>
 }
 
 function healthBody() {
-  return { ok: true, status: 'healthy', version: VERSION, trace_proto: 'phosphor-jsonl-v1', tools: TOOL_NAMES, limits: LIMITS };
+  return { ok: true, status: 'healthy', version: VERSION, trace_proto: 'eml-trace-v1', tools: TOOL_NAMES, limits: LIMITS };
 }
 
 // Content-type for the static /ai/ surface (advanced mode ignores _headers).

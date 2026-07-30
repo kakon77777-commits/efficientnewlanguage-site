@@ -9,7 +9,7 @@ The most recent snapshot is **2026-06-30**:
 - spec: `EML-LANG-2026-v1.0`
 - eml_impl: `0.1.0`
 - ai_layer_version: `0.1.0`
-- trace_proto: `phosphor-jsonl-v1`
+- trace_proto: `eml-trace-v1`
 - tools: parse · transpile-python · transpile-eml · interpret · trace · roundtrip (live, bounded)
 
 See [`/ai/version.json`](../version.json) for the machine-readable version record and

@@ -3,7 +3,7 @@
 > EML is a deterministic semantic-overlay programming layer: it compresses high-frequency program
 > intent into compact symbols and transpiles, rule-based and reversibly, to standard languages
 > (canonical target: Python), preserving executable truth through parsing, transpilation,
-> interpretation, phosphor-jsonl-v1 trace generation, and round-trip fixpoint validation. It is not
+> interpretation, eml-trace-v1 trace generation, and round-trip fixpoint validation. It is not
 > a replacement language — it is an overlay for humans and AI agents alike. No LLM in the core
 > transpilation chain.
 
@@ -29,7 +29,7 @@ Spec: EML-LANG-2026-v1.0 · AI layer: 0.1.0
   models): /ai/specs/eml-semantic-model-v1.5.md
 - Grammar (EBNF, normative): /ai/specs/eml-grammar.ebnf
 - AST schema: /ai/specs/eml-ast-schema.json
-- Trace schema (phosphor-jsonl-v1): /ai/specs/eml-trace-schema.json
+- Trace schema (eml-trace-v1): /ai/specs/eml-trace-schema.json
 - Error / diagnostics schema: /ai/specs/eml-error-schema.json
 
 ## Corpus

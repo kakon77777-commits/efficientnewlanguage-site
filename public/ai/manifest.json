@@ -101,7 +101,7 @@
       "id": "eml-trace-schema",
       "path": "/ai/specs/eml-trace-schema.json",
       "format": "json-schema",
-      "role": "phosphor-jsonl-v1 trace schema"
+      "role": "eml-trace-v1 trace schema"
     },
     {
       "id": "eml-error-schema",

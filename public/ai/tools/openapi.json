@@ -4,7 +4,7 @@
     "title": "EML AI Tool API",
     "version": "0.1.0",
     "summary": "Bounded, machine-callable tools for EML.",
-    "description": "Bounded machine-callable tools for EML parsing, transpilation (both directions), interpretation, phosphor-jsonl-v1 trace generation, and round-trip validation. The transpiler/interpreter are deterministic and contain no LLM. No arbitrary code execution, no filesystem, no shell, no outbound network. Inputs are capped at 20000 characters. Aligned with EML-LANG-2026-v1.0.",
+    "description": "Bounded machine-callable tools for EML parsing, transpilation (both directions), interpretation, eml-trace-v1 trace generation, and round-trip validation. The transpiler/interpreter are deterministic and contain no LLM. No arbitrary code execution, no filesystem, no shell, no outbound network. Inputs are capped at 20000 characters. Aligned with EML-LANG-2026-v1.0.",
     "contact": { "name": "Neo.K / EveMissLab", "url": "https://efficientnewlanguage.org/ai/" },
     "license": { "name": "Apache-2.0", "identifier": "Apache-2.0" }
   },
@@ -75,7 +75,7 @@
       "post": {
         "tags": ["tools"],
         "operationId": "eml_trace",
-        "summary": "Generate a phosphor-jsonl-v1 trace",
+        "summary": "Generate a eml-trace-v1 trace",
         "requestBody": { "$ref": "#/components/requestBodies/ToolRequest" },
         "responses": {
           "200": { "description": "Trace result", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ToolResponse" } } } },
@@ -200,7 +200,7 @@
           "ok": { "type": "boolean" },
           "status": { "type": "string", "examples": ["healthy"] },
           "version": { "$ref": "#/components/schemas/Version" },
-          "trace_proto": { "type": "string", "examples": ["phosphor-jsonl-v1"] },
+          "trace_proto": { "type": "string", "examples": ["eml-trace-v1"] },
           "tools": { "type": "array", "items": { "type": "string" } },
           "limits": { "type": "object", "additionalProperties": true }
         }

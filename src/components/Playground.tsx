@@ -54,7 +54,7 @@ function downloadText(filename: string, content: string): void {
   URL.revokeObjectURL(url);
 }
 
-/** Compact, colour-coded presentation for one phosphor-jsonl-v1 event. */
+/** Compact, colour-coded presentation for one eml-trace-v1 event. */
 function describe(e: TraceEvent): { label: string; detail: string; tone: string } {
   const f = e as Record<string, unknown>;
   const s = (k: string) => (f[k] === undefined ? '' : String(f[k]));
@@ -446,7 +446,7 @@ function TraceView({
       </pre>
       {run.unsupported.length > 0 && <p className="mb-3 text-xs leading-6 text-amber">{c.play.deferNote}</p>}
       <div className="mb-2 font-mono text-[11px] uppercase tracking-wider text-faint">
-        phosphor-jsonl-v1 · {run.events.length} {c.play.events} · {anomalies.size} {c.play.anomalies}
+        eml-trace-v1 · {run.events.length} {c.play.events} · {anomalies.size} {c.play.anomalies}
       </div>
       <div className="overflow-hidden rounded-lg border border-line">
         {run.events.map((e, i) => {

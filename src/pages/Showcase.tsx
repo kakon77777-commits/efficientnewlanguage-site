@@ -476,8 +476,8 @@ function LiveExecution({ t }: { t: (en: string, zh: string) => string }) {
         <h2 className="font-display text-2xl font-bold tracking-tight sm:text-4xl">{t('It actually runs. Right here.', '它真的會跑。就在這裡。')}</h2>
         <p className="mt-3 text-[15px] leading-7 text-muted">
           {t(
-            'No video, no mockup. The program below executes in your browser via EML’s execution-truth interpreter, emitting a phosphor-jsonl-v1 trace.',
-            '不是影片，不是假圖。下面這段程式由 EML 的「執行真相」直譯器在你的瀏覽器裡執行，並送出 phosphor-jsonl-v1 trace。',
+            'No video, no mockup. The program below executes in your browser via EML’s execution-truth interpreter, emitting a eml-trace-v1 trace.',
+            '不是影片，不是假圖。下面這段程式由 EML 的「執行真相」直譯器在你的瀏覽器裡執行，並送出 eml-trace-v1 trace。',
           )}
         </p>
       </div>
@@ -485,7 +485,7 @@ function LiveExecution({ t }: { t: (en: string, zh: string) => string }) {
       <div className="reveal scanlines overflow-hidden rounded-2xl border border-run/30 bg-sunken">
         <div className="flex items-center gap-2 border-b border-line px-4 py-2.5">
           <span className="h-2.5 w-2.5 rounded-full bg-run/80" />
-          <span className="font-mono text-xs text-faint">eml://run · phosphor-jsonl-v1</span>
+          <span className="font-mono text-xs text-faint">eml://run · eml-trace-v1</span>
           <span className={cn('ml-auto font-mono text-[11px]', done ? 'text-run' : 'text-faint')}>{done ? t('done', '完成') : t('running…', '執行中…')}</span>
         </div>
         <div className="grid gap-0 md:grid-cols-2">

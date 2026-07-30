@@ -13,7 +13,7 @@ the browser — no backend, no local Python.
 ## Engineering state
 
 The site links to the actual EML parser, Python transpiler, reverse transpiler, execution-truth
-interpreter, `phosphor-jsonl-v1` trace, and round-trip validator (TypeScript monorepo, 300+ tests,
+interpreter, `eml-trace-v1` trace, and round-trip validator (TypeScript monorepo, 300+ tests,
 Phase 0–5 complete, `EML-LANG-2026-v1.0` frozen surface).
 
 ## AI-native state

@@ -8,7 +8,7 @@
   "eml_impl": "0.1.0",
   "ai_layer_version": "0.1.0",
   "tool_version": "0.1.0",
-  "trace_proto": "phosphor-jsonl-v1",
+  "trace_proto": "eml-trace-v1",
   "status": "active-experimental",
   "updated": "2026-07-19",
   "tools_available": [

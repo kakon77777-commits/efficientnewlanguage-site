@@ -11,7 +11,7 @@ existing symbol/overlay/expansion/diagnostic meaning, or breaking the round-trip
 Initial public release of the AI-Native Interface Layer.
 
 - **Corpus** — origin, current, design-history, engineering-notes.
-- **Specs** — v1.0 digest, normative EBNF grammar, AST / trace (phosphor-jsonl-v1) / error JSON Schemas.
+- **Specs** — v1.0 digest, normative EBNF grammar, AST / trace (eml-trace-v1) / error JSON Schemas.
 - **Examples** — 6 executable programs with toolchain-verified Python, stdout, round-trip, and traces.
 - **Tools (live, bounded)** — `parse`, `transpile-python`, `transpile-eml`, `interpret`, `trace`,
   `roundtrip` + `health`, running the real EML toolchain at the edge. Static resource limits

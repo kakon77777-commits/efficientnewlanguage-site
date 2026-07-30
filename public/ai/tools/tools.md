@@ -44,7 +44,7 @@ and stops cleanly (real Python is the target for those).
 | `eml.transpile_python` | POST | [`/ai/tools/transpile-python`](./transpile-python.md) | EML → Python |
 | `eml.transpile_eml` | POST | [`/ai/tools/transpile-eml`](./transpile-eml.md) | Python (subset) → EML |
 | `eml.interpret` | POST | [`/ai/tools/interpret`](./interpret.md) | run EML → stdout |
-| `eml.trace` | POST | [`/ai/tools/trace`](./trace.md) | run EML → phosphor-jsonl-v1 |
+| `eml.trace` | POST | [`/ai/tools/trace`](./trace.md) | run EML → eml-trace-v1 |
 | `eml.roundtrip` | POST | [`/ai/tools/roundtrip`](./roundtrip.md) | EML→Py→EML→Py fixpoint |
 | `eml.health` | GET | `/ai/tools/health` | liveness + version + limits |
 
