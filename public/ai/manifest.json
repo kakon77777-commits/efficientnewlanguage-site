@@ -1040,6 +1040,96 @@
       "path": "/ai/examples/154-word-wrap.eml.md",
       "title": "Greedy word wrap",
       "description": "`word_wrap.eml` implements the algorithm behind every terminal that reflows text, using the string tools EML actually has."
+    },
+    {
+      "id": "155-absolute-error-tracker",
+      "path": "/ai/examples/155-absolute-error-tracker.eml.md",
+      "title": "Absolute error tracker",
+      "description": "`absolute_error_tracker.eml` compares five readings against a target and reports which ones fall outside a tolerance band."
+    },
+    {
+      "id": "156-attendance-register",
+      "path": "/ai/examples/156-attendance-register.eml.md",
+      "title": "Updating a key does not move it",
+      "description": "`attendance_register.eml` keeps an attendance dict as instance state on a class, updated one mark at a time."
+    },
+    {
+      "id": "157-char-frequency-table",
+      "path": "/ai/examples/157-char-frequency-table.eml.md",
+      "title": "Counting with a dict, in first-appearance order",
+      "description": "`char_frequency_table.eml` tallies the characters of a phrase and prints a bar chart."
+    },
+    {
+      "id": "158-config-defaults-merge",
+      "path": "/ai/examples/158-config-defaults-merge.eml.md",
+      "title": "Presence is not truthiness",
+      "description": "`config_defaults_merge.eml` layers user settings over defaults, and shows the mistake that makes this harder than it looks."
+    },
+    {
+      "id": "159-coordinate-distance-table",
+      "path": "/ai/examples/159-coordinate-distance-table.eml.md",
+      "title": "Points are tuples",
+      "description": "`coordinate_distance_table.eml` measures four points against the origin, two ways."
+    },
+    {
+      "id": "160-exam-score-records",
+      "path": "/ai/examples/160-exam-score-records.eml.md",
+      "title": "A list of tuples is a table",
+      "description": "`exam_score_records.eml` holds `(name, score, attempts)` rows and reports on them."
+    },
+    {
+      "id": "161-inventory-ledger",
+      "path": "/ai/examples/161-inventory-ledger.eml.md",
+      "title": "A dict iterates in insertion order",
+      "description": "`inventory_ledger.eml` compares stock levels against reorder floors and prints a report by walking the dict."
+    },
+    {
+      "id": "162-min-max-selection",
+      "path": "/ai/examples/162-min-max-selection.eml.md",
+      "title": "`min()` and `max()` have two call shapes",
+      "description": "`min_max_selection.eml` demonstrates the rule that decides which one you are using, and the sharp edge it creates."
+    },
+    {
+      "id": "163-numeric-string-parser",
+      "path": "/ai/examples/163-numeric-string-parser.eml.md",
+      "title": "What `int()` and `float()` actually accept",
+      "description": "`numeric_string_parser.eml` walks fourteen candidate strings and reports, for each, what `int()` and `float()` do with it."
+    },
+    {
+      "id": "164-polynomial-evaluator",
+      "path": "/ai/examples/164-polynomial-evaluator.eml.md",
+      "title": "A polynomial as (coefficient, exponent) pairs",
+      "description": "`polynomial_evaluator.eml` evaluates `2x^3 - 4x^2 + 7x + 5` at four points by summing its terms explicitly."
+    },
+    {
+      "id": "165-rgb-palette-blender",
+      "path": "/ai/examples/165-rgb-palette-blender.eml.md",
+      "title": "Blending colours, one channel at a time",
+      "description": "`rgb_palette_blender.eml` adds and scales `(r, g, b)` tuples with each channel clamped independently."
+    },
+    {
+      "id": "166-running-total-sum",
+      "path": "/ai/examples/166-running-total-sum.eml.md",
+      "title": "`sum()` is less boring than it looks",
+      "description": "`running_total_sum.eml` exercises the three behaviours of `sum()` that matter and are easy to get wrong."
+    },
+    {
+      "id": "167-tuple-vs-list-choice",
+      "path": "/ai/examples/167-tuple-vs-list-choice.eml.md",
+      "title": "Tuple or list?",
+      "description": "`tuple_vs_list_choice.eml` states the rule and demonstrates both halves of it in one program."
+    },
+    {
+      "id": "168-unique-tag-collector",
+      "path": "/ai/examples/168-unique-tag-collector.eml.md",
+      "title": "Sets answer questions; lists produce sequences",
+      "description": "`unique_tag_collector.eml` counts distinct tags and demonstrates the one thing EML-P deliberately **refuses** to do with a set."
+    },
+    {
+      "id": "169-word-length-grouping",
+      "path": "/ai/examples/169-word-length-grouping.eml.md",
+      "title": "Grouping into lists, not counters",
+      "description": "`word_length_grouping.eml` buckets words by length — the other half of the dict-as-accumulator pattern, where the values are lists that grow rather than numbers that increment."
     }
   ],
   "tools": {
