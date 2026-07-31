@@ -29,6 +29,7 @@
     "playground": "/app",
     "docs": "/docs",
     "origins": "/origins",
+    "related": "/related",
     "llms": "/llms.txt",
     "ai_index": "/ai/index.md",
     "manifest": "/ai/manifest.json",
@@ -1130,6 +1131,96 @@
       "path": "/ai/examples/169-word-length-grouping.eml.md",
       "title": "Grouping into lists, not counters",
       "description": "`word_length_grouping.eml` buckets words by length — the other half of the dict-as-accumulator pattern, where the values are lists that grow rather than numbers that increment."
+    },
+    {
+      "id": "170-feature-flag-rollout",
+      "path": "/ai/examples/170-feature-flag-rollout.eml.md",
+      "title": "Promotion as a subset question",
+      "description": "`feature_flag_rollout.eml` — compares feature flags across environments."
+    },
+    {
+      "id": "171-frozen-membership-quirk",
+      "path": "/ai/examples/171-frozen-membership-quirk.eml.md",
+      "title": "A set you can ask about but never store",
+      "description": "`frozen_membership_quirk.eml` — isolates one genuine CPython quirk."
+    },
+    {
+      "id": "172-grid-coordinate-map",
+      "path": "/ai/examples/172-grid-coordinate-map.eml.md",
+      "title": "A grid keyed by (row, col)",
+      "description": "`grid_coordinate_map.eml` — a sparse grid whose keys are coordinate tuples."
+    },
+    {
+      "id": "173-hashable-key-rules",
+      "path": "/ai/examples/173-hashable-key-rules.eml.md",
+      "title": "What can be a key",
+      "description": "`hashable_key_rules.eml` — shows which values can key a dict or join a set, and what the failure says."
+    },
+    {
+      "id": "174-inventory-diff-report",
+      "path": "/ai/examples/174-inventory-diff-report.eml.md",
+      "title": "Difference is directional",
+      "description": "`inventory_diff_report.eml` — reconciles two stock snapshots."
+    },
+    {
+      "id": "175-memo-key-tuples",
+      "path": "/ai/examples/175-memo-key-tuples.eml.md",
+      "title": "Why a tuple key, not a joined string",
+      "description": "`memo_key_tuples.eml` — memoises a two-argument function by hand."
+    },
+    {
+      "id": "176-move-history-log",
+      "path": "/ai/examples/176-move-history-log.eml.md",
+      "title": "Tuples doing two jobs at once",
+      "description": "`move_history_log.eml` — logs game moves as tuples inside a tuple."
+    },
+    {
+      "id": "177-partial-order-trap",
+      "path": "/ai/examples/177-partial-order-trap.eml.md",
+      "title": "Sorting by a partial order",
+      "description": "`partial_order_trap.eml` — runs the same sort over the same sets in two input orders."
+    },
+    {
+      "id": "178-pattern-tiler",
+      "path": "/ai/examples/178-pattern-tiler.eml.md",
+      "title": "Repetition preserves the type",
+      "description": "`pattern_tiler.eml` — tiles a pattern to fill a width."
+    },
+    {
+      "id": "179-percent-format-arguments",
+      "path": "/ai/examples/179-percent-format-arguments.eml.md",
+      "title": "What `%` does with its right operand",
+      "description": "`percent_format_arguments.eml` — walks the argument rules of %-formatting."
+    },
+    {
+      "id": "180-permission-set-algebra",
+      "path": "/ai/examples/180-permission-set-algebra.eml.md",
+      "title": "For sets, `<` means subset",
+      "description": "`permission_set_algebra.eml` — models roles and permissions with set algebra."
+    },
+    {
+      "id": "181-prerequisite-checker",
+      "path": "/ai/examples/181-prerequisite-checker.eml.md",
+      "title": "\"Are all requirements met\" is a subset test",
+      "description": "`prerequisite_checker.eml` — checks course eligibility."
+    },
+    {
+      "id": "182-route-path-builder",
+      "path": "/ai/examples/182-route-path-builder.eml.md",
+      "title": "Extending a path without mutating it",
+      "description": "`route_path_builder.eml` — builds a route by concatenating tuples."
+    },
+    {
+      "id": "183-set-order-discipline",
+      "path": "/ai/examples/183-set-order-discipline.eml.md",
+      "title": "What you may and may not ask a set",
+      "description": "`set_order_discipline.eml` — states the line between order-free and order-dependent set operations."
+    },
+    {
+      "id": "184-type-preserving-ops",
+      "path": "/ai/examples/184-type-preserving-ops.eml.md",
+      "title": "One operator, four meanings",
+      "description": "`type_preserving_ops.eml` — shows what `+` and `*` mean per operand family."
     }
   ],
   "tools": {
