@@ -3,7 +3,7 @@ import { I18nProvider } from './i18n';
 import { ThemeProvider } from './theme';
 import { AppErrorBoundary } from './app/AppErrorBoundary';
 import { AppLoading } from './app/AppLoading';
-import { matchRoute } from './routes';
+import { matchRoute, relatedSlug } from './routes';
 
 // Code-split per route so the showcase landing doesn't bundle the engineering
 // app / docs (and vice versa). Cross-route navigation uses plain links (full
@@ -14,6 +14,8 @@ const Docs = lazy(() => import('./pages/Docs'));
 const Cases = lazy(() => import('./pages/Cases'));
 const Terminal = lazy(() => import('./pages/Terminal'));
 const Origins = lazy(() => import('./pages/Origins'));
+const Related = lazy(() => import('./pages/Related'));
+const RelatedProject = lazy(() => import('./pages/RelatedProject'));
 
 function currentPage(pathname: string = window.location.pathname) {
   switch (matchRoute(pathname)) {
@@ -27,6 +29,10 @@ function currentPage(pathname: string = window.location.pathname) {
       return <Terminal />;
     case 'origins':
       return <Origins />;
+    case 'related':
+      return <Related />;
+    case 'related-project':
+      return <RelatedProject slug={relatedSlug(pathname)} />;
     default:
       return <Showcase />;
   }

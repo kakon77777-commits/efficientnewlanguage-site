@@ -1,5 +1,6 @@
-// Prerenders Showcase (/), Docs (/docs), Cases (/cases), and Origins
-// (/origins) to real static HTML after the normal `vite build` has already
+// Prerenders Showcase (/), Docs (/docs), Cases (/cases), Origins (/origins),
+// the related-projects hub (/related) and every /related/<slug> page to real
+// static HTML after the normal `vite build` has already
 // produced dist/index.html
 // (the client template + hashed asset tags) and dist/ai/manifest.json (the
 // case data). /app (Engineering) is never prerendered — it stays a pure
@@ -38,7 +39,10 @@ const entryPath = resolve(ssrOutDir, 'entry-server.js');
 if (!existsSync(entryPath)) {
   throw new Error(`[prerender] expected SSR bundle at ${entryPath}, not found`);
 }
-const { renderRoute } = await import(pathToFileURL(entryPath).href);
+const { renderRoute, RELATED_SLUGS } = await import(pathToFileURL(entryPath).href);
+if (!Array.isArray(RELATED_SLUGS) || RELATED_SLUGS.length === 0) {
+  throw new Error('[prerender] entry-server exported no RELATED_SLUGS — content/related.ts registry empty?');
+}
 
 // dist/index.html's #root div isn't empty — it holds the Phase 0 static
 // boot-fallback markup (nested divs), which React's render() replaces the
@@ -68,6 +72,10 @@ function writeRoute(relDir, html) {
 writeRoute('', pageHtml(renderRoute('showcase')));
 writeRoute('docs', pageHtml(renderRoute('docs')));
 writeRoute('origins', pageHtml(renderRoute('origins')));
+writeRoute('related', pageHtml(renderRoute('related')));
+for (const slug of RELATED_SLUGS) {
+  writeRoute(`related/${slug}`, pageHtml(renderRoute('related-project', { slug })));
+}
 
 const casesDataScript = `<script id="eml-cases-data" type="application/json">${JSON.stringify(manifest.examples ?? [])}</script>`;
 const casesHtml = pageHtml(renderRoute('cases', { cases: manifest.examples ?? [] }));

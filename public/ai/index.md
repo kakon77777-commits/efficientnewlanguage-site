@@ -6,7 +6,7 @@ project_alias: EML
 maintainer: Neo.K / EveMissLab
 status: active-experimental
 ai_layer_version: 0.1.0
-updated: 2026-07-19
+updated: 2026-07-30
 -->
 
 # EML AI-Native Interface Layer
@@ -71,9 +71,33 @@ syntax — the grammar is the authority. Call tools only with bounded EML input.
 
 | Layer | Audience | Format | Where |
 | --- | --- | --- | --- |
-| Human UI | people, engineers, investors | HTML / React / Playground | `/`, `/app`, `/docs`, `/origins` |
+| Human UI | people, engineers, investors | HTML / React / Playground | `/`, `/app`, `/docs`, `/origins`, `/related` |
 | Machine Corpus | LLMs, crawlers, agents | Markdown / JSON / EBNF / JSONL | `/ai/` |
 | Agent Tools | agents, IDEs, CLIs, MCP clients | REST / OpenAPI | `/ai/tools/*` |
+
+## Sibling projects (human pages, not part of this corpus)
+
+`/related` documents other EveMissLab language and specification projects, each with its own frozen
+release and its own stated boundaries. They are **not** EML, they are not served by the tools above,
+and their release artifacts name no public repository and declare no public license — so treat those
+pages as descriptions, not as fetchable artifacts.
+
+- `/related/cair` — CAIR, Canonical Authoritative Intermediate Representation. Authoritative program
+  ontology + multi-projection + candidate write-back. `cair-mvp==1.0.0`, `/api/v1`, 105 stable
+  operations, 88 regression tests. EML appears there as the `L_E` intent / spec-normalization layer —
+  an architectural role, not a claim that this toolchain is bundled into CAIR.
+- `/related/icns` — ICNS, Interpretation-Complete Numeral Specification. A numeral has no decidable
+  meaning until its carrier, grammar, radix, bounds, ordering, equality, normalization, resolution,
+  carry and successor are declared. Spec 1.0.0 frozen, 4 profiles, 8 hash-pinned built-in schemas,
+  227 tests. Its release ships `eml-version-2-bounded`, `eml-version-3-bounded` and
+  `eml-release-train` as worked examples.
+- `/related/mnvp` — MNVP, Multi-layer Numerical Visualization Protocol. The display tier directly
+  above ICNS: `V: N x C x P -> G x R`, where every render must also return an omission manifest and
+  a fidelity report, and a colour-only or precision-inflating view is an error rather than a lint
+  warning. Spec 1.0.0 frozen, 4 profiles, 7 digest-pinned visual profiles, 5 render targets
+  (text/HTML/SVG/LaTeX/Vega-Lite), 266 tests. Relevant to agents: an infinite-weight semantic
+  (currency, fixed precision, decisive uncertainty, revoked state) may not be dropped for brevity —
+  the render fails instead.
 
 ## Status
 

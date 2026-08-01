@@ -102,6 +102,21 @@ mustPrerendered('docs/index.html', 10_000, 'id="symbols"');
 mustPrerendered('cases/index.html', 10_000, 'eml-cases-data');
 mustPrerendered('origins/index.html', 10_000, 'id="eml-u"');
 
+// 9. The /related hub plus one page per registry entry. The slug list comes from
+// the registry source itself, not from what happens to exist in dist/ — a
+// prerender loop that silently emitted nothing would otherwise pass.
+mustPrerendered('related/index.html', 10_000, 'id="related"');
+const relatedSrc = readFileSync(resolve(root, 'src/content/related.ts'), 'utf8');
+const relatedSlugs = [...relatedSrc.matchAll(/^\s*slug:\s*'([a-z0-9-]+)'/gm)].map((m) => m[1]);
+if (relatedSlugs.length === 0) {
+  fail('src/content/related.ts yielded no project slugs — registry empty or its shape changed');
+} else {
+  console.log(`[verify-dist] related projects: ${relatedSlugs.join(', ')}`);
+  for (const slug of relatedSlugs) {
+    mustPrerendered(`related/${slug}/index.html`, 10_000, 'id="docs"');
+  }
+}
+
 if (failures.length > 0) {
   console.error(`[verify-dist] FAILED (${failures.length}):`);
   for (const f of failures) console.error(`  - ${f}`);

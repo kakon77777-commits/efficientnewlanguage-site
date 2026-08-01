@@ -18,6 +18,14 @@ Spec: EML-LANG-2026-v1.0 · AI layer: 0.1.0
 - Playground (in-browser, runs the real toolchain): /app
 - Docs: /docs
 - Origins / EML-U (the original, broader vision — human + AI page): /origins
+- Related languages & specifications (sibling EveMissLab projects, not EML): /related
+  - CAIR — Canonical Authoritative Intermediate Representation (authoritative program
+    ontology, multi-projection, candidate write-back; v1.0 frozen): /related/cair
+  - ICNS — Interpretation-Complete Numeral Specification (declare a numeral's carrier,
+    grammar, ordering, resolution and successor before use; v1.0 frozen): /related/icns
+  - MNVP — Multi-layer Numerical Visualization Protocol (the display tier above ICNS:
+    every render declares what it preserved, omitted and whether it stayed faithful;
+    v1.0 frozen): /related/mnvp
 - AI-native interface: /ai/index.md
 - Machine manifest: /ai/manifest.json
 - Version: /ai/version.json

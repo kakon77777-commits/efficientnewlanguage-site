@@ -12,6 +12,11 @@ into symbols and transpiles, rule-based and reversibly, to Python.
 - **Human site** — a cinematic landing (`/`), an engineering workbench with an in-browser
   playground (`/app`), and docs (`/docs`). The playground runs the **real** EML toolchain in the
   browser (parser, transpiler, execution-truth interpreter, PHOSPHOR trace) — no backend, no Python.
+- **Related languages & specifications** (`/related` + `/related/<slug>`) — spec-grade pages for the
+  sibling EveMissLab projects that are *not* EML (currently CAIR and ICNS). Driven by the registry in
+  [`src/content/related.ts`](src/content/related.ts): adding the next project is one entry there plus
+  one URL in [`public/sitemap.xml`](public/sitemap.xml). The prerenderer and `verify-dist` both read
+  the slug list from the registry, so a new entry cannot ship un-prerendered.
 - **AI-Native Interface Layer** (`/ai/` + `/llms.txt`) — a public, non-visual, versioned,
   machine-readable surface for LLMs and agents: concept genealogy, the `EML-LANG-2026-v1.0` spec
   digest, EBNF grammar, AST / trace / error JSON Schemas, verified examples, and a manifest.

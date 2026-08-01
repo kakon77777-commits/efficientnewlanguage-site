@@ -61,6 +61,12 @@ export function Nav() {
           >
             {c.nav.origins}
           </a>
+          <a
+            href="/related"
+            className="cursor-pointer rounded-md px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:bg-panel hover:text-fg"
+          >
+            {c.nav.related}
+          </a>
         </div>
 
         <div className="ml-auto flex items-center gap-2 md:ml-0">
