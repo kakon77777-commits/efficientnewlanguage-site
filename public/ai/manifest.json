@@ -1221,6 +1221,96 @@
       "path": "/ai/examples/184-type-preserving-ops.eml.md",
       "title": "One operator, four meanings",
       "description": "`type_preserving_ops.eml` — shows what `+` and `*` mean per operand family."
+    },
+    {
+      "id": "185-bracket-tree-outline",
+      "path": "/ai/examples/185-bracket-tree-outline.eml.md",
+      "title": "Bracket tree: the round trip is the proof",
+      "description": "`bracket_tree_outline.eml` parses a bracketed string into a tree, renders it as an indented outline, and serialises it back."
+    },
+    {
+      "id": "186-connection-pool-release",
+      "path": "/ai/examples/186-connection-pool-release.eml.md",
+      "title": "Connection pool: release on every exit path",
+      "description": "`connection_pool_release.eml` is a lease-based connection pool whose releases are driven by a context manager. It exists to answer one question: does the release still happen when the body does **not** fall off the end?"
+    },
+    {
+      "id": "187-event-router-ignored-branches",
+      "path": "/ai/examples/187-event-router-ignored-branches.eml.md",
+      "title": "Event router: branches that do nothing, on purpose",
+      "description": "`event_router_ignored_branches.eml` routes four kinds of event and **deliberately ignores two of them**."
+    },
+    {
+      "id": "188-factorial-exact-digits",
+      "path": "/ai/examples/188-factorial-exact-digits.eml.md",
+      "title": "50! exactly, checked four ways",
+      "description": "`factorial_exact_digits.eml` computes 50! and then checks it against facts known independently of the multiplication that produced it."
+    },
+    {
+      "id": "189-fibonacci-cassini-exact",
+      "path": "/ai/examples/189-fibonacci-cassini-exact.eml.md",
+      "title": "Fibonacci to F(200), checked with Cassini",
+      "description": "`fibonacci_cassini_exact.eml` builds Fibonacci numbers to F(200) and checks them with an identity a float implementation cannot pass and cannot fake."
+    },
+    {
+      "id": "190-long-division-exact",
+      "path": "/ai/examples/190-long-division-exact.eml.md",
+      "title": "Exact integer division, by hand",
+      "description": "`long_division_exact.eml` implements exact integer division digit by digit, **because EML-P has no `//` operator**."
+    },
+    {
+      "id": "191-money-in-cents",
+      "path": "/ai/examples/191-money-in-cents.eml.md",
+      "title": "The same invoice, in floats and in cents",
+      "description": "`money_in_cents.eml` totals one invoice twice — in floating-point dollars and in integer cents — and reconciles both against a bank that only accepts whole cents."
+    },
+    {
+      "id": "192-nested-config-merge",
+      "path": "/ai/examples/192-nested-config-merge.eml.md",
+      "title": "Deep config merge: the sibling that disappears",
+      "description": "`nested_config_merge.eml` merges layered configuration — defaults, then overrides — the way every “defaults, environment, command line” system has to."
+    },
+    {
+      "id": "193-pascal-row-exact",
+      "path": "/ai/examples/193-pascal-row-exact.eml.md",
+      "title": "Row 80 of Pascal’s triangle, exactly",
+      "description": "`pascal_row_exact.eml` builds row 80 of Pascal's triangle by addition and checks it against three global properties."
+    },
+    {
+      "id": "194-recursive-descent-calculator",
+      "path": "/ai/examples/194-recursive-descent-calculator.eml.md",
+      "title": "Recursive descent: precedence lives in the nesting",
+      "description": "`recursive_descent_calculator.eml` parses and evaluates arithmetic expressions with real operator precedence, parentheses, unary minus and error reporting."
+    },
+    {
+      "id": "195-retry-with-backoff-ledger",
+      "path": "/ai/examples/195-retry-with-backoff-ledger.eml.md",
+      "title": "Retry with backoff, and the ledger that audits it",
+      "description": "`retry_with_backoff_ledger.eml` implements exponential-backoff retry and then proves the retry loop did not lie about what it did."
+    },
+    {
+      "id": "196-ring-buffer-bounds-report",
+      "path": "/ai/examples/196-ring-buffer-bounds-report.eml.md",
+      "title": "Ring buffer: telling a bad read from a bad write",
+      "description": "`ring_buffer_bounds_report.eml` is a fixed-capacity ring buffer whose error handler tells reads and writes apart **by reading the message**."
+    },
+    {
+      "id": "197-shift-roster-constraints",
+      "path": "/ai/examples/197-shift-roster-constraints.eml.md",
+      "title": "Shift roster: the builder does not get to grade itself",
+      "description": "`shift_roster_constraints.eml` builds a weekly roster greedily under four hard constraints, then audits the finished roster against those same constraints re-derived from scratch."
+    },
+    {
+      "id": "198-thermostat-class-defaults",
+      "path": "/ai/examples/198-thermostat-class-defaults.eml.md",
+      "title": "Thermostats: a factory default shared until it is overridden",
+      "description": "`thermostat_class_defaults.eml` models the shape every settings object has — a default on the **class**, a per-object override on the **instance** — and checks that the boundary between them holds."
+    },
+    {
+      "id": "199-transaction-rollback-finally",
+      "path": "/ai/examples/199-transaction-rollback-finally.eml.md",
+      "title": "Transaction log: `finally` as the only thing holding the books",
+      "description": "`transaction_rollback_finally.eml` is a small transaction log in which `finally` is the only thing standing between a half-applied batch and a consistent one."
     }
   ],
   "tools": {
