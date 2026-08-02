@@ -1311,6 +1311,96 @@
       "path": "/ai/examples/199-transaction-rollback-finally.eml.md",
       "title": "Transaction log: `finally` as the only thing holding the books",
       "description": "`transaction_rollback_finally.eml` is a small transaction log in which `finally` is the only thing standing between a half-applied batch and a consistent one."
+    },
+    {
+      "id": "200-base32-codec-padding",
+      "path": "/ai/examples/200-base32-codec-padding.eml.md",
+      "title": "The padding table is the whole specification",
+      "description": "`base32_codec_padding.eml` is a hand-written Base32 codec, and the only hard part is how many `=` characters go on the end."
+    },
+    {
+      "id": "201-dict-key-identity-collapse",
+      "path": "/ai/examples/201-dict-key-identity-collapse.eml.md",
+      "title": "Three keys that are one key",
+      "description": "`dict_key_identity_collapse.eml` is about `{1: \"int\", 1.0: \"float\", True: \"bool\"}` having one entry, and the asymmetry that makes it hard to see."
+    },
+    {
+      "id": "202-dimensional-unit-guard",
+      "path": "/ai/examples/202-dimensional-unit-guard.eml.md",
+      "title": "A factor table will convert metres to seconds",
+      "description": "`dimensional_unit_guard.eml` converts between units and refuses to convert between dimensions - which is the part a factor table cannot do."
+    },
+    {
+      "id": "203-fixed-width-record-parser",
+      "path": "/ai/examples/203-fixed-width-record-parser.eml.md",
+      "title": "Fixed-width records: where clamping does the most damage",
+      "description": "`fixed_width_record_parser.eml` parses column-offset records — the format in which a truncated line and a valid line are indistinguishable after the slices have run."
+    },
+    {
+      "id": "204-iban-mod97-validator",
+      "path": "/ai/examples/204-iban-mod97-validator.eml.md",
+      "title": "Mod 97 on a number too big to hold",
+      "description": "`iban_mod97_validator.eml` validates IBANs by the ISO 13616 rule - rearrange, expand letters to digits, take the whole thing mod 97 - and does it twice, because the number does not fit anywhere."
+    },
+    {
+      "id": "205-interval-overlap-detector",
+      "path": "/ai/examples/205-interval-overlap-detector.eml.md",
+      "title": "Back-to-back is not an overlap",
+      "description": "`interval_overlap_detector.eml` decides whether two time intervals overlap, and the whole case is one comparison operator."
+    },
+    {
+      "id": "206-longest-palindromic-run",
+      "path": "/ai/examples/206-longest-palindromic-run.eml.md",
+      "title": "Longest palindrome: an off-by-one that produces a longer answer",
+      "description": "`longest_palindromic_run.eml` finds the longest palindromic substring by expanding around every centre, and never trusts what it extracts."
+    },
+    {
+      "id": "207-rotate-without-step",
+      "path": "/ai/examples/207-rotate-without-step.eml.md",
+      "title": "Rotation: the two-slice idiom, and why it needs a modulo",
+      "description": "`rotate_without_step.eml` rotates a sequence with two slices and reverses one without a step — because EML-P slices take two parts and `xs[::-1]` does not parse."
+    },
+    {
+      "id": "208-run-length-escaping",
+      "path": "/ai/examples/208-run-length-escaping.eml.md",
+      "title": "The fix that feels right and makes it worse",
+      "description": "`run_length_escaping.eml` implements run-length encoding three ways, and the point is that the middle one - the obvious fix - is worse than the bug it was meant to repair."
+    },
+    {
+      "id": "209-schema-validator-all-errors",
+      "path": "/ai/examples/209-schema-validator-all-errors.eml.md",
+      "title": "Report every error, not the first one",
+      "description": "`schema_validator_all_errors.eml` validates records against a small schema twice - stopping at the first problem, and collecting all of them - and checks the thing that separates the two."
+    },
+    {
+      "id": "210-sliding-window-slices",
+      "path": "/ai/examples/210-sliding-window-slices.eml.md",
+      "title": "Sliding windows: the bug is always at the ends",
+      "description": "`sliding_window_slices.eml` builds sliding windows over a sequence entirely from slices, and checks them where every windowing bug lives — at the two boundaries."
+    },
+    {
+      "id": "211-sort-stability-witness",
+      "path": "/ai/examples/211-sort-stability-witness.eml.md",
+      "title": "Sorted is not the same as stable",
+      "description": "`sort_stability_witness.eml` runs two insertion sorts that differ by one character, verifies both sort correctly, and shows only one of them is usable."
+    },
+    {
+      "id": "212-state-machine-trace-audit",
+      "path": "/ai/examples/212-state-machine-trace-audit.eml.md",
+      "title": "Two different ways for a log to be illegal",
+      "description": "`state_machine_trace_audit.eml` replays an event log against a state machine and reports what the machine did with each event - rather than whether the log as a whole is valid."
+    },
+    {
+      "id": "213-text-truncate-ellipsis",
+      "path": "/ai/examples/213-text-truncate-ellipsis.eml.md",
+      "title": "Truncating with an ellipsis: three silent bugs in one line",
+      "description": "`text_truncate_ellipsis.eml` truncates text to a column budget, and shows what the four-line version everyone writes actually does."
+    },
+    {
+      "id": "214-verhoeff-check-digit",
+      "path": "/ai/examples/214-verhoeff-check-digit.eml.md",
+      "title": "A checksum that notices order",
+      "description": "`verhoeff_check_digit.eml` implements the Verhoeff check digit and measures the thing it does that Luhn cannot."
     }
   ],
   "tools": {
