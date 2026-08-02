@@ -135,6 +135,27 @@ jobs:
           DEPLOY_TIMESTAMP: ${{ github.event.head_commit.timestamp || github.event.pull_request.updated_at }}
         run: node scripts/deploy-report.mjs
 
+      # Only for real production deploys (push to main) — never for PR/preview
+      # branches, whose deploy URL is a *.neokpolaris.pages.dev subdomain that
+      # wouldn't match efficientnewlanguage.org's registered base_url anyway.
+      # Runs only after the smoke test above already confirmed the deploy is
+      # actually live, not merely that `wrangler pages deploy` returned 0.
+      - name: Notify Continuous Discovery Beacon
+        if: github.ref == 'refs/heads/main'
+        env:
+          BEACON_SUBMIT_TOKEN: ${{ secrets.BEACON_SUBMIT_TOKEN_EML }}
+        run: |
+          if [ -z "$BEACON_SUBMIT_TOKEN" ]; then
+            echo "BEACON_SUBMIT_TOKEN_EML not set - skipping Beacon notification"
+            exit 0
+          fi
+          curl --fail-with-body -sS -X POST "https://beacon.evemiss.com/api/v1/events" \
+            -H "Authorization: Bearer $BEACON_SUBMIT_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "User-Agent: efficientnewlanguage-site-deploy-notify/1.0" \
+            -d "{\"site_id\":\"efficientnewlanguage_org\",\"url\":\"https://efficientnewlanguage.org/\",\"event_type\":\"updated\",\"content_hash\":\"git-${{ github.sha }}\",\"title\":\"EML site\",\"auto_dispatch\":true}" \
+            || echo "::warning::Beacon notification failed - deploy itself succeeded, this is non-fatal"
+
       - name: Upload deploy report
         uses: actions/upload-artifact@v4
         with:
