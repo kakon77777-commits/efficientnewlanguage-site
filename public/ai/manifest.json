@@ -1401,6 +1401,96 @@
       "path": "/ai/examples/214-verhoeff-check-digit.eml.md",
       "title": "A checksum that notices order",
       "description": "`verhoeff_check_digit.eml` implements the Verhoeff check digit and measures the thing it does that Luhn cannot."
+    },
+    {
+      "id": "215-at-least-once-delivery",
+      "path": "/ai/examples/215-at-least-once-delivery.eml.md",
+      "title": "Duplicates are a property of the handler",
+      "description": "`at_least_once_delivery.eml` replays a delivery log with known redeliveries through three handlers and compares each against the answer computed from the distinct messages alone."
+    },
+    {
+      "id": "216-average-of-averages",
+      "path": "/ai/examples/216-average-of-averages.eml.md",
+      "title": "Winning every group and losing the company",
+      "description": "`average_of_averages.eml` computes a company-wide rate two ways over the same data and shows the two disagree about which method is better."
+    },
+    {
+      "id": "217-cache-staleness-witness",
+      "path": "/ai/examples/217-cache-staleness-witness.eml.md",
+      "title": "Evicting the key you wrote is not enough",
+      "description": "`cache_staleness_witness.eml` replays a write history against three cache-invalidation strategies and asks every question after every write."
+    },
+    {
+      "id": "218-case-fold-collisions",
+      "path": "/ai/examples/218-case-fold-collisions.eml.md",
+      "title": "Two ways to lose a user, one of them silent",
+      "description": "`case_fold_collisions.eml` folds usernames for uniqueness three ways and measures each against a separately stated ground truth about who is who."
+    },
+    {
+      "id": "219-comparator-not-a-total-order",
+      "path": "/ai/examples/219-comparator-not-a-total-order.eml.md",
+      "title": "Sorted twelve different ways",
+      "description": "`comparator_not_a_total_order.eml` sorts one multiset under three comparators, over every permutation of the input, and counts the distinct answers."
+    },
+    {
+      "id": "220-error-masked-by-finally",
+      "path": "/ai/examples/220-error-masked-by-finally.eml.md",
+      "title": "Cleanup that deletes the reason",
+      "description": "`error_masked_by_finally.eml` runs the same failing operation through four `try/finally` shapes and reports what the caller actually observes."
+    },
+    {
+      "id": "221-float-key-instability",
+      "path": "/ai/examples/221-float-key-instability.eml.md",
+      "title": "Three wrong premises about floating point",
+      "description": "`float_key_instability.eml` looks values up in a table keyed by a number that was computed rather than typed, and records the three premises it started from — all wrong."
+    },
+    {
+      "id": "222-idempotence-witness",
+      "path": "/ai/examples/222-idempotence-witness.eml.md",
+      "title": "Safe once, not safe twice",
+      "description": "`idempotence_witness.eml` applies four cleanup routines up to five times each and checks the property that every retry depends on: `f(f(x)) == f(x)`."
+    },
+    {
+      "id": "223-lost-update-schedule",
+      "path": "/ai/examples/223-lost-update-schedule.eml.md",
+      "title": "Every interleaving, written down",
+      "description": "`lost_update_schedule.eml` enumerates all 20 interleavings of two read-modify-write transactions and runs three strategies over every one."
+    },
+    {
+      "id": "224-memo-key-collision",
+      "path": "/ai/examples/224-memo-key-collision.eml.md",
+      "title": "The cache key that answers the wrong question",
+      "description": "`memo_key_collision.eml` memoizes a two-argument function three ways and measures which of the three keys is a key at all."
+    },
+    {
+      "id": "225-partial-parse-accepted",
+      "path": "/ai/examples/225-partial-parse-accepted.eml.md",
+      "title": "The parser that reads as far as it understands",
+      "description": "`partial_parse_accepted.eml` compares two parsers for the same grammar, differing by one check: whether the whole input was consumed."
+    },
+    {
+      "id": "226-partial-write-rollback",
+      "path": "/ai/examples/226-partial-write-rollback.eml.md",
+      "title": "Validating first is not a way back",
+      "description": "`partial_write_rollback.eml` replays a transfer history against three write strategies and checks the one invariant that can see the damage."
+    },
+    {
+      "id": "227-successive-percentage-order",
+      "path": "/ai/examples/227-successive-percentage-order.eml.md",
+      "title": "Three tiers of commuting, and only one is safe",
+      "description": "`successive_percentage_order.eml` applies promotion stacks in every order over several prices and counts the distinct outcomes."
+    },
+    {
+      "id": "228-timeout-vs-completion",
+      "path": "/ai/examples/228-timeout-vs-completion.eml.md",
+      "title": "A timeout is a fact about the client",
+      "description": "`timeout_vs_completion.eml` sweeps a matrix of when the server finishes against how long the client waits, under three client policies."
+    },
+    {
+      "id": "229-top-n-undefined-tiebreak",
+      "path": "/ai/examples/229-top-n-undefined-tiebreak.eml.md",
+      "title": "The top three is not a set",
+      "description": "`top_n_undefined_tiebreak.eml` computes \"the top three\" four ways over every permutation of a leaderboard with a three-way tie."
     }
   ],
   "tools": {
