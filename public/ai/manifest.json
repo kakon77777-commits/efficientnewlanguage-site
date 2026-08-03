@@ -1491,6 +1491,102 @@
       "path": "/ai/examples/229-top-n-undefined-tiebreak.eml.md",
       "title": "The top three is not a set",
       "description": "`top_n_undefined_tiebreak.eml` computes \"the top three\" four ways over every permutation of a leaderboard with a three-way tie."
+    },
+    {
+      "id": "230-absent-vs-empty-vs-zero",
+      "path": "/ai/examples/230-absent-vs-empty-vs-zero.eml.md",
+      "title": "Three kinds of nothing, one falsy value",
+      "description": "`absent_vs_empty_vs_zero.eml` merges a user config over defaults three ways and compares each against a separately stated intent."
+    },
+    {
+      "id": "231-apportionment-remainder",
+      "path": "/ai/examples/231-apportionment-remainder.eml.md",
+      "title": "Every part rounded correctly, and the total is wrong",
+      "description": "`apportionment_remainder.eml` allocates a whole across shares three ways and checks that the parts sum back to the whole."
+    },
+    {
+      "id": "232-base-conversion-roundtrip",
+      "path": "/ai/examples/232-base-conversion-roundtrip.eml.md",
+      "title": "Round-tripping and canonicality are different claims",
+      "description": "`base_conversion_roundtrip.eml` encodes and decodes integers in every base from 2 to 16 and checks two separate properties."
+    },
+    {
+      "id": "233-boundary-inclusive-or-not",
+      "path": "/ai/examples/233-boundary-inclusive-or-not.eml.md",
+      "title": "Four readings of one sentence, differing on two values",
+      "description": "`boundary_inclusive_or_not.eml` compares the four interval conventions and checks the property consecutive ranges need."
+    },
+    {
+      "id": "234-catastrophic-cancellation",
+      "path": "/ai/examples/234-catastrophic-cancellation.eml.md",
+      "title": "Same algebra, and one arrangement keeps its digits",
+      "description": "`catastrophic_cancellation.eml` computes variance, a quadratic root and a difference of squares two ways each, against an exact reference."
+    },
+    {
+      "id": "235-counter-vs-histogram",
+      "path": "/ai/examples/235-counter-vs-histogram.eml.md",
+      "title": "The percentile you threw away at write time",
+      "description": "`counter_vs_histogram.eml` summarises two workloads with the same mean and very different tails, then tries to recover the percentiles from each summary."
+    },
+    {
+      "id": "236-empty-input-conventions",
+      "path": "/ai/examples/236-empty-input-conventions.eml.md",
+      "title": "Four empty answers are forced; the fifth has none",
+      "description": "`empty_input_conventions.eml` checks each aggregate's empty-input answer against the law that forces it."
+    },
+    {
+      "id": "237-event-order-without-clock",
+      "path": "/ai/examples/237-event-order-without-clock.eml.md",
+      "title": "Most pairs right, and the ones that matter inverted",
+      "description": "`event_order_without_clock.eml` reconstructs an event order from timestamps written by two clocks that disagree, and checks it against causality."
+    },
+    {
+      "id": "238-fixed-width-overflow",
+      "path": "/ai/examples/238-fixed-width-overflow.eml.md",
+      "title": "Correct in Python, wrong everywhere it will be ported",
+      "description": "`fixed_width_overflow.eml` implements 32-bit signed arithmetic explicitly and runs the same computations both ways."
+    },
+    {
+      "id": "239-integer-division-sign",
+      "path": "/ai/examples/239-integer-division-sign.eml.md",
+      "title": "Two right answers to -7 / 2",
+      "description": "`integer_division_sign.eml` implements truncating division alongside Python's floor division and checks both against the identity that defines them."
+    },
+    {
+      "id": "240-log-sampling-bias",
+      "path": "/ai/examples/240-log-sampling-bias.eml.md",
+      "title": "Same number of records, different questions",
+      "description": "`log_sampling_bias.eml` samples a request stream two ways and measures which questions each sample can still answer."
+    },
+    {
+      "id": "241-metric-cardinality-explosion",
+      "path": "/ai/examples/241-metric-cardinality-explosion.eml.md",
+      "title": "A label that looked like it had five values",
+      "description": "`metric_cardinality_explosion.eml` counts the time series each labelling produces and compares them against what the label domains predict."
+    },
+    {
+      "id": "242-percentage-points-vs-percent",
+      "path": "/ai/examples/242-percentage-points-vs-percent.eml.md",
+      "title": "Points add and reverse; relative changes do not",
+      "description": "`percentage_points_vs_percent.eml` distinguishes the two units hiding behind \"it went up 2%\", in integer basis points so no float enters the comparison."
+    },
+    {
+      "id": "243-silent-drop-accounting",
+      "path": "/ai/examples/243-silent-drop-accounting.eml.md",
+      "title": "Same output, and only one can say what went missing",
+      "description": "`silent_drop_accounting.eml` runs a four-stage pipeline twice — once plain, once with a ledger — and reconciles the counts."
+    },
+    {
+      "id": "244-text-length-is-three-numbers",
+      "path": "/ai/examples/244-text-length-is-three-numbers.eml.md",
+      "title": "One character, three lengths",
+      "description": "`text_length_is_three_numbers.eml` measures the same strings in code points, UTF-8 bytes and terminal columns."
+    },
+    {
+      "id": "245-whitespace-normalization-loss",
+      "path": "/ai/examples/245-whitespace-normalization-loss.eml.md",
+      "title": "All three are idempotent; only one is lossless",
+      "description": "`whitespace_normalization_loss.eml` compares trim, collapse and strip-all as normalizers, and checks the property each actually needs."
     }
   ],
   "tools": {

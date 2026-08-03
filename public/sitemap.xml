@@ -252,4 +252,20 @@
   <url><loc>https://efficientnewlanguage.org/ai/examples/227-successive-percentage-order.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/examples/228-timeout-vs-completion.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/examples/229-top-n-undefined-tiebreak.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/230-absent-vs-empty-vs-zero.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/231-apportionment-remainder.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/232-base-conversion-roundtrip.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/233-boundary-inclusive-or-not.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/234-catastrophic-cancellation.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/235-counter-vs-histogram.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/236-empty-input-conventions.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/237-event-order-without-clock.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/238-fixed-width-overflow.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/239-integer-division-sign.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/240-log-sampling-bias.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/241-metric-cardinality-explosion.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/242-percentage-points-vs-percent.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/243-silent-drop-accounting.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/244-text-length-is-three-numbers.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/245-whitespace-normalization-loss.eml.md</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
 </urlset>
