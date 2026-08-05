@@ -1587,6 +1587,96 @@
       "path": "/ai/examples/245-whitespace-normalization-loss.eml.md",
       "title": "All three are idempotent; only one is lossless",
       "description": "`whitespace_normalization_loss.eml` compares trim, collapse and strip-all as normalizers, and checks the property each actually needs."
+    },
+    {
+      "id": "246-age-at-date-leap-day",
+      "path": "/ai/examples/246-age-at-date-leap-day.eml.md",
+      "title": "Age at a date — three defensible answers on 29 February",
+      "description": "`age_at_date_leap_day.eml` computes age four ways and compares them against a reference table written from the definition rather than from any of the implementations."
+    },
+    {
+      "id": "247-backoff-thundering-herd",
+      "path": "/ai/examples/247-backoff-thundering-herd.eml.md",
+      "title": "Backoff and the thundering herd — a policy that synchronises load",
+      "description": "`backoff_thundering_herd.eml` retries 100 clients after a shared outage under four policies — fixed, exponential, jittered, decorrelated — and reports the **peak** concurrent retry count, not the average."
+    },
+    {
+      "id": "248-bounded-queue-backpressure",
+      "path": "/ai/examples/248-bounded-queue-backpressure.eml.md",
+      "title": "Bounded queue backpressure — a bigger buffer is not more capacity",
+      "description": "`bounded_queue_backpressure.eml` runs one burst arrival pattern through three full-queue policies — drop-newest, drop-oldest, block — at three queue sizes, and reports loss, stalls, and the age of what was served."
+    },
+    {
+      "id": "249-cache-eviction-policy",
+      "path": "/ai/examples/249-cache-eviction-policy.eml.md",
+      "title": "Cache eviction policy — the workload decides, not the policy",
+      "description": "`cache_eviction_policy.eml` runs LRU, LFU and FIFO over three access traces chosen because each defeats a different policy, and compares all three against the offline (Belady) optimum."
+    },
+    {
+      "id": "250-date-parse-ambiguity",
+      "path": "/ai/examples/250-date-parse-ambiguity.eml.md",
+      "title": "Date parse ambiguity — information that is not in the string",
+      "description": "`date_parse_ambiguity.eml` parses slashed dates under DD/MM and MM/DD and measures how far apart the two readings land."
+    },
+    {
+      "id": "251-deadlock-by-lock-order",
+      "path": "/ai/examples/251-deadlock-by-lock-order.eml.md",
+      "title": "Deadlock by lock order — the defect that exists only in the pair",
+      "description": "`deadlock_by_lock_order.eml` enumerates every interleaving of two transactions that take the same two locks in opposite orders, then repeats the enumeration with a consistent global lock order."
+    },
+    {
+      "id": "252-leader-lease-expiry",
+      "path": "/ai/examples/252-leader-lease-expiry.eml.md",
+      "title": "Leader lease expiry — two leaders, no bug",
+      "description": "`leader_lease_expiry.eml` runs a lease-based leader election under clock skew and sweeps the guard band to find the value that eliminates both overlap (two leaders) and gap (no leader)."
+    },
+    {
+      "id": "253-local-time-gap-and-overlap",
+      "path": "/ai/examples/253-local-time-gap-and-overlap.eml.md",
+      "title": "Local time gap and overlap — a label, not an instant",
+      "description": "`local_time_gap_and_overlap.eml` maps local times to instants across a spring-forward and an autumn-back transition, and counts how many local times survive a round trip."
+    },
+    {
+      "id": "254-month-end-arithmetic",
+      "path": "/ai/examples/254-month-end-arithmetic.eml.md",
+      "title": "Month-end arithmetic — two correct answers to \"renew monthly\"",
+      "description": "`month_end_arithmetic.eml` renews a subscription that started on 31 January twelve times, two ways: by stepping forward one month at a time, and by adding *n* months to the original start date."
+    },
+    {
+      "id": "255-pagination-shifting-data",
+      "path": "/ai/examples/255-pagination-shifting-data.eml.md",
+      "title": "Pagination over shifting data — the skip nobody notices",
+      "description": "`pagination_shifting_data.eml` walks a collection page by page with a row inserted or deleted *before the window* between requests, under offset pagination and keyset (cursor) pagination."
+    },
+    {
+      "id": "256-partitioned-queue-ordering",
+      "path": "/ai/examples/256-partitioned-queue-ordering.eml.md",
+      "title": "Partitioned queue ordering — the order you routed on, and no other",
+      "description": "`partitioned_queue_ordering.eml` routes a stream of related events through 1 to 6 partitions and counts two different kinds of ordering violation: within a partition key, and across keys."
+    },
+    {
+      "id": "257-rate-limit-window-shape",
+      "path": "/ai/examples/257-rate-limit-window-shape.eml.md",
+      "title": "Rate limit window shape — three limiters, three actual limits",
+      "description": "`rate_limit_window_shape.eml` replays a boundary-exploiting client through a fixed window, a sliding window and two token buckets, and reports the largest number of requests admitted in **any** 60-tick span."
+    },
+    {
+      "id": "258-timeout-budget-across-hops",
+      "path": "/ai/examples/258-timeout-budget-across-hops.eml.md",
+      "title": "Timeout budget across hops — four 5-second timeouts are not a 5-second bound",
+      "description": "`timeout_budget_across_hops.eml` sends a request across four services under fixed per-hop timeouts and under a propagated deadline, and reports the user's wait, whether it succeeded, and how much work ran after the caller had already given up."
+    },
+    {
+      "id": "259-two-phase-commit-window",
+      "path": "/ai/examples/259-two-phase-commit-window.eml.md",
+      "title": "Two-Phase Commit — the in-doubt window",
+      "description": "`two_phase_commit_window.eml` runs 2PC through a coordinator crash at every point in the protocol, under three participant strategies for what to do while in doubt: wait, presume-abort, presume-commit."
+    },
+    {
+      "id": "260-week-numbering-conventions",
+      "path": "/ai/examples/260-week-numbering-conventions.eml.md",
+      "title": "Week numbering conventions — \"week 1\" is at least three weeks",
+      "description": "`week_numbering_conventions.eml` sweeps a year day by day under ISO, \"simple\" (week 1 starts 1 January) and US (weeks start Sunday) numbering, and checks the properties a week number needs to work as a grouping key."
     }
   ],
   "tools": {
