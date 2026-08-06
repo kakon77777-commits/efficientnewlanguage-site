@@ -1677,6 +1677,96 @@
       "path": "/ai/examples/260-week-numbering-conventions.eml.md",
       "title": "Week numbering conventions — \"week 1\" is at least three weeks",
       "description": "`week_numbering_conventions.eml` sweeps a year day by day under ISO, \"simple\" (week 1 starts 1 January) and US (weeks start Sunday) numbering, and checks the properties a week number needs to work as a grouping key."
+    },
+    {
+      "id": "261-base-rate-and-precision",
+      "path": "/ai/examples/261-base-rate-and-precision.eml.md",
+      "title": "Base rate and precision — 99% accurate, and most alerts are false",
+      "description": "`base_rate_and_precision.eml` holds a test fixed at 99% sensitivity and 99% specificity, sweeps the base rate, and reports precision at each one."
+    },
+    {
+      "id": "262-leading-zero-identifiers",
+      "path": "/ai/examples/262-leading-zero-identifiers.eml.md",
+      "title": "Leading-zero identifiers — two customers, one key",
+      "description": "`leading_zero_identifiers.eml` runs real-shaped identifiers through an integer round trip and counts three separate failures: identifiers that do not come back as themselves, distinct identifiers that **collide**, and identifiers that lose digits to float precision."
+    },
+    {
+      "id": "263-mean-median-skew",
+      "path": "/ai/examples/263-mean-median-skew.eml.md",
+      "title": "Mean, median, skew — the average nobody experienced",
+      "description": "`mean_median_skew.eml` computes three \"averages\" over a skewed latency sample and a symmetric control, and measures two things a report never shows: what fraction of observations are worse than the mean, and how far one extreme value moves each statistic."
+    },
+    {
+      "id": "264-money-float-accumulation",
+      "path": "/ai/examples/264-money-float-accumulation.eml.md",
+      "title": "Money in floats — a difference that prints as -0.00",
+      "description": "`money_float_accumulation.eml` adds the same money two ways — as floats and as integer cents — over runs of 10 to 2000 items, and reports equality, the direction of the gap, and what a reconciliation report would print."
+    },
+    {
+      "id": "265-non-transitive-comparator",
+      "path": "/ai/examples/265-non-transitive-comparator.eml.md",
+      "title": "Non-transitive comparator — three answers, and the postcondition likes all of them",
+      "description": "`non_transitive_comparator.eml` runs three sorting algorithms over every permutation of a comparator with a three-element cycle, and counts distinct outputs."
+    },
+    {
+      "id": "266-percent-composition",
+      "path": "/ai/examples/266-percent-composition.eml.md",
+      "title": "Percent composition — a positive average quarter and a losing year",
+      "description": "`percent_composition.eml` composes sequences of percentage changes and compares the arithmetic mean of the periods against the actual total."
+    },
+    {
+      "id": "267-percentile-composition",
+      "path": "/ai/examples/267-percentile-composition.eml.md",
+      "title": "Percentile composition — every backend meets its p99, one request in ten is slow",
+      "description": "`percentile_composition.eml` computes the p99 of a request that fans out to N backends and waits for all of them, exactly, with no simulation."
+    },
+    {
+      "id": "268-rounding-rule-drift",
+      "path": "/ai/examples/268-rounding-rule-drift.eml.md",
+      "title": "Rounding rule drift — why banks use the rule that looks arbitrary",
+      "description": "`rounding_rule_drift.eml` rounds every half from 0 to 20 under four tie-breaking rules and measures the drift each one introduces into the total."
+    },
+    {
+      "id": "269-simpsons-paradox",
+      "path": "/ai/examples/269-simpsons-paradox.eml.md",
+      "title": "Simpson's paradox — a treatment that wins every group and loses overall",
+      "description": "`simpsons_paradox.eml` compares two treatments on two kinds of case. A has a better success rate on easy cases **and** on hard cases. B has a better rate overall."
+    },
+    {
+      "id": "270-sort-key-mismatch-binary-search",
+      "path": "/ai/examples/270-sort-key-mismatch-binary-search.eml.md",
+      "title": "Sort key mismatch — the list is sorted, the item is in it, the search says no",
+      "description": "`sort_key_mismatch_binary_search.eml` searches a case-insensitively sorted list with a case-sensitive comparison and counts how many present items come back \"not found\"."
+    },
+    {
+      "id": "271-survivorship-in-cohorts",
+      "path": "/ai/examples/271-survivorship-in-cohorts.eml.md",
+      "title": "Survivorship in cohorts — satisfaction rises as the product gets worse",
+      "description": "`survivorship_in_cohorts.eml` tracks three quantities over eight periods of a steadily worsening product: how many users remain, their average tolerance, and their average headroom."
+    },
+    {
+      "id": "272-tolerance-equality-grouping",
+      "path": "/ai/examples/272-tolerance-equality-grouping.eml.md",
+      "title": "Tolerance equality — no implementation is wrong, because nothing is right",
+      "description": "`tolerance_equality_grouping.eml` groups values under a \"close enough to be the same\" relation two ways, over several orderings of the same input."
+    },
+    {
+      "id": "273-top-n-with-ties",
+      "path": "/ai/examples/273-top-n-with-ties.eml.md",
+      "title": "Top-N with ties — four people tied for third",
+      "description": "`top_n_with_ties.eml` asks for the top 3 from a list where four entries share the third-place score, under three defensible policies, over several orderings of the same data."
+    },
+    {
+      "id": "274-unstable-sort-secondary-key",
+      "path": "/ai/examples/274-unstable-sort-secondary-key.eml.md",
+      "title": "Unstable sort, secondary key — sorted by department, names out of order",
+      "description": "`unstable_sort_secondary_key.eml` runs the two-pass sorting idiom — sort by name, then sort by department — with a stable and an unstable second pass, and counts how many departments kept their names in order."
+    },
+    {
+      "id": "275-version-string-ordering",
+      "path": "/ai/examples/275-version-string-ordering.eml.md",
+      "title": "Version string ordering — correct until the tenth release",
+      "description": "`version_string_ordering.eml` sorts one version list three ways — as text, by numeric component, and by numeric component with missing parts padded to zero — and counts how many ordered **pairs** the rules disagree on."
     }
   ],
   "tools": {
