@@ -105,22 +105,34 @@ jobs:
           # upfront. -L follows redirects: /docs and /cases correctly 308 to
           # their trailing-slash form (verified against a real Preview
           # deployment) — check the FINAL status, not the redirect's own code.
+          #
+          # A final status alone is not enough, and this loop proved it. /app
+          # answered 308 -> / for weeks; -L followed the bounce to the homepage,
+          # got 200, and this check reported "/app -> 200" every single deploy
+          # while the workbench was unreachable and the homepage's 示範區 link
+          # led back to the homepage. Following a redirect and then grading the
+          # page you were redirected TO cannot distinguish "the route works"
+          # from "the route no longer exists". So assert where we landed:
+          # $path, or $path/ for the routes that legitimately normalise to a
+          # trailing slash.
           fail=0
-          for path in / /app /docs /cases /origins /healthz /readyz /version; do
+          for path in / /app /terminal /docs /cases /origins /healthz /readyz /version; do
             ok=0
             for attempt in $(seq 1 8); do
               code=$(curl -sL -o /dev/null -w '%{http_code}' "$URL$path")
-              if [ "$code" -ge 200 ] && [ "$code" -lt 300 ]; then
+              final=$(curl -sL -o /dev/null -w '%{url_effective}' "$URL$path")
+              if [ "$code" -ge 200 ] && [ "$code" -lt 300 ] \
+                 && { [ "$final" = "$URL$path" ] || [ "$final" = "$URL$path/" ]; }; then
                 ok=1
                 break
               fi
               sleep 2
             done
             if [ "$ok" -ne 1 ]; then
-              echo "::error::$path returned HTTP $code after 8 attempts"
+              echo "::error::$path returned HTTP $code and landed on $final after 8 attempts"
               fail=1
             else
-              echo "$path -> $code"
+              echo "$path -> $code ($final)"
             fi
           done
           if [ "$fail" -ne 0 ]; then

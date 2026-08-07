@@ -13,16 +13,39 @@ const ASSET_BODIES = {
   '/ai/index.md': '# EML AI-Native Interface Layer\n',
   '/llms.txt': '# Efficient New Language / EML\n',
   '/': '<!doctype html><div id="root"></div>',
-  '/index.html': '<!doctype html><div id="root"></div>',
+  '/docs/': '<!doctype html><div id="root"><main id="symbols"></main></div>',
   '/ai/manifest.json': JSON.stringify({ examples: [{ id: '000-arithmetic' }] }),
   '/build-info.json': JSON.stringify({ build_id: 'eml-site-test-build', site_sha: 'abc1234', eml_core_sha: 'def5678' }),
 };
+
+// Every branch below is a shape MEASURED against production
+// (efficientnewlanguage.org, 2026-08-07), not invented. That distinction is the
+// whole point of this block: the previous mock answered 404 for every unknown
+// path, and the real binding never does — it answers 308 with `Location: /`.
+// The SPA-fallback test therefore passed against a worker condition
+// (`res.status === 404`) that had never once been true in production, while
+// /app and /terminal were being redirected to the homepage. A mock that cannot
+// reproduce production's answer is a gate that cannot fail.
+//
+//   /index.html                      -> 308  Location: /
+//   /docs /cases /origins            -> 308  Location: /docs/        (dir exists)
+//   /app /terminal /zzz /nope/deep   -> 308  Location: /             (no such dir)
+//   /ai/nope /assets/nope.js         -> 404                          (dir exists, file doesn't)
+//   /nope.json                       -> 404
+const PRERENDERED_DIRS = new Set(['/docs', '/cases', '/origins', '/related']);
+const REAL_DIRS = new Set(['ai', 'assets']);
+const redirect308 = (location) => new Response(null, { status: 308, headers: { location } });
+
 const env = {
   ASSETS: {
     async fetch(req) {
       const p = new URL(req.url).pathname;
       if (ASSET_BODIES[p]) return new Response(ASSET_BODIES[p], { status: 200, headers: { 'content-type': 'application/octet-stream' } });
-      return new Response('not found', { status: 404 });
+      if (p === '/index.html') return redirect308('/');
+      if (PRERENDERED_DIRS.has(p)) return redirect308(`${p}/`);
+      const firstSegment = p.split('/')[1] || '';
+      if (REAL_DIRS.has(firstSegment) || /\.[a-z0-9]+$/i.test(p)) return new Response('not found', { status: 404 });
+      return redirect308('/');
     },
   },
 };
@@ -124,9 +147,35 @@ await check('/ai/ -> index.md as text/markdown', async () => {
   return res.status === 200 && res.headers.get('content-type').includes('text/markdown');
 });
 await check('missing /ai/ doc 404s (no SPA hijack)', async () => (await get('/ai/specs/nope.json')).status === 404);
-await check('SPA fallback for /docs -> index.html', async () => {
-  const res = await get('/docs');
+await check('missing extension-less /ai/ path 404s too', async () => (await get('/ai/nope')).status === 404);
+
+// The two client-only routes. Neither is prerendered (main.tsx renders them
+// with createRoot rather than hydrating), so neither has a directory in dist,
+// so the asset binding bounces both to the root — carrying the fragment with
+// them, which is how /app#playground became /#playground and put the reader
+// back on the homepage. What must be true is that the worker answers the route
+// itself: 200, real markup, NOT a redirect that changes the URL.
+for (const route of ['/app', '/terminal']) {
+  await check(`SPA fallback: ${route} -> 200 shell, not a bounce to /`, async () => {
+    const res = await get(route);
+    if (res.status !== 200) return `status ${res.status} location ${res.headers.get('location')}`;
+    return (await res.text()).includes('id="root"') || 'no #root in body';
+  });
+}
+await check('SPA fallback: unknown route -> 200 shell (client router decides)', async () => {
+  const res = await get('/zzz-not-a-route');
   return res.status === 200 && (await res.text()).includes('id="root"');
+});
+// Prerendered routes are NOT SPA fallbacks — they have a real directory and
+// must keep redirecting to their own trailing-slash form, not be swallowed by
+// the fallback above.
+await check('/docs -> 308 to /docs/ (prerendered dir, not the fallback)', async () => {
+  const res = await get('/docs');
+  return res.status === 308 && res.headers.get('location') === '/docs/';
+});
+await check('/docs/ -> 200 prerendered content', async () => {
+  const res = await get('/docs/');
+  return res.status === 200 && (await res.text()).includes('id="symbols"');
 });
 
 // Resource-limit guards (DoS).

@@ -377,15 +377,34 @@ export default {
     // 5. Static assets.
     let res = await env.ASSETS.fetch(request);
 
-    // SPA fallback: a GET for an extension-less route that 404s -> index.html.
+    // SPA fallback: a GET for an extension-less route the asset binding cannot
+    // serve -> the index document, so the client router renders it.
     // /ai/ paths never SPA-fallback (a missing machine doc must 404, not render the app).
+    //
+    // This used to test `res.status === 404` alone, and that condition has never
+    // once been true. This project's ASSETS binding does not 404 an unknown
+    // path — it answers 308 with `Location: /`. So /app and /terminal, the two
+    // routes deliberately left un-prerendered because they are pure client
+    // renders, were bounced to the homepage, carrying their fragment with them:
+    // /app#playground arrived as /#playground. That is why "示範區" from the
+    // homepage landed back on the homepage, which has a showcase section of its
+    // own — the reader could not tell they had been redirected.
+    //
+    // Routes that DO have a prerendered directory redirect to their own
+    // trailing-slash form (/docs -> /docs/) and must keep doing so, so only a
+    // bounce to the root counts as "the asset binding has nothing for this".
     const looksLikeRoute =
       request.method === 'GET' &&
       !pathname.startsWith('/assets/') &&
       !pathname.startsWith('/ai/') &&
       !/\.[a-z0-9]+$/i.test(pathname);
-    if (res.status === 404 && looksLikeRoute) {
-      res = await env.ASSETS.fetch(new Request(new URL('/index.html', url), request));
+    const bouncedToRoot =
+      res.status >= 300 && res.status < 400 && pathname !== '/' && res.headers.get('location') === '/';
+    if ((res.status === 404 || bouncedToRoot) && looksLikeRoute) {
+      // '/', not '/index.html' — the ASSETS binding 308-redirects the latter to
+      // the former, which would make this fallback answer with a redirect of
+      // its own. Same trap /readyz above already documents.
+      res = await env.ASSETS.fetch(new Request(new URL('/', url), request));
     }
 
     // Long-cache fingerprinted assets.
