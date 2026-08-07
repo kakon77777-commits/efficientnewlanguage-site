@@ -4,10 +4,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import { useGSAP } from '@gsap/react';
-import { ArrowRight, Play, Github, Terminal, BookText, Sun, Moon, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Play, Github, Terminal, BookText, ArrowUpRight } from 'lucide-react';
 import { useLang } from '../i18n';
-import { useTheme } from '../theme';
 import { LINKS } from '../lib/links';
+import { Nav } from '../components/Nav';
 import { cn } from '../components/ui';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrambleTextPlugin, DrawSVGPlugin);
@@ -27,8 +27,7 @@ const AI_LINKS: [string, string][] = [
 /** 華麗版 — the "magic in one second" showcase. Cinematic + trace terminal.
  * Content renders without JS (SEO/reduced-motion safe); GSAP only enhances. */
 export default function Showcase() {
-  const { lang, setLang } = useLang();
-  const { theme, setTheme } = useTheme();
+  const { lang } = useLang();
   const t = (en: string, zh: string) => (lang === 'zh' ? zh : en);
   const root = useRef<HTMLDivElement>(null);
 
@@ -122,48 +121,15 @@ export default function Showcase() {
         }}
       />
 
-      {/* Nav */}
-      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
-        <nav className="mx-auto flex h-13 w-full max-w-6xl items-center gap-4 rounded-xl border border-line/70 bg-base/70 px-4 py-2.5 backdrop-blur-md">
-          <a href="/" className="flex items-center gap-2.5">
-            <span className="grid h-7 w-7 place-items-center rounded-md bg-symbol/15 font-mono text-sm font-bold text-symbol">
-              Σ
-            </span>
-            <span className="font-display text-sm font-semibold tracking-tight">EML</span>
-          </a>
-          <div className="ml-auto flex items-center gap-2 text-sm">
-            <a href="/app" className="hidden cursor-pointer rounded-md px-3 py-1.5 text-muted transition-colors duration-200 hover:text-fg sm:inline">
-              {t('Playground', '示範區')}
-            </a>
-            <a href="/docs" className="hidden cursor-pointer rounded-md px-3 py-1.5 text-muted transition-colors duration-200 hover:text-fg sm:inline">
-              {t('Docs', '文件')}
-            </a>
-            <div className="flex items-center rounded-lg border border-line bg-panel/60 p-0.5">
-              {([['light', Sun], ['dark', Moon]] as const).map(([th, Icon]) => (
-                <button
-                  key={th}
-                  onClick={() => setTheme(th)}
-                  aria-label={th === 'light' ? 'Light' : 'Dark'}
-                  className={cn('grid h-7 w-7 cursor-pointer place-items-center rounded-md transition-colors duration-200', theme === th ? 'bg-symbol/20 text-symbol' : 'text-muted hover:text-fg')}
-                >
-                  <Icon size={14} />
-                </button>
-              ))}
-            </div>
-            <div className="flex items-center rounded-lg border border-line bg-panel/60 p-0.5 font-mono text-xs">
-              {(['en', 'zh'] as const).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  className={cn('cursor-pointer rounded-md px-2 py-1 transition-colors duration-200', lang === l ? 'bg-symbol/20 text-symbol' : 'text-muted hover:text-fg')}
-                >
-                  {l === 'en' ? 'EN' : '繁中'}
-                </button>
-              ))}
-            </div>
-          </div>
-        </nav>
-      </header>
+      {/* The SHARED nav, not a second hand-written one. The homepage used to
+          carry its own three-link header (logo / Playground / Docs), which is
+          why the 2026-07-19 fix that pointed every section link at the page
+          actually holding its anchor never reached the homepage: that fix
+          edited Nav.tsx, and the homepage was not using Nav.tsx. Its
+          "Playground" link therefore still went to /app rather than
+          /app#playground, landing 3.3 screens above the playground on a page
+          whose own nav offered "Playground" again. One nav, one place to fix. */}
+      <Nav />
 
       <main className="mx-auto w-full max-w-6xl px-5 sm:px-8">
         {/* ── Act 1 — Σ descends ───────────────────────────────────────── */}
@@ -184,7 +150,7 @@ export default function Showcase() {
             <a href="#run" className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-run px-6 py-3 text-sm font-semibold text-base transition-colors duration-200 hover:bg-run/90">
               <Play size={16} /> {t('See it run', '看它執行')}
             </a>
-            <a href="/app" className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-line bg-panel/40 px-6 py-3 text-sm font-medium text-fg transition-colors duration-200 hover:border-symbol/50 hover:text-symbol">
+            <a href="/app#playground" className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-line bg-panel/40 px-6 py-3 text-sm font-medium text-fg transition-colors duration-200 hover:border-symbol/50 hover:text-symbol">
               <Terminal size={16} /> {t('Open Playground', '打開示範區')}
             </a>
           </div>
@@ -329,7 +295,7 @@ export default function Showcase() {
             {t('Try EML in the browser.', '在瀏覽器試一次。')}
           </h2>
           <div className="reveal mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a href="/app" className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-run px-6 py-3 text-sm font-semibold text-base transition-colors duration-200 hover:bg-run/90">
+            <a href="/app#playground" className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-run px-6 py-3 text-sm font-semibold text-base transition-colors duration-200 hover:bg-run/90">
               <Terminal size={16} /> {t('Open Playground', '打開示範區')}
             </a>
             <a href="/docs" className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-line bg-panel/40 px-6 py-3 text-sm font-medium text-fg transition-colors duration-200 hover:border-symbol/50 hover:text-symbol">
@@ -513,7 +479,7 @@ function LiveExecution({ t }: { t: (en: string, zh: string) => string }) {
           {' · '}
           {t('No backend, no local Python for this demo.', '這個 demo 不需要後端，也不需要本機 Python。')}
         </p>
-        <a href="/app" className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-line bg-panel/40 px-4 py-2 text-sm font-medium text-fg transition-colors duration-200 hover:border-symbol/50 hover:text-symbol">
+        <a href="/app#playground" className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-line bg-panel/40 px-4 py-2 text-sm font-medium text-fg transition-colors duration-200 hover:border-symbol/50 hover:text-symbol">
           {t('Open full Playground', '打開完整示範區')} <ArrowRight size={15} />
         </a>
       </div>

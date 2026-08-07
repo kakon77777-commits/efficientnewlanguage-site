@@ -39,18 +39,63 @@ function currentPage(pathname: string = window.location.pathname) {
 }
 
 export default function App() {
-  // Deep links like /docs#symbols: the target renders after the lazy chunk loads,
-  // so retry scrolling to the hash until the element exists.
+  // Deep links like /docs#symbols and /app#playground: the browser performs its
+  // own fragment scroll before React mounts, finds nothing, and gives up. This
+  // re-asserts it once the lazy chunk has rendered the target.
+  //
+  // Three details matter here and none of them are visible from the call site:
+  //   - getElementById, not querySelector(hash). A fragment is an id, not a CSS
+  //     selector, and querySelector THROWS on any fragment that isn't also a
+  //     valid selector — `#2026` raises SyntaxError, and a throw inside an
+  //     effect takes the render down. getElementById just returns null.
+  //   - behavior: 'auto', not the `scroll-behavior: smooth` this would
+  //     otherwise inherit from index.css. The reader never scrolled, so there
+  //     is no gesture to stay continuous with, and an animated jump of a
+  //     screen or three has to survive the rest of the page mounting
+  //     underneath it. index.css already accepts the instant version under
+  //     prefers-reduced-motion.
+  //   - it re-asserts until the target's absolute offset stops moving. A
+  //     section's position is only final once everything above it has finished
+  //     laying out; scrolling once, the instant the element first exists, aims
+  //     at an offset that is still changing.
   useEffect(() => {
-    const h = window.location.hash;
-    if (!h) return;
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+
+    let timer = 0;
     let tries = 0;
-    const tryScroll = () => {
-      const el = document.querySelector(h);
-      if (el) el.scrollIntoView();
-      else if (tries++ < 25) window.setTimeout(tryScroll, 80);
+    let stableFor = 0;
+    let lastTop: number | null = null;
+
+    // Never fight a reader who has started scrolling on their own.
+    const cancel = () => {
+      tries = Infinity;
+      window.clearTimeout(timer);
     };
-    window.setTimeout(tryScroll, 60);
+    const once = { passive: true, once: true } as const;
+    window.addEventListener('wheel', cancel, once);
+    window.addEventListener('touchstart', cancel, once);
+    window.addEventListener('keydown', cancel, once);
+
+    const step = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top, behavior: 'auto' });
+        stableFor = lastTop !== null && Math.abs(top - lastTop) < 1 ? stableFor + 1 : 0;
+        lastTop = top;
+        if (stableFor >= 3) return; // three identical targets in a row = layout settled
+      }
+      if (tries++ < 40) timer = window.setTimeout(step, 80);
+    };
+    timer = window.setTimeout(step, 60);
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('wheel', cancel);
+      window.removeEventListener('touchstart', cancel);
+      window.removeEventListener('keydown', cancel);
+    };
   }, []);
 
   return (

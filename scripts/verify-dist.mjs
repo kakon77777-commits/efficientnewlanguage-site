@@ -102,6 +102,31 @@ mustPrerendered('docs/index.html', 10_000, 'id="symbols"');
 mustPrerendered('cases/index.html', 10_000, 'eml-cases-data');
 mustPrerendered('origins/index.html', 10_000, 'id="eml-u"');
 
+// 8b. Every homepage link into the workbench must name the section it promises.
+// The playground sits ~3.3 screens below the top of /app, so a link labelled
+// "Playground" pointing at bare /app lands the reader on a page whose own nav
+// offers "Playground" again — which is exactly what it looked like from the
+// homepage for weeks. This was FOUR separate instances (the homepage's own
+// hand-written header plus three in-page CTAs), all invisible to the 2026-07-19
+// fix because that one edited Nav.tsx and the homepage was not using Nav.tsx.
+// Checking the built HTML gates the whole class rather than the four call sites.
+{
+  const home = resolve(root, 'dist/index.html');
+  if (existsSync(home)) {
+    const html = readFileSync(home, 'utf8');
+    const bare = [...html.matchAll(/href="(\/app\/?)"/g)];
+    if (bare.length > 0) {
+      fail(
+        `dist/index.html has ${bare.length} link(s) to bare /app. The playground is ~3.3 screens ` +
+          'down that page, so a link into it must carry #playground (or another real anchor).',
+      );
+    }
+    if (!html.includes('/app#playground')) {
+      fail('dist/index.html has no /app#playground link — the homepage cannot reach the playground');
+    }
+  }
+}
+
 // 9. The /related hub plus one page per registry entry. The slug list comes from
 // the registry source itself, not from what happens to exist in dist/ — a
 // prerender loop that silently emitted nothing would otherwise pass.
