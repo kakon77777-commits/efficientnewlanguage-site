@@ -1767,6 +1767,96 @@
       "path": "/ai/examples/275-version-string-ordering.eml.md",
       "title": "Version string ordering — correct until the tenth release",
       "description": "`version_string_ordering.eml` sorts one version list three ways — as text, by numeric component, and by numeric component with missing parts padded to zero — and counts how many ordered **pairs** the rules disagree on."
+    },
+    {
+      "id": "276-cache-stampede-single-flight",
+      "path": "/ai/examples/276-cache-stampede-single-flight.eml.md",
+      "title": "Cache stampede — the hotter the key, the bigger the crowd at expiry",
+      "description": "`cache_stampede_single_flight.eml` replays one arrival pattern across expiry boundaries under four policies and counts three costs separately: recomputations, requests that **waited**, and requests served **stale**."
+    },
+    {
+      "id": "277-cost-model-mismatch",
+      "path": "/ai/examples/277-cost-model-mismatch.eml.md",
+      "title": "Cost model mismatch — a limit of 100 items, and the resource is bytes",
+      "description": "`cost_model_mismatch.eml` runs four workloads through a count limit, a byte limit, and a combined limit, and reports the **maximum** bytes admitted under each."
+    },
+    {
+      "id": "278-fair-share-vs-fifo",
+      "path": "/ai/examples/278-fair-share-vs-fifo.eml.md",
+      "title": "Fair share vs FIFO — a queue discipline picks who it is fair to",
+      "description": "`fair_share_vs_fifo.eml` runs one arrival pattern — 20 jobs from one tenant, 1 each from five others — through FIFO and fair queuing, and reports the wait per **tenant** alongside the mean per **job**."
+    },
+    {
+      "id": "279-fixture-avoids-the-boundary",
+      "path": "/ai/examples/279-fixture-avoids-the-boundary.eml.md",
+      "title": "Fixture avoids the boundary — which values can detect an off-by-one",
+      "description": "`fixture_avoids_the_boundary.eml` sweeps every integer in a window across a correct implementation and three off-by-one variants, and reports which values distinguish which."
+    },
+    {
+      "id": "280-flaky-quarantine-drift",
+      "path": "/ai/examples/280-flaky-quarantine-drift.eml.md",
+      "title": "Flaky quarantine drift — a green pipeline and a third of the gate gone",
+      "description": "`flaky_quarantine_drift.eml` runs the quarantine process week by week and records three quantities: the active suite's pass rate, the number of active tests, and the number of **defects the active suite would still catch**."
+    },
+    {
+      "id": "281-idempotency-key-reuse",
+      "path": "/ai/examples/281-idempotency-key-reuse.eml.md",
+      "title": "Idempotency key reuse — the key says retry and the body says otherwise",
+      "description": "`idempotency_key_reuse.eml` runs a request log containing genuine retries, key reuse with a changed body, and unrelated requests through three policies, and counts three outcomes separately."
+    },
+    {
+      "id": "282-mock-ignores-input",
+      "path": "/ai/examples/282-mock-ignores-input.eml.md",
+      "title": "A mock that ignores its input — the double agreed with every caller",
+      "description": "`mock_ignores_input.eml` runs four deliberately broken callers against three test doubles and counts how many each one catches."
+    },
+    {
+      "id": "283-mutation-survival",
+      "path": "/ai/examples/283-mutation-survival.eml.md",
+      "title": "Mutation survival — the test that runs the most lines checks the least",
+      "description": "`mutation_survival.eml` runs one suite against three mutants of one function and reports which tests kill which, alongside the coverage each test achieves."
+    },
+    {
+      "id": "284-new-enum-value-fallthrough",
+      "path": "/ai/examples/284-new-enum-value-fallthrough.eml.md",
+      "title": "New enum value fallthrough — the else branch answers for a case it never saw",
+      "description": "`new_enum_value_fallthrough.eml` asks four consumers the same question about every value in an old enum and then about a value added afterwards, and classifies each answer as right, silently wrong, or a loud failure."
+    },
+    {
+      "id": "285-pool-reentrancy-deadlock",
+      "path": "/ai/examples/285-pool-reentrancy-deadlock.eml.md",
+      "title": "Pool reentrancy deadlock — at capacity means deadlocked",
+      "description": "`pool_reentrancy_deadlock.eml` sweeps concurrency against pool size for requests holding one, two and three connections, and reports the first concurrency at which progress becomes impossible."
+    },
+    {
+      "id": "286-retry-amplification",
+      "path": "/ai/examples/286-retry-amplification.eml.md",
+      "title": "Retry amplification — three retries at three layers is twenty-seven",
+      "description": "`retry_amplification.eml` computes the bottom-layer request count for every combination of depth and per-layer attempts, and compares retrying at every layer against retrying at the edge only."
+    },
+    {
+      "id": "287-retry-masked-flakiness",
+      "path": "/ai/examples/287-retry-masked-flakiness.eml.md",
+      "title": "Retry-masked flakiness — one failure in five reports as 99.2%",
+      "description": "`retry_masked_flakiness.eml` sweeps true failure rates against attempt counts and computes the observed pass rate exactly, in integer per-mille arithmetic."
+    },
+    {
+      "id": "288-soft-delete-and-uniqueness",
+      "path": "/ai/examples/288-soft-delete-and-uniqueness.eml.md",
+      "title": "Soft delete and uniqueness — the row is gone and the address is taken",
+      "description": "`soft_delete_and_uniqueness.eml` runs sign-ups, deletions and re-sign-ups against four schemes and counts two errors separately: registrations **wrongly refused**, and duplicate **active** accounts wrongly allowed."
+    },
+    {
+      "id": "289-state-from-events-vs-stored",
+      "path": "/ai/examples/289-state-from-events-vs-stored.eml.md",
+      "title": "State from events vs stored — replay is correct only for some orders",
+      "description": "`state_from_events_vs_stored.eml` applies every ordering of one event set and counts distinct final states, then does the same for a stored status column written by whichever handler finished last."
+    },
+    {
+      "id": "290-status-field-conflation",
+      "path": "/ai/examples/290-status-field-conflation.eml.md",
+      "title": "Status field conflation — the states that cannot be written down",
+      "description": "`status_field_conflation.eml` enumerates an order's real state space as the product of two independent dimensions and marks which points a single status enum can name."
     }
   ],
   "tools": {
