@@ -1857,6 +1857,96 @@
       "path": "/ai/examples/290-status-field-conflation.eml.md",
       "title": "Status field conflation — the states that cannot be written down",
       "description": "`status_field_conflation.eml` enumerates an order's real state space as the product of two independent dimensions and marks which points a single status enum can name."
+    },
+    {
+      "id": "291-admin-bypass-skips-validation",
+      "path": "/ai/examples/291-admin-bypass-skips-validation.eml.md",
+      "title": "Admin bypass skips validation — an early return is a jump, not a permission",
+      "description": "`admin_bypass_skips_validation.eml` pushes the same seven-record migration payload through two save paths under three roles, then reads the store back and re-validates every row that is in it."
+    },
+    {
+      "id": "292-count-leaks-hidden-items",
+      "path": "/ai/examples/292-count-leaks-hidden-items.eml.md",
+      "title": "Count leaks hidden items — the rows were filtered and the total was not",
+      "description": "`count_leaks_hidden_items.eml` pages through a listing as four viewers, compares what the header claims against what the pages deliver, and then runs the attack that difference enables."
+    },
+    {
+      "id": "293-dedup-key-merges-distinct-records",
+      "path": "/ai/examples/293-dedup-key-merges-distinct-records.eml.md",
+      "title": "Dedup key merges distinct records — both curves rose, and one was being watched",
+      "description": "`dedup_key_merges_distinct_records.eml` sweeps four key definitions from strict to loose over seven records carrying ground-truth entity ids, and scores each key on duplicates joined, strangers joined, and duplicates missed."
+    },
+    {
+      "id": "294-deleted-row-survives-in-derived-copies",
+      "path": "/ai/examples/294-deleted-row-survives-in-derived-copies.eml.md",
+      "title": "Deleted row survives in derived copies — the delete succeeded against the one surface nobody searches",
+      "description": "`deleted_row_survives_in_derived_copies.eml` deletes a record and then interrogates each surface the way a user reaches it, reporting which ones still return content. It also runs the deletion audit the system has."
+    },
+    {
+      "id": "295-denormalized-total-drifts",
+      "path": "/ai/examples/295-denormalized-total-drifts.eml.md",
+      "title": "Denormalized total drifts — the reconciliation compared a number with itself",
+      "description": "`denormalized_total_drifts.eml` applies one ordinary edit to each of four orders, compares the stored total against a total recomputed from the line items, and then runs both the reconciliation the system has and one that re-derives."
+    },
+    {
+      "id": "296-deny-loses-to-allow",
+      "path": "/ai/examples/296-deny-loses-to-allow.eml.md",
+      "title": "Deny loses to allow — the role that cannot take anything away",
+      "description": "`deny_loses_to_allow.eml` computes each user's effective permissions two ways — as a **union of grants** and with **deny winning** — and then sweeps the structural question directly: can attaching a role ever remove a permission?"
+    },
+    {
+      "id": "297-flag-outlives-its-evidence",
+      "path": "/ai/examples/297-flag-outlives-its-evidence.eml.md",
+      "title": "Flag outlives its evidence — the conclusion stayed and the link back was never stored",
+      "description": "`flag_outlives_its_evidence.eml` starts from a stored flag set that is consistent with the evidence by construction, retracts two signals and adds one, then re-derives every flag and splits the disagreements by direction."
+    },
+    {
+      "id": "298-inherited-permission-after-move",
+      "path": "/ai/examples/298-inherited-permission-after-move.eml.md",
+      "title": "Inherited permission after move — the cache refreshes on write, and a move is not a write",
+      "description": "`inherited_permission_after_move.eml` moves four documents between folders and compares, for every (user, action) pair, the grants cached on the document against the grants its current folder actually gives."
+    },
+    {
+      "id": "299-match-predicate-not-transitive",
+      "path": "/ai/examples/299-match-predicate-not-transitive.eml.md",
+      "title": "Match predicate not transitive — there is no grouping to be right about",
+      "description": "`match_predicate_not_transitive.eml` sweeps **all 24 orderings** of four records through a single-pass clusterer, counts how many distinct answers come out, then asks the transitive closure for its answer and checks it against the predicate that produced it."
+    },
+    {
+      "id": "300-merge-drops-the-differing-field",
+      "path": "/ai/examples/300-merge-drops-the-differing-field.eml.md",
+      "title": "Merge drops the differing field — a gap and a contradiction are the same shape in the code",
+      "description": "`merge_drops_the_differing_field.eml` merges four record pairs field by field with \"first non-empty wins\", then re-runs every merge with the two sources swapped and counts how many merged fields change."
+    },
+    {
+      "id": "301-merge-invents-a-match",
+      "path": "/ai/examples/301-merge-invents-a-match.eml.md",
+      "title": "Merge invents a match — one sweep wrote a value no record held, the next believed it",
+      "description": "`merge_invents_a_match.eml` runs a dedup job one sweep at a time and, for every merge, asks whether any original member of one side matched any original member of the other under the same matcher. It compares against the identical job with normalisation moved to compare time."
+    },
+    {
+      "id": "302-path-resolved-twice",
+      "path": "/ai/examples/302-path-resolved-twice.eml.md",
+      "title": "Path resolved twice — the check and the write agreed on the name, not the document",
+      "description": "`path_resolved_twice.eml` runs three requests against every point at which a rename can be interleaved, under two handlers: one that resolves the name twice (once to authorise, once to act) and one that resolves it once and carries the identity."
+    },
+    {
+      "id": "303-rate-numerator-outgrows-denominator",
+      "path": "/ai/examples/303-rate-numerator-outgrows-denominator.eml.md",
+      "title": "Rate numerator outgrows denominator — the clamp removed the evidence and kept the error",
+      "description": "`rate_numerator_outgrows_denominator.eml` computes a conversion rate three ways — with mismatched populations, with the mismatch clamped to 100%, and with both sides drawn from the same population — and reports how many segments each one gets wrong."
+    },
+    {
+      "id": "304-rollup-double-counts-shared-parent",
+      "path": "/ai/examples/304-rollup-double-counts-shared-parent.eml.md",
+      "title": "Rollup double counts shared parent — the thing it is walking is not a tree",
+      "description": "`rollup_double_counts_shared_parent.eml` runs the recursive rollup and a set-based rollup that visits each node once, then attributes the gap to specific nodes by counting how many distinct root-to-node paths reach each one."
+    },
+    {
+      "id": "305-survivor-id-still-referenced",
+      "path": "/ai/examples/305-survivor-id-still-referenced.eml.md",
+      "title": "Survivor id still referenced — the rows vanished from one report and stayed in the other",
+      "description": "`survivor_id_still_referenced.eml` merges two customer records two ways — hard delete, and tombstone with a redirect — then runs two ordinary reports over each result and compares them against the pre-merge totals."
     }
   ],
   "tools": {
