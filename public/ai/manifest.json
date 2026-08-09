@@ -1947,6 +1947,96 @@
       "path": "/ai/examples/305-survivor-id-still-referenced.eml.md",
       "title": "Survivor id still referenced — the rows vanished from one report and stayed in the other",
       "description": "`survivor_id_still_referenced.eml` merges two customer records two ways — hard delete, and tombstone with a redirect — then runs two ordinary reports over each result and compares them against the pre-merge totals."
+    },
+    {
+      "id": "306-abandoned-work-still-lands",
+      "path": "/ai/examples/306-abandoned-work-still-lands.eml.md",
+      "title": "Abandoned work still lands — the caller stopped waiting and the work did not stop working",
+      "description": "`abandoned_work_still_lands.eml` runs six requests through three handlers — deadline only, deadline plus a cancel signal, and deadline plus an idempotency key — and compares what the user was **told** against what the store ends up holding."
+    },
+    {
+      "id": "307-aggregates-that-do-not-decompose",
+      "path": "/ai/examples/307-aggregates-that-do-not-decompose.eml.md",
+      "title": "Aggregates that do not decompose — four survived partitioning, three did not, and the call sites are identical",
+      "description": "`aggregates_that_do_not_decompose.eml` computes seven aggregates over sixteen values both whole and per-partition, at three partition sizes, and reports which ones agree at every size."
+    },
+    {
+      "id": "308-attribution-window-picks-the-winner",
+      "path": "/ai/examples/308-attribution-window-picks-the-winner.eml.md",
+      "title": "Attribution window picks the winner — same model, same data, decided by a number in a config file",
+      "description": "`attribution_window_picks_the_winner.eml` holds last-touch attribution fixed and sweeps only the lookback window, reporting per-channel credit, the winner, and how many conversions end up attributed to nobody."
+    },
+    {
+      "id": "309-batch-boundary-changes-order",
+      "path": "/ai/examples/309-batch-boundary-changes-order.eml.md",
+      "title": "Batch boundary changes order — every batch was handled correctly and the answer was wrong",
+      "description": "`batch_boundary_changes_order.eml` runs the same sort-and-dedup pipeline at seven batch sizes over twelve records and compares each result against the batch-free answer."
+    },
+    {
+      "id": "310-cancel-is-not-idempotent",
+      "path": "/ai/examples/310-cancel-is-not-idempotent.eml.md",
+      "title": "Cancel is not idempotent — both designs cancel correctly once",
+      "description": "`cancel_is_not_idempotent.eml` applies cancel one, two and three times to the same booking under two designs — cancel-as-delta and cancel-as-target-state — and reads the resulting seats and refunds back out."
+    },
+    {
+      "id": "311-cancel-lands-between-check-and-act",
+      "path": "/ai/examples/311-cancel-lands-between-check-and-act.eml.md",
+      "title": "Cancel lands between check and act — accepted, recorded, and too early to matter",
+      "description": "`cancel_lands_between_check_and_act.eml` sweeps a cancellation's arrival across every tick of a six-step operation, under three placements of the `if cancelled` check, and counts how many arrival times produce the effect anyway."
+    },
+    {
+      "id": "312-cancelled-work-still-holds-its-slot",
+      "path": "/ai/examples/312-cancelled-work-still-holds-its-slot.eml.md",
+      "title": "Cancelled work still holds its slot — the pool ran out on a request that was fine",
+      "description": "`cancelled_work_still_holds_its_slot.eml` replays a twelve-request stream through a three-slot pool under two release placements, and reports the pool over time plus which request first gets refused."
+    },
+    {
+      "id": "313-flush-timer-is-a-debounce",
+      "path": "/ai/examples/313-flush-timer-is-a-debounce.eml.md",
+      "title": "Flush timer is a debounce — the latency guarantee held while the system was idle",
+      "description": "`flush_timer_is_a_debounce.eml` replays three arrival streams through two buffer implementations and reports the worst latency any record actually experienced, against the bound the timer is supposed to provide."
+    },
+    {
+      "id": "314-last-batch-takes-a-different-path",
+      "path": "/ai/examples/314-last-batch-takes-a-different-path.eml.md",
+      "title": "Last batch takes a different path — the remainder is zero in every fixture",
+      "description": "`last_batch_takes_a_different_path.eml` runs every input length from 0 to 12 through a buffered writer with batch size 4, and checks whether the records that left through the drain path got the same treatment as the rest."
+    },
+    {
+      "id": "315-last-touch-vs-first-touch",
+      "path": "/ai/examples/315-last-touch-vs-first-touch.eml.md",
+      "title": "Last touch vs first touch — four models, different winners, identical totals",
+      "description": "`last_touch_vs_first_touch.eml` scores four channels under four attribution models over eight conversions, computes each model's ranking, and reports how far channels move."
+    },
+    {
+      "id": "316-partial-batch-failure-retries-everything",
+      "path": "/ai/examples/316-partial-batch-failure-retries-everything.eml.md",
+      "title": "Partial batch failure retries everything — one record that can never succeed rewrote every record that already had",
+      "description": "`partial_batch_failure_retries_everything.eml` sends six records — one of them permanently bad — through three writers, and counts what the store holds afterwards plus how many records were delivered more than once."
+    },
+    {
+      "id": "317-rollback-can-fail-too",
+      "path": "/ai/examples/317-rollback-can-fail-too.eml.md",
+      "title": "Rollback can fail too — every state it can stop in is one the system cannot name",
+      "description": "`rollback_can_fail_too.eml` sweeps every cancellation point of a four-step operation against every undo that can refuse, and classifies the resulting state."
+    },
+    {
+      "id": "318-shared-cause-has-no-unique-split",
+      "path": "/ai/examples/318-shared-cause-has-no-unique-split.eml.md",
+      "title": "Shared cause has no unique split — every factor was necessary, none was sufficient, and the form has one box",
+      "description": "`shared_cause_has_no_unique_split.eml` runs a necessity test on every factor of three incidents — remove it, does the outcome still happen — then applies five allocation rules and reports how often they disagree."
+    },
+    {
+      "id": "319-two-systems-both-claim-it",
+      "path": "/ai/examples/319-two-systems-both-claim-it.eml.md",
+      "title": "Two systems both claim it — both reports were honest and their sum was not",
+      "description": "`two_systems_both_claim_it.eml` runs two attribution platforms over the same ten conversions, reports each one's internal reconciliation, then compares the naive sum against reality and attributes the excess."
+    },
+    {
+      "id": "320-usage-reported-as-effect",
+      "path": "/ai/examples/320-usage-reported-as-effect.eml.md",
+      "title": "Usage reported as effect — the metric was largest where the effect was zero",
+      "description": "`usage_reported_as_effect.eml` carries a hidden per-user field saying what each user would have done *without* the feature, computes the reported metric and the true lift side by side, and sweeps the rollout to show which of the two moves."
     }
   ],
   "tools": {
