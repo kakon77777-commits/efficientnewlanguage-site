@@ -2037,6 +2037,96 @@
       "path": "/ai/examples/320-usage-reported-as-effect.eml.md",
       "title": "Usage reported as effect — the metric was largest where the effect was zero",
       "description": "`usage_reported_as_effect.eml` carries a hidden per-user field saying what each user would have done *without* the feature, computes the reported metric and the true lift side by side, and sweeps the rollout to show which of the two moves."
+    },
+    {
+      "id": "321-commuting-until-a-third-step-arrives",
+      "path": "/ai/examples/321-commuting-until-a-third-step-arrives.eml.md",
+      "title": "Commuting until a third step arrives — the pair was interchangeable, the pipeline stopped it being a pair",
+      "description": "`commuting_until_a_third_step_arrives.eml` measures whether two steps commute, then measures the same two steps with one more placed between them."
+    },
+    {
+      "id": "322-coverage-through-one-caller-is-not-coverage",
+      "path": "/ai/examples/322-coverage-through-one-caller-is-not-coverage.eml.md",
+      "title": "Coverage through one caller is not coverage — half the helper has never run",
+      "description": "`coverage_through_one_caller_is_not_coverage.eml` instruments a four-branch helper with a hit counter and runs it from two callers."
+    },
+    {
+      "id": "323-default-chosen-for-the-first-caller",
+      "path": "/ai/examples/323-default-chosen-for-the-first-caller.eml.md",
+      "title": "The default chosen for the first caller — and the aggregate that hides it",
+      "description": "`default_chosen_for_the_first_caller.eml` runs one `average()` with one empty-input default past two callers for whom that default means opposite things."
+    },
+    {
+      "id": "324-each-stage-keeps-a-different-invariant",
+      "path": "/ai/examples/324-each-stage-keeps-a-different-invariant.eml.md",
+      "title": "Each stage keeps a different invariant — 3 of 3 checks pass, 1 of 4 invariants survives",
+      "description": "`each_stage_keeps_a_different_invariant.eml` runs three stages that each name and keep one invariant, then evaluates four invariants at every stage boundary."
+    },
+    {
+      "id": "325-each-stage-verified-nobody-verified-the-seam",
+      "path": "/ai/examples/325-each-stage-verified-nobody-verified-the-seam.eml.md",
+      "title": "Each stage verified, nobody verified the seam — three green checks and 130 units of missing money",
+      "description": "`each_stage_verified_nobody_verified_the_seam.eml` runs a three-stage pipeline over six billing rows, evaluates each stage's own check, and then asks what happened to the money."
+    },
+    {
+      "id": "326-helper-precondition-only-one-caller-guarantees",
+      "path": "/ai/examples/326-helper-precondition-only-one-caller-guarantees.eml.md",
+      "title": "The precondition only one caller guarantees — a share of 6.0",
+      "description": "`helper_precondition_only_one_caller_guarantees.eml` runs one helper — `max(xs) / sum(xs)` — over two callers' input sets and counts the answers that land outside the range its name implies."
+    },
+    {
+      "id": "327-idempotence-does-not-compose",
+      "path": "/ai/examples/327-idempotence-does-not-compose.eml.md",
+      "title": "Idempotence does not compose — three retry-safe routines, two retry-unsafe pairs",
+      "description": "`idempotence_does_not_compose.eml` measures `f(f(x)) == f(x)` for three cleanup routines, then measures the same property for every ordered pair built from them."
+    },
+    {
+      "id": "328-normalisation-makes-the-old-tests-unreachable",
+      "path": "/ai/examples/328-normalisation-makes-the-old-tests-unreachable.eml.md",
+      "title": "Normalisation makes the old tests unreachable — 8 cases, 3 doing work, coverage down",
+      "description": "`normalisation_makes_the_old_tests_unreachable.eml` puts a normaliser in front of a router and measures what happened to the existing test suite."
+    },
+    {
+      "id": "329-not-found-sentinel-meets-negative-indexing",
+      "path": "/ai/examples/329-not-found-sentinel-meets-negative-indexing.eml.md",
+      "title": "The not-found sentinel meets negative indexing — a miss returns the last row",
+      "description": "`not_found_sentinel_meets_negative_indexing.eml` runs six lookups against a four-row table under a guarded and an unguarded call style."
+    },
+    {
+      "id": "330-order-decides-which-defect-you-find",
+      "path": "/ai/examples/330-order-decides-which-defect-you-find.eml.md",
+      "title": "Order decides which defect you find — two real bugs, one ticket",
+      "description": "`order_decides_which_defect_you_find.eml` runs seven batches through two validation stages in both orders and counts what gets reported."
+    },
+    {
+      "id": "331-returns-a-copy-second-caller-assumed-in-place",
+      "path": "/ai/examples/331-returns-a-copy-second-caller-assumed-in-place.eml.md",
+      "title": "Returns a copy, the second caller assumed in place — the call site is identical",
+      "description": "`returns_a_copy_second_caller_assumed_in_place.eml` calls one cleaning helper two ways over the same input and reports what each caller ends up holding."
+    },
+    {
+      "id": "332-the-pair-reaches-a-state-neither-part-lists",
+      "path": "/ai/examples/332-the-pair-reaches-a-state-neither-part-lists.eml.md",
+      "title": "The pair reaches a state neither part lists — 3 of 3, 3 of 3, and an illegal pair",
+      "description": "`the_pair_reaches_a_state_neither_part_lists.eml` drives two state machines from one event stream, exhaustively over every sequence of length three, and collects the combined states that actually occur."
+    },
+    {
+      "id": "333-the-safe-range-of-a-composition",
+      "path": "/ai/examples/333-the-safe-range-of-a-composition.eml.md",
+      "title": "The safe range of a composition — neither the union nor the intersection",
+      "description": "`the_safe_range_of_a_composition.eml` sweeps every integer input from 0 to 100 through two functions with documented safe ranges and reads the composition's safe set off the results."
+    },
+    {
+      "id": "334-upstream-changed-scale-downstream-kept-thresholds",
+      "path": "/ai/examples/334-upstream-changed-scale-downstream-kept-thresholds.eml.md",
+      "title": "Upstream changed scale, downstream kept thresholds — both test suites green, the report worthless",
+      "description": "`upstream_changed_scale_downstream_kept_thresholds.eml` scores twelve inputs on the old scale and the new one, buckets both with the *same unchanged* code, and compares the distributions."
+    },
+    {
+      "id": "335-upstream-guard-makes-the-downstream-guard-dead",
+      "path": "/ai/examples/335-upstream-guard-makes-the-downstream-guard-dead.eml.md",
+      "title": "The upstream guard makes the downstream guard dead — and the dead one is wrong",
+      "description": "`upstream_guard_makes_the_downstream_guard_dead.eml` runs six orders through two validators in series, then through the second one alone."
     }
   ],
   "tools": {

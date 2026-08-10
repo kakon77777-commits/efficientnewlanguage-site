@@ -1,0 +1,247 @@
+<!-- canonical: efficientnewlanguage.org/ai/examples/323-default-chosen-for-the-first-caller | ai_layer_version: 0.1.0 | updated: 2026-08-10 -->
+
+# Example 323 — The default chosen for the first caller — and the aggregate that hides it
+
+`default_chosen_for_the_first_caller.eml` runs one `average()` with one empty-input default past two callers for whom that default means opposite things.
+
+## EML
+
+```eml
+# Self-authored for the EML case corpus (no external origin). One helper, one
+# empty-input default, two callers for whom that default means opposite things.
+#
+# `average(xs)` returns 0 for an empty list. For the caller it was written for
+# - penalty points per driver - that is exactly right: no penalties is zero
+# penalties, and the zero is the true value.
+#
+# The second caller averages satisfaction ratings on a 1-5 scale. An empty list
+# there means "not surveyed", and 0 is not a low rating; it is not a rating at
+# all. The helper cannot tell the two apart because the difference is not in
+# the list. It is in what the list is a list OF, which the helper never sees.
+#
+# The corpus already has `empty-input-conventions`, which asks what f([]) ought
+# to return. This file asks a different question: the helper has ONE answer and
+# there are TWO callers, so at most one of them can be right, and nothing in
+# either call site says which one this helper was written for.
+#
+# The measurement is not "the numbers differ" - two averages differ for many
+# innocent reasons. It is that the second caller's result lands OUTSIDE the
+# range its own scale defines, which is checkable without knowing the right
+# answer.
+
+def average(xs):
+    if len(xs) == 0:
+        return 0.0
+    return float(sum(xs)) / float(len(xs))
+
+def mean_of(vals):
+    if len(vals) == 0:
+        return 0.0
+    return float(sum(vals)) / float(len(vals))
+
+def group_means(groups):
+    [] => out
+    for g in groups:
+        out + [average(g)] => out
+    return out
+
+def nonempty_means(groups):
+    [] => out
+    for g in groups:
+        if len(g) > 0:
+            out + [average(g)] => out
+    return out
+
+# caller A: penalty points. An empty list is a driver with no penalties.
+[[2, 1], [], [4], [], [3, 3, 3], []] => penalties
+
+# caller B: satisfaction ratings, 1 to 5. An empty list is a driver nobody surveyed.
+[[5, 4], [], [3], [], [4, 4, 5], []] => ratings
+
+"the helper's own test, and it is the right test for the caller it was written for" ^0
+"  average([]) == 0.0 : " + str(average([]) == 0.0) ^0
+"" ^0
+
+"caller A - penalty points, where 0 is the true value for an empty list" ^0
+group_means(penalties) => a_all
+nonempty_means(penalties) => a_some
+"  per-driver means, empty counted as 0 : " + repr(a_all) ^0
+"  overall, empty counted as 0          : " + str(mean_of(a_all)) ^0
+"  overall, empty skipped               : " + str(mean_of(a_some)) ^0
+"" ^0
+
+"caller B - ratings on a 1 to 5 scale, where an empty list means not surveyed" ^0
+group_means(ratings) => b_all
+nonempty_means(ratings) => b_some
+"  per-driver means, empty counted as 0 : " + repr(b_all) ^0
+"  overall, empty counted as 0          : " + str(mean_of(b_all)) ^0
+"  overall, empty skipped               : " + str(mean_of(b_some)) ^0
+"" ^0
+
+# ---- the check that does not need to know the right answer ----
+
+1 => scale_lo
+5 => scale_hi
+
+"values that fall outside the 1 to 5 scale the ratings are defined on" ^0
+0 => impossible
+for v in b_all:
+    if v < float(scale_lo):
+        impossible + 1 => impossible
+"  per-driver means below " + str(scale_lo) + " : " + str(impossible) + " of " + str(len(b_all)) ^0
+if mean_of(b_all) < float(scale_lo):
+    "  the OVERALL rating is also below the scale minimum" ^0
+else:
+    "  the OVERALL rating is " + str(mean_of(b_all)) + ", which is inside 1..5" ^0
+    "  so the aggregate is where the impossibility stops being visible" ^0
+"" ^0
+
+"the same check applied to caller A" ^0
+0 => a_impossible
+for v in a_all:
+    if v < 0.0:
+        a_impossible + 1 => a_impossible
+"  per-driver means below 0 (penalties cannot be negative) : " + str(a_impossible) + " of " + str(len(a_all)) ^0
+"" ^0
+
+# ---- how far the two callers diverge from their own alternative ----
+
+"gap between 'empty as 0' and 'empty skipped'" ^0
+"  caller A : " + str(mean_of(a_some) - mean_of(a_all)) ^0
+"  caller B : " + str(mean_of(b_some) - mean_of(b_all)) ^0
+"" ^0
+"Both callers show a gap, and a gap alone proves nothing - skipping empty" ^0
+"groups changes an average whether or not the default was right. What" ^0
+"separates the two callers is that only one of them produces a number its" ^0
+"own scale says cannot exist." ^0
+"" ^0
+"And that number is only visible one level down. Averaged again, the" ^0
+"impossible per-driver values land back inside the scale, so the report a" ^0
+"human reads is the one place the defect cannot be seen." ^0
+```
+
+## Python (deterministic transpilation)
+
+```python
+def average(xs):
+    if len(xs) == 0:
+        return 0.0
+    return float(sum(xs)) / float(len(xs))
+
+def mean_of(vals):
+    if len(vals) == 0:
+        return 0.0
+    return float(sum(vals)) / float(len(vals))
+
+def group_means(groups):
+    out = []
+    for g in groups:
+        out = out + [average(g)]
+    return out
+
+def nonempty_means(groups):
+    out = []
+    for g in groups:
+        if len(g) > 0:
+            out = out + [average(g)]
+    return out
+
+penalties = [[2, 1], [], [4], [], [3, 3, 3], []]
+ratings = [[5, 4], [], [3], [], [4, 4, 5], []]
+print("the helper's own test, and it is the right test for the caller it was written for")
+print("  average([]) == 0.0 : " + str(average([]) == 0.0))
+print("")
+print("caller A - penalty points, where 0 is the true value for an empty list")
+a_all = group_means(penalties)
+a_some = nonempty_means(penalties)
+print("  per-driver means, empty counted as 0 : " + repr(a_all))
+print("  overall, empty counted as 0          : " + str(mean_of(a_all)))
+print("  overall, empty skipped               : " + str(mean_of(a_some)))
+print("")
+print("caller B - ratings on a 1 to 5 scale, where an empty list means not surveyed")
+b_all = group_means(ratings)
+b_some = nonempty_means(ratings)
+print("  per-driver means, empty counted as 0 : " + repr(b_all))
+print("  overall, empty counted as 0          : " + str(mean_of(b_all)))
+print("  overall, empty skipped               : " + str(mean_of(b_some)))
+print("")
+scale_lo = 1
+scale_hi = 5
+print("values that fall outside the 1 to 5 scale the ratings are defined on")
+impossible = 0
+for v in b_all:
+    if v < float(scale_lo):
+        impossible = impossible + 1
+print("  per-driver means below " + str(scale_lo) + " : " + str(impossible) + " of " + str(len(b_all)))
+if mean_of(b_all) < float(scale_lo):
+    print("  the OVERALL rating is also below the scale minimum")
+else:
+    print("  the OVERALL rating is " + str(mean_of(b_all)) + ", which is inside 1..5")
+    print("  so the aggregate is where the impossibility stops being visible")
+print("")
+print("the same check applied to caller A")
+a_impossible = 0
+for v in a_all:
+    if v < 0.0:
+        a_impossible = a_impossible + 1
+print("  per-driver means below 0 (penalties cannot be negative) : " + str(a_impossible) + " of " + str(len(a_all)))
+print("")
+print("gap between 'empty as 0' and 'empty skipped'")
+print("  caller A : " + str(mean_of(a_some) - mean_of(a_all)))
+print("  caller B : " + str(mean_of(b_some) - mean_of(b_all)))
+print("")
+print("Both callers show a gap, and a gap alone proves nothing - skipping empty")
+print("groups changes an average whether or not the default was right. What")
+print("separates the two callers is that only one of them produces a number its")
+print("own scale says cannot exist.")
+print("")
+print("And that number is only visible one level down. Averaged again, the")
+print("impossible per-driver values land back inside the scale, so the report a")
+print("human reads is the one place the defect cannot be seen.")
+```
+
+## stdout (executed)
+
+```text
+the helper's own test, and it is the right test for the caller it was written for
+  average([]) == 0.0 : True
+
+caller A - penalty points, where 0 is the true value for an empty list
+  per-driver means, empty counted as 0 : [1.5, 0.0, 4.0, 0.0, 3.0, 0.0]
+  overall, empty counted as 0          : 1.4166666666666667
+  overall, empty skipped               : 2.8333333333333335
+
+caller B - ratings on a 1 to 5 scale, where an empty list means not surveyed
+  per-driver means, empty counted as 0 : [4.5, 0.0, 3.0, 0.0, 4.333333333333333, 0.0]
+  overall, empty counted as 0          : 1.972222222222222
+  overall, empty skipped               : 3.944444444444444
+
+values that fall outside the 1 to 5 scale the ratings are defined on
+  per-driver means below 1 : 3 of 6
+  the OVERALL rating is 1.972222222222222, which is inside 1..5
+  so the aggregate is where the impossibility stops being visible
+
+the same check applied to caller A
+  per-driver means below 0 (penalties cannot be negative) : 0 of 6
+
+gap between 'empty as 0' and 'empty skipped'
+  caller A : 1.4166666666666667
+  caller B : 1.972222222222222
+
+Both callers show a gap, and a gap alone proves nothing - skipping empty
+groups changes an average whether or not the default was right. What
+separates the two callers is that only one of them produces a number its
+own scale says cannot exist.
+
+And that number is only visible one level down. Averaged again, the
+impossible per-driver values land back inside the scale, so the report a
+human reads is the one place the defect cannot be seen.
+```
+
+## Round-trip
+
+`ok: true` — round-trip fixpoint reached (python1 == python2)
+
+## Trace event types
+
+eml:run:start · eml:def · eml:assign · eml:output · eml:call · eml:return · eml:run:done
