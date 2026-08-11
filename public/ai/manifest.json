@@ -2127,6 +2127,12 @@
       "path": "/ai/examples/335-upstream-guard-makes-the-downstream-guard-dead.eml.md",
       "title": "The upstream guard makes the downstream guard dead — and the dead one is wrong",
       "description": "`upstream_guard_makes_the_downstream_guard_dead.eml` runs six orders through two validators in series, then through the second one alone."
+    },
+    {
+      "id": "336-no-observable-distinguishes-the-two",
+      "path": "/ai/examples/336-no-observable-distinguishes-the-two.eml.md",
+      "title": "No observable distinguishes the two — 1800 observations, zero disagreements",
+      "description": "`no_observable_distinguishes_the_two.eml` runs an aliasing store and a copying store side by side and counts how many observations tell them apart."
     }
   ],
   "tools": {
