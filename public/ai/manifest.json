@@ -2223,6 +2223,36 @@
       "path": "/ai/examples/351-validated-on-records-that-already-passed.eml.md",
       "title": "Validated on records that already passed — a clean run over real production data",
       "description": "`validated_on_records_that_already_passed.eml` runs a validator over the store it produced, and over the submissions that store came from."
+    },
+    {
+      "id": "352-one-fact-counted-as-three-sources",
+      "path": "/ai/examples/352-one-fact-counted-as-three-sources.eml.md",
+      "title": "One fact counted as three sources — 4 systems agree, 2 origins exist",
+      "description": "`one_fact_counted_as_three_sources.eml` traces each system's answer back to where it came from and counts distinct origins rather than distinct systems."
+    },
+    {
+      "id": "353-the-exception-outlived-its-reason",
+      "path": "/ai/examples/353-the-exception-outlived-its-reason.eml.md",
+      "title": "The exception outlived its reason — 5 of 6 rows removed for a condition that is false",
+      "description": "`the_exception_outlived_its_reason.eml` evaluates the stated reason for an exclusion against the rows the exclusion currently removes."
+    },
+    {
+      "id": "354-the-record-says-what-was-decided",
+      "path": "/ai/examples/354-the-record-says-what-was-decided.eml.md",
+      "title": "The record says what was decided — 6 of 6 answered, 0 of 6 checkable",
+      "description": "`the_record_says_what_was_decided.eml` tries to re-derive every decision from each of two records and counts how many it can reach."
+    },
+    {
+      "id": "355-the-rerun-seeds-from-the-last-run",
+      "path": "/ai/examples/355-the-rerun-seeds-from-the-last-run.eml.md",
+      "title": "The rerun seeds from the last run — and the measurement refused the premise",
+      "description": "`the_rerun_seeds_from_the_last_run.eml` runs a warm-started and a cold-started chain over the same daily data, with the same pass cap so the seed is the only difference."
+    },
+    {
+      "id": "356-the-resolution-is-cited-in-the-next-dispute",
+      "path": "/ai/examples/356-the-resolution-is-cited-in-the-next-dispute.eml.md",
+      "title": "The resolution is cited in the next dispute — 5 decisions, 1 observation",
+      "description": "`the_resolution_is_cited_in_the_next_dispute.eml` runs the same disputes under two policies and counts how often each one actually looked at evidence."
     }
   ],
   "tools": {
