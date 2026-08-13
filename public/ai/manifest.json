@@ -2253,6 +2253,96 @@
       "path": "/ai/examples/356-the-resolution-is-cited-in-the-next-dispute.eml.md",
       "title": "The resolution is cited in the next dispute — 5 decisions, 1 observation",
       "description": "`the_resolution_is_cited_in_the_next_dispute.eml` runs the same disputes under two policies and counts how often each one actually looked at evidence."
+    },
+    {
+      "id": "357-both-parties-assumed-the-other-checked-it",
+      "path": "/ai/examples/357-both-parties-assumed-the-other-checked-it.eml.md",
+      "title": "Both parties assumed the other checked it — 3 unchecked, all 3 seams",
+      "description": "`both_parties_assumed_the_other_checked_it.eml` offers every item to both parties' ownership rules and computes the four regions."
+    },
+    {
+      "id": "358-closed-because-it-stopped-being-reported",
+      "path": "/ai/examples/358-closed-because-it-stopped-being-reported.eml.md",
+      "title": "Closed because it stopped being reported — 485 occurrences after closure, 0 reports",
+      "description": "`closed_because_it_stopped_being_reported.eml` evaluates a \"no reports for three periods\" closure rule against what the defect was actually doing."
+    },
+    {
+      "id": "359-filed-against-where-it-surfaced",
+      "path": "/ai/examples/359-filed-against-where-it-surfaced.eml.md",
+      "title": "Filed against where it surfaced — 1 site named, 4 affected",
+      "description": "`filed_against_where_it_surfaced.eml` applies two fixes to the same pipeline — one at the reported location, one at the source — and measures every consumer."
+    },
+    {
+      "id": "360-finding-outruns-fixing",
+      "path": "/ai/examples/360-finding-outruns-fixing.eml.md",
+      "title": "Finding outruns fixing — same capacity, same count fixed, 127 against 71",
+      "description": "`finding_outruns_fixing.eml` simulates a defect queue under two work orders with identical throughput."
+    },
+    {
+      "id": "361-one-report-two-mechanisms",
+      "path": "/ai/examples/361-one-report-two-mechanisms.eml.md",
+      "title": "One report, two mechanisms — 3 items named, 7 wrong, 2 causes",
+      "description": "`one_report_two_mechanisms.eml` takes an honest, well-evidenced defect report and measures what its *shape* does to the fix."
+    },
+    {
+      "id": "362-severity-assigned-before-scope-was-measured",
+      "path": "/ai/examples/362-severity-assigned-before-scope-was-measured.eml.md",
+      "title": "Severity assigned before scope was measured — 0 inversions, then 1",
+      "description": "`severity_assigned_before_scope_was_measured.eml` runs the same three findings over two populations and counts how often triage-by-witness ranks them wrongly."
+    },
+    {
+      "id": "363-the-checker-inherits-the-builders-vocabulary",
+      "path": "/ai/examples/363-the-checker-inherits-the-builders-vocabulary.eml.md",
+      "title": "The checker inherits the builder's vocabulary — 6 of 6 named, 0 of 6 unnamed",
+      "description": "`the_checker_inherits_the_builders_vocabulary.eml` measures a doc-led search's recall, split by whether the defect's class has a name in the docs."
+    },
+    {
+      "id": "364-the-fix-moved-the-boundary",
+      "path": "/ai/examples/364-the-fix-moved-the-boundary.eml.md",
+      "title": "The fix moved the boundary — 0 disagreements on every integer tested",
+      "description": "`the_fix_moved_the_boundary.eml` runs two repairs for the same boundary defect over two domains and measures where they come apart."
+    },
+    {
+      "id": "365-the-guard-stopped-being-able-to-fail",
+      "path": "/ai/examples/365-the-guard-stopped-being-able-to-fail.eml.md",
+      "title": "The guard stopped being able to fail — same green, 1 guard alive, then 0",
+      "description": "`the_guard_stopped_being_able_to_fail.eml` drills every test in a suite by breaking the code it guards and re-running it."
+    },
+    {
+      "id": "366-the-handoff-loses-what-has-no-field",
+      "path": "/ai/examples/366-the-handoff-loses-what-has-no-field.eml.md",
+      "title": "The handoff loses what has no field — 4 of 6 decidable, and one new field bought 0",
+      "description": "`the_handoff_loses_what_has_no_field.eml` runs each of the receiver's decisions twice: from the transmitted subset, and from everything the sender knew."
+    },
+    {
+      "id": "367-the-regression-test-locks-in-the-workaround",
+      "path": "/ai/examples/367-the-regression-test-locks-in-the-workaround.eml.md",
+      "title": "The regression test locks in the workaround — green in the 2 states where the system is wrong",
+      "description": "`the_regression_test_locks_in_the_workaround.eml` classifies every assertion in a suite against the rule it was supposed to protect."
+    },
+    {
+      "id": "368-the-repro-succeeds-for-another-reason",
+      "path": "/ai/examples/368-the-repro-succeeds-for-another-reason.eml.md",
+      "title": "The repro succeeds for another reason — 140 with the defect on, 140 with it off",
+      "description": "`the_repro_succeeds_for_another_reason.eml` measures whether a reproduction script is sensitive to the defect it was filed against."
+    },
+    {
+      "id": "369-the-second-party-finds-a-different-class",
+      "path": "/ai/examples/369-the-second-party-finds-a-different-class.eml.md",
+      "title": "The second party finds a different class — 5 found against 7, and 1 that mattered",
+      "description": "`the_second_party_finds_a_different_class.eml` runs two searchers over one defect population and computes every region of the overlap."
+    },
+    {
+      "id": "370-the-verifier-reran-the-fixers-script",
+      "path": "/ai/examples/370-the-verifier-reran-the-fixers-script.eml.md",
+      "title": "The verifier reran the fixer's script — 0 escapes, and 9 inputs never seen",
+      "description": "`the_verifier_reran_the_fixers_script.eml` runs three input sets against the same repair and counts what each can find."
+    },
+    {
+      "id": "371-two-findings-one-defect",
+      "path": "/ai/examples/371-two-findings-one-defect.eml.md",
+      "title": "Two findings, one defect — 2 causes each, 1 in the intersection",
+      "description": "`two_findings_one_defect.eml` measures what routing two reports to two owners destroys."
     }
   ],
   "tools": {
