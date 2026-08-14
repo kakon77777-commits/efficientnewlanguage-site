@@ -2343,6 +2343,96 @@
       "path": "/ai/examples/371-two-findings-one-defect.eml.md",
       "title": "Two findings, one defect — 2 causes each, 1 in the intersection",
       "description": "`two_findings_one_defect.eml` measures what routing two reports to two owners destroys."
+    },
+    {
+      "id": "372-bucketed-by-when-it-arrived",
+      "path": "/ai/examples/372-bucketed-by-when-it-arrived.eml.md",
+      "title": "Bucketed by when it arrived — the totals reconcile and the shape does not",
+      "description": "`bucketed_by_when_it_arrived.eml` builds a daily series two ways from the same 18 events."
+    },
+    {
+      "id": "373-each-step-is-of-those-who-reached-it",
+      "path": "/ai/examples/373-each-step-is-of-those-who-reached-it.eml.md",
+      "title": "Each step is of those who reached it — five 90% steps make 59%, and fixing any one gains the same",
+      "description": "`each_step_is_of_those_who_reached_it.eml` computes the end-to-end rate and the per-step losses from the same five rates, then tries improving each step in turn."
+    },
+    {
+      "id": "374-passed-means-did-not-raise",
+      "path": "/ai/examples/374-passed-means-did-not-raise.eml.md",
+      "title": "Passed means did not raise — perfect on 2 of 4, blind on the other 2",
+      "description": "`passed_means_did_not_raise.eml` runs four broken variants of the same function through a smoke test and a value test."
+    },
+    {
+      "id": "375-the-absence-was-created-by-the-filter",
+      "path": "/ai/examples/375-the-absence-was-created-by-the-filter.eml.md",
+      "title": "The absence was created by the filter — same loss, one keeps the answer",
+      "description": "`the_absence_was_created_by_the_filter.eml` runs two pipelines with comparable drop rates over the same 40 records and compares each reported rate against the true one."
+    },
+    {
+      "id": "376-the-caveat-does-not-survive-the-second-hop",
+      "path": "/ai/examples/376-the-caveat-does-not-survive-the-second-hop.eml.md",
+      "title": "The caveat does not survive the second hop — 3 of 3 qualifiers gone, number unchanged",
+      "description": "`the_caveat_does_not_survive_the_second_hop.eml` walks one payload through four consumers and asks what is left at each."
+    },
+    {
+      "id": "377-the-clarification-arrives-after-the-decision",
+      "path": "/ai/examples/377-the-clarification-arrives-after-the-decision.eml.md",
+      "title": "The clarification arrives after the decision — 3 wrong reviews, and waiting 3 days fixes all of them",
+      "description": "`the_clarification_arrives_after_the_decision.eml` replays every decision at its own time and again with everything that eventually arrived."
+    },
+    {
+      "id": "378-the-counterexample-outside-the-generator",
+      "path": "/ai/examples/378-the-counterexample-outside-the-generator.eml.md",
+      "title": "The counterexample outside the generator — 2000 inputs found 0, 160 found 52",
+      "description": "`the_counterexample_outside_the_generator.eml` checks two real implementations of integer division against each other and varies the sample count and the sample range separately."
+    },
+    {
+      "id": "379-the-id-answers-which-record-not-which-person",
+      "path": "/ai/examples/379-the-id-answers-which-record-not-which-person.eml.md",
+      "title": "The id answers which record, not which person — 10 accounts, 6 people",
+      "description": "`the_id_answers_which_record_not_which_person.eml` counts new signups two ways from the same rows."
+    },
+    {
+      "id": "380-the-qualifier-changes-the-number",
+      "path": "/ai/examples/380-the-qualifier-changes-the-number.eml.md",
+      "title": "The qualifier changes the number — a 40-point drop and zero change in the service",
+      "description": "`the_qualifier_changes_the_number.eml` computes the same uptime figure from one log under a loose rule and a stated one."
+    },
+    {
+      "id": "381-the-search-that-stopped-early",
+      "path": "/ai/examples/381-the-search-that-stopped-early.eml.md",
+      "title": "The search that stopped early — 7 of 11 records never examined, report unchanged",
+      "description": "`the_search_that_stopped_early.eml` runs the same scanner over a stream it was written for and a stream that outgrew it."
+    },
+    {
+      "id": "382-the-shared-rule-ranked-worst",
+      "path": "/ai/examples/382-the-shared-rule-ranked-worst.eml.md",
+      "title": "The shared rule ranked worst — 0 of 3 against the strict rule, where three different rules got 2 of 3",
+      "description": "`the_shared_rule_ranked_worst.eml` ranks three teams three ways from one ticket log and compares each ranking with a strict rule applied to everybody."
+    },
+    {
+      "id": "383-the-test-asserts-the-format-not-the-value",
+      "path": "/ai/examples/383-the-test-asserts-the-format-not-the-value.eml.md",
+      "title": "The test asserts the format, not the value — 5 false alarms and 2 blind pairs",
+      "description": "`the_test_asserts_the_format_not_the_value.eml` measures the two failure directions of a rendered-output assertion separately, on the same function at the same time."
+    },
+    {
+      "id": "384-two-definitions-one-column-name",
+      "path": "/ai/examples/384-two-definitions-one-column-name.eml.md",
+      "title": "Two definitions, one column name — the roll-up says 11 and only 10 people exist",
+      "description": "`two_definitions_one_column_name.eml` derives both teams' numbers and the true pooled numbers from one event log."
+    },
+    {
+      "id": "385-two-sweeps-one-sentence",
+      "path": "/ai/examples/385-two-sweeps-one-sentence.eml.md",
+      "title": "Two sweeps, one sentence — 132 of 144 worlds hide behind the same zero",
+      "description": "`two_sweeps_one_sentence.eml` runs every one-defect world through both sweeps and counts which worlds each one can separate from the clean world."
+    },
+    {
+      "id": "386-zero-rows-three-explanations",
+      "path": "/ai/examples/386-zero-rows-three-explanations.eml.md",
+      "title": "Zero rows, three explanations — 1 of 3 worlds separable, and two probes fix it",
+      "description": "`zero_rows_three_explanations.eml` runs three worlds through the same query and counts how many of them each set of observations can still tell apart."
     }
   ],
   "tools": {
