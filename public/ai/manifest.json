@@ -2433,6 +2433,96 @@
       "path": "/ai/examples/386-zero-rows-three-explanations.eml.md",
       "title": "Zero rows, three explanations — 1 of 3 worlds separable, and two probes fix it",
       "description": "`zero_rows_three_explanations.eml` runs three worlds through the same query and counts how many of them each set of observations can still tell apart."
+    },
+    {
+      "id": "387-everyone-was-treated-so-there-is-no-before",
+      "path": "/ai/examples/387-everyone-was-treated-so-there-is-no-before.eml.md",
+      "title": "Everyone was treated, so there is no before - the mix shift hid 2.3 points of a 4.0 effect",
+      "description": "`everyone_was_treated_so_there_is_no_before.eml` rebuilds month 3 from month 2's mix and month 2 from month 3's, so each cause can be measured separately."
+    },
+    {
+      "id": "388-fixing-the-flagged-ones-moved-the-threshold",
+      "path": "/ai/examples/388-fixing-the-flagged-ones-moved-the-threshold.eml.md",
+      "title": "Fixing the flagged ones moved the threshold - 3 flagged every round, forever",
+      "description": "`fixing_the_flagged_ones_moved_the_threshold.eml` runs a relative and an absolute review rule over the same starting population for the same number of rounds."
+    },
+    {
+      "id": "389-not-deciding-had-a-cost-and-no-owner",
+      "path": "/ai/examples/389-not-deciding-had-a-cost-and-no-owner.eml.md",
+      "title": "Not deciding had a cost and no owner - waiting overtakes being wrong at week 17",
+      "description": "`not_deciding_had_a_cost_and_no_owner.eml` computes both costs on the same scale, week by week, so the comparison nobody makes is available to make."
+    },
+    {
+      "id": "390-ranked-by-clicks-then-shown-first",
+      "path": "/ai/examples/390-ranked-by-clicks-then-shown-first.eml.md",
+      "title": "Ranked by clicks, then shown first - locks in at 66% and never reaches 100%",
+      "description": "`ranked_by_clicks_then_shown_first.eml` runs the ranker for five days over items whose quality is fixed, known to the program, and never read by the ranker."
+    },
+    {
+      "id": "391-the-analysis-ran-until-it-agreed",
+      "path": "/ai/examples/391-the-analysis-ran-until-it-agreed.eml.md",
+      "title": "The analysis ran until it agreed - 4 of 10 segments up, in data with an effect of exactly zero",
+      "description": "`the_analysis_ran_until_it_agreed.eml` cuts a flat overall result by segment and counts how many segments have to be tried before one is up."
+    },
+    {
+      "id": "392-the-decision-was-made-before-the-number-arrived",
+      "path": "/ai/examples/392-the-decision-was-made-before-the-number-arrived.eml.md",
+      "title": "The decision was made before the number arrived - 1 distinct decision across 8 possible results, 4 distinct announcements",
+      "description": "`the_decision_was_made_before_the_number_arrived.eml` runs the decision over every possible result and counts the distinct decisions, because that - not whether it was read - is the test of whether an analysis mattered."
+    },
+    {
+      "id": "393-the-forecast-triggered-its-own-refutation",
+      "path": "/ai/examples/393-the-forecast-triggered-its-own-refutation.eml.md",
+      "title": "The forecast triggered its own refutation - 100% of the filed error was created by acting on it",
+      "description": "`the_forecast_triggered_its_own_refutation.eml` computes the observed world, the world the forecast was about, and next year's correction."
+    },
+    {
+      "id": "394-the-holdout-denied-a-real-benefit",
+      "path": "/ai/examples/394-the-holdout-denied-a-real-benefit.eml.md",
+      "title": "The holdout denied a real benefit - 320 in the good world, 2200 saved in the bad one",
+      "description": "`the_holdout_denied_a_real_benefit.eml` runs both worlds to completion and prints them side by side. No probability is assumed anywhere."
+    },
+    {
+      "id": "395-the-holdout-is-the-only-thing-that-can-say-no",
+      "path": "/ai/examples/395-the-holdout-is-the-only-thing-that-can-say-no.eml.md",
+      "title": "The holdout is the only thing that can say no - 12.0 without it, 0.0 with it",
+      "description": "`the_holdout_is_the_only_thing_that_can_say_no.eml` runs two worlds through the same arithmetic: one where the change does nothing, and one where it works."
+    },
+    {
+      "id": "396-the-holdout-shrank-until-it-could-not-decide",
+      "path": "/ai/examples/396-the-holdout-shrank-until-it-could-not-decide.eml.md",
+      "title": "The holdout shrank until it could not decide - and at an effect of 6 it still could",
+      "description": "`the_holdout_shrank_until_it_could_not_decide.eml` enumerates every possible contiguous holdout of each size - nothing is sampled - and prints the range of measured effects."
+    },
+    {
+      "id": "397-the-holdout-was-not-held-out",
+      "path": "/ai/examples/397-the-holdout-was-not-held-out.eml.md",
+      "title": "The holdout was not held out - 50% of the effect recovered, and still the right shape",
+      "description": "`the_holdout_was_not_held_out.eml` counts which control requests share a cache key with treated traffic, then measures the effect with and without that leak."
+    },
+    {
+      "id": "398-the-second-metric-was-consulted-because-the-first-said-no",
+      "path": "/ai/examples/398-the-second-metric-was-consulted-because-the-first-said-no.eml.md",
+      "title": "The second metric was consulted because the first said no - 7 of 8 launches have something to report, with no effect anywhere",
+      "description": "`the_second_metric_was_consulted_because_the_first_said_no.eml` runs eight hypothetical launches in which the true effect is zero on every metric, and counts how often each rule finds something."
+    },
+    {
+      "id": "399-the-target-stopped-being-a-measure",
+      "path": "/ai/examples/399-the-target-stopped-being-a-measure.eml.md",
+      "title": "The target stopped being a measure - 100% concordance before, no decidable pairs after",
+      "description": "`the_target_stopped_being_a_measure.eml` computes the proxy and the goal from the same ticket log in both periods, and measures how well the proxy can still rank tickets by the goal."
+    },
+    {
+      "id": "400-the-threshold-was-set-after-seeing-the-result",
+      "path": "/ai/examples/400-the-threshold-was-set-after-seeing-the-result.eml.md",
+      "title": "The threshold was set after seeing the result - excludes 3 of 10 where a fixed bar excluded 6",
+      "description": "`the_threshold_was_set_after_seeing_the_result.eml` enumerates every bar anyone in the room could have defended and asks what the rule can still exclude once the choice is made afterwards."
+    },
+    {
+      "id": "401-the-work-moved-to-where-nobody-measures",
+      "path": "/ai/examples/401-the-work-moved-to-where-nobody-measures.eml.md",
+      "title": "The work moved to where nobody measures - chart says 66% better, system is 9 worse",
+      "description": "`the_work_moved_to_where_nobody_measures.eml` runs the same job list under both routings, so the comparison is between two policies rather than two measurements."
     }
   ],
   "tools": {
