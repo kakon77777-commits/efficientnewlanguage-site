@@ -1,0 +1,275 @@
+<!-- canonical: efficientnewlanguage.org/ai/examples/412-the-rule-outlived-its-reason | ai_layer_version: 0.1.0 | updated: 2026-08-16 -->
+
+# Example 412 — The rule outlived its reason - 6 rejections and 0 downstream failures, in both eras
+
+`the_rule_outlived_its_reason.eml` runs the same rule against both eras so that "what did it catch" is answered per era rather than in aggregate.
+
+## EML
+
+```eml
+# Self-authored for the EML case corpus (no external origin). The rule was
+# written for a condition that ended in 2021. It is still enforced correctly.
+#
+# The rule is not superstition. When it was written there was a real constraint
+# - a downstream system that could not accept more than four items per batch -
+# and every rejection it made was a rejection of something that would have
+# broken. Anyone auditing it then would have found a clean record.
+#
+# The constraint went away when that system was replaced. The rule did not,
+# because a rule with no failures attached to it is a rule nobody is asked
+# about. Its record stays clean for the same reason it is now useless: it is
+# still rejecting, and nothing downstream is complaining.
+#
+# Both eras are run through the same rule so that "what did it catch" is
+# answered per era, not in aggregate.
+
+# [batch size, would the OLD downstream have broken, would the NEW one]
+[[2, 0, 0], [3, 0, 0], [4, 0, 0], [5, 1, 0], [6, 1, 0], [9, 1, 0], [12, 1, 0], [3, 0, 0], [7, 1, 0], [4, 0, 0], [11, 1, 0], [2, 0, 0]] => batches
+
+4 => limit
+
+def rejected(b):
+    if b[0] > limit:
+        return 1
+    return 0
+
+def counts(era):
+    0 => rej
+    0 => true_pos
+    0 => false_pos
+    for b in batches:
+        if rejected(b) == 1:
+            rej + 1 => rej
+            if b[era] == 1:
+                true_pos + 1 => true_pos
+            else:
+                false_pos + 1 => false_pos
+    return [rej, true_pos, false_pos]
+
+"batches : " + str(len(batches)) + ", rule : reject anything over " + str(limit) ^0
+"" ^0
+
+counts(1) => old
+counts(2) => new
+"in the era the rule was written for" ^0
+"  rejected            : " + str(old[0]) ^0
+"  would have broken   : " + str(old[1]) ^0
+"  would have been fine: " + str(old[2]) ^0
+"" ^0
+"in the era after the downstream was replaced" ^0
+"  rejected            : " + str(new[0]) ^0
+"  would have broken   : " + str(new[1]) ^0
+"  would have been fine: " + str(new[2]) ^0
+"" ^0
+
+if old[0] == new[0]:
+    "The rule rejects exactly the same batches in both eras." ^0
+    "In one era every rejection prevented a failure. In the other, none did." ^0
+"" ^0
+
+# ---- what its record looks like from the outside ----
+#
+# This is why nobody revisits it. Both eras produce the same clean report.
+
+"the rule's own report, in both eras" ^0
+"  era 1 : " + str(old[0]) + " rejections, 0 downstream failures" ^0
+"  era 2 : " + str(new[0]) + " rejections, 0 downstream failures" ^0
+"  identical, and only one of them is evidence that the rule is doing anything" ^0
+"" ^0
+
+# ---- what it costs now ----
+
+0 => blocked_work
+for b in batches:
+    if rejected(b) == 1:
+        blocked_work + b[0] => blocked_work
+0 => total_work
+for b in batches:
+    total_work + b[0] => total_work
+"the cost in the current era" ^0
+"  items in rejected batches : " + str(blocked_work) + " of " + str(total_work) ^0
+"  failures prevented        : " + str(new[1]) ^0
+"  work refused per failure prevented : none - the denominator is zero" ^0
+"" ^0
+
+# ---- the observation that would distinguish the two eras ----
+#
+# Not the rule's record, which is identical. The question is what happens to
+# the batches it rejects, and that is only answerable by letting some through.
+
+"what would separate the two eras" ^0
+"  the rule's rejection count : identical" ^0
+"  the downstream failure count : identical (both zero)" ^0
+"  what a batch over the limit actually does : the only thing that differs" ^0
+0 => probe
+for b in batches:
+    if b[0] > limit:
+        if probe == 0:
+            b[0] => probe
+"  letting one batch of " + str(probe) + " through would answer it in one attempt" ^0
+"" ^0
+
+# ---- the control: a rule whose constraint still holds ----
+#
+# The rule is not wrong to exist and the enforcement is not sloppy. Where the
+# constraint is live, the identical rule with the identical record is load-
+# bearing, and the report cannot tell you which one you have.
+
+[[2, 0, 0], [6, 1, 1], [9, 1, 1], [3, 0, 0]] => live_batches
+0 => live_rej
+0 => live_tp
+for b in live_batches:
+    if b[0] > limit:
+        live_rej + 1 => live_rej
+        live_tp + b[2] => live_tp
+"control - a system where the constraint still holds" ^0
+"  rejected : " + str(live_rej) ^0
+"  would have broken : " + str(live_tp) ^0
+if live_tp == live_rej:
+    "  every rejection is load-bearing, and the report looks the same as above" ^0
+"" ^0
+
+"A rule with a clean record is either working or unnecessary, and the record" ^0
+"reads the same either way. The reason it was written is the thing that would" ^0
+"tell you, and reasons are not enforced." ^0
+```
+
+## Python (deterministic transpilation)
+
+```python
+batches = [[2, 0, 0], [3, 0, 0], [4, 0, 0], [5, 1, 0], [6, 1, 0], [9, 1, 0], [12, 1, 0], [3, 0, 0], [7, 1, 0], [4, 0, 0], [11, 1, 0], [2, 0, 0]]
+limit = 4
+
+def rejected(b):
+    if b[0] > limit:
+        return 1
+    return 0
+
+def counts(era):
+    rej = 0
+    true_pos = 0
+    false_pos = 0
+    for b in batches:
+        if rejected(b) == 1:
+            rej = rej + 1
+            if b[era] == 1:
+                true_pos = true_pos + 1
+            else:
+                false_pos = false_pos + 1
+    return [rej, true_pos, false_pos]
+
+print("batches : " + str(len(batches)) + ", rule : reject anything over " + str(limit))
+print("")
+old = counts(1)
+new = counts(2)
+print("in the era the rule was written for")
+print("  rejected            : " + str(old[0]))
+print("  would have broken   : " + str(old[1]))
+print("  would have been fine: " + str(old[2]))
+print("")
+print("in the era after the downstream was replaced")
+print("  rejected            : " + str(new[0]))
+print("  would have broken   : " + str(new[1]))
+print("  would have been fine: " + str(new[2]))
+print("")
+if old[0] == new[0]:
+    print("The rule rejects exactly the same batches in both eras.")
+    print("In one era every rejection prevented a failure. In the other, none did.")
+print("")
+print("the rule's own report, in both eras")
+print("  era 1 : " + str(old[0]) + " rejections, 0 downstream failures")
+print("  era 2 : " + str(new[0]) + " rejections, 0 downstream failures")
+print("  identical, and only one of them is evidence that the rule is doing anything")
+print("")
+blocked_work = 0
+for b in batches:
+    if rejected(b) == 1:
+        blocked_work = blocked_work + b[0]
+total_work = 0
+for b in batches:
+    total_work = total_work + b[0]
+print("the cost in the current era")
+print("  items in rejected batches : " + str(blocked_work) + " of " + str(total_work))
+print("  failures prevented        : " + str(new[1]))
+print("  work refused per failure prevented : none - the denominator is zero")
+print("")
+print("what would separate the two eras")
+print("  the rule's rejection count : identical")
+print("  the downstream failure count : identical (both zero)")
+print("  what a batch over the limit actually does : the only thing that differs")
+probe = 0
+for b in batches:
+    if b[0] > limit:
+        if probe == 0:
+            probe = b[0]
+print("  letting one batch of " + str(probe) + " through would answer it in one attempt")
+print("")
+live_batches = [[2, 0, 0], [6, 1, 1], [9, 1, 1], [3, 0, 0]]
+live_rej = 0
+live_tp = 0
+for b in live_batches:
+    if b[0] > limit:
+        live_rej = live_rej + 1
+        live_tp = live_tp + b[2]
+print("control - a system where the constraint still holds")
+print("  rejected : " + str(live_rej))
+print("  would have broken : " + str(live_tp))
+if live_tp == live_rej:
+    print("  every rejection is load-bearing, and the report looks the same as above")
+print("")
+print("A rule with a clean record is either working or unnecessary, and the record")
+print("reads the same either way. The reason it was written is the thing that would")
+print("tell you, and reasons are not enforced.")
+```
+
+## stdout (executed)
+
+```text
+batches : 12, rule : reject anything over 4
+
+in the era the rule was written for
+  rejected            : 6
+  would have broken   : 6
+  would have been fine: 0
+
+in the era after the downstream was replaced
+  rejected            : 6
+  would have broken   : 0
+  would have been fine: 6
+
+The rule rejects exactly the same batches in both eras.
+In one era every rejection prevented a failure. In the other, none did.
+
+the rule's own report, in both eras
+  era 1 : 6 rejections, 0 downstream failures
+  era 2 : 6 rejections, 0 downstream failures
+  identical, and only one of them is evidence that the rule is doing anything
+
+the cost in the current era
+  items in rejected batches : 50 of 68
+  failures prevented        : 0
+  work refused per failure prevented : none - the denominator is zero
+
+what would separate the two eras
+  the rule's rejection count : identical
+  the downstream failure count : identical (both zero)
+  what a batch over the limit actually does : the only thing that differs
+  letting one batch of 5 through would answer it in one attempt
+
+control - a system where the constraint still holds
+  rejected : 2
+  would have broken : 2
+  every rejection is load-bearing, and the report looks the same as above
+
+A rule with a clean record is either working or unnecessary, and the record
+reads the same either way. The reason it was written is the thing that would
+tell you, and reasons are not enforced.
+```
+
+## Round-trip
+
+`ok: true` — round-trip fixpoint reached (python1 == python2)
+
+## Trace event types
+
+eml:run:start · eml:assign · eml:def · eml:output · eml:call · eml:return · eml:run:done

@@ -2523,6 +2523,96 @@
       "path": "/ai/examples/401-the-work-moved-to-where-nobody-measures.eml.md",
       "title": "The work moved to where nobody measures - chart says 66% better, system is 9 worse",
       "description": "`the_work_moved_to_where_nobody_measures.eml` runs the same job list under both routings, so the comparison is between two policies rather than two measurements."
+    },
+    {
+      "id": "402-filed-under-the-first-category-that-matched",
+      "path": "/ai/examples/402-filed-under-the-first-category-that-matched.eml.md",
+      "title": "Filed under the first category that matched - every count ranges from 1 to 6 on rule order alone",
+      "description": "`filed_under_the_first_category_that_matched.eml` runs the same items under all six orderings of the same three rules."
+    },
+    {
+      "id": "403-nobody-opened-a-single-one",
+      "path": "/ai/examples/403-nobody-opened-a-single-one.eml.md",
+      "title": "Nobody opened a single one - 2 records show what the summary has no column for",
+      "description": "`nobody_opened_a_single_one.eml` computes the summary and a small sample from the same rows, and checks whether the extra field is redundant with the categories rather than assuming it."
+    },
+    {
+      "id": "404-other-became-the-largest-category",
+      "path": "/ai/examples/404-other-became-the-largest-category.eml.md",
+      "title": "Other became the largest category - and every item in it was filed correctly",
+      "description": "`other_became_the_largest_category.eml` classifies both eras by the same scheme, so the growth of the catch-all is a fact about the arriving population rather than about drift."
+    },
+    {
+      "id": "405-renaming-the-category-changed-the-trend",
+      "path": "/ai/examples/405-renaming-the-category-changed-the-trend.eml.md",
+      "title": "Renaming the category changed the trend - a 50% drop that is entirely definitional",
+      "description": "`renaming_the_category_changed_the_trend.eml` counts every month under both rules, so the definitional part of the step separates from the real part."
+    },
+    {
+      "id": "406-the-action-items-were-closed-not-done",
+      "path": "/ai/examples/406-the-action-items-were-closed-not-done.eml.md",
+      "title": "The action items were closed, not done - 6 of 6 closed, 1 of them blocks anything",
+      "description": "`the_action_items_were_closed_not_done.eml` replays the incident step by step against the post-fix system, because \"was the work done\" and \"would this happen again\" are answered by different evidence."
+    },
+    {
+      "id": "407-the-average-describes-no-one",
+      "path": "/ai/examples/407-the-average-describes-no-one.eml.md",
+      "title": "The average describes no one - 0 customers within any tolerance of both means",
+      "description": "`the_average_describes_no_one.eml` counts how many records sit near the mean on both dimensions at four tolerances, and computes the median on the same data."
+    },
+    {
+      "id": "408-the-count-is-of-tickets-not-of-incidents",
+      "path": "/ai/examples/408-the-count-is-of-tickets-not-of-incidents.eml.md",
+      "title": "The count is of tickets, not of incidents - reports fell 54% and events did not move",
+      "description": "`the_count_is_of_tickets_not_of_incidents.eml` builds both quarters from the same underlying events so the two counts can be separated."
+    },
+    {
+      "id": "409-the-fix-from-last-time-was-in-place",
+      "path": "/ai/examples/409-the-fix-from-last-time-was-in-place.eml.md",
+      "title": "The fix from last time was in place - 1 of 5 paths closed, and 4 incidents still to come",
+      "description": "`the_fix_from_last_time_was_in_place.eml` runs every path to the outage against every guard, so \"would the existing fix have stopped this\" is answered by enumeration rather than by memory."
+    },
+    {
+      "id": "410-the-lesson-was-filed-where-nobody-looks",
+      "path": "/ai/examples/410-the-lesson-was-filed-where-nobody-looks.eml.md",
+      "title": "The lesson was filed where nobody looks - 3 of 7 places reach the person who needs it",
+      "description": "`the_lesson_was_filed_where_nobody_looks.eml` scores each place a lesson can live by the same three properties and computes the reach rather than arguing it."
+    },
+    {
+      "id": "411-the-outlier-was-removed-for-being-one",
+      "path": "/ai/examples/411-the-outlier-was-removed-for-being-one.eml.md",
+      "title": "The outlier was removed for being one - 0 instances of the investigated thing survive cleaning",
+      "description": "`the_outlier_was_removed_for_being_one.eml` computes the statistics with and without the cleaning rule and counts how many genuine slow paths each dataset still contains."
+    },
+    {
+      "id": "412-the-rule-outlived-its-reason",
+      "path": "/ai/examples/412-the-rule-outlived-its-reason.eml.md",
+      "title": "The rule outlived its reason - 6 rejections and 0 downstream failures, in both eras",
+      "description": "`the_rule_outlived_its_reason.eml` runs the same rule against both eras so that \"what did it catch\" is answered per era rather than in aggregate."
+    },
+    {
+      "id": "413-the-second-time-was-faster-and-that-is-all",
+      "path": "/ai/examples/413-the-second-time-was-faster-and-that-is-all.eml.md",
+      "title": "The second time was faster, and that is all - MTTR down 56%, hours down unchanged to the hour",
+      "description": "`the_second_time_was_faster_and_that_is_all.eml` computes both quantities from the same incident list so the two kinds of progress can be told apart."
+    },
+    {
+      "id": "414-the-top-three-are-the-same-item",
+      "path": "/ai/examples/414-the-top-three-are-the-same-item.eml.md",
+      "title": "The top three are the same item - one cause spread across three strings outranks every entry",
+      "description": "`the_top_three_are_the_same_item.eml` groups by the string the log carries and again by the cause the strings stand for."
+    },
+    {
+      "id": "415-the-total-is-right-and-every-line-is-wrong",
+      "path": "/ai/examples/415-the-total-is-right-and-every-line-is-wrong.eml.md",
+      "title": "The total is right and every line is wrong - net error zero, six lines off",
+      "description": "`the_total_is_right_and_every_line_is_wrong.eml` compares each line against its true value and sums the errors, alongside the reconciliation that is actually run."
+    },
+    {
+      "id": "416-two-taxonomies-that-do-not-partition",
+      "path": "/ai/examples/416-two-taxonomies-that-do-not-partition.eml.md",
+      "title": "Two taxonomies that do not partition - both totals are 12 and their numbers cannot be added",
+      "description": "`two_taxonomies_that_do_not_partition.eml` labels every defect under both schemes, so what each can and cannot say about one population is measured rather than argued."
     }
   ],
   "tools": {
