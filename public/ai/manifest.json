@@ -2613,6 +2613,96 @@
       "path": "/ai/examples/416-two-taxonomies-that-do-not-partition.eml.md",
       "title": "Two taxonomies that do not partition - both totals are 12 and their numbers cannot be added",
       "description": "`two_taxonomies_that_do_not_partition.eml` labels every defect under both schemes, so what each can and cannot say about one population is measured rather than argued."
+    },
+    {
+      "id": "417-dividing-in-place-changes-the-type",
+      "path": "/ai/examples/417-dividing-in-place-changes-the-type.eml.md",
+      "title": "Dividing in place changes the type",
+      "description": "`dividing_in_place_changes_the_type.eml` - Four compound assignments look alike. One of them changes what the variable is."
+    },
+    {
+      "id": "418-nobody-calls-the-documented-endpoint",
+      "path": "/ai/examples/418-nobody-calls-the-documented-endpoint.eml.md",
+      "title": "Nobody calls the documented endpoint",
+      "description": "`nobody_calls_the_documented_endpoint.eml` - The documented endpoint carries 3% of the traffic. The one nobody wrote down carries most of it."
+    },
+    {
+      "id": "419-one-counterexample-retired-a-rule",
+      "path": "/ai/examples/419-one-counterexample-retired-a-rule.eml.md",
+      "title": "One counterexample retired a rule",
+      "description": "`one_counterexample_retired_a_rule.eml` - A rule was removed after its visible failures. How often each policy is right is computed below; no figure is stated here, because a number in a comment is checked by nothing."
+    },
+    {
+      "id": "420-one-customer-set-the-roadmap",
+      "path": "/ai/examples/420-one-customer-set-the-roadmap.eml.md",
+      "title": "One customer set the roadmap",
+      "description": "`one_customer_set_the_roadmap.eml` - One account is 4% of revenue and most of the roadmap."
+    },
+    {
+      "id": "421-the-defect-was-load-bearing",
+      "path": "/ai/examples/421-the-defect-was-load-bearing.eml.md",
+      "title": "The defect was load bearing",
+      "description": "`the_defect_was_load_bearing.eml` - The bug was fixed and more callers broke than were ever helped."
+    },
+    {
+      "id": "422-the-demo-case-became-the-only-tested-path",
+      "path": "/ai/examples/422-the-demo-case-became-the-only-tested-path.eml.md",
+      "title": "The demo case became the only tested path",
+      "description": "`the_demo_case_became_the_only_tested_path.eml` - The example in the README is one shape of input. It is the shape 14 of 18 tests exercise."
+    },
+    {
+      "id": "423-the-deprecation-reached-the-readers",
+      "path": "/ai/examples/423-the-deprecation-reached-the-readers.eml.md",
+      "title": "The deprecation reached the readers",
+      "description": "`the_deprecation_reached_the_readers.eml` - The deprecation was announced in every channel the team has. How many callers that reached is computed below; stating it here would be a number nothing checks."
+    },
+    {
+      "id": "424-the-error-metric-has-no-sign",
+      "path": "/ai/examples/424-the-error-metric-has-no-sign.eml.md",
+      "title": "The error metric has no sign",
+      "description": "`the_error_metric_has_no_sign.eml` - Two forecasting models are scored by absolute error. The score ranks them equal. They are not the same model."
+    },
+    {
+      "id": "425-the-error-text-is-parsed-downstream",
+      "path": "/ai/examples/425-the-error-text-is-parsed-downstream.eml.md",
+      "title": "The error text is parsed downstream",
+      "description": "`the_error_text_is_parsed_downstream.eml` - The error message was reworded to be clearer. Four consumers were matching on the old wording."
+    },
+    {
+      "id": "426-the-guard-clause-skipped-the-accounting",
+      "path": "/ai/examples/426-the-guard-clause-skipped-the-accounting.eml.md",
+      "title": "The guard clause skipped the accounting",
+      "description": "`the_guard_clause_skipped_the_accounting.eml` - A guard clause was added at the top of a loop. It skipped more than the record it was aimed at."
+    },
+    {
+      "id": "427-the-incident-everyone-remembers",
+      "path": "/ai/examples/427-the-incident-everyone-remembers.eml.md",
+      "title": "The incident everyone remembers",
+      "description": "`the_incident_everyone_remembers.eml` - The outage nobody will forget cost less than the class nobody can name."
+    },
+    {
+      "id": "428-the-last-point-is-the-whole-trend",
+      "path": "/ai/examples/428-the-last-point-is-the-whole-trend.eml.md",
+      "title": "The last point is the whole trend",
+      "description": "`the_last_point_is_the_whole_trend.eml` - The last month is down. The year is up. Both are read off the same twelve numbers."
+    },
+    {
+      "id": "429-the-range-and-the-slice-disagree-about-the-end",
+      "path": "/ai/examples/429-the-range-and-the-slice-disagree-about-the-end.eml.md",
+      "title": "The range and the slice disagree about the end",
+      "description": "`the_range_and_the_slice_disagree_about_the_end.eml` - Two constructs in one language, both written [a:b], and they do not mean the same b."
+    },
+    {
+      "id": "430-the-reading-and-the-number-are-not-the-same-record",
+      "path": "/ai/examples/430-the-reading-and-the-number-are-not-the-same-record.eml.md",
+      "title": "The reading and the number are not the same record",
+      "description": "`the_reading_and_the_number_are_not_the_same_record.eml` - The log stores readings as text. The report parses them with `float()`. One of those two holds a fact the other cannot."
+    },
+    {
+      "id": "431-the-unspecified-order-became-the-contract",
+      "path": "/ai/examples/431-the-unspecified-order-became-the-contract.eml.md",
+      "title": "The unspecified order became the contract",
+      "description": "`the_unspecified_order_became_the_contract.eml` - The documentation says the order is unspecified. Seven of nine callers depend on it."
     }
   ],
   "tools": {
