@@ -92,53 +92,208 @@ jobs:
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
       - name: Smoke test the deployed URL
+        env:
+          SMOKE_URL: ${{ steps.deploy.outputs.url }}
         run: |
-          URL="${{ steps.deploy.outputs.url }}"
-          echo "Smoke testing $URL"
-
-          # Cloudflare Pages propagates a new deployment per-edge-node, not as
-          # one global on/off switch — back-to-back requests can land on
-          # different PoPs at different rollout states (observed: a /healthz
-          # check that already returns 200 does NOT guarantee the very next
-          # request, to the same path, also gets the new deployment). So retry
-          # each path independently with backoff instead of gating once
-          # upfront. -L follows redirects: /docs and /cases correctly 308 to
-          # their trailing-slash form (verified against a real Preview
-          # deployment) — check the FINAL status, not the redirect's own code.
+          # ---------------------------------------------------------------
+          # Two things this loop must keep doing, both learned the hard way:
           #
-          # A final status alone is not enough, and this loop proved it. /app
-          # answered 308 -> / for weeks; -L followed the bounce to the homepage,
-          # got 200, and this check reported "/app -> 200" every single deploy
-          # while the workbench was unreachable and the homepage's 示範區 link
-          # led back to the homepage. Following a redirect and then grading the
-          # page you were redirected TO cannot distinguish "the route works"
-          # from "the route no longer exists". So assert where we landed:
-          # $path, or $path/ for the routes that legitimately normalise to a
-          # trailing slash.
-          fail=0
-          for path in / /app /terminal /docs /cases /origins /healthz /readyz /version; do
-            ok=0
-            for attempt in $(seq 1 8); do
-              code=$(curl -sL -o /dev/null -w '%{http_code}' "$URL$path")
-              final=$(curl -sL -o /dev/null -w '%{url_effective}' "$URL$path")
-              if [ "$code" -ge 200 ] && [ "$code" -lt 300 ] \
-                 && { [ "$final" = "$URL$path" ] || [ "$final" = "$URL$path/" ]; }; then
-                ok=1
-                break
-              fi
-              sleep 2
-            done
-            if [ "$ok" -ne 1 ]; then
-              echo "::error::$path returned HTTP $code and landed on $final after 8 attempts"
-              fail=1
-            else
-              echo "$path -> $code ($final)"
-            fi
-          done
-          if [ "$fail" -ne 0 ]; then
-            echo "::error::Smoke test failed — see above"
+          # 1. -L follows redirects: /docs, /cases and /origins correctly 308
+          #    to their trailing-slash form (measured against production
+          #    2026-08-16: `Location: /docs/`). Grade the FINAL status, not the
+          #    redirect's own code.
+          #
+          # 2. A final status alone is NOT enough, and this loop proved it.
+          #    /app answered 308 -> / for weeks; -L followed the bounce to the
+          #    homepage, got 200, and this check reported "/app -> 200" every
+          #    single deploy while the workbench was unreachable and the
+          #    homepage's 示範區 link led back to the homepage. Following a
+          #    redirect and then grading the page you were redirected TO cannot
+          #    distinguish "the route works" from "the route no longer exists".
+          #    So assert where we LANDED: $path, or $path/ for the routes that
+          #    legitimately normalise to a trailing slash.
+          #
+          # ------------------------------- why the retry structure changed ---
+          # Run 31925766351 (commit 47aad78) failed with "/ returned HTTP 404
+          # after 8 attempts" on a deploy that was correct and complete: the
+          # same preview URL serves / with 200 now, and production /version
+          # reports that build. The run log dates the race precisely:
+          #
+          #   04:06:15.78  smoke test starts, probes / first
+          #   04:06:34.73  / gives up after 8 attempts (18.95s of retrying)
+          #   04:06:37.25  /app -> 200
+          #
+          # /app is NOT prerendered — there is no dist/app/. Its 200 is
+          # index.html, served by the worker's SPA fallback, which resolves it
+          # through `env.ASSETS.fetch('/')` — the *same* asset lookup that a
+          # direct request for / performs. So index.html became servable in the
+          # ~2.3s gap between /'s last failed probe and /app's first probe:
+          # roughly 19s after this step started, about 2s past the old budget.
+          #
+          # That means / was not special. It was FIRST. The old loop was
+          # `for path; do retry 8 times; done`, so whichever path leads the
+          # list absorbs the entire propagation delay alone while the other
+          # eight wait their turn — and by the time their turn comes the delay
+          # has already been paid. "Only / failed" was an artifact of ordering,
+          # not evidence that the root lands later than subdirectories. Note
+          # also what /app's 200 rules out: if the edge had cached /'s 404, the
+          # SPA fallback's re-fetch of / would have read that same cached 404.
+          # It returned 200, and production answers cf-cache-status: DYNAMIC on
+          # / and /docs, so a poisoned negative cache is not the mechanism.
+          #
+          # Three changes follow from that, and none of them relax an assertion:
+          #
+          #   a. Wait for readiness BEFORE grading anything. An earlier version
+          #      of this step gated on /healthz upfront and the comment here
+          #      recorded that it did not work — correctly, because /healthz is
+          #      generated by the worker and answers 200 while the asset layer
+          #      is still empty. /readyz is a different instrument: it fetches
+          #      / and /ai/manifest.json THROUGH the same ASSETS binding and
+          #      503s with index_html:false until they resolve. It is also
+          #      cache-control: no-store, so a 503 cannot be cached and re-read.
+          #      Pair it with /version's build_id to require that the edge is
+          #      serving the artifact THIS job deployed, not a predecessor.
+          #
+          #   b. Retry round-robin, not path-by-path, so the residual per-PoP
+          #      delay is absorbed once and shared. No path is privileged by
+          #      its position, so a future failure here means that path.
+          #
+          #   c. Grade the two endpoints that can answer 200 while lying.
+          #      /version 200s with {"build_id":"unknown"} when it cannot read
+          #      build-info.json; the old check accepted that as a pass, so
+          #      "/version -> 200" carried no information about the version
+          #      endpoint working. Compare it to the artifact on disk instead.
+          # ---------------------------------------------------------------
+          URL="${SMOKE_URL:-}"
+          if [ -z "$URL" ]; then
+            echo "::error::SMOKE_URL is empty — the deploy step produced no URL, so there is nothing to grade"
             exit 1
           fi
+          echo "Smoke testing $URL"
+
+          # These four knobs shorten WAITING so the drill harness can run the
+          # bytes of this step in seconds instead of minutes. They cannot
+          # shorten, skip or soften any assertion below. CI sets none of them.
+          ready_budget="${SMOKE_READY_BUDGET:-180}"
+          ready_interval="${SMOKE_READY_INTERVAL:-3}"
+          rounds="${SMOKE_ROUNDS:-8}"
+          round_sleep="${SMOKE_ROUND_SLEEP:-3}"
+
+          paths="/ /app /terminal /docs /cases /origins /healthz /readyz /version"
+
+          # Tripwire: an emptied or truncated path list would make every check
+          # below pass by grading nothing. Shrinking the list must be a
+          # deliberate edit here, not a silent one above.
+          set -- $paths
+          if [ "$#" -lt 9 ]; then
+            echo "::error::the smoke path list has $# entries, expected at least 9 — the gate was weakened, not the site fixed"
+            exit 1
+          fi
+
+          # Reads a build_id out of either the compact JSON the worker emits or
+          # the pretty-printed file on disk. Empty output means "no build_id
+          # here", which every caller below treats as a failure rather than as
+          # a value to compare.
+          build_id_of() {
+            grep -o '"build_id"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/^.*"\([^"]*\)"$/\1/'
+          }
+
+          if [ ! -f dist/build-info.json ]; then
+            echo "::error::dist/build-info.json missing from the downloaded artifact — /version cannot be graded against anything"
+            exit 1
+          fi
+          expected_build=$(build_id_of < dist/build-info.json)
+          if [ -z "$expected_build" ]; then
+            echo "::error::no build_id in dist/build-info.json — refusing to compare /version against an empty string, which anything would match"
+            exit 1
+          fi
+          echo "Expecting build_id $expected_build"
+
+          # --- Phase 1: WAIT. Not a check. Its timeout is a warning, and every
+          # --- assertion still runs afterwards, so a deploy that never becomes
+          # --- ready still fails in phase 2 with the paths named.
+          ready=0
+          waited=0
+          last="no probe completed"
+          while [ "$waited" -lt "$ready_budget" ]; do
+            rz=$(curl -s -m 15 -w '\n%{http_code}' "$URL/readyz" || true)
+            rz_code=${rz##*$'\n'}
+            rz_body=${rz%$'\n'*}
+            vs_id=$(curl -s -m 15 "$URL/version" 2>/dev/null | build_id_of || true)
+            last="readyz=${rz_code:-000} ${rz_body} /version build_id=${vs_id:-<none>}"
+            if [ "$rz_code" = "200" ] && [ -n "$vs_id" ] && [ "$vs_id" = "$expected_build" ]; then
+              ready=1
+              echo "Edge reports this build live after ${waited}s — $last"
+              break
+            fi
+            sleep "$ready_interval"
+            waited=$(( waited + ready_interval ))
+          done
+          if [ "$ready" -ne 1 ]; then
+            echo "::warning::edge did not report this build live within ${ready_budget}s (last: $last) — grading anyway"
+          fi
+
+          # --- Phase 2: the gate.
+          remaining="$paths"
+          fail_report=""
+          for round in $(seq 1 "$rounds"); do
+            still=""
+            fail_report=""
+            for path in $remaining; do
+              resp=$(curl -sL -m 30 -w '\n%{http_code} %{url_effective}' "$URL$path" || true)
+              meta=${resp##*$'\n'}
+              body=${resp%$'\n'*}
+              code=${meta%% *}
+              final=${meta#* }
+              case "$code" in ''|*[!0-9]*) code=000 ;; esac
+
+              ok=1
+              why=""
+              if [ "$code" -lt 200 ] || [ "$code" -ge 300 ]; then
+                ok=0
+                why="HTTP $code (landed on $final)"
+              elif [ "$final" != "$URL$path" ] && [ "$final" != "$URL$path/" ]; then
+                ok=0
+                why="HTTP $code but landed on $final — this route redirected somewhere else instead of serving"
+              elif [ "$path" = "/version" ]; then
+                got=$(printf '%s' "$body" | build_id_of)
+                if [ "$got" != "$expected_build" ]; then
+                  ok=0
+                  why="HTTP 200 but build_id=\"${got:-<none>}\", expected \"$expected_build\" — the edge is not serving the artifact this job deployed"
+                fi
+              elif [ "$path" = "/readyz" ]; then
+                # Today a 200 from /readyz already implies index_html:true, so
+                # this only bites if the worker's readiness ever stops meaning
+                # that. Asserting the body keeps the status and the claim tied
+                # together instead of trusting they stay in sync.
+                case "$body" in
+                  *'"index_html":true'*) : ;;
+                  *) ok=0; why="HTTP 200 but readiness body does not report index_html:true: $body" ;;
+                esac
+              fi
+
+              if [ "$ok" -eq 1 ]; then
+                echo "  $path -> $code ($final)"
+              else
+                still="$still $path"
+                fail_report="$fail_report
+          $path: $why"
+              fi
+            done
+            remaining="$still"
+            if [ -z "$remaining" ]; then break; fi
+            echo "round $round/$rounds — still failing:$remaining"
+            if [ "$round" -lt "$rounds" ]; then sleep "$round_sleep"; fi
+          done
+
+          if [ -n "$remaining" ]; then
+            printf '%s\n' "$fail_report" | while IFS= read -r line; do
+              if [ -n "$line" ]; then echo "::error::$line"; fi
+            done
+            echo "::error::Smoke test failed after $rounds rounds —$remaining"
+            exit 1
+          fi
+          echo "Smoke test passed: all 9 paths served, landed where asked, and /version matches $expected_build"
 
       - name: Generate deploy report
         env:
