@@ -1,0 +1,271 @@
+<!-- canonical: efficientnewlanguage.org/ai/examples/433-muting-the-alert-removed-the-only-evidence | ai_layer_version: 0.1.0 | updated: 2026-08-18 -->
+
+# Example 433 — Muting the alert removed the only evidence
+
+`muting_the_alert_removed_the_only_evidence.eml` - Two alerts were muted in the same week. Their histories since are identical. Only one of the two conditions stopped.
+
+## EML
+
+```eml
+# Self-authored for the EML case corpus (no external origin). Two alerts were
+# muted in the same week. Their histories since are identical. Only one of the
+# two conditions stopped.
+#
+# Muting the noisy one was right. It fired hundreds of times for a handful of
+# real events, and an alert that is wrong that often trains people to close it
+# without reading, which costs more than the alert buys. Turning it off was a
+# considered decision with a number behind it.
+#
+# What the mute also did was remove the only thing counting the condition. From
+# that week on, both conditions produce the same alert stream - nothing - and a
+# reader of that stream has no way to tell a condition that stopped from a
+# condition that is no longer being watched.
+#
+# Both conditions are counted here against a source that is not the alert.
+
+# per month: real occurrences
+[5, 6, 4, 3, 0, 0, 0, 0] => stampede_real
+[7, 9, 8, 6, 7, 8, 9, 7] => retry_real
+
+# per month: alerts that fired
+[5, 6, 4, 3, 0, 0, 0, 0] => stampede_alerts
+[90, 95, 88, 102, 0, 0, 0, 0] => retry_alerts
+
+4 => muted_after
+len(stampede_real) => months
+
+def span(xs, a, b):
+    0 => t
+    for i in [a:b]:
+        t + xs[i] => t
+    return t
+
+"months : " + str(months) + ", both alerts muted after month " + str(muted_after) ^0
+"" ^0
+
+"                      before the mute      after the mute" ^0
+"  cache stampede" ^0
+"    alerts fired      " + str(span(stampede_alerts, 0, muted_after - 1)) + "                    " + str(span(stampede_alerts, muted_after, months - 1)) ^0
+"    really happened   " + str(span(stampede_real, 0, muted_after - 1)) + "                    " + str(span(stampede_real, muted_after, months - 1)) ^0
+"  retry storm" ^0
+"    alerts fired      " + str(span(retry_alerts, 0, muted_after - 1)) + "                  " + str(span(retry_alerts, muted_after, months - 1)) ^0
+"    really happened   " + str(span(retry_real, 0, muted_after - 1)) + "                   " + str(span(retry_real, muted_after, months - 1)) ^0
+"" ^0
+
+if span(stampede_alerts, muted_after, months - 1) == span(retry_alerts, muted_after, months - 1):
+    "since the mute both alert histories read " + str(span(stampede_alerts, muted_after, months - 1)) + ", and they are the same number" ^0
+if not (span(stampede_real, muted_after, months - 1) == span(retry_real, muted_after, months - 1)):
+    "the conditions behind them differ by " + str(span(retry_real, muted_after, months - 1) - span(stampede_real, muted_after, months - 1)) + " occurrences" ^0
+"" ^0
+
+# ---- why muting the noisy one was the right call ----
+
+span(retry_alerts, 0, muted_after - 1) => r_alerts
+span(retry_real, 0, muted_after - 1) => r_real
+"the case for muting the retry storm alert" ^0
+"  alerts before the mute : " + str(r_alerts) ^0
+"  real events behind them: " + str(r_real) ^0
+"  of every 100 alerts, this many were real : " + str(int(r_real * 100 / r_alerts)) ^0
+if r_alerts > r_real * 5:
+    "  it was wrong far more often than right, and people had stopped reading it" ^0
+"" ^0
+
+# ---- what a reviewer sees six months later ----
+
+"a reviewer reading the alert history for months " + str(muted_after + 1) + " to " + str(months) ^0
+"  cache stampede alerts : " + str(span(stampede_alerts, muted_after, months - 1)) ^0
+"  retry storm alerts    : " + str(span(retry_alerts, muted_after, months - 1)) ^0
+"  both flat at zero, so both read as resolved" ^0
+0 => still_happening
+if span(retry_real, muted_after, months - 1) > 0:
+    1 => still_happening
+if still_happening == 1:
+    "  one of the two is still occurring, " + str(span(retry_real, muted_after, months - 1)) + " times, and the history says nothing about it" ^0
+"" ^0
+
+# ---- the observation that does distinguish them ----
+#
+# Not a better reading of the alert stream. A different source, one whose
+# ability to report does not depend on the alert being enabled.
+
+"month by month, from the source that is not the alert" ^0
+for i in [muted_after:months - 1]:
+    "  month " + str(i + 1) + " : stampede " + str(stampede_real[i]) + ", retry storm " + str(retry_real[i]) ^0
+"  the alert stream is identical across every one of those rows" ^0
+"" ^0
+
+# ---- what would have kept the silence meaningful ----
+#
+# A signal that fires when the condition is absent proves the instrument is
+# alive. Then zero means zero, instead of meaning nothing.
+
+0 => heartbeats
+for i in [muted_after:months - 1]:
+    heartbeats + 1 => heartbeats
+"a monthly heartbeat instead of a mute" ^0
+"  heartbeats that would have been sent : " + str(heartbeats) ^0
+"  each says the check ran and found the count, including when the count is 0" ^0
+"  a missing heartbeat is then itself the alert, and the noise problem is" ^0
+"  solved by reporting a number rather than by firing on every event" ^0
+"" ^0
+
+# ---- the control: the alert that was left on ----
+#
+# Where the instrument is still capable of firing, silence is evidence. The
+# same zeros mean something different because something else could have been
+# printed there.
+
+[3, 2, 0, 0, 0, 0, 0, 0] => lefton_real
+[3, 2, 0, 0, 0, 0, 0, 0] => lefton_alerts
+"control - a third alert, never muted" ^0
+"  alerts in months " + str(muted_after + 1) + " to " + str(months) + " : " + str(span(lefton_alerts, muted_after, months - 1)) ^0
+"  real occurrences        : " + str(span(lefton_real, muted_after, months - 1)) ^0
+if span(lefton_alerts, muted_after, months - 1) == 0:
+    if span(lefton_real, muted_after, months - 1) == 0:
+        "  the same zero as the muted pair, and here it carries information" ^0
+        "  because an occurrence would have produced a line" ^0
+"" ^0
+
+"Muting the noisy alert was a good decision made from a real number. It also" ^0
+"removed the only instrument counting the thing, and a zero from an instrument" ^0
+"that cannot fire is the same zero either way." ^0
+```
+
+## Python (deterministic transpilation)
+
+```python
+stampede_real = [5, 6, 4, 3, 0, 0, 0, 0]
+retry_real = [7, 9, 8, 6, 7, 8, 9, 7]
+stampede_alerts = [5, 6, 4, 3, 0, 0, 0, 0]
+retry_alerts = [90, 95, 88, 102, 0, 0, 0, 0]
+muted_after = 4
+months = len(stampede_real)
+
+def span(xs, a, b):
+    t = 0
+    for i in range(a, b+1):
+        t = t + xs[i]
+    return t
+
+print("months : " + str(months) + ", both alerts muted after month " + str(muted_after))
+print("")
+print("                      before the mute      after the mute")
+print("  cache stampede")
+print("    alerts fired      " + str(span(stampede_alerts, 0, muted_after - 1)) + "                    " + str(span(stampede_alerts, muted_after, months - 1)))
+print("    really happened   " + str(span(stampede_real, 0, muted_after - 1)) + "                    " + str(span(stampede_real, muted_after, months - 1)))
+print("  retry storm")
+print("    alerts fired      " + str(span(retry_alerts, 0, muted_after - 1)) + "                  " + str(span(retry_alerts, muted_after, months - 1)))
+print("    really happened   " + str(span(retry_real, 0, muted_after - 1)) + "                   " + str(span(retry_real, muted_after, months - 1)))
+print("")
+if span(stampede_alerts, muted_after, months - 1) == span(retry_alerts, muted_after, months - 1):
+    print("since the mute both alert histories read " + str(span(stampede_alerts, muted_after, months - 1)) + ", and they are the same number")
+if not span(stampede_real, muted_after, months - 1) == span(retry_real, muted_after, months - 1):
+    print("the conditions behind them differ by " + str(span(retry_real, muted_after, months - 1) - span(stampede_real, muted_after, months - 1)) + " occurrences")
+print("")
+r_alerts = span(retry_alerts, 0, muted_after - 1)
+r_real = span(retry_real, 0, muted_after - 1)
+print("the case for muting the retry storm alert")
+print("  alerts before the mute : " + str(r_alerts))
+print("  real events behind them: " + str(r_real))
+print("  of every 100 alerts, this many were real : " + str(int(r_real * 100 / r_alerts)))
+if r_alerts > r_real * 5:
+    print("  it was wrong far more often than right, and people had stopped reading it")
+print("")
+print("a reviewer reading the alert history for months " + str(muted_after + 1) + " to " + str(months))
+print("  cache stampede alerts : " + str(span(stampede_alerts, muted_after, months - 1)))
+print("  retry storm alerts    : " + str(span(retry_alerts, muted_after, months - 1)))
+print("  both flat at zero, so both read as resolved")
+still_happening = 0
+if span(retry_real, muted_after, months - 1) > 0:
+    still_happening = 1
+if still_happening == 1:
+    print("  one of the two is still occurring, " + str(span(retry_real, muted_after, months - 1)) + " times, and the history says nothing about it")
+print("")
+print("month by month, from the source that is not the alert")
+for i in range(muted_after, months):
+    print("  month " + str(i + 1) + " : stampede " + str(stampede_real[i]) + ", retry storm " + str(retry_real[i]))
+print("  the alert stream is identical across every one of those rows")
+print("")
+heartbeats = 0
+for i in range(muted_after, months):
+    heartbeats = heartbeats + 1
+print("a monthly heartbeat instead of a mute")
+print("  heartbeats that would have been sent : " + str(heartbeats))
+print("  each says the check ran and found the count, including when the count is 0")
+print("  a missing heartbeat is then itself the alert, and the noise problem is")
+print("  solved by reporting a number rather than by firing on every event")
+print("")
+lefton_real = [3, 2, 0, 0, 0, 0, 0, 0]
+lefton_alerts = [3, 2, 0, 0, 0, 0, 0, 0]
+print("control - a third alert, never muted")
+print("  alerts in months " + str(muted_after + 1) + " to " + str(months) + " : " + str(span(lefton_alerts, muted_after, months - 1)))
+print("  real occurrences        : " + str(span(lefton_real, muted_after, months - 1)))
+if span(lefton_alerts, muted_after, months - 1) == 0:
+    if span(lefton_real, muted_after, months - 1) == 0:
+        print("  the same zero as the muted pair, and here it carries information")
+        print("  because an occurrence would have produced a line")
+print("")
+print("Muting the noisy alert was a good decision made from a real number. It also")
+print("removed the only instrument counting the thing, and a zero from an instrument")
+print("that cannot fire is the same zero either way.")
+```
+
+## stdout (executed)
+
+```text
+months : 8, both alerts muted after month 4
+
+                      before the mute      after the mute
+  cache stampede
+    alerts fired      18                    0
+    really happened   18                    0
+  retry storm
+    alerts fired      375                  0
+    really happened   30                   31
+
+since the mute both alert histories read 0, and they are the same number
+the conditions behind them differ by 31 occurrences
+
+the case for muting the retry storm alert
+  alerts before the mute : 375
+  real events behind them: 30
+  of every 100 alerts, this many were real : 8
+  it was wrong far more often than right, and people had stopped reading it
+
+a reviewer reading the alert history for months 5 to 8
+  cache stampede alerts : 0
+  retry storm alerts    : 0
+  both flat at zero, so both read as resolved
+  one of the two is still occurring, 31 times, and the history says nothing about it
+
+month by month, from the source that is not the alert
+  month 5 : stampede 0, retry storm 7
+  month 6 : stampede 0, retry storm 8
+  month 7 : stampede 0, retry storm 9
+  month 8 : stampede 0, retry storm 7
+  the alert stream is identical across every one of those rows
+
+a monthly heartbeat instead of a mute
+  heartbeats that would have been sent : 4
+  each says the check ran and found the count, including when the count is 0
+  a missing heartbeat is then itself the alert, and the noise problem is
+  solved by reporting a number rather than by firing on every event
+
+control - a third alert, never muted
+  alerts in months 5 to 8 : 0
+  real occurrences        : 0
+  the same zero as the muted pair, and here it carries information
+  because an occurrence would have produced a line
+
+Muting the noisy alert was a good decision made from a real number. It also
+removed the only instrument counting the thing, and a zero from an instrument
+that cannot fire is the same zero either way.
+```
+
+## Round-trip
+
+`ok: true` — round-trip fixpoint reached (python1 == python2)
+
+## Trace event types
+
+eml:run:start · eml:assign · eml:def · eml:output · eml:call · eml:return · eml:run:done

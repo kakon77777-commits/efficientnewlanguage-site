@@ -2703,6 +2703,96 @@
       "path": "/ai/examples/431-the-unspecified-order-became-the-contract.eml.md",
       "title": "The unspecified order became the contract",
       "description": "`the_unspecified_order_became_the_contract.eml` - The documentation says the order is unspecified. Seven of nine callers depend on it."
+    },
+    {
+      "id": "432-each-team-minimised-its-own-cost",
+      "path": "/ai/examples/432-each-team-minimised-its-own-cost.eml.md",
+      "title": "Each team minimised its own cost",
+      "description": "`each_team_minimised_its_own_cost.eml` - Four teams, four correct decisions, one total. Whether the total is the smallest available is computed below."
+    },
+    {
+      "id": "433-muting-the-alert-removed-the-only-evidence",
+      "path": "/ai/examples/433-muting-the-alert-removed-the-only-evidence.eml.md",
+      "title": "Muting the alert removed the only evidence",
+      "description": "`muting_the_alert_removed_the_only_evidence.eml` - Two alerts were muted in the same week. Their histories since are identical. Only one of the two conditions stopped."
+    },
+    {
+      "id": "434-nobody-can-prove-any-of-them-is-removable",
+      "path": "/ai/examples/434-nobody-can-prove-any-of-them-is-removable.eml.md",
+      "title": "Nobody can prove any of them is removable",
+      "description": "`nobody_can_prove_any_of_them_is_removable.eml` - Eleven workarounds, each added for a condition that was real. How many can be shown to be dead is computed below, and it is not the same as how many are dead."
+    },
+    {
+      "id": "435-one-flag-per-incident-and-no-tested-combination",
+      "path": "/ai/examples/435-one-flag-per-incident-and-no-tested-combination.eml.md",
+      "title": "One flag per incident and no tested combination",
+      "description": "`one_flag_per_incident_and_no_tested_combination.eml` - Twelve flags, one per incident, each added by someone who was right. How many live combinations were ever tested is computed below."
+    },
+    {
+      "id": "436-the-available-response-was-to-add-a-person",
+      "path": "/ai/examples/436-the-available-response-was-to-add-a-person.eml.md",
+      "title": "The available response was to add a person",
+      "description": "`the_available_response_was_to_add_a_person.eml` - The system cannot be changed this quarter, so a person checks the output. What that catches is computed below."
+    },
+    {
+      "id": "437-the-exception-was-caught-where-it-could-be-caught",
+      "path": "/ai/examples/437-the-exception-was-caught-where-it-could-be-caught.eml.md",
+      "title": "The exception was caught where it could be caught",
+      "description": "`the_exception_was_caught_where_it_could_be_caught.eml` - The handler sits at the top of the request, because that is the function this team owns. How many of the failures it catches it can answer correctly is computed below."
+    },
+    {
+      "id": "438-the-fix-was-applied-to-the-input-instead",
+      "path": "/ai/examples/438-the-fix-was-applied-to-the-input-instead.eml.md",
+      "title": "The fix was applied to the input instead",
+      "description": "`the_fix_was_applied_to_the_input_instead.eml` - The consumer belongs to another team, so the input is cleaned before it gets there. What that covers is computed below."
+    },
+    {
+      "id": "439-the-log-covers-the-paths-we-suspected",
+      "path": "/ai/examples/439-the-log-covers-the-paths-we-suspected.eml.md",
+      "title": "The log covers the paths we suspected",
+      "description": "`the_log_covers_the_paths_we_suspected.eml` - Logging was added to the paths that had failed before. The logs now say those paths are where the failures are."
+    },
+    {
+      "id": "440-the-oldest-one-is-the-one-nobody-questions",
+      "path": "/ai/examples/440-the-oldest-one-is-the-one-nobody-questions.eml.md",
+      "title": "The oldest one is the one nobody questions",
+      "description": "`the_oldest_one_is_the_one_nobody_questions.eml` - The older a workaround is, the more likely its condition is gone and the less likely anyone looks at it. Both halves are computed below."
+    },
+    {
+      "id": "441-the-rate-is-visible-and-the-request-is-not",
+      "path": "/ai/examples/441-the-rate-is-visible-and-the-request-is-not.eml.md",
+      "title": "The rate is visible and the request is not",
+      "description": "`the_rate_is_visible_and_the_request_is_not.eml` - The error rate is on the dashboard, correct to a tenth of a percent, and updated every minute. How many customer complaints it can resolve is computed below."
+    },
+    {
+      "id": "442-the-restart-works-so-the-fix-never-pays",
+      "path": "/ai/examples/442-the-restart-works-so-the-fix-never-pays.eml.md",
+      "title": "The restart works so the fix never pays",
+      "description": "`the_restart_works_so_the_fix_never_pays.eml` - The process leaks and gets restarted. Whether fixing it pays is computed below rather than assumed either way."
+    },
+    {
+      "id": "443-the-runbook-grew-one-step-per-incident",
+      "path": "/ai/examples/443-the-runbook-grew-one-step-per-incident.eml.md",
+      "title": "The runbook grew one step per incident",
+      "description": "`the_runbook_grew_one_step_per_incident.eml` - Fourteen steps, one per incident. How many of them the next incident needs is computed below."
+    },
+    {
+      "id": "444-the-team-that-can-see-it-cannot-change-it",
+      "path": "/ai/examples/444-the-team-that-can-see-it-cannot-change-it.eml.md",
+      "title": "The team that can see it cannot change it",
+      "description": "`the_team_that_can_see_it_cannot_change_it.eml` - The platform team can see every one of these findings. How many of them anyone can act on is computed below."
+    },
+    {
+      "id": "445-the-timeout-was-raised-because-it-was-the-adjustable-number",
+      "path": "/ai/examples/445-the-timeout-was-raised-because-it-was-the-adjustable-number.eml.md",
+      "title": "The timeout was raised because it was the adjustable number",
+      "description": "`the_timeout_was_raised_because_it_was_the_adjustable_number.eml` - The dependency got slower. The timeout was raised. How many calls that changed is computed below."
+    },
+    {
+      "id": "446-the-warning-fires-where-the-caller-cannot-hear-it",
+      "path": "/ai/examples/446-the-warning-fires-where-the-caller-cannot-hear-it.eml.md",
+      "title": "The warning fires where the caller cannot hear it",
+      "description": "`the_warning_fires_where_the_caller_cannot_hear_it.eml` - The deprecation warning was moved into the call itself, which is the right place for it. How many callers can act on it is computed below."
     }
   ],
   "tools": {
