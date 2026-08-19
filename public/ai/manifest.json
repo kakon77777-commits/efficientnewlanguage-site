@@ -2793,6 +2793,96 @@
       "path": "/ai/examples/446-the-warning-fires-where-the-caller-cannot-hear-it.eml.md",
       "title": "The warning fires where the caller cannot hear it",
       "description": "`the_warning_fires_where_the_caller_cannot_hear_it.eml` - The deprecation warning was moved into the call itself, which is the right place for it. How many callers can act on it is computed below."
+    },
+    {
+      "id": "447-both-sides-buffered-against-the-other",
+      "path": "/ai/examples/447-both-sides-buffered-against-the-other.eml.md",
+      "title": "Both sides buffered against the other",
+      "description": "`both_sides_buffered_against_the_other.eml` - Each side added a queue against the other's variability. What the pair does to the time a unit of work spends in the system is simulated rather than assumed."
+    },
+    {
+      "id": "448-each-number-moves-the-other-so-the-slope-is-neither",
+      "path": "/ai/examples/448-each-number-moves-the-other-so-the-slope-is-neither.eml.md",
+      "title": "Each number moves the other so the slope is neither",
+      "description": "`each_number_moves_the_other_so_the_slope_is_neither.eml` - Test count and build time move together across twelve weeks. What the slope between them measures is computed below."
+    },
+    {
+      "id": "449-each-side-added-a-shim-for-the-other",
+      "path": "/ai/examples/449-each-side-added-a-shim-for-the-other.eml.md",
+      "title": "Each side added a shim for the other",
+      "description": "`each_side_added_a_shim_for_the_other.eml` - Each team wrote a compatibility layer for the other team's changes. How many of them handle the same incompatibility is computed below."
+    },
+    {
+      "id": "450-every-rollback-made-the-next-deploy-bigger",
+      "path": "/ai/examples/450-every-rollback-made-the-next-deploy-bigger.eml.md",
+      "title": "Every rollback made the next deploy bigger",
+      "description": "`every_rollback_made_the_next_deploy_bigger.eml` - A bad deploy is followed by more review before the next one. What that does to the next deploy is simulated rather than argued."
+    },
+    {
+      "id": "451-neither-date-was-set-by-the-work",
+      "path": "/ai/examples/451-neither-date-was-set-by-the-work.eml.md",
+      "title": "Neither date was set by the work",
+      "description": "`neither_date_was_set_by_the_work.eml` - Each team set its date from the other team's date. Where either date came from is computed below."
+    },
+    {
+      "id": "452-one-interval-cannot-see-which-way-it-feeds-back",
+      "path": "/ai/examples/452-one-interval-cannot-see-which-way-it-feeds-back.eml.md",
+      "title": "One interval cannot see which way it feeds back",
+      "description": "`one_interval_cannot_see_which_way_it_feeds_back.eml` - Two systems take the same shock and respond identically in the first interval. Which of them is amplifying is not in that interval, and is computed here."
+    },
+    {
+      "id": "453-shedding-load-shed-what-would-have-relieved-it",
+      "path": "/ai/examples/453-shedding-load-shed-what-would-have-relieved-it.eml.md",
+      "title": "Shedding load shed what would have relieved it",
+      "description": "`shedding_load_shed_what_would_have_relieved_it.eml` - Under overload the requests nobody is waiting on are refused first. What that does to the next interval is simulated rather than assumed."
+    },
+    {
+      "id": "454-the-cache-decided-what-was-popular",
+      "path": "/ai/examples/454-the-cache-decided-what-was-popular.eml.md",
+      "title": "The cache decided what was popular",
+      "description": "`the_cache_decided_what_was_popular.eml` - The cache holds the most requested items, and being held is part of why they are requested. Which items it settles on is simulated rather than assumed."
+    },
+    {
+      "id": "455-the-experiment-ran-inside-the-loop",
+      "path": "/ai/examples/455-the-experiment-ran-inside-the-loop.eml.md",
+      "title": "The experiment ran inside the loop",
+      "description": "`the_experiment_ran_inside_the_loop.eml` - The A/B test was clean: random assignment, one change, a large sample, a clear result. How much of the measured lift is the treatment is computed below."
+    },
+    {
+      "id": "456-the-improvement-was-the-loop-settling",
+      "path": "/ai/examples/456-the-improvement-was-the-loop-settling.eml.md",
+      "title": "The improvement was the loop settling",
+      "description": "`the_improvement_was_the_loop_settling.eml` - A metric improved for six months after an initiative started. What else predicts that curve is computed below."
+    },
+    {
+      "id": "457-the-padding-was-consumed-so-it-was-increased",
+      "path": "/ai/examples/457-the-padding-was-consumed-so-it-was-increased.eml.md",
+      "title": "The padding was consumed so it was increased",
+      "description": "`the_padding_was_consumed_so_it_was_increased.eml` - Estimates kept being exceeded, so they were padded. What happened to the padding, and to the accuracy figure everyone watches, is simulated rather than assumed."
+    },
+    {
+      "id": "458-the-return-term-arrives-after-the-review",
+      "path": "/ai/examples/458-the-return-term-arrives-after-the-review.eml.md",
+      "title": "The return term arrives after the review",
+      "description": "`the_return_term_arrives_after_the_review.eml` - Each change was reviewed two weeks after it shipped. What each one is worth at two weeks and at six months is computed below."
+    },
+    {
+      "id": "459-the-reviewer-got-stricter-and-the-author-leaned-on-it",
+      "path": "/ai/examples/459-the-reviewer-got-stricter-and-the-author-leaned-on-it.eml.md",
+      "title": "The reviewer got stricter and the author leaned on it",
+      "description": "`the_reviewer_got_stricter_and_the_author_leaned_on_it.eml` - Review got stricter because defects were escaping, and self-checking got lighter because review was catching things. Where the pair settles is simulated."
+    },
+    {
+      "id": "460-the-static-split-was-the-one-that-diverged",
+      "path": "/ai/examples/460-the-static-split-was-the-one-that-diverged.eml.md",
+      "title": "The static split was the one that diverged",
+      "description": "`the_static_split_was_the_one_that_diverged.eml` - The scaler moves workers towards whichever queue is deeper, and it acts on numbers that are already stale. Whether that makes it unstable is simulated rather than argued."
+    },
+    {
+      "id": "461-the-target-was-set-by-what-was-asked-for",
+      "path": "/ai/examples/461-the-target-was-set-by-what-was-asked-for.eml.md",
+      "title": "The target was set by what was asked for",
+      "description": "`the_target_was_set_by_what_was_asked_for.eml` - The availability target was set to what consumers asked for, and consumers asked for what was published. What any of them needs is computed below."
     }
   ],
   "tools": {
