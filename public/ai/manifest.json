@@ -2883,6 +2883,96 @@
       "path": "/ai/examples/461-the-target-was-set-by-what-was-asked-for.eml.md",
       "title": "The target was set by what was asked for",
       "description": "`the_target_was_set_by_what_was_asked_for.eml` - The availability target was set to what consumers asked for, and consumers asked for what was published. What any of them needs is computed below."
+    },
+    {
+      "id": "462-the-clause-added-after-the-incident",
+      "path": "/ai/examples/462-the-clause-added-after-the-incident.eml.md",
+      "title": "The clause added after the incident",
+      "description": "`the_clause_added_after_the_incident.eml` - A clause was added to the validator after an incident. What else it rejects is computed below."
+    },
+    {
+      "id": "463-the-compensated-sum-and-the-loop-disagree",
+      "path": "/ai/examples/463-the-compensated-sum-and-the-loop-disagree.eml.md",
+      "title": "The compensated sum and the loop disagree",
+      "description": "`the_compensated_sum_and_the_loop_disagree.eml` - The same numbers added two ways give two answers. Which addition each way performs is computed below."
+    },
+    {
+      "id": "464-the-default-swallowed-a-real-zero",
+      "path": "/ai/examples/464-the-default-swallowed-a-real-zero.eml.md",
+      "title": "The default swallowed a real zero",
+      "description": "`the_default_swallowed_a_real_zero.eml` - A missing setting falls back to the default. How many settings that are present also fall back is computed below."
+    },
+    {
+      "id": "465-the-guard-was-moved-for-readability",
+      "path": "/ai/examples/465-the-guard-was-moved-for-readability.eml.md",
+      "title": "The guard was moved for readability",
+      "description": "`the_guard_was_moved_for_readability.eml` - The two clauses of a condition were swapped so the important one reads first. Which inputs that changes is computed below."
+    },
+    {
+      "id": "466-the-id-survived-the-hop-and-the-type-did-not",
+      "path": "/ai/examples/466-the-id-survived-the-hop-and-the-type-did-not.eml.md",
+      "title": "The id survived the hop and the type did not",
+      "description": "`the_id_survived_the_hop_and_the_type_did_not.eml` - Identifiers go out as numbers and come back as numbers. How many of them come back as the same number is computed below."
+    },
+    {
+      "id": "467-the-loop-stopped-because-the-steps-got-small",
+      "path": "/ai/examples/467-the-loop-stopped-because-the-steps-got-small.eml.md",
+      "title": "The loop stopped because the steps got small",
+      "description": "`the_loop_stopped_because_the_steps_got_small.eml` - The solver stops when a step is smaller than the tolerance. How far it still is from the answer at that moment is computed below."
+    },
+    {
+      "id": "468-the-negation-was-distributed-by-hand",
+      "path": "/ai/examples/468-the-negation-was-distributed-by-hand.eml.md",
+      "title": "The negation was distributed by hand",
+      "description": "`the_negation_was_distributed_by_hand.eml` - A condition was inverted to turn a skip into a keep. Which inputs the inverted form treats differently is enumerated below."
+    },
+    {
+      "id": "469-the-order-the-workers-finished-changed-the-total",
+      "path": "/ai/examples/469-the-order-the-workers-finished-changed-the-total.eml.md",
+      "title": "The order the workers finished changed the total",
+      "description": "`the_order_the_workers_finished_changed_the_total.eml` - Three workers return partial sums and the reducer adds them as they arrive. What the total depends on is computed below."
+    },
+    {
+      "id": "470-the-precision-was-set-by-the-narrowest-hop",
+      "path": "/ai/examples/470-the-precision-was-set-by-the-narrowest-hop.eml.md",
+      "title": "The precision was set by the narrowest hop",
+      "description": "`the_precision_was_set_by_the_narrowest_hop.eml` - Five systems carry a timestamp and each documents its own resolution. Which one the chain has is computed below."
+    },
+    {
+      "id": "471-the-rounding-was-applied-at-every-step",
+      "path": "/ai/examples/471-the-rounding-was-applied-at-every-step.eml.md",
+      "title": "The rounding was applied at every step",
+      "description": "`the_rounding_was_applied_at_every_step.eml` - Each line is rounded to the cent as it is computed, because a cent is what money is. What that costs over a run is computed below."
+    },
+    {
+      "id": "472-the-schema-allowed-it-and-every-consumer-assumed-otherwise",
+      "path": "/ai/examples/472-the-schema-allowed-it-and-every-consumer-assumed-otherwise.eml.md",
+      "title": "The schema allowed it and every consumer assumed otherwise",
+      "description": "`the_schema_allowed_it_and_every_consumer_assumed_otherwise.eml` - The field is an array. How many consumers read anything but the first element is computed below."
+    },
+    {
+      "id": "473-the-test-was-shorter-than-the-wrap",
+      "path": "/ai/examples/473-the-test-was-shorter-than-the-wrap.eml.md",
+      "title": "The test was shorter than the wrap",
+      "description": "`the_test_was_shorter_than_the_wrap.eml` - The ordering check compares sequence numbers with a greater-than. How many messages that is correct for is computed below."
+    },
+    {
+      "id": "474-the-unit-was-in-the-name-not-in-the-value",
+      "path": "/ai/examples/474-the-unit-was-in-the-name-not-in-the-value.eml.md",
+      "title": "The unit was in the name not in the value",
+      "description": "`the_unit_was_in_the_name_not_in_the_value.eml` - Every field carries its unit in its name. How many of the arithmetic sites check that name is computed below."
+    },
+    {
+      "id": "475-the-zone-was-dropped-and-the-value-stayed-valid",
+      "path": "/ai/examples/475-the-zone-was-dropped-and-the-value-stayed-valid.eml.md",
+      "title": "The zone was dropped and the value stayed valid",
+      "description": "`the_zone_was_dropped_and_the_value_stayed_valid.eml` - The zone was dropped at one hop and every timestamp is still a well-formed timestamp. How many of them now mean a different moment is computed below."
+    },
+    {
+      "id": "476-which-clause-actually-decided",
+      "path": "/ai/examples/476-which-clause-actually-decided.eml.md",
+      "title": "Which clause actually decided",
+      "description": "`which_clause_actually_decided.eml` - Access is granted if the caller is an administrator or owns the record. How often each of those was the reason is computed below."
     }
   ],
   "tools": {
