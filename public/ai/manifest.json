@@ -2973,6 +2973,96 @@
       "path": "/ai/examples/476-which-clause-actually-decided.eml.md",
       "title": "Which clause actually decided",
       "description": "`which_clause_actually_decided.eml` - Access is granted if the caller is an administrator or owns the record. How often each of those was the reason is computed below."
+    },
+    {
+      "id": "477-nobody-has-ever-passed-the-second-argument",
+      "path": "/ai/examples/477-nobody-has-ever-passed-the-second-argument.eml.md",
+      "title": "Nobody has ever passed the second argument",
+      "description": "`nobody_has_ever_passed_the_second_argument.eml` - The function takes an optional second argument. How many call sites pass it is computed below, and so is what it costs to keep."
+    },
+    {
+      "id": "478-the-column-nobody-queried",
+      "path": "/ai/examples/478-the-column-nobody-queried.eml.md",
+      "title": "The column nobody queried",
+      "description": "`the_column_nobody_queried.eml` - The column has been in the table for three years and no report has ever selected it. What is in it is computed below."
+    },
+    {
+      "id": "479-the-constant-was-chosen-by-someone-who-left",
+      "path": "/ai/examples/479-the-constant-was-chosen-by-someone-who-left.eml.md",
+      "title": "The constant was chosen by someone who left",
+      "description": "`the_constant_was_chosen_by_someone_who_left.eml` - The constant is 4096 and nobody currently on the team knows why. What depends on it is computed below."
+    },
+    {
+      "id": "480-the-fallback-runs-only-when-everything-is-worst",
+      "path": "/ai/examples/480-the-fallback-runs-only-when-everything-is-worst.eml.md",
+      "title": "The fallback runs only when everything is worst",
+      "description": "`the_fallback_runs_only_when_everything_is_worst.eml` - The fallback path has run four times in three years. What conditions it ran under is computed below, and it is not a coincidence."
+    },
+    {
+      "id": "481-the-fix-shipped-to-the-users-who-stayed",
+      "path": "/ai/examples/481-the-fix-shipped-to-the-users-who-stayed.eml.md",
+      "title": "The fix shipped to the users who stayed",
+      "description": "`the_fix_shipped_to_the_users_who_stayed.eml` - The fix went out eleven months after the bug. How many of the affected users were still there to receive it is computed below."
+    },
+    {
+      "id": "482-the-interface-was-shaped-by-a-caller-that-is-gone",
+      "path": "/ai/examples/482-the-interface-was-shaped-by-a-caller-that-is-gone.eml.md",
+      "title": "The interface was shaped by a caller that is gone",
+      "description": "`the_interface_was_shaped_by_a_caller_that_is_gone.eml` - Six features of this interface exist because of one integration. That integration was retired two years ago. What still depends on each is computed below."
+    },
+    {
+      "id": "483-the-limit-was-never-reached-so-it-was-never-wrong",
+      "path": "/ai/examples/483-the-limit-was-never-reached-so-it-was-never-wrong.eml.md",
+      "title": "The limit was never reached so it was never wrong",
+      "description": "`the_limit_was_never_reached_so_it_was_never_wrong.eml` - The limit has been in the config for four years and has never been hit. What is known about the code behind it is computed below."
+    },
+    {
+      "id": "484-the-name-outlived-the-thing-it-named",
+      "path": "/ai/examples/484-the-name-outlived-the-thing-it-named.eml.md",
+      "title": "The name outlived the thing it named",
+      "description": "`the_name_outlived_the_thing_it_named.eml` - The product was renamed four years ago. Where the old name still is, and what it now means in each place, is computed below."
+    },
+    {
+      "id": "485-the-quiet-hours-are-somebody-elses-peak",
+      "path": "/ai/examples/485-the-quiet-hours-are-somebody-elses-peak.eml.md",
+      "title": "The quiet hours are somebody elses peak",
+      "description": "`the_quiet_hours_are_somebody_elses_peak.eml` - Deploys go out at two in the morning, when traffic is lowest. Whose traffic is lowest is computed below."
+    },
+    {
+      "id": "486-the-reporters-are-not-the-affected",
+      "path": "/ai/examples/486-the-reporters-are-not-the-affected.eml.md",
+      "title": "The reporters are not the affected",
+      "description": "`the_reporters_are_not_the_affected.eml` - Forty-one people reported the bug. How many hit it is computed below, and the two numbers are about different populations."
+    },
+    {
+      "id": "487-the-rollback-has-never-been-run",
+      "path": "/ai/examples/487-the-rollback-has-never-been-run.eml.md",
+      "title": "The rollback has never been run",
+      "description": "`the_rollback_has_never_been_run.eml` - Every migration ships with a rollback. How much of the data a rollback would return is computed below."
+    },
+    {
+      "id": "488-the-schema-still-enforces-a-rule-that-ended",
+      "path": "/ai/examples/488-the-schema-still-enforces-a-rule-that-ended.eml.md",
+      "title": "The schema still enforces a rule that ended",
+      "description": "`the_schema_still_enforces_a_rule_that_ended.eml` - Six constraints in the schema encode business rules. How many of those rules are still policy is computed below."
+    },
+    {
+      "id": "489-the-team-inherited-the-oncall-and-not-the-decisions",
+      "path": "/ai/examples/489-the-team-inherited-the-oncall-and-not-the-decisions.eml.md",
+      "title": "The team inherited the oncall and not the decisions",
+      "description": "`the_team_inherited_the_oncall_and_not_the_decisions.eml` - The current team has owned this service for eleven months. Which decisions the last year of pages trace back to is computed below."
+    },
+    {
+      "id": "490-the-team-is-on-the-fast-network",
+      "path": "/ai/examples/490-the-team-is-on-the-fast-network.eml.md",
+      "title": "The team is on the fast network",
+      "description": "`the_team_is_on_the_fast_network.eml` - Every latency measurement the team takes is honest. What population it describes is computed below."
+    },
+    {
+      "id": "491-the-two-teams-never-see-the-same-error",
+      "path": "/ai/examples/491-the-two-teams-never-see-the-same-error.eml.md",
+      "title": "The two teams never see the same error",
+      "description": "`the_two_teams_never_see_the_same_error.eml` - The client team sees failures the server team cannot find. Both dashboards are correct, and what each one can contain is computed below."
     }
   ],
   "tools": {
