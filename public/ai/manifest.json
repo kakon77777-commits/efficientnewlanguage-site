@@ -3063,6 +3063,96 @@
       "path": "/ai/examples/491-the-two-teams-never-see-the-same-error.eml.md",
       "title": "The two teams never see the same error",
       "description": "`the_two_teams_never_see_the_same_error.eml` - The client team sees failures the server team cannot find. Both dashboards are correct, and what each one can contain is computed below."
+    },
+    {
+      "id": "492-enforcement-decayed-with-distance-from-the-author",
+      "path": "/ai/examples/492-enforcement-decayed-with-distance-from-the-author.eml.md",
+      "title": "Enforcement decayed with distance from the author",
+      "description": "`enforcement_decayed_with_distance_from_the_author.eml` - The convention is followed closely in the files its author touches and loosely elsewhere. The gradient is computed below."
+    },
+    {
+      "id": "493-fixing-the-retry-storm-let-the-cache-go-cold",
+      "path": "/ai/examples/493-fixing-the-retry-storm-let-the-cache-go-cold.eml.md",
+      "title": "Fixing the retry storm let the cache go cold",
+      "description": "`fixing_the_retry_storm_let_the_cache_go_cold.eml` - The retry storm was fixed and the cache hit rate fell. What the retries had been doing is computed below."
+    },
+    {
+      "id": "494-silent-corruption-became-a-visible-error-graph",
+      "path": "/ai/examples/494-silent-corruption-became-a-visible-error-graph.eml.md",
+      "title": "Silent corruption became a visible error graph",
+      "description": "`silent_corruption_became_a_visible_error_graph.eml` - Validation was added and the error rate went from near zero to four percent. What changed is computed below."
+    },
+    {
+      "id": "495-the-breach-was-priced-by-who-found-it",
+      "path": "/ai/examples/495-the-breach-was-priced-by-who-found-it.eml.md",
+      "title": "The breach was priced by who found it",
+      "description": "`the_breach_was_priced_by_who_found_it.eml` - Eight incidents of the same rule being broken. What each one cost the team that broke it is computed below, alongside what it cost the company."
+    },
+    {
+      "id": "496-the-dedup-removed-the-copy-that-was-the-backup",
+      "path": "/ai/examples/496-the-dedup-removed-the-copy-that-was-the-backup.eml.md",
+      "title": "The dedup removed the copy that was the backup",
+      "description": "`the_dedup_removed_the_copy_that_was_the_backup.eml` - Duplicate storage was removed and 40% of the bill went with it. What each duplicate had been doing is computed below."
+    },
+    {
+      "id": "497-the-environment-was-booked-by-whoever-booked-first",
+      "path": "/ai/examples/497-the-environment-was-booked-by-whoever-booked-first.eml.md",
+      "title": "The environment was booked by whoever booked first",
+      "description": "`the_environment_was_booked_by_whoever_booked_first.eml` - One staging environment, booked first-come. Who gets it and who needs it are computed below."
+    },
+    {
+      "id": "498-the-escalation-bought-time-that-was-not-spare",
+      "path": "/ai/examples/498-the-escalation-bought-time-that-was-not-spare.eml.md",
+      "title": "The escalation bought time that was not spare",
+      "description": "`the_escalation_bought_time_that_was_not_spare.eml` - Seven requests were escalated this quarter and all seven were served first. Where the time came from is computed below."
+    },
+    {
+      "id": "499-the-fix-made-the-next-bottleneck-the-unknown-one",
+      "path": "/ai/examples/499-the-fix-made-the-next-bottleneck-the-unknown-one.eml.md",
+      "title": "The fix made the next bottleneck the unknown one",
+      "description": "`the_fix_made_the_next_bottleneck_the_unknown_one.eml` - The slowest stage was made four times faster. What that did to the pipeline, which stage is the constraint now, and how well that one is understood are all computed below."
+    },
+    {
+      "id": "500-the-index-was-added-for-the-query-that-complained",
+      "path": "/ai/examples/500-the-index-was-added-for-the-query-that-complained.eml.md",
+      "title": "The index was added for the query that complained",
+      "description": "`the_index_was_added_for_the_query_that_complained.eml` - Nine indexes, each added after somebody reported a slow query. What they cost and what they save is computed below."
+    },
+    {
+      "id": "501-the-limit-was-raised-for-everyone-who-asked",
+      "path": "/ai/examples/501-the-limit-was-raised-for-everyone-who-asked.eml.md",
+      "title": "The limit was raised for everyone who asked",
+      "description": "`the_limit_was_raised_for_everyone_who_asked.eml` - The default rate limit has not moved in three years. Which callers are still on it is computed below."
+    },
+    {
+      "id": "502-the-quota-went-to-whoever-was-in-the-room",
+      "path": "/ai/examples/502-the-quota-went-to-whoever-was-in-the-room.eml.md",
+      "title": "The quota went to whoever was in the room",
+      "description": "`the_quota_went_to_whoever_was_in_the_room.eml` - The quarter's compute budget was divided in a planning meeting. How the shares compare to what each team runs is computed below."
+    },
+    {
+      "id": "503-the-rule-binds-the-party-with-no-leverage",
+      "path": "/ai/examples/503-the-rule-binds-the-party-with-no-leverage.eml.md",
+      "title": "The rule binds the party with no leverage",
+      "description": "`the_rule_binds_the_party_with_no_leverage.eml` - The integration standard applies to every partner. Which partners it has actually been applied to is computed below."
+    },
+    {
+      "id": "504-the-same-rule-blocks-here-and-warns-there",
+      "path": "/ai/examples/504-the-same-rule-blocks-here-and-warns-there.eml.md",
+      "title": "The same rule blocks here and warns there",
+      "description": "`the_same_rule_blocks_here_and_warns_there.eml` - One policy, six pipelines, three enforcement levels. Where the violations end up is computed below."
+    },
+    {
+      "id": "505-the-speedup-changed-a-race-that-had-always-won",
+      "path": "/ai/examples/505-the-speedup-changed-a-race-that-had-always-won.eml.md",
+      "title": "The speedup changed a race that had always won",
+      "description": "`the_speedup_changed_a_race_that_had_always_won.eml` - Two writers have always raced and one has always won by a wide margin. What the margin was, and what a speedup on the other side does to it, are computed below."
+    },
+    {
+      "id": "506-the-waiver-went-to-whoever-knew-to-ask",
+      "path": "/ai/examples/506-the-waiver-went-to-whoever-knew-to-ask.eml.md",
+      "title": "The waiver went to whoever knew to ask",
+      "description": "`the_waiver_went_to_whoever_knew_to_ask.eml` - The policy has an exception process. Which teams used it, and which teams qualified, are two different sets, computed below."
     }
   ],
   "tools": {

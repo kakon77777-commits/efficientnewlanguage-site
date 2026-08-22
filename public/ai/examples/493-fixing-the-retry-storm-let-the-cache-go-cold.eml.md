@@ -1,0 +1,297 @@
+<!-- canonical: efficientnewlanguage.org/ai/examples/493-fixing-the-retry-storm-let-the-cache-go-cold | ai_layer_version: 0.1.0 | updated: 2026-08-22 -->
+
+# Example 493 — Fixing the retry storm let the cache go cold
+
+`fixing_the_retry_storm_let_the_cache_go_cold.eml` - The retry storm was fixed and the cache hit rate fell. What the retries had been doing is computed below.
+
+## EML
+
+```eml
+# Self-authored for the EML case corpus (no external origin). The retry storm
+# was fixed and the cache hit rate fell. What the retries had been doing is
+# computed below.
+#
+# Fixing the storm was right and overdue. Three layers each retried three times,
+# the amplification was measured at 27x during incidents, and the fix - one
+# retry budget shared across the call chain - is the correct design. Nobody
+# wants the storm back.
+#
+# The retries were also traffic, and traffic is what kept the cache populated
+# for the entries nobody asks for often. Removing the duplicate requests removed
+# the refreshes that came with them, which nothing had ever asked for and which
+# nothing was accounting for.
+#
+# The cache is counted per key class before and after.
+
+# [key class, requests before, requests after, ttl seconds, ms to recompute]
+[["hot", 40000, 38000, 300, 40], ["warm", 6000, 2200, 300, 90], ["cool", 900, 260, 300, 400], ["cold", 120, 30, 300, 1200]] => classes
+
+len(classes) => n
+288 => windows_per_day
+
+def refreshes_needed(reqs, ttl):
+    # a key stays warm if it is requested at least once per ttl window
+    if reqs >= windows_per_day:
+        return windows_per_day
+    return reqs
+
+0 => before_total
+0 => after_total
+for c in classes:
+    before_total + c[1] => before_total
+    after_total + c[2] => after_total
+
+"requests per day : " + str(before_total) + " -> " + str(after_total) ^0
+"  removed by the retry fix : " + str(before_total - after_total) + ", which is " + str(int((before_total - after_total) * 100 / before_total)) + "%" ^0
+"  every one of those was a duplicate of a request already in flight" ^0
+"" ^0
+
+"key class   requests before   after   windows covered before   after" ^0
+for c in classes:
+    "  " + c[0] + "      " + str(c[1]) + "            " + str(c[2]) + "     " + str(refreshes_needed(c[1], c[3])) + "                      " + str(refreshes_needed(c[2], c[3])) ^0
+"" ^0
+
+# ---- which classes stopped staying warm ----
+
+0 => fell_out
+for c in classes:
+    if refreshes_needed(c[1], c[3]) == windows_per_day:
+        if refreshes_needed(c[2], c[3]) < windows_per_day:
+            fell_out + 1 => fell_out
+            "  " + c[0] + " was covered in every window before and is not now" ^0
+"key classes that stopped being continuously warm : " + str(fell_out) ^0
+"" ^0
+
+# ---- what a miss costs, by class ----
+
+"cost of a miss, by class" ^0
+for c in classes:
+    windows_per_day - refreshes_needed(c[2], c[3]) => misses
+    "  " + c[0] + " : " + str(misses) + " uncovered windows a day at " + str(c[4]) + "ms each" ^0
+0 => added_ms
+for c in classes:
+    windows_per_day - refreshes_needed(c[2], c[3]) => misses
+    added_ms + misses * c[4] => added_ms
+"  recompute time added per day : " + str(added_ms) + "ms" ^0
+"" ^0
+
+# ---- the classes that lost the most are the ones nobody watches ----
+
+"which classes lost the most coverage" ^0
+0 => worst_loss
+"" => worst_name
+for c in classes:
+    refreshes_needed(c[1], c[3]) - refreshes_needed(c[2], c[3]) => loss
+    if loss > worst_loss:
+        loss => worst_loss
+        c[0] => worst_name
+"  largest loss : " + worst_name + ", " + str(worst_loss) + " windows" ^0
+for c in classes:
+    if c[0] == worst_name:
+        "  its share of traffic : " + str(int(c[2] * 100 / after_total)) + "%" ^0
+        "  its recompute cost   : " + str(c[4]) + "ms" ^0
+0 => dearest
+"" => dearest_name
+for c in classes:
+    if c[4] > dearest:
+        c[4] => dearest
+        c[0] => dearest_name
+"  the dearest class to recompute is " + dearest_name + " at " + str(dearest) + "ms" ^0
+"  the classes that fell out are the low-traffic, high-recompute ones, which" ^0
+"  is the combination the retries were quietly covering" ^0
+"" ^0
+
+# ---- the two graphs at the fix ----
+
+"what the dashboards do at the change" ^0
+"  request volume : down " + str(int((before_total - after_total) * 100 / before_total)) + "%, celebrated" ^0
+"  cache hit rate : down, and read as a cache regression" ^0
+"  p99 latency    : up, and attributed to the cache" ^0
+"  none of those is wrong, and the cause of all three is the same change" ^0
+"" ^0
+
+# ---- what to do instead of putting the storm back ----
+
+"warming the cold classes deliberately" ^0
+0 => warm_cost
+for c in classes:
+    if refreshes_needed(c[2], c[3]) < windows_per_day:
+        warm_cost + windows_per_day * c[4] => warm_cost
+"  cost of refreshing every window on purpose : " + str(warm_cost) + "ms a day" ^0
+"  requests it adds : " + str(windows_per_day * fell_out) ^0
+"  against " + str(before_total - after_total) + " duplicate requests removed, so the deliberate" ^0
+"  version is far cheaper than the accidental one it replaces" ^0
+"" ^0
+
+# ---- the control: a cache whose keys are all hot ----
+#
+# Where every key is requested many times per TTL window, removing duplicate
+# requests removes nothing the cache needed.
+
+for c in classes:
+    if c[2] >= windows_per_day:
+        "control - " + c[0] + ", " + str(c[2]) + " requests a day against " + str(windows_per_day) + " windows" ^0
+        "  covered before : " + str(refreshes_needed(c[1], c[3])) + ", after : " + str(refreshes_needed(c[2], c[3])) ^0
+        "  unchanged, because the real traffic alone covers every window" ^0
+"" ^0
+
+"The retry fix is the correct design and 27x amplification was not defensible." ^0
+"The duplicates were also refreshes, and the keys they were refreshing are" ^0
+"the ones with too little traffic to refresh themselves." ^0
+```
+
+## Python (deterministic transpilation)
+
+```python
+classes = [["hot", 40000, 38000, 300, 40], ["warm", 6000, 2200, 300, 90], ["cool", 900, 260, 300, 400], ["cold", 120, 30, 300, 1200]]
+n = len(classes)
+windows_per_day = 288
+
+def refreshes_needed(reqs, ttl):
+    if reqs >= windows_per_day:
+        return windows_per_day
+    return reqs
+
+before_total = 0
+after_total = 0
+for c in classes:
+    before_total = before_total + c[1]
+    after_total = after_total + c[2]
+print("requests per day : " + str(before_total) + " -> " + str(after_total))
+print("  removed by the retry fix : " + str(before_total - after_total) + ", which is " + str(int((before_total - after_total) * 100 / before_total)) + "%")
+print("  every one of those was a duplicate of a request already in flight")
+print("")
+print("key class   requests before   after   windows covered before   after")
+for c in classes:
+    print("  " + c[0] + "      " + str(c[1]) + "            " + str(c[2]) + "     " + str(refreshes_needed(c[1], c[3])) + "                      " + str(refreshes_needed(c[2], c[3])))
+print("")
+fell_out = 0
+for c in classes:
+    if refreshes_needed(c[1], c[3]) == windows_per_day:
+        if refreshes_needed(c[2], c[3]) < windows_per_day:
+            fell_out = fell_out + 1
+            print("  " + c[0] + " was covered in every window before and is not now")
+print("key classes that stopped being continuously warm : " + str(fell_out))
+print("")
+print("cost of a miss, by class")
+for c in classes:
+    misses = windows_per_day - refreshes_needed(c[2], c[3])
+    print("  " + c[0] + " : " + str(misses) + " uncovered windows a day at " + str(c[4]) + "ms each")
+added_ms = 0
+for c in classes:
+    misses = windows_per_day - refreshes_needed(c[2], c[3])
+    added_ms = added_ms + misses * c[4]
+print("  recompute time added per day : " + str(added_ms) + "ms")
+print("")
+print("which classes lost the most coverage")
+worst_loss = 0
+worst_name = ""
+for c in classes:
+    loss = refreshes_needed(c[1], c[3]) - refreshes_needed(c[2], c[3])
+    if loss > worst_loss:
+        worst_loss = loss
+        worst_name = c[0]
+print("  largest loss : " + worst_name + ", " + str(worst_loss) + " windows")
+for c in classes:
+    if c[0] == worst_name:
+        print("  its share of traffic : " + str(int(c[2] * 100 / after_total)) + "%")
+        print("  its recompute cost   : " + str(c[4]) + "ms")
+dearest = 0
+dearest_name = ""
+for c in classes:
+    if c[4] > dearest:
+        dearest = c[4]
+        dearest_name = c[0]
+print("  the dearest class to recompute is " + dearest_name + " at " + str(dearest) + "ms")
+print("  the classes that fell out are the low-traffic, high-recompute ones, which")
+print("  is the combination the retries were quietly covering")
+print("")
+print("what the dashboards do at the change")
+print("  request volume : down " + str(int((before_total - after_total) * 100 / before_total)) + "%, celebrated")
+print("  cache hit rate : down, and read as a cache regression")
+print("  p99 latency    : up, and attributed to the cache")
+print("  none of those is wrong, and the cause of all three is the same change")
+print("")
+print("warming the cold classes deliberately")
+warm_cost = 0
+for c in classes:
+    if refreshes_needed(c[2], c[3]) < windows_per_day:
+        warm_cost = warm_cost + windows_per_day * c[4]
+print("  cost of refreshing every window on purpose : " + str(warm_cost) + "ms a day")
+print("  requests it adds : " + str(windows_per_day * fell_out))
+print("  against " + str(before_total - after_total) + " duplicate requests removed, so the deliberate")
+print("  version is far cheaper than the accidental one it replaces")
+print("")
+for c in classes:
+    if c[2] >= windows_per_day:
+        print("control - " + c[0] + ", " + str(c[2]) + " requests a day against " + str(windows_per_day) + " windows")
+        print("  covered before : " + str(refreshes_needed(c[1], c[3])) + ", after : " + str(refreshes_needed(c[2], c[3])))
+        print("  unchanged, because the real traffic alone covers every window")
+print("")
+print("The retry fix is the correct design and 27x amplification was not defensible.")
+print("The duplicates were also refreshes, and the keys they were refreshing are")
+print("the ones with too little traffic to refresh themselves.")
+```
+
+## stdout (executed)
+
+```text
+requests per day : 47020 -> 40490
+  removed by the retry fix : 6530, which is 13%
+  every one of those was a duplicate of a request already in flight
+
+key class   requests before   after   windows covered before   after
+  hot      40000            38000     288                      288
+  warm      6000            2200     288                      288
+  cool      900            260     288                      260
+  cold      120            30     120                      30
+
+  cool was covered in every window before and is not now
+key classes that stopped being continuously warm : 1
+
+cost of a miss, by class
+  hot : 0 uncovered windows a day at 40ms each
+  warm : 0 uncovered windows a day at 90ms each
+  cool : 28 uncovered windows a day at 400ms each
+  cold : 258 uncovered windows a day at 1200ms each
+  recompute time added per day : 320800ms
+
+which classes lost the most coverage
+  largest loss : cold, 90 windows
+  its share of traffic : 0%
+  its recompute cost   : 1200ms
+  the dearest class to recompute is cold at 1200ms
+  the classes that fell out are the low-traffic, high-recompute ones, which
+  is the combination the retries were quietly covering
+
+what the dashboards do at the change
+  request volume : down 13%, celebrated
+  cache hit rate : down, and read as a cache regression
+  p99 latency    : up, and attributed to the cache
+  none of those is wrong, and the cause of all three is the same change
+
+warming the cold classes deliberately
+  cost of refreshing every window on purpose : 460800ms a day
+  requests it adds : 288
+  against 6530 duplicate requests removed, so the deliberate
+  version is far cheaper than the accidental one it replaces
+
+control - hot, 38000 requests a day against 288 windows
+  covered before : 288, after : 288
+  unchanged, because the real traffic alone covers every window
+control - warm, 2200 requests a day against 288 windows
+  covered before : 288, after : 288
+  unchanged, because the real traffic alone covers every window
+
+The retry fix is the correct design and 27x amplification was not defensible.
+The duplicates were also refreshes, and the keys they were refreshing are
+the ones with too little traffic to refresh themselves.
+```
+
+## Round-trip
+
+`ok: true` — round-trip fixpoint reached (python1 == python2)
+
+## Trace event types
+
+eml:run:start · eml:assign · eml:def · eml:output · eml:call · eml:return · eml:run:done
