@@ -3153,6 +3153,96 @@
       "path": "/ai/examples/506-the-waiver-went-to-whoever-knew-to-ask.eml.md",
       "title": "The waiver went to whoever knew to ask",
       "description": "`the_waiver_went_to_whoever_knew_to_ask.eml` - The policy has an exception process. Which teams used it, and which teams qualified, are two different sets, computed below."
+    },
+    {
+      "id": "507-every-quarter-deferring-the-upgrade-was-correct",
+      "path": "/ai/examples/507-every-quarter-deferring-the-upgrade-was-correct.eml.md",
+      "title": "Every quarter deferring the upgrade was correct",
+      "description": "`every_quarter_deferring_the_upgrade_was_correct.eml` - A dependency upgrade was deferred eight quarters running. Each deferral is scored under two different rules below, and the accumulated bill is computed."
+    },
+    {
+      "id": "508-full-compliance-was-reached-by-changing-the-denominator",
+      "path": "/ai/examples/508-full-compliance-was-reached-by-changing-the-denominator.eml.md",
+      "title": "Full compliance was reached by changing the denominator",
+      "description": "`full_compliance_was_reached_by_changing_the_denominator.eml` - A security standard reached 100% compliance. How many repositories changed and how many left the denominator are counted separately below."
+    },
+    {
+      "id": "509-nobody-filed-an-exception-so-the-rule-fits",
+      "path": "/ai/examples/509-nobody-filed-an-exception-so-the-rule-fits.eml.md",
+      "title": "Nobody filed an exception so the rule fits",
+      "description": "`nobody_filed_an_exception_so_the_rule_fits.eml` - A coding standard has drawn two exception requests in eighteen months, and both were granted. What that low number measures is computed below, against what it is being read as measuring."
+    },
+    {
+      "id": "510-silence-was-recorded-as-assent",
+      "path": "/ai/examples/510-silence-was-recorded-as-assent.eml.md",
+      "title": "Silence was recorded as assent",
+      "description": "`silence_was_recorded_as_assent.eml` - A proposal process counts a non-response as approval. What the approvals mean is computed below by separating the votes that were cast from the votes that were assumed."
+    },
+    {
+      "id": "511-the-complaints-stopped-but-the-traffic-did-not",
+      "path": "/ai/examples/511-the-complaints-stopped-but-the-traffic-did-not.eml.md",
+      "title": "The complaints stopped but the traffic did not",
+      "description": "`the_complaints_stopped_but_the_traffic_did_not.eml` - A deprecated API stopped generating complaints and was scheduled for removal on that basis. Complaints and calls are counted separately below."
+    },
+    {
+      "id": "512-the-disk-was-doubled-and-the-retention-policy-relaxed",
+      "path": "/ai/examples/512-the-disk-was-doubled-and-the-retention-policy-relaxed.eml.md",
+      "title": "The disk was doubled and the retention policy relaxed",
+      "description": "`the_disk_was_doubled_and_the_retention_policy_relaxed.eml` - Storage was doubled and was full again in four months. Whether the data rate grew is computed below, separately from whether the policy did."
+    },
+    {
+      "id": "513-the-field-was-made-required-by-one-team",
+      "path": "/ai/examples/513-the-field-was-made-required-by-one-team.eml.md",
+      "title": "The field was made required by one team",
+      "description": "`the_field_was_made_required_by_one_team.eml` - A producer added one required field to a shared event. What that cost the producer and what it cost everybody else are computed below."
+    },
+    {
+      "id": "514-the-limit-was-raised-and-the-polling-followed-it",
+      "path": "/ai/examples/514-the-limit-was-raised-and-the-polling-followed-it.eml.md",
+      "title": "The limit was raised and the polling followed it",
+      "description": "`the_limit_was_raised_and_the_polling_followed_it.eml` - A rate limit was raised from 60 to 300 requests a minute. What the callers did with the extra allowance is computed below, alongside how often the answer had changed."
+    },
+    {
+      "id": "515-the-log-level-was-set-by-the-writer",
+      "path": "/ai/examples/515-the-log-level-was-set-by-the-writer.eml.md",
+      "title": "The log level was set by the writer",
+      "description": "`the_log_level_was_set_by_the_writer.eml` - Each service team sets its own log level. The bill arrives at a team that cannot change any of them. Both quantities are computed below."
+    },
+    {
+      "id": "516-the-memory-limit-was-doing-the-design-review",
+      "path": "/ai/examples/516-the-memory-limit-was-doing-the-design-review.eml.md",
+      "title": "The memory limit was doing the design review",
+      "description": "`the_memory_limit_was_doing_the_design_review.eml` - A query memory limit was raised from 4 GB to 16 GB. What the analysts wrote afterwards is computed below, along with what the old limit had been doing."
+    },
+    {
+      "id": "517-the-objections-stopped-and-so-did-the-objectors",
+      "path": "/ai/examples/517-the-objections-stopped-and-so-did-the-objectors.eml.md",
+      "title": "The objections stopped and so did the objectors",
+      "description": "`the_objections_stopped_and_so_did_the_objectors.eml` - A design review series records fewer objections every quarter. Where the objections went and where the objectors went are computed separately below."
+    },
+    {
+      "id": "518-the-pool-doubled-and-the-backlog-did-not-move",
+      "path": "/ai/examples/518-the-pool-doubled-and-the-backlog-did-not-move.eml.md",
+      "title": "The pool doubled and the backlog did not move",
+      "description": "`the_pool_doubled_and_the_backlog_did_not_move.eml` - The worker pool was doubled and the overnight backlog is the same length it was. What changed and what did not are computed below."
+    },
+    {
+      "id": "519-the-retry-budget-was-set-by-the-caller",
+      "path": "/ai/examples/519-the-retry-budget-was-set-by-the-caller.eml.md",
+      "title": "The retry budget was set by the caller",
+      "description": "`the_retry_budget_was_set_by_the_caller.eml` - Every caller configures its own retry count. What each caller pays and what each caller costs are computed below, and they are not the same number."
+    },
+    {
+      "id": "520-the-test-was-added-to-everyones-suite",
+      "path": "/ai/examples/520-the-test-was-added-to-everyones-suite.eml.md",
+      "title": "The test was added to everyones suite",
+      "description": "`the_test_was_added_to_everyones_suite.eml` - One team added a 40-second test to the shared pre-merge suite. What it protects and what it costs are both computed below, and the answer is not that the test is bad."
+    },
+    {
+      "id": "521-three-times-the-runners-and-the-same-queue",
+      "path": "/ai/examples/521-three-times-the-runners-and-the-same-queue.eml.md",
+      "title": "Three times the runners and the same queue",
+      "description": "`three_times_the_runners_and_the_same_queue.eml` - CI runners went from 8 to 24 and the median wait is back where it started. What changed in between is computed below, and it is not the amount of code."
     }
   ],
   "tools": {
