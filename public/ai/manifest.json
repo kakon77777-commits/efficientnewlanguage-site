@@ -3243,6 +3243,96 @@
       "path": "/ai/examples/521-three-times-the-runners-and-the-same-queue.eml.md",
       "title": "Three times the runners and the same queue",
       "description": "`three_times_the_runners_and_the_same_queue.eml` - CI runners went from 8 to 24 and the median wait is back where it started. What changed in between is computed below, and it is not the amount of code."
+    },
+    {
+      "id": "522-every-request-went-through-her-so-no-form-was-built",
+      "path": "/ai/examples/522-every-request-went-through-her-so-no-form-was-built.eml.md",
+      "title": "Every request went through her so no form was built",
+      "description": "`every_request_went_through_her_so_no_form_was_built.eml` - A routing config is written in a format one person understands. What her turnaround does to the case for a self-serve form is computed below."
+    },
+    {
+      "id": "523-one-reviewer-on-every-change-and-no-second-reader",
+      "path": "/ai/examples/523-one-reviewer-on-every-change-and-no-second-reader.eml.md",
+      "title": "One reviewer on every change and no second reader",
+      "description": "`one_reviewer_on_every_change_and_no_second_reader.eml` - One engineer reviews every change to a module. What that does to how many people can read it is computed below."
+    },
+    {
+      "id": "524-the-breaker-tripped-on-the-limiters-own-rejections",
+      "path": "/ai/examples/524-the-breaker-tripped-on-the-limiters-own-rejections.eml.md",
+      "title": "The breaker tripped on the limiters own rejections",
+      "description": "`the_breaker_tripped_on_the_limiters_own_rejections.eml` - A rate limiter and a circuit breaker both protect the same downstream service. What each one sees, and what the pair sees, are computed separately below."
+    },
+    {
+      "id": "525-the-buffer-absorbed-the-signal-backpressure-needed",
+      "path": "/ai/examples/525-the-buffer-absorbed-the-signal-backpressure-needed.eml.md",
+      "title": "The buffer absorbed the signal backpressure needed",
+      "description": "`the_buffer_absorbed_the_signal_backpressure_needed.eml` - A queue has both a buffer to absorb bursts and backpressure to slow the producer. When each one engages is computed below."
+    },
+    {
+      "id": "526-the-enum-grew-and-the-else-branch-absorbed-it",
+      "path": "/ai/examples/526-the-enum-grew-and-the-else-branch-absorbed-it.eml.md",
+      "title": "The enum grew and the else branch absorbed it",
+      "description": "`the_enum_grew_and_the_else_branch_absorbed_it.eml` - A status field gained three new values. The field name, the type and the wire format did not change. What each consumer now does with those values is computed below."
+    },
+    {
+      "id": "527-the-expert-keeps-the-recovery-time-below-the-threshold",
+      "path": "/ai/examples/527-the-expert-keeps-the-recovery-time-below-the-threshold.eml.md",
+      "title": "The expert keeps the recovery time below the threshold",
+      "description": "`the_expert_keeps_the_recovery_time_below_the_threshold.eml` - A module is hard to debug and one engineer is very good at debugging it. What that does to the case for simplifying it is computed below."
+    },
+    {
+      "id": "528-the-field-stopped-being-null-and-killed-the-branch",
+      "path": "/ai/examples/528-the-field-stopped-being-null-and-killed-the-branch.eml.md",
+      "title": "The field stopped being null and killed the branch",
+      "description": "`the_field_stopped_being_null_and_killed_the_branch.eml` - A nullable field was backfilled and now always has a value. What that did to the code written for the null case is computed below."
+    },
+    {
+      "id": "529-the-health-check-hid-the-shortfall-from-the-autoscaler",
+      "path": "/ai/examples/529-the-health-check-hid-the-shortfall-from-the-autoscaler.eml.md",
+      "title": "The health check hid the shortfall from the autoscaler",
+      "description": "`the_health_check_hid_the_shortfall_from_the_autoscaler.eml` - A health check removes unhealthy instances and an autoscaler adds capacity when the fleet is loaded. What each measures is computed below."
+    },
+    {
+      "id": "530-the-id-stayed-a-string-and-stopped-being-unique",
+      "path": "/ai/examples/530-the-id-stayed-a-string-and-stopped-being-unique.eml.md",
+      "title": "The id stayed a string and stopped being unique",
+      "description": "`the_id_stayed_a_string_and_stopped_being_unique.eml` - An order id was globally unique and became unique per tenant. Same field, same string type, same length. When that matters is computed below."
+    },
+    {
+      "id": "531-the-rate-field-moved-from-a-fraction-to-a-percentage",
+      "path": "/ai/examples/531-the-rate-field-moved-from-a-fraction-to-a-percentage.eml.md",
+      "title": "The rate field moved from a fraction to a percentage",
+      "description": "`the_rate_field_moved_from_a_fraction_to_a_percentage.eml` - A discount_rate field carried 0.15 and now carries 15. Same name, same numeric type. Which consumers noticed is computed below."
+    },
+    {
+      "id": "532-the-remediation-fixed-it-before-anyone-could-be-told",
+      "path": "/ai/examples/532-the-remediation-fixed-it-before-anyone-could-be-told.eml.md",
+      "title": "The remediation fixed it before anyone could be told",
+      "description": "`the_remediation_fixed_it_before_anyone_could_be_told.eml` - Auto-remediation restarts the failing process and alert deduplication suppresses the repeat. What each does, and what the pair does to escalation, are computed below."
+    },
+    {
+      "id": "533-the-sanitiser-made-the-bad-input-pass-validation",
+      "path": "/ai/examples/533-the-sanitiser-made-the-bad-input-pass-validation.eml.md",
+      "title": "The sanitiser made the bad input pass validation",
+      "description": "`the_sanitiser_made_the_bad_input_pass_validation.eml` - A sanitiser and a validator both guard the same intake. What each rejects, and what the pair rejects, are computed separately below."
+    },
+    {
+      "id": "534-the-shim-is-maintained-so-the-migration-never-finishes",
+      "path": "/ai/examples/534-the-shim-is-maintained-so-the-migration-never-finishes.eml.md",
+      "title": "The shim is maintained so the migration never finishes",
+      "description": "`the_shim_is_maintained_so_the_migration_never_finishes.eml` - A compatibility shim translates between an old schema and a new one. One person maintains it by hand. What that does to the migration is computed below."
+    },
+    {
+      "id": "535-the-timestamp-changed-from-event-time-to-ingest-time",
+      "path": "/ai/examples/535-the-timestamp-changed-from-event-time-to-ingest-time.eml.md",
+      "title": "The timestamp changed from event time to ingest time",
+      "description": "`the_timestamp_changed_from_event_time_to_ingest_time.eml` - A field called occurred_at changed from the time the event happened to the time the pipeline received it. Same name, same type, same format. What moved is computed below."
+    },
+    {
+      "id": "536-the-tool-is-slow-and-the-only-user-is-fast",
+      "path": "/ai/examples/536-the-tool-is-slow-and-the-only-user-is-fast.eml.md",
+      "title": "The tool is slow and the only user is fast",
+      "description": "`the_tool_is_slow_and_the_only_user_is_fast.eml` - An internal tool takes many steps to do anything. Its recorded task time is good. Who produced that number is computed below."
     }
   ],
   "tools": {
