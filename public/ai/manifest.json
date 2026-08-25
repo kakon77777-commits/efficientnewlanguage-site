@@ -3333,6 +3333,96 @@
       "path": "/ai/examples/536-the-tool-is-slow-and-the-only-user-is-fast.eml.md",
       "title": "The tool is slow and the only user is fast",
       "description": "`the_tool_is_slow_and_the_only_user_is_fast.eml` - An internal tool takes many steps to do anything. Its recorded task time is good. Who produced that number is computed below."
+    },
+    {
+      "id": "537-the-adoption-was-measured-where-there-was-no-alternative",
+      "path": "/ai/examples/537-the-adoption-was-measured-where-there-was-no-alternative.eml.md",
+      "title": "The adoption was measured where there was no alternative",
+      "description": "`the_adoption_was_measured_where_there_was_no_alternative.eml` - The new internal tool reports 96 percent adoption in its fourth quarter. What the number is measuring is computed below."
+    },
+    {
+      "id": "538-the-boost-was-a-loan-and-nobody-counted-the-lenders",
+      "path": "/ai/examples/538-the-boost-was-a-loan-and-nobody-counted-the-lenders.eml.md",
+      "title": "The boost was a loan and nobody counted the lenders",
+      "description": "`the_boost_was_a_loan_and_nobody_counted_the_lenders.eml` - A low-priority task held a lock that a high-priority task needed, and medium-priority work ran ahead of both. Priority inheritance fixed it. What the fix cost over the following twelve weeks is computed below."
+    },
+    {
+      "id": "539-the-candidate-who-could-not-win-decided-the-winner",
+      "path": "/ai/examples/539-the-candidate-who-could-not-win-decided-the-winner.eml.md",
+      "title": "The candidate who could not win decided the winner",
+      "description": "`the_candidate_who_could_not_win_decided_the_winner.eml` - Seventeen people rank three proposals. One proposal wins under none of the three counting rules. What happens to the result when it is taken off the ballot is computed below."
+    },
+    {
+      "id": "540-the-constraint-was-on-the-wrong-pair-of-columns",
+      "path": "/ai/examples/540-the-constraint-was-on-the-wrong-pair-of-columns.eml.md",
+      "title": "The constraint was on the wrong pair of columns",
+      "description": "`the_constraint_was_on_the_wrong_pair_of_columns.eml` - A unique constraint on room and start time, protecting a rule about rooms not being double booked. What it accepts and what it refuses is counted below."
+    },
+    {
+      "id": "541-the-cost-appeared-only-when-it-stopped-being-paid",
+      "path": "/ai/examples/541-the-cost-appeared-only-when-it-stopped-being-paid.eml.md",
+      "title": "The cost appeared only when it stopped being paid",
+      "description": "`the_cost_appeared_only_when_it_stopped_being_paid.eml` - A weekly maintenance job was cancelled after 140 runs that each reported nothing found. When the bill arrived, and who was blamed for it, are computed below."
+    },
+    {
+      "id": "542-the-counter-was-emptied-by-whoever-read-it-first",
+      "path": "/ai/examples/542-the-counter-was-emptied-by-whoever-read-it-first.eml.md",
+      "title": "The counter was emptied by whoever read it first",
+      "description": "`the_counter_was_emptied_by_whoever_read_it_first.eml` - A counter that reports events since the last read, and a second collector added during a region migration. What each collector sees afterwards is computed below."
+    },
+    {
+      "id": "543-the-depth-limit-was-shared-with-the-caller",
+      "path": "/ai/examples/543-the-depth-limit-was-shared-with-the-caller.eml.md",
+      "title": "The depth limit was shared with the caller",
+      "description": "`the_depth_limit_was_shared_with_the_caller.eml` - A recursive tree walker is documented as supporting trees up to 497 levels deep. The same record that passes in the test suite fails in the request handler. What changed between the two is computed below."
+    },
+    {
+      "id": "544-the-escape-was-correct-at-every-layer",
+      "path": "/ai/examples/544-the-escape-was-correct-at-every-layer.eml.md",
+      "title": "The escape was correct at every layer",
+      "description": "`the_escape_was_correct_at_every_layer.eml` - Customer names are escaped when they arrive and escaped again when they are rendered. What each output route shows is computed below."
+    },
+    {
+      "id": "545-the-hash-was-uniform-and-the-buckets-were-not",
+      "path": "/ai/examples/545-the-hash-was-uniform-and-the-buckets-were-not.eml.md",
+      "title": "The hash was uniform and the buckets were not",
+      "description": "`the_hash_was_uniform_and_the_buckets_were_not.eml` - The hash was tested for uniformity and passed. The bucket occupancy in production is counted below, from the same hash."
+    },
+    {
+      "id": "546-the-latency-was-measured-at-the-wrong-end",
+      "path": "/ai/examples/546-the-latency-was-measured-at-the-wrong-end.eml.md",
+      "title": "The latency was measured at the wrong end",
+      "description": "`the_latency_was_measured_at_the_wrong_end.eml` - Three endpoints were changed to stream their results instead of building the whole response first. The latency dashboard recorded the best week it had ever seen. What the clients saw is computed below."
+    },
+    {
+      "id": "547-the-limit-was-per-key-and-the-caller-chose-the-key",
+      "path": "/ai/examples/547-the-limit-was-per-key-and-the-caller-chose-the-key.eml.md",
+      "title": "The limit was per key and the caller chose the key",
+      "description": "`the_limit_was_per_key_and_the_caller_chose_the_key.eml` - The rate limiter allows 100 requests a minute per client, and it has never allowed a bucket to exceed 100. What it allowed in total is computed below."
+    },
+    {
+      "id": "548-the-load-test-used-the-shape-production-never-has",
+      "path": "/ai/examples/548-the-load-test-used-the-shape-production-never-has.eml.md",
+      "title": "The load test used the shape production never has",
+      "description": "`the_load_test_used_the_shape_production_never_has.eml` - The load test sends 8000 requests spread evenly over 8 shards. Production sends 8000 requests too. Which numbers the two runs agree on is computed below."
+    },
+    {
+      "id": "549-the-mask-removed-the-value-and-kept-the-length",
+      "path": "/ai/examples/549-the-mask-removed-the-value-and-kept-the-length.eml.md",
+      "title": "The mask removed the value and kept the length",
+      "description": "`the_mask_removed_the_value_and_kept_the_length.eml` - Customer names and email local parts are masked in the application log, one asterisk per character. How many customers the masked log still identifies uniquely is counted below."
+    },
+    {
+      "id": "550-the-restore-was-the-path-that-never-ran",
+      "path": "/ai/examples/550-the-restore-was-the-path-that-never-ran.eml.md",
+      "title": "The restore was the path that never ran",
+      "description": "`the_restore_was_the_path_that_never_ran.eml` - The backup has succeeded 412 nights in a row. How much of the restore path that number covers is computed below."
+    },
+    {
+      "id": "551-three-copies-and-two-places-to-lose-them",
+      "path": "/ai/examples/551-three-copies-and-two-places-to-lose-them.eml.md",
+      "title": "Three copies and two places to lose them",
+      "description": "`three_copies_and_two_places_to_lose_them.eml` - Every shard has three replicas, verified continuously, never fewer. How many shards survive the loss of one rack is computed below."
     }
   ],
   "tools": {
