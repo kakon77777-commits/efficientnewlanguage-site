@@ -3423,6 +3423,96 @@
       "path": "/ai/examples/551-three-copies-and-two-places-to-lose-them.eml.md",
       "title": "Three copies and two places to lose them",
       "description": "`three_copies_and_two_places_to_lose_them.eml` - Every shard has three replicas, verified continuously, never fewer. How many shards survive the loss of one rack is computed below."
+    },
+    {
+      "id": "552-the-alert-threshold-was-set-from-the-week-it-was-written",
+      "path": "/ai/examples/552-the-alert-threshold-was-set-from-the-week-it-was-written.eml.md",
+      "title": "The alert threshold was set from the week it was written",
+      "description": "`the_alert_threshold_was_set_from_the_week_it_was_written.eml` - An alert fires when requests per second cross 2400. That number was chosen in month 0 as twice the busiest second of the week the alert was written. What it means in each later month is computed below."
+    },
+    {
+      "id": "553-the-audit-sampled-the-records-that-were-easiest-to-fetch",
+      "path": "/ai/examples/553-the-audit-sampled-the-records-that-were-easiest-to-fetch.eml.md",
+      "title": "The audit sampled the records that were easiest to fetch",
+      "description": "`the_audit_sampled_the_records_that_were_easiest_to_fetch.eml` - An audit sampled 500 of 50000 accounts and found a defect rate of 4 per thousand. What that rate is a rate of is computed below."
+    },
+    {
+      "id": "554-the-buffer-was-sized-for-the-average-and-the-burst-was-the-point",
+      "path": "/ai/examples/554-the-buffer-was-sized-for-the-average-and-the-burst-was-the-point.eml.md",
+      "title": "The buffer was sized for the average and the burst was the point",
+      "description": "`the_buffer_was_sized_for_the_average_and_the_burst_was_the_point.eml` - Events arrive at 100 a second on average. The buffer holds 200, which is twice the average, and the consumer drains 120 a second. What happens during the burst is computed below."
+    },
+    {
+      "id": "555-the-cheaper-path-was-taken-often-enough-to-cost-more",
+      "path": "/ai/examples/555-the-cheaper-path-was-taken-often-enough-to-cost-more.eml.md",
+      "title": "The cheaper path was taken often enough to cost more",
+      "description": "`the_cheaper_path_was_taken_often_enough_to_cost_more.eml` - A request handler calls five things. The code review flagged the slowest of them. Which one that is depends on a sort order, and both orders are computed below."
+    },
+    {
+      "id": "556-the-compression-helped-until-the-data-stopped-being-similar",
+      "path": "/ai/examples/556-the-compression-helped-until-the-data-stopped-being-similar.eml.md",
+      "title": "The compression helped until the data stopped being similar",
+      "description": "`the_compression_helped_until_the_data_stopped_being_similar.eml` - The archive ingests 1000 GB a month, every month, and has done for a year. What it stores is computed below, along with the capacity forecast that was written in month 1."
+    },
+    {
+      "id": "557-the-deadline-was-met-by-moving-what-counted-as-done",
+      "path": "/ai/examples/557-the-deadline-was-met-by-moving-what-counted-as-done.eml.md",
+      "title": "The deadline was met by moving what counted as done",
+      "description": "`the_deadline_was_met_by_moving_what_counted_as_done.eml` - 120 features were committed for the quarter. The quarter closed at 79 percent complete. What 79 percent counted is computed below."
+    },
+    {
+      "id": "558-the-error-rate-fell-because-the-errors-moved",
+      "path": "/ai/examples/558-the-error-rate-fell-because-the-errors-moved.eml.md",
+      "title": "The error rate fell because the errors moved",
+      "description": "`the_error_rate_fell_because_the_errors_moved.eml` - Service A's error rate went from 3 percent to 0.2 percent after one change. Where the errors went is computed below."
+    },
+    {
+      "id": "559-the-id-was-reused-after-the-thing-it-identified-was-gone",
+      "path": "/ai/examples/559-the-id-was-reused-after-the-thing-it-identified-was-gone.eml.md",
+      "title": "The id was reused after the thing it identified was gone",
+      "description": "`the_id_was_reused_after_the_thing_it_identified_was_gone.eml` - The audit log holds 20000 references, each one an entity id captured at the time an action was taken. How many of them still name the entity they were written about is computed below."
+    },
+    {
+      "id": "560-the-lock-was-held-across-a-call-that-could-block",
+      "path": "/ai/examples/560-the-lock-was-held-across-a-call-that-could-block.eml.md",
+      "title": "The lock was held across a call that could block",
+      "description": "`the_lock_was_held_across_a_call_that_could_block.eml` - A cache refresh is guarded by a mutex. The thread pool was raised from 8 to 32 and throughput did not move. What the pool size can and cannot change is computed below."
+    },
+    {
+      "id": "561-the-migration-finished-and-both-writers-kept-writing",
+      "path": "/ai/examples/561-the-migration-finished-and-both-writers-kept-writing.eml.md",
+      "title": "The migration finished and both writers kept writing",
+      "description": "`the_migration_finished_and_both_writers_kept_writing.eml` - The migration from the old store to the new one completed twelve months ago and was signed off. Both stores are still being written to. What is in each of them is computed below."
+    },
+    {
+      "id": "562-the-ratio-was-stable-and-both-sides-were-shrinking",
+      "path": "/ai/examples/562-the-ratio-was-stable-and-both-sides-were-shrinking.eml.md",
+      "title": "The ratio was stable and both sides were shrinking",
+      "description": "`the_ratio_was_stable_and_both_sides_were_shrinking.eml` - Conversion rate held at 3.0 percent for twelve months. What held it there is computed below."
+    },
+    {
+      "id": "563-the-sample-size-was-the-thing-that-changed",
+      "path": "/ai/examples/563-the-sample-size-was-the-thing-that-changed.eml.md",
+      "title": "The sample size was the thing that changed",
+      "description": "`the_sample_size_was_the_thing_that_changed.eml` - Three quarters of latency review. Each quarter the team sampled transactions and reported the worst one they saw. The worst got worse every quarter. What else changed is computed below."
+    },
+    {
+      "id": "564-the-throughput-doubled-and-the-tail-got-worse",
+      "path": "/ai/examples/564-the-throughput-doubled-and-the-tail-got-worse.eml.md",
+      "title": "The throughput doubled and the tail got worse",
+      "description": "`the_throughput_doubled_and_the_tail_got_worse.eml` - The batch size was raised from 10 to 100. Throughput went from 166 to 416 items a second. What a single request experiences is computed below."
+    },
+    {
+      "id": "565-the-total-was-capped-and-the-parts-were-not",
+      "path": "/ai/examples/565-the-total-was-capped-and-the-parts-were-not.eml.md",
+      "title": "The total was capped and the parts were not",
+      "description": "`the_total_was_capped_and_the_parts_were_not.eml` - The cloud account has a hard spending cap of 10000 a month. Eight services share it. On day 7 the cap fired. Which services stopped is computed below."
+    },
+    {
+      "id": "566-the-work-was-split-evenly-and-the-workers-were-not",
+      "path": "/ai/examples/566-the-work-was-split-evenly-and-the-workers-were-not.eml.md",
+      "title": "The work was split evenly and the workers were not",
+      "description": "`the_work_was_split_evenly_and_the_workers_were_not.eml` - A batch of 2400 documents is split across 8 workers. Every worker gets exactly 300. How long the batch takes, and how long the report says it takes, are computed below."
     }
   ],
   "tools": {
