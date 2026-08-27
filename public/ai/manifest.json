@@ -3513,6 +3513,96 @@
       "path": "/ai/examples/566-the-work-was-split-evenly-and-the-workers-were-not.eml.md",
       "title": "The work was split evenly and the workers were not",
       "description": "`the_work_was_split_evenly_and_the_workers_were_not.eml` - A batch of 2400 documents is split across 8 workers. Every worker gets exactly 300. How long the batch takes, and how long the report says it takes, are computed below."
+    },
+    {
+      "id": "567-the-bug-was-fixed-in-the-library-and-the-vendored-copy-stayed",
+      "path": "/ai/examples/567-the-bug-was-fixed-in-the-library-and-the-vendored-copy-stayed.eml.md",
+      "title": "The bug was fixed in the library and the vendored copy stayed",
+      "description": "`the_bug_was_fixed_in_the_library_and_the_vendored_copy_stayed.eml` - An advisory is published, the library ships a fix, and the dependency scanner reports every service patched. How many are running the fixed code is computed below."
+    },
+    {
+      "id": "568-the-deploy-was-atomic-and-the-config-was-not",
+      "path": "/ai/examples/568-the-deploy-was-atomic-and-the-config-was-not.eml.md",
+      "title": "The deploy was atomic and the config was not",
+      "description": "`the_deploy_was_atomic_and_the_config_was_not.eml` - Code is deployed blue-green, so every instance switches at once. Configuration is polled every 60 seconds. What runs during those 60 seconds is computed below."
+    },
+    {
+      "id": "569-the-exchange-rate-was-right-and-its-timestamp-was-not",
+      "path": "/ai/examples/569-the-exchange-rate-was-right-and-its-timestamp-was-not.eml.md",
+      "title": "The exchange rate was right and its timestamp was not",
+      "description": "`the_exchange_rate_was_right_and_its_timestamp_was_not.eml` - A payment is quoted in the customer's currency at authorization and settled three days later at capture. Both conversions use the published rate. The difference is computed below."
+    },
+    {
+      "id": "570-the-fix-was-verified-on-the-machine-that-had-the-fix",
+      "path": "/ai/examples/570-the-fix-was-verified-on-the-machine-that-had-the-fix.eml.md",
+      "title": "The fix was verified on the machine that had the fix",
+      "description": "`the_fix_was_verified_on_the_machine_that_had_the_fix.eml` - A bug reproduces on 4 of 12 hosts. The fix was deployed to one host, verified there, and rolled out. What that verification could and could not have shown is computed below."
+    },
+    {
+      "id": "571-the-flag-defaulted-differently-in-two-places",
+      "path": "/ai/examples/571-the-flag-defaulted-differently-in-two-places.eml.md",
+      "title": "The flag defaulted differently in two places",
+      "description": "`the_flag_defaulted_differently_in_two_places.eml` - One feature flag, read by the server and by the browser. Each side has a default for when the flag service cannot be reached. What the two defaults do together is computed below."
+    },
+    {
+      "id": "572-the-limit-was-on-the-response-and-the-cost-was-in-the-query",
+      "path": "/ai/examples/572-the-limit-was-on-the-response-and-the-cost-was-in-the-query.eml.md",
+      "title": "The limit was on the response and the cost was in the query",
+      "description": "`the_limit_was_on_the_response_and_the_cost_was_in_the_query.eml` - The API returns at most 20 rows per call and the rate limiter counts calls. What one call costs the database is computed below."
+    },
+    {
+      "id": "573-the-log-was-sampled-and-the-rare-event-was-the-point",
+      "path": "/ai/examples/573-the-log-was-sampled-and-the-rare-event-was-the-point.eml.md",
+      "title": "The log was sampled and the rare event was the point",
+      "description": "`the_log_was_sampled_and_the_rare_event_was_the_point.eml` - Request logging was sampled at 1 percent to bring the bill down. What each class of event looks like afterwards is computed below."
+    },
+    {
+      "id": "574-the-metric-came-from-a-view-that-filtered",
+      "path": "/ai/examples/574-the-metric-came-from-a-view-that-filtered.eml.md",
+      "title": "The metric came from a view that filtered",
+      "description": "`the_metric_came_from_a_view_that_filtered.eml` - Three metrics are computed from one view. The view excludes cancelled orders. What each metric becomes is computed below."
+    },
+    {
+      "id": "575-the-number-was-right-and-the-label-came-from-another-query",
+      "path": "/ai/examples/575-the-number-was-right-and-the-label-came-from-another-query.eml.md",
+      "title": "The number was right and the label came from another query",
+      "description": "`the_number_was_right_and_the_label_came_from_another_query.eml` - A report shows four regions and their totals. The names come from one query and the totals from another, joined by row position. What each region is shown as is computed below."
+    },
+    {
+      "id": "576-the-permission-was-checked-before-the-data-was-chosen",
+      "path": "/ai/examples/576-the-permission-was-checked-before-the-data-was-chosen.eml.md",
+      "title": "The permission was checked before the data was chosen",
+      "description": "`the_permission_was_checked_before_the_data_was_chosen.eml` - A search returns the ten highest-scoring documents a user is allowed to see. The user reports that the page is nearly empty. How many results each ordering produces is computed below."
+    },
+    {
+      "id": "577-the-redundancy-shared-a-dependency",
+      "path": "/ai/examples/577-the-redundancy-shared-a-dependency.eml.md",
+      "title": "The redundancy shared a dependency",
+      "description": "`the_redundancy_shared_a_dependency.eml` - The service runs in three availability zones. Each zone is measured at 99.9 percent. The availability the three of them actually provide is computed below."
+    },
+    {
+      "id": "578-the-rule-was-enforced-at-write-time-and-the-data-predated-it",
+      "path": "/ai/examples/578-the-rule-was-enforced-at-write-time-and-the-data-predated-it.eml.md",
+      "title": "The rule was enforced at write time and the data predated it",
+      "description": "`the_rule_was_enforced_at_write_time_and_the_data_predated_it.eml` - A validation rule was added to the write path eighteen months ago. Every row written since satisfies it. What fraction of the table satisfies it is computed below."
+    },
+    {
+      "id": "579-the-timeout-was-longer-than-the-caller-patience",
+      "path": "/ai/examples/579-the-timeout-was-longer-than-the-caller-patience.eml.md",
+      "title": "The timeout was longer than the caller patience",
+      "description": "`the_timeout_was_longer_than_the_caller_patience.eml` - The service times out a request after 30 seconds. The client library gives up after 5. What the server is doing between those two numbers is computed below."
+    },
+    {
+      "id": "580-the-two-clocks-agreed-on-duration-and-disagreed-on-order",
+      "path": "/ai/examples/580-the-two-clocks-agreed-on-duration-and-disagreed-on-order.eml.md",
+      "title": "The two clocks agreed on duration and disagreed on order",
+      "description": "`the_two_clocks_agreed_on_duration_and_disagreed_on_order.eml` - A request crosses three services and is timestamped at every hop. The end-to-end duration is trusted and the hop ordering is trusted. Only one of them is safe, and which is computed below."
+    },
+    {
+      "id": "581-the-two-teams-agreed-on-the-word-and-not-the-meaning",
+      "path": "/ai/examples/581-the-two-teams-agreed-on-the-word-and-not-the-meaning.eml.md",
+      "title": "The two teams agreed on the word and not the meaning",
+      "description": "`the_two_teams_agreed_on_the_word_and_not_the_meaning.eml` - Two teams report active users. The growth team says 42000, the platform team says 18000. Both queries are correct and the numbers they produce are computed below."
     }
   ],
   "tools": {
