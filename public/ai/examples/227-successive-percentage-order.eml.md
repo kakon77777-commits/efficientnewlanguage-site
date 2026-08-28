@@ -1,4 +1,4 @@
-<!-- canonical: efficientnewlanguage.org/ai/examples/227-successive-percentage-order | ai_layer_version: 0.1.0 | updated: 2026-08-03 -->
+<!-- canonical: efficientnewlanguage.org/ai/examples/227-successive-percentage-order | ai_layer_version: 0.1.0 | updated: 2026-08-28 -->
 
 # Example 227 — Three tiers of commuting, and only one is safe
 
@@ -363,7 +363,7 @@ for pr in prices:
         b = apply_pct_off_trunc(b, p)
     if not a == b:
         rounding_differs = rounding_differs + 1
-        rounding_total = rounding_total + b - a
+        rounding_total = rounding_total + (b - a)
 print("")
 print("prices where rounding policy changes the answer: " + str(rounding_differs) + "/" + str(len(prices)))
 print("total difference across them:                    " + money(rounding_total))

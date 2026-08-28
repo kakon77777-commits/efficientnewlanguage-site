@@ -1,4 +1,4 @@
-<!-- canonical: efficientnewlanguage.org/ai/examples/258-timeout-budget-across-hops | ai_layer_version: 0.1.0 | updated: 2026-08-05 -->
+<!-- canonical: efficientnewlanguage.org/ai/examples/258-timeout-budget-across-hops | ai_layer_version: 0.1.0 | updated: 2026-08-28 -->
 
 # Example 258 — Timeout budget across hops — four 5-second timeouts are not a 5-second bound
 
@@ -246,7 +246,7 @@ def run_fixed(latency, per_hop):
         if total > per_hop:
             tail = per_hop
             ok = 0
-            wasted = wasted + total - per_hop
+            wasted = wasted + (total - per_hop)
         else:
             tail = total
     return [tail, ok, wasted, started]

@@ -1,4 +1,4 @@
-<!-- canonical: efficientnewlanguage.org/ai/examples/234-catastrophic-cancellation | ai_layer_version: 0.1.0 | updated: 2026-08-03 -->
+<!-- canonical: efficientnewlanguage.org/ai/examples/234-catastrophic-cancellation | ai_layer_version: 0.1.0 | updated: 2026-08-28 -->
 
 # Example 234 — Same algebra, and one arrangement keeps its digits
 
@@ -264,7 +264,7 @@ def variance_naive(xs):
         s = s + float(x)
         s2 = s2 + float(x) * float(x)
     n = float(len(xs))
-    return s2 / n - s / n * s / n
+    return s2 / n - s / n * (s / n)
 
 def variance_two_pass(xs):
     s = 0.0

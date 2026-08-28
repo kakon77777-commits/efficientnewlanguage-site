@@ -178,7 +178,7 @@ running_backlog = 0
 for h in range(1, 9):
     acc_h = 3600 * accepted_per_second
     done_h = 3600 * completed_per_second
-    running_backlog = running_backlog + acc_h - done_h
+    running_backlog = running_backlog + (acc_h - done_h)
     if h % 2 == 0:
         print("  " + str(h) + "      " + str(acc_h) + "    " + str(done_h) + "     " + str(running_backlog))
 print("")

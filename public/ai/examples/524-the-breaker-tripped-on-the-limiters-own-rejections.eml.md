@@ -1,4 +1,4 @@
-<!-- canonical: efficientnewlanguage.org/ai/examples/524-the-breaker-tripped-on-the-limiters-own-rejections | ai_layer_version: 0.1.0 | updated: 2026-08-24 -->
+<!-- canonical: efficientnewlanguage.org/ai/examples/524-the-breaker-tripped-on-the-limiters-own-rejections | ai_layer_version: 0.1.0 | updated: 2026-08-28 -->
 
 # Example 524 — The breaker tripped on the limiters own rejections
 
@@ -199,7 +199,7 @@ total_rej = 0
 total_real = 0
 for m in minutes:
     adm = admitted(m[1], m[2])
-    total_rej = total_rej + m[1] - adm
+    total_rej = total_rej + (m[1] - adm)
     total_real = total_real + int(adm * m[3] / 100)
 print("across the window")
 print("  errors from the limiter doing its job : " + str(total_rej))

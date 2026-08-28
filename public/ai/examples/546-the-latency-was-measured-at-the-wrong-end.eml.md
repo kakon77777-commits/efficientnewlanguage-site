@@ -1,4 +1,4 @@
-<!-- canonical: efficientnewlanguage.org/ai/examples/546-the-latency-was-measured-at-the-wrong-end | ai_layer_version: 0.1.0 | updated: 2026-08-25 -->
+<!-- canonical: efficientnewlanguage.org/ai/examples/546-the-latency-was-measured-at-the-wrong-end | ai_layer_version: 0.1.0 | updated: 2026-08-28 -->
 
 # Example 546 — The latency was measured at the wrong end
 
@@ -197,7 +197,7 @@ n_unstreamed = 0
 for e in endpoints:
     if e[1] == "no":
         n_unstreamed = n_unstreamed + 1
-        gap_unstreamed = gap_unstreamed + e[5] - e[4]
+        gap_unstreamed = gap_unstreamed + (e[5] - e[4])
 print("  endpoints          : %s" % str(n_unstreamed))
 print("  total gap between first byte and completion : %s ms" % str(gap_unstreamed))
 print("  on these the metric is not approximately right, it is the same number")
@@ -207,7 +207,7 @@ print("control - the same three endpoints before they streamed")
 gap_before = 0
 for e in endpoints:
     if e[1] == "yes":
-        gap_before = gap_before + e[3] - e[2]
+        gap_before = gap_before + (e[3] - e[2])
 print("  gap between first byte and completion, before : %s ms" % str(gap_before))
 print("  so the gap is not a property of these endpoints either")
 print("  it is a property of streaming, and it opened on the day of the change")

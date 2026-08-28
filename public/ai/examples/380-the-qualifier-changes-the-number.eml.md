@@ -1,4 +1,4 @@
-<!-- canonical: efficientnewlanguage.org/ai/examples/380-the-qualifier-changes-the-number | ai_layer_version: 0.1.0 | updated: 2026-08-14 -->
+<!-- canonical: efficientnewlanguage.org/ai/examples/380-the-qualifier-changes-the-number | ai_layer_version: 0.1.0 | updated: 2026-08-28 -->
 
 # Example 380 — The qualifier changes the number — a 40-point drop and zero change in the service
 
@@ -184,7 +184,7 @@ print("each clarification, applied alone")
 print("  exclude health checks only : " + show(loose - no_health))
 print("  count timeouts only        : " + show(loose - rate(1, 1)))
 print("  both                       : " + show(loose - precise))
-if loose - no_health + loose - rate(1, 1) == loose - precise:
+if loose - no_health + (loose - rate(1, 1)) == loose - precise:
     print("  the two effects add exactly")
 else:
     print("  the two effects do not add - they overlap on the same requests")

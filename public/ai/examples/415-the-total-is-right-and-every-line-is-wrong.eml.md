@@ -1,4 +1,4 @@
-<!-- canonical: efficientnewlanguage.org/ai/examples/415-the-total-is-right-and-every-line-is-wrong | ai_layer_version: 0.1.0 | updated: 2026-08-16 -->
+<!-- canonical: efficientnewlanguage.org/ai/examples/415-the-total-is-right-and-every-line-is-wrong | ai_layer_version: 0.1.0 | updated: 2026-08-28 -->
 
 # Example 415 — The total is right and every line is wrong - net error zero, six lines off
 
@@ -145,7 +145,7 @@ for l in lines:
     if not d == 0:
         wrong = wrong + 1
         if d < 0:
-            abs_error = abs_error + 0 - d
+            abs_error = abs_error + (0 - d)
         else:
             abs_error = abs_error + d
     if d < 0:
