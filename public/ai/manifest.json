@@ -3603,6 +3603,96 @@
       "path": "/ai/examples/581-the-two-teams-agreed-on-the-word-and-not-the-meaning.eml.md",
       "title": "The two teams agreed on the word and not the meaning",
       "description": "`the_two_teams_agreed_on_the_word_and_not_the_meaning.eml` - Two teams report active users. The growth team says 42000, the platform team says 18000. Both queries are correct and the numbers they produce are computed below."
+    },
+    {
+      "id": "582-the-aggregate-was-cached-and-the-parts-were-live",
+      "path": "/ai/examples/582-the-aggregate-was-cached-and-the-parts-were-live.eml.md",
+      "title": "The aggregate was cached and the parts were live",
+      "description": "`the_aggregate_was_cached_and_the_parts_were_live.eml` - One page shows a total at the top and the rows it totals underneath. The total is cached for five minutes; the rows are queried live. What the two disagree by is computed below."
+    },
+    {
+      "id": "583-the-backup-ran-nightly-and-the-change-was-hourly",
+      "path": "/ai/examples/583-the-backup-ran-nightly-and-the-change-was-hourly.eml.md",
+      "title": "The backup ran nightly and the change was hourly",
+      "description": "`the_backup_ran_nightly_and_the_change_was_hourly.eml` - The backup has succeeded every night for four hundred nights. The recovery point objective is one hour. What is actually recoverable is computed below."
+    },
+    {
+      "id": "584-the-config-was-validated-at-startup-and-edited-at-runtime",
+      "path": "/ai/examples/584-the-config-was-validated-at-startup-and-edited-at-runtime.eml.md",
+      "title": "The config was validated at startup and edited at runtime",
+      "description": "`the_config_was_validated_at_startup_and_edited_at_runtime.eml` - The configuration is validated on load: every field is type-checked, every range is bounded, every reference is resolved. How many of the month's config changes go through that validation is computed below."
+    },
+    {
+      "id": "585-the-count-was-distinct-and-the-join-multiplied-the-rows",
+      "path": "/ai/examples/585-the-count-was-distinct-and-the-join-multiplied-the-rows.eml.md",
+      "title": "The count was distinct and the join multiplied the rows",
+      "description": "`the_count_was_distinct_and_the_join_multiplied_the_rows.eml` - A report joins orders to their line items so it can break revenue down by product category. Three numbers on the same report are computed below."
+    },
+    {
+      "id": "586-the-default-sort-made-the-diff-unreadable",
+      "path": "/ai/examples/586-the-default-sort-made-the-diff-unreadable.eml.md",
+      "title": "The default sort made the diff unreadable",
+      "description": "`the_default_sort_made_the_diff_unreadable.eml` - A generated configuration file is regenerated on every build and committed. How much of each diff is a real change is computed below."
+    },
+    {
+      "id": "587-the-encoding-was-declared-and-the-bytes-disagreed",
+      "path": "/ai/examples/587-the-encoding-was-declared-and-the-bytes-disagreed.eml.md",
+      "title": "The encoding was declared and the bytes disagreed",
+      "description": "`the_encoding_was_declared_and_the_bytes_disagreed.eml` - Every uploaded file declares its encoding, the importer honours the declaration, and the encoding validator passes 100 percent of records. How many names arrive correctly is computed below."
+    },
+    {
+      "id": "588-the-queue-had-no-maximum-and-the-memory-did",
+      "path": "/ai/examples/588-the-queue-had-no-maximum-and-the-memory-did.eml.md",
+      "title": "The queue had no maximum and the memory did",
+      "description": "`the_queue_had_no_maximum_and_the_memory_did.eml` - The in-process queue has never rejected a message. How long that can continue is computed below."
+    },
+    {
+      "id": "589-the-record-was-corrected-and-the-derived-copy-was-not",
+      "path": "/ai/examples/589-the-record-was-corrected-and-the-derived-copy-was-not.eml.md",
+      "title": "The record was corrected and the derived copy was not",
+      "description": "`the_record_was_corrected_and_the_derived_copy_was_not.eml` - Three hundred and forty records were corrected this quarter, each one verified against the source document. How many of the five places that hold a copy received the correction is computed below."
+    },
+    {
+      "id": "590-the-retry-preserved-the-request-and-not-the-context",
+      "path": "/ai/examples/590-the-retry-preserved-the-request-and-not-the-context.eml.md",
+      "title": "The retry preserved the request and not the context",
+      "description": "`the_retry_preserved_the_request_and_not_the_context.eml` - A caller gives the service 5 seconds. The service retries a failing downstream call up to four times. How long the caller waits is computed below."
+    },
+    {
+      "id": "591-the-setting-was-global-and-the-need-was-per-request",
+      "path": "/ai/examples/591-the-setting-was-global-and-the-need-was-per-request.eml.md",
+      "title": "The setting was global and the need was per request",
+      "description": "`the_setting_was_global_and_the_need_was_per_request.eml` - A formatting library reads its decimal separator from a process-wide setting. Requests arrive from locales that use different ones. How many requests are formatting against someone else's setting is computed below."
+    },
+    {
+      "id": "592-the-signature-covered-the-payload-and-not-the-headers",
+      "path": "/ai/examples/592-the-signature-covered-the-payload-and-not-the-headers.eml.md",
+      "title": "The signature covered the payload and not the headers",
+      "description": "`the_signature_covered_the_payload_and_not_the_headers.eml` - Every incoming webhook is signed and every signature verifies. Which fields the signature actually covers is computed below."
+    },
+    {
+      "id": "593-the-summary-was-accurate-and-the-reader-inferred-more",
+      "path": "/ai/examples/593-the-summary-was-accurate-and-the-reader-inferred-more.eml.md",
+      "title": "The summary was accurate and the reader inferred more",
+      "description": "`the_summary_was_accurate_and_the_reader_inferred_more.eml` - A security review is summarised in one line: reviewed the authentication flow, found three issues, all fixed. Every word of that is true. What a reader takes from it is computed below."
+    },
+    {
+      "id": "594-the-throttle-protected-the-service-and-moved-the-failure-out",
+      "path": "/ai/examples/594-the-throttle-protected-the-service-and-moved-the-failure-out.eml.md",
+      "title": "The throttle protected the service and moved the failure out",
+      "description": "`the_throttle_protected_the_service_and_moved_the_failure_out.eml` - A rate limiter holds the service at its measured capacity. The service's error rate is zero and its latency is flat. What the system as a whole delivers is computed below."
+    },
+    {
+      "id": "595-the-throughput-was-measured-where-the-work-was-queued",
+      "path": "/ai/examples/595-the-throughput-was-measured-where-the-work-was-queued.eml.md",
+      "title": "The throughput was measured where the work was queued",
+      "description": "`the_throughput_was_measured_where_the_work_was_queued.eml` - The throughput graph has read a steady 1200 per second all shift. What the system finished in that shift is computed below."
+    },
+    {
+      "id": "596-the-validation-ran-on-the-value-after-it-was-coerced",
+      "path": "/ai/examples/596-the-validation-ran-on-the-value-after-it-was-coerced.eml.md",
+      "title": "The validation ran on the value after it was coerced",
+      "description": "`the_validation_ran_on_the_value_after_it_was_coerced.eml` - Quantity must be an integer between 1 and 999. The validator has never accepted a value outside that range. How many orders ship a quantity the customer did not choose is computed below."
     }
   ],
   "tools": {
