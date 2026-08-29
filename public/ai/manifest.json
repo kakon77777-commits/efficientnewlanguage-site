@@ -3693,6 +3693,96 @@
       "path": "/ai/examples/596-the-validation-ran-on-the-value-after-it-was-coerced.eml.md",
       "title": "The validation ran on the value after it was coerced",
       "description": "`the_validation_ran_on_the_value_after_it_was_coerced.eml` - Quantity must be an integer between 1 and 999. The validator has never accepted a value outside that range. How many orders ship a quantity the customer did not choose is computed below."
+    },
+    {
+      "id": "597-the-alert-fired-once-and-the-condition-held-for-days",
+      "path": "/ai/examples/597-the-alert-fired-once-and-the-condition-held-for-days.eml.md",
+      "title": "The alert fired once and the condition held for days",
+      "description": "`the_alert_fired_once_and_the_condition_held_for_days.eml` - A disk alert fires when free space crosses below fifteen percent. It fired once. What the condition did afterwards is computed below."
+    },
+    {
+      "id": "598-the-average-held-steady-and-every-user-got-slower",
+      "path": "/ai/examples/598-the-average-held-steady-and-every-user-got-slower.eml.md",
+      "title": "The average held steady and every user got slower",
+      "description": "`the_average_held_steady_and_every_user_got_slower.eml` - Mean response time this quarter is within a hundredth of a millisecond of last quarter. Two groups of users make up that mean. What happened to each of them is computed below."
+    },
+    {
+      "id": "599-the-branch-was-behind-a-flag-that-never-turned-on",
+      "path": "/ai/examples/599-the-branch-was-behind-a-flag-that-never-turned-on.eml.md",
+      "title": "The branch was behind a flag that never turned on",
+      "description": "`the_branch_was_behind_a_flag_that_never_turned_on.eml` - A rewritten pricing path sits behind a feature flag. The flag has defaulted off since the day it was added. What the branch's readiness has actually been measured against is computed below."
+    },
+    {
+      "id": "600-the-cache-was-warm-and-one-request-paid-for-all-of-them",
+      "path": "/ai/examples/600-the-cache-was-warm-and-one-request-paid-for-all-of-them.eml.md",
+      "title": "The cache was warm and one request paid for all of them",
+      "description": "`the_cache_was_warm_and_one_request_paid_for_all_of_them.eml` - A computed page is cached with a sixty second expiry. The hit rate is above ninety-nine percent and mean latency is a few milliseconds. Who pays the recompute is computed below."
+    },
+    {
+      "id": "601-the-check-ran-on-a-copy-and-the-original-was-used",
+      "path": "/ai/examples/601-the-check-ran-on-a-copy-and-the-original-was-used.eml.md",
+      "title": "The check ran on a copy and the original was used",
+      "description": "`the_check_ran_on_a_copy_and_the_original_was_used.eml` - Every request is normalised, then validated, and the validator has never passed a bad value. Which value the handler then uses is computed below."
+    },
+    {
+      "id": "602-the-column-was-indexed-and-the-query-cast-it-first",
+      "path": "/ai/examples/602-the-column-was-indexed-and-the-query-cast-it-first.eml.md",
+      "title": "The column was indexed and the query cast it first",
+      "description": "`the_column_was_indexed_and_the_query_cast_it_first.eml` - A lookup column is indexed, the index is healthy, and the query filters on exactly that column. The query reads the whole table. What the index can be used for is computed below."
+    },
+    {
+      "id": "603-the-migration-was-idempotent-and-the-order-was-not",
+      "path": "/ai/examples/603-the-migration-was-idempotent-and-the-order-was-not.eml.md",
+      "title": "The migration was idempotent and the order was not",
+      "description": "`the_migration_was_idempotent_and_the_order_was_not.eml` - A schema migration is twelve steps and every step is idempotent. It was replayed onto three shards and two of them ended up different. What idempotence covers is computed below."
+    },
+    {
+      "id": "604-the-mutex-guarded-the-handle-and-not-the-data",
+      "path": "/ai/examples/604-the-mutex-guarded-the-handle-and-not-the-data.eml.md",
+      "title": "The mutex guarded the handle and not the data",
+      "description": "`the_mutex_guarded_the_handle_and_not_the_data.eml` - A cache maps keys to entry handles, and a mutex guards the map. Thirty-two threads run against it without a crash, without a corrupt map, and without a single lost entry. What the mutex is protecting is computed below."
+    },
+    {
+      "id": "605-the-percentile-improved-and-the-worst-case-got-worse",
+      "path": "/ai/examples/605-the-percentile-improved-and-the-worst-case-got-worse.eml.md",
+      "title": "The percentile improved and the worst case got worse",
+      "description": "`the_percentile_improved_and_the_worst_case_got_worse.eml` - A hedged request was added: if the first attempt has not answered in a hundred milliseconds, send a second one and take whichever returns first. The p99 improved. What happened above the p99 is computed below."
+    },
+    {
+      "id": "606-the-queue-drained-and-the-oldest-item-was-never-served",
+      "path": "/ai/examples/606-the-queue-drained-and-the-oldest-item-was-never-served.eml.md",
+      "title": "The queue drained and the oldest item was never served",
+      "description": "`the_queue_drained_and_the_oldest_item_was_never_served.eml` - A work queue is drained continuously, its depth is stable, and throughput matches arrivals. What happens to the item at the bottom is computed below."
+    },
+    {
+      "id": "607-the-quota-was-per-account-and-the-cost-was-per-shard",
+      "path": "/ai/examples/607-the-quota-was-per-account-and-the-cost-was-per-shard.eml.md",
+      "title": "The quota was per account and the cost was per shard",
+      "description": "`the_quota_was_per_account_and_the_cost_was_per_shard.eml` - A shared cluster limits each account to a thousand queries an hour. No account has ever exceeded it. What a query costs the cluster is computed below."
+    },
+    {
+      "id": "608-the-retry-succeeded-and-the-first-attempt-also-landed",
+      "path": "/ai/examples/608-the-retry-succeeded-and-the-first-attempt-also-landed.eml.md",
+      "title": "The retry succeeded and the first attempt also landed",
+      "description": "`the_retry_succeeded_and_the_first_attempt_also_landed.eml` - A client times out at two seconds and retries. The server is slower than that for a small share of requests, and it finishes them. What each party records is computed below."
+    },
+    {
+      "id": "609-the-two-teams-fixed-it-and-the-fixes-cancelled-out",
+      "path": "/ai/examples/609-the-two-teams-fixed-it-and-the-fixes-cancelled-out.eml.md",
+      "title": "The two teams fixed it and the fixes cancelled out",
+      "description": "`the_two_teams_fixed_it_and_the_fixes_cancelled_out.eml` - An invoice total was off by the tax amount. Two teams found it and each shipped a correct fix. What the invoice does now is computed below."
+    },
+    {
+      "id": "610-the-units-agreed-and-the-reference-point-did-not",
+      "path": "/ai/examples/610-the-units-agreed-and-the-reference-point-did-not.eml.md",
+      "title": "The units agreed and the reference point did not",
+      "description": "`the_units_agreed_and_the_reference_point_did_not.eml` - Two services report a timestamp in seconds. The units match, the types match, and a comparison between them type-checks. What the two numbers are counted from is computed below."
+    },
+    {
+      "id": "611-the-writes-were-ordered-and-the-readers-were-not",
+      "path": "/ai/examples/611-the-writes-were-ordered-and-the-readers-were-not.eml.md",
+      "title": "The writes were ordered and the readers were not",
+      "description": "`the_writes_were_ordered_and_the_readers_were_not.eml` - Two writes are committed in order to a primary, and the second is never visible without the first. What a reader sees is computed below."
     }
   ],
   "tools": {
