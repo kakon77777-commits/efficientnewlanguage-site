@@ -201,10 +201,19 @@ function regenerateManifestAndSitemap(): void {
     .filter((f) => f.endsWith('.eml.md'))
     .sort();
 
+  // path -> the page's own `updated:` stamp, filled while the pages are read
+  // and consumed by the sitemap below.
+  const lastmodByPath = new Map<string, string>();
+
   const examples = files.map((f) => {
     const id = f.replace(/\.eml\.md$/, '');
     const markdown = readFileSync(join(CORPUS_DIR, f), 'utf8');
     const { title, description } = extractTitleAndDescription(markdown);
+    // Captured into a side map rather than the returned object: this value is
+    // for the sitemap, and `examples` becomes `manifest.examples`, whose shape
+    // should not change to carry it.
+    const stamped = /updated:\s*(\d{4}-\d{2}-\d{2})/.exec(markdown);
+    if (stamped) lastmodByPath.set(`/ai/examples/${f}`, stamped[1]!);
     return { id, path: `/ai/examples/${f}`, title, description };
   });
 
@@ -218,11 +227,38 @@ function regenerateManifestAndSitemap(): void {
     .split('\n')
     .filter((line) => !line.includes('/ai/examples/'));
   const closeTagIdx = nonExampleLines.findIndex((l) => l.trim() === '</urlset>');
-  const today = new Date().toISOString().slice(0, 10);
-  const exampleLines = examples.map(
-    (e) =>
-      `  <url><loc>https://efficientnewlanguage.org${e.path}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>`,
-  );
+
+  // `lastmod` is the page's OWN `updated:` stamp, not the clock.
+  //
+  // This block used to write `new Date()` into every example line, having just
+  // discarded the previous ones. Thirty lines above, the page generator goes to
+  // deliberate trouble to preserve those dates — `bodyOf()` strips the
+  // frontmatter precisely so `updated:` moves only when the content moves — and
+  // then this block threw all 606 of them away on every publish. On a corpus
+  // that gains 15 genuinely new pages a day, that is the one signal telling a
+  // crawler which 15 they are, drowned by 591 pages claiming the same thing;
+  // and Google uses `lastmod` only while it stays accurate, so the daily false
+  // claim was training it to discard the field for the whole site.
+  //
+  // Reading it from the page rather than preserving the old sitemap value is
+  // the point: there is then ONE date, in one place, and the sitemap is a
+  // projection of it instead of an independent claim that can drift.
+  let unstamped = 0;
+  const exampleLines = examples.map((e) => {
+    const lastmod = lastmodByPath.get(e.path);
+    if (!lastmod) unstamped += 1;
+    const stamp = lastmod ?? new Date().toISOString().slice(0, 10);
+    return `  <url><loc>https://efficientnewlanguage.org${e.path}</loc><lastmod>${stamp}</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>`;
+  });
+  // The fallback above is the failure this comment exists for: a page whose
+  // frontmatter stopped parsing would silently go back to being stamped with
+  // today, which is the exact bug being fixed and would look like nothing.
+  if (unstamped > 0) {
+    console.log(
+      `[generate-corpus] WARNING: ${unstamped} of ${examples.length} pages carried no parseable ` +
+        `\`updated:\` and fell back to today's date — the sitemap is only as good as that stamp`,
+    );
+  }
   const newSitemap = [
     ...nonExampleLines.slice(0, closeTagIdx),
     ...exampleLines,
