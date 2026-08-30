@@ -3783,6 +3783,96 @@
       "path": "/ai/examples/611-the-writes-were-ordered-and-the-readers-were-not.eml.md",
       "title": "The writes were ordered and the readers were not",
       "description": "`the_writes_were_ordered_and_the_readers_were_not.eml` - Two writes are committed in order to a primary, and the second is never visible without the first. What a reader sees is computed below."
+    },
+    {
+      "id": "612-the-batch-committed-and-the-notification-did-not",
+      "path": "/ai/examples/612-the-batch-committed-and-the-notification-did-not.eml.md",
+      "title": "The batch committed and the notification did not",
+      "description": "`the_batch_committed_and_the_notification_did_not.eml` - A batch writes rows inside a transaction and then tells the downstream service. The transaction is atomic. What \"and then\" costs is computed below."
+    },
+    {
+      "id": "613-the-diff-was-empty-and-the-behaviour-changed",
+      "path": "/ai/examples/613-the-diff-was-empty-and-the-behaviour-changed.eml.md",
+      "title": "The diff was empty and the behaviour changed",
+      "description": "`the_diff_was_empty_and_the_behaviour_changed.eml` - Two builds of the same commit behave differently. The diff between them is empty. What was not in the diff is computed below."
+    },
+    {
+      "id": "614-the-error-budget-was-monthly-and-the-outage-was-not",
+      "path": "/ai/examples/614-the-error-budget-was-monthly-and-the-outage-was-not.eml.md",
+      "title": "The error budget was monthly and the outage was not",
+      "description": "`the_error_budget_was_monthly_and_the_outage_was_not.eml` - Two months consume the same error budget to the tenth of a minute. What each one did to users is computed below."
+    },
+    {
+      "id": "615-the-fallback-value-was-plausible",
+      "path": "/ai/examples/615-the-fallback-value-was-plausible.eml.md",
+      "title": "The fallback value was plausible",
+      "description": "`the_fallback_value_was_plausible.eml` - When a sensor does not answer, the reader returns the last known value. The dashboard shows a steady line. What a steady line means here is computed below."
+    },
+    {
+      "id": "616-the-fix-shipped-and-the-cache-still-had-the-old-answer",
+      "path": "/ai/examples/616-the-fix-shipped-and-the-cache-still-had-the-old-answer.eml.md",
+      "title": "The fix shipped and the cache still had the old answer",
+      "description": "`the_fix_shipped_and_the_cache_still_had_the_old_answer.eml` - A fix is deployed to every server in forty seconds. The incident is closed. How long users keep seeing the bug is computed below."
+    },
+    {
+      "id": "617-the-key-was-rotated-and-the-old-one-still-worked",
+      "path": "/ai/examples/617-the-key-was-rotated-and-the-old-one-still-worked.eml.md",
+      "title": "The key was rotated and the old one still worked",
+      "description": "`the_key_was_rotated_and_the_old_one_still_worked.eml` - Fourteen signing keys were rotated on schedule. Every rotation is recorded as complete. What the old keys can still do is computed below."
+    },
+    {
+      "id": "618-the-lock-was-released-before-the-result-was-visible",
+      "path": "/ai/examples/618-the-lock-was-released-before-the-result-was-visible.eml.md",
+      "title": "The lock was released before the result was visible",
+      "description": "`the_lock_was_released_before_the_result_was_visible.eml` - A worker takes a lock, computes a value, writes it, and releases. The lock is held across the whole critical section. What a second worker sees at the moment of release is computed below."
+    },
+    {
+      "id": "619-the-null-was-cheaper-to-store-than-the-reason",
+      "path": "/ai/examples/619-the-null-was-cheaper-to-store-than-the-reason.eml.md",
+      "title": "The null was cheaper to store than the reason",
+      "description": "`the_null_was_cheaper_to_store_than_the_reason.eml` - A column is null on nineteen percent of rows. Three different things produced those nulls. What can be recovered from them is computed below."
+    },
+    {
+      "id": "620-the-permission-was-granted-to-the-service-not-the-request",
+      "path": "/ai/examples/620-the-permission-was-granted-to-the-service-not-the-request.eml.md",
+      "title": "The permission was granted to the service not the request",
+      "description": "`the_permission_was_granted_to_the_service_not_the_request.eml` - The reporting service holds one role. Every request it serves is authorised against that role. What the role has to be able to do is computed below."
+    },
+    {
+      "id": "621-the-quorum-was-three-and-two-shared-a-rack",
+      "path": "/ai/examples/621-the-quorum-was-three-and-two-shared-a-rack.eml.md",
+      "title": "The quorum was three and two shared a rack",
+      "description": "`the_quorum_was_three_and_two_shared_a_rack.eml` - Every shard has three replicas on three distinct nodes and needs two to serve. The placement check passes on all of them. What a single rack failure removes is computed below."
+    },
+    {
+      "id": "622-the-sample-was-taken-after-the-filter",
+      "path": "/ai/examples/622-the-sample-was-taken-after-the-filter.eml.md",
+      "title": "The sample was taken after the filter",
+      "description": "`the_sample_was_taken_after_the_filter.eml` - A quality audit draws five hundred records at random from the processed table and finds a defect rate of two per thousand. What that table contains is computed below."
+    },
+    {
+      "id": "623-the-schema-was-backward-compatible-and-the-data-was-not",
+      "path": "/ai/examples/623-the-schema-was-backward-compatible-and-the-data-was-not.eml.md",
+      "title": "The schema was backward compatible and the data was not",
+      "description": "`the_schema_was_backward_compatible_and_the_data_was_not.eml` - A field is added with a default. Every old reader keeps working and the compatibility checker passes. What the old rows now say is computed below."
+    },
+    {
+      "id": "624-the-second-region-was-added-and-the-database-was-not",
+      "path": "/ai/examples/624-the-second-region-was-added-and-the-database-was-not.eml.md",
+      "title": "The second region was added and the database was not",
+      "description": "`the_second_region_was_added_and_the_database_was_not.eml` - A second region was added and static content there is twenty-five times faster. Dynamic pages are slower than before. What moved and what did not is computed below."
+    },
+    {
+      "id": "625-the-tests-passed-in-the-order-they-were-written",
+      "path": "/ai/examples/625-the-tests-passed-in-the-order-they-were-written.eml.md",
+      "title": "The tests passed in the order they were written",
+      "description": "`the_tests_passed_in_the_order_they_were_written.eml` - A suite of one thousand four hundred tests passes on every run. It has passed on every run for eleven months. What it passes in is computed below."
+    },
+    {
+      "id": "626-the-two-checks-agreed-and-they-shared-a-parser",
+      "path": "/ai/examples/626-the-two-checks-agreed-and-they-shared-a-parser.eml.md",
+      "title": "The two checks agreed and they shared a parser",
+      "description": "`the_two_checks_agreed_and_they_shared_a_parser.eml` - Two validators, written by two teams for two entry points, agree on every input. What their agreement is evidence of is computed below."
     }
   ],
   "tools": {
