@@ -3873,6 +3873,96 @@
       "path": "/ai/examples/626-the-two-checks-agreed-and-they-shared-a-parser.eml.md",
       "title": "The two checks agreed and they shared a parser",
       "description": "`the_two_checks_agreed_and_they_shared_a_parser.eml` - Two validators, written by two teams for two entry points, agree on every input. What their agreement is evidence of is computed below."
+    },
+    {
+      "id": "627-the-backfill-used-todays-code-and-the-rows-were-old",
+      "path": "/ai/examples/627-the-backfill-used-todays-code-and-the-rows-were-old.eml.md",
+      "title": "The backfill used todays code and the rows were old",
+      "description": "`the_backfill_used_todays_code_and_the_rows_were_old.eml` - Three years of events are reprocessed through the current pipeline, which is correct. How many recomputed values disagree with what was actually done is computed below."
+    },
+    {
+      "id": "628-the-certificate-was-valid-and-the-chain-was-not",
+      "path": "/ai/examples/628-the-certificate-was-valid-and-the-chain-was-not.eml.md",
+      "title": "The certificate was valid and the chain was not",
+      "description": "`the_certificate_was_valid_and_the_chain_was_not.eml` - The leaf certificate is valid by every property a certificate has. Which clients can actually authenticate the server is computed below."
+    },
+    {
+      "id": "629-the-checksum-matched-and-the-file-was-truncated",
+      "path": "/ai/examples/629-the-checksum-matched-and-the-file-was-truncated.eml.md",
+      "title": "The checksum matched and the file was truncated",
+      "description": "`the_checksum_matched_and_the_file_was_truncated.eml` - The stored object passes its integrity check on every pass, and has done for months. How much of the file is there is computed below."
+    },
+    {
+      "id": "630-the-column-was-encrypted-and-the-index-was-not",
+      "path": "/ai/examples/630-the-column-was-encrypted-and-the-index-was-not.eml.md",
+      "title": "The column was encrypted and the index was not",
+      "description": "`the_column_was_encrypted_and_the_index_was_not.eml` - The column is encrypted and nobody with the disk has the key. How many rows a reader with the index alone can label is computed below."
+    },
+    {
+      "id": "631-the-compaction-reclaimed-space-and-the-reads-got-slower",
+      "path": "/ai/examples/631-the-compaction-reclaimed-space-and-the-reads-got-slower.eml.md",
+      "title": "The compaction reclaimed space and the reads got slower",
+      "description": "`the_compaction_reclaimed_space_and_the_reads_got_slower.eml` - Compaction reclaimed thirty-eight percent of the store and the space metric is right. What reads cost afterwards is computed below."
+    },
+    {
+      "id": "632-the-config-reloaded-and-the-worker-kept-the-old-one",
+      "path": "/ai/examples/632-the-config-reloaded-and-the-worker-kept-the-old-one.eml.md",
+      "title": "The config reloaded and the worker kept the old one",
+      "description": "`the_config_reloaded_and_the_worker_kept_the_old_one.eml` - The reload succeeded and the log line saying so is true. When the change reaches the last worker is computed below."
+    },
+    {
+      "id": "633-the-counter-was-atomic-and-the-pair-was-not",
+      "path": "/ai/examples/633-the-counter-was-atomic-and-the-pair-was-not.eml.md",
+      "title": "The counter was atomic and the pair was not",
+      "description": "`the_counter_was_atomic_and_the_pair_was_not.eml` - Every increment of the seat counter is atomic and no increment has ever been lost. How many seats were sold is computed below."
+    },
+    {
+      "id": "634-the-deploy-rolled-back-and-the-migration-did-not",
+      "path": "/ai/examples/634-the-deploy-rolled-back-and-the-migration-did-not.eml.md",
+      "title": "The deploy rolled back and the migration did not",
+      "description": "`the_deploy_rolled_back_and_the_migration_did_not.eml` - The rollback completed in ninety seconds and every instance is running the previous release. What the table holds afterwards is computed below."
+    },
+    {
+      "id": "635-the-hash-was-stable-and-the-ring-was-not",
+      "path": "/ai/examples/635-the-hash-was-stable-and-the-ring-was-not.eml.md",
+      "title": "The hash was stable and the ring was not",
+      "description": "`the_hash_was_stable_and_the_ring_was_not.eml` - The hash is stable and only one thirteenth of keys move when a node is added. How many requests reach the wrong node anyway is computed below."
+    },
+    {
+      "id": "636-the-limit-was-checked-on-entry-and-the-work-grew-after",
+      "path": "/ai/examples/636-the-limit-was-checked-on-entry-and-the-work-grew-after.eml.md",
+      "title": "The limit was checked on entry and the work grew after",
+      "description": "`the_limit_was_checked_on_entry_and_the_work_grew_after.eml` - The request body limit is enforced on every request and no oversized body has ever got through. What one accepted body costs is computed below."
+    },
+    {
+      "id": "637-the-lock-was-held-and-the-process-was-gone",
+      "path": "/ai/examples/637-the-lock-was-held-and-the-process-was-gone.eml.md",
+      "title": "The lock was held and the process was gone",
+      "description": "`the_lock_was_held_and_the_process_was_gone.eml` - The lock is held and the store is right about that. How long the work waits for a holder that no longer exists is computed below."
+    },
+    {
+      "id": "638-the-log-said-success-and-the-exit-code-was-never-read",
+      "path": "/ai/examples/638-the-log-said-success-and-the-exit-code-was-never-read.eml.md",
+      "title": "The log said success and the exit code was never read",
+      "description": "`the_log_said_success_and_the_exit_code_was_never_read.eml` - Every nightly run in the quarter reported success, and the line it reported is true. How many rows those runs exported is computed below."
+    },
+    {
+      "id": "639-the-pointer-was-aligned-and-the-struct-was-padded",
+      "path": "/ai/examples/639-the-pointer-was-aligned-and-the-struct-was-padded.eml.md",
+      "title": "The pointer was aligned and the struct was padded",
+      "description": "`the_pointer_was_aligned_and_the_struct_was_padded.eml` - Every field in the record is correctly aligned and the compiler guarantees it. What the record costs is computed below."
+    },
+    {
+      "id": "640-the-replica-was-consistent-and-the-clock-was-ahead",
+      "path": "/ai/examples/640-the-replica-was-consistent-and-the-clock-was-ahead.eml.md",
+      "title": "The replica was consistent and the clock was ahead",
+      "description": "`the_replica_was_consistent_and_the_clock_was_ahead.eml` - The replica has never diverged from the primary by a single row. How many sessions it ends early is computed below."
+    },
+    {
+      "id": "641-the-trigger-ran-inside-the-transaction-and-its-effect-did-not",
+      "path": "/ai/examples/641-the-trigger-ran-inside-the-transaction-and-its-effect-did-not.eml.md",
+      "title": "The trigger ran inside the transaction and its effect did not",
+      "description": "`the_trigger_ran_inside_the_transaction_and_its_effect_did_not.eml` - The trigger runs inside the transaction, so it is rolled back with everything else. What was rolled back is computed below."
     }
   ],
   "tools": {
