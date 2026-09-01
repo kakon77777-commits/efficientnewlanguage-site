@@ -3963,6 +3963,96 @@
       "path": "/ai/examples/641-the-trigger-ran-inside-the-transaction-and-its-effect-did-not.eml.md",
       "title": "The trigger ran inside the transaction and its effect did not",
       "description": "`the_trigger_ran_inside_the_transaction_and_its_effect_did_not.eml` - The trigger runs inside the transaction, so it is rolled back with everything else. What was rolled back is computed below."
+    },
+    {
+      "id": "642-the-audit-log-was-append-only-and-the-reader-filtered",
+      "path": "/ai/examples/642-the-audit-log-was-append-only-and-the-reader-filtered.eml.md",
+      "title": "The audit log was append only and the reader filtered",
+      "description": "`the_audit_log_was_append_only_and_the_reader_filtered.eml` - The audit log is append-only, hash-chained, and nothing has ever been removed from it. How much of it anybody has read is computed below."
+    },
+    {
+      "id": "643-the-build-was-reproducible-and-the-inputs-were-not-pinned",
+      "path": "/ai/examples/643-the-build-was-reproducible-and-the-inputs-were-not-pinned.eml.md",
+      "title": "The build was reproducible and the inputs were not pinned",
+      "description": "`the_build_was_reproducible_and_the_inputs_were_not_pinned.eml` - Two independent builders produce byte-identical artifacts, every time. Whether two builds nine days apart agree is computed below."
+    },
+    {
+      "id": "644-the-column-was-not-null-and-the-value-was-an-empty-string",
+      "path": "/ai/examples/644-the-column-was-not-null-and-the-value-was-an-empty-string.eml.md",
+      "title": "The column was not null and the value was an empty string",
+      "description": "`the_column_was_not_null_and_the_value_was_an_empty_string.eml` - The column is NOT NULL, the constraint has never been violated, and the database enforces it. How many rows carry a value is computed below."
+    },
+    {
+      "id": "645-the-counter-reset-at-midnight-and-the-shift-crossed-it",
+      "path": "/ai/examples/645-the-counter-reset-at-midnight-and-the-shift-crossed-it.eml.md",
+      "title": "The counter reset at midnight and the shift crossed it",
+      "description": "`the_counter_reset_at_midnight_and_the_shift_crossed_it.eml` - The daily counter resets at midnight, which is what a daily counter does. When the page fires is computed below."
+    },
+    {
+      "id": "646-the-disk-had-space-and-the-inodes-did-not",
+      "path": "/ai/examples/646-the-disk-had-space-and-the-inodes-did-not.eml.md",
+      "title": "The disk had space and the inodes did not",
+      "description": "`the_disk_had_space_and_the_inodes_did_not.eml` - The volume is thirty-eight percent free and the capacity dashboard is correct. Why writes are failing is computed below."
+    },
+    {
+      "id": "647-the-export-finished-and-the-import-saw-yesterday",
+      "path": "/ai/examples/647-the-export-finished-and-the-import-saw-yesterday.eml.md",
+      "title": "The export finished and the import saw yesterday",
+      "description": "`the_export_finished_and_the_import_saw_yesterday.eml` - The export finishes every night and the import reads it every night, and both have run without error for four hundred and nineteen days. How old the data is is computed below."
+    },
+    {
+      "id": "648-the-fallback-was-tested-and-the-failover-was-not",
+      "path": "/ai/examples/648-the-fallback-was-tested-and-the-failover-was-not.eml.md",
+      "title": "The fallback was tested and the failover was not",
+      "description": "`the_fallback_was_tested_and_the_failover_was_not.eml` - The fallback path is tested on every release and has never failed. How long an outage lasts is computed below."
+    },
+    {
+      "id": "649-the-index-was-rebuilt-and-the-statistics-were-not",
+      "path": "/ai/examples/649-the-index-was-rebuilt-and-the-statistics-were-not.eml.md",
+      "title": "The index was rebuilt and the statistics were not",
+      "description": "`the_index_was_rebuilt_and_the_statistics_were_not.eml` - The index is rebuilt, unbloated and correct. How many queries use it is computed below."
+    },
+    {
+      "id": "650-the-lookup-was-cached-and-the-negative-result-was-not",
+      "path": "/ai/examples/650-the-lookup-was-cached-and-the-negative-result-was-not.eml.md",
+      "title": "The lookup was cached and the negative result was not",
+      "description": "`the_lookup_was_cached_and_the_negative_result_was_not.eml` - The cache reports a ninety-nine point four percent hit rate and the number is correct. Where the database load comes from is computed below."
+    },
+    {
+      "id": "651-the-model-was-retrained-and-the-labels-came-from-the-old-one",
+      "path": "/ai/examples/651-the-model-was-retrained-and-the-labels-came-from-the-old-one.eml.md",
+      "title": "The model was retrained and the labels came from the old one",
+      "description": "`the_model_was_retrained_and_the_labels_came_from_the_old_one.eml` - The model is retrained monthly on fresh data and its holdout accuracy is up again. What it got better at is computed below."
+    },
+    {
+      "id": "652-the-queue-was-durable-and-the-consumer-acked-first",
+      "path": "/ai/examples/652-the-queue-was-durable-and-the-consumer-acked-first.eml.md",
+      "title": "The queue was durable and the consumer acked first",
+      "description": "`the_queue_was_durable_and_the_consumer_acked_first.eml` - The broker has never lost a message and its durability report is correct. How much work is lost is computed below."
+    },
+    {
+      "id": "653-the-request-was-authenticated-and-the-callback-was-not",
+      "path": "/ai/examples/653-the-request-was-authenticated-and-the-callback-was-not.eml.md",
+      "title": "The request was authenticated and the callback was not",
+      "description": "`the_request_was_authenticated_and_the_callback_was_not.eml` - Every inbound request is authenticated and none has ever got through unsigned. What the outbound half proves is computed below."
+    },
+    {
+      "id": "654-the-timezone-was-stored-and-the-rule-changed",
+      "path": "/ai/examples/654-the-timezone-was-stored-and-the-rule-changed.eml.md",
+      "title": "The timezone was stored and the rule changed",
+      "description": "`the_timezone_was_stored_and_the_rule_changed.eml` - Every event stores a UTC instant and its IANA zone name, which is the correct pair. How many future events are now an hour wrong is computed below."
+    },
+    {
+      "id": "655-the-two-nodes-agreed-and-both-were-behind",
+      "path": "/ai/examples/655-the-two-nodes-agreed-and-both-were-behind.eml.md",
+      "title": "The two nodes agreed and both were behind",
+      "description": "`the_two_nodes_agreed_and_both_were_behind.eml` - Every read is confirmed by two replicas that agree, and they do agree. How old the answer is is computed below."
+    },
+    {
+      "id": "656-the-worker-restarted-and-the-poison-message-came-back",
+      "path": "/ai/examples/656-the-worker-restarted-and-the-poison-message-came-back.eml.md",
+      "title": "The worker restarted and the poison message came back",
+      "description": "`the_worker_restarted_and_the_poison_message_came_back.eml` - The supervisor restarted the worker twelve hundred times this hour and every restart succeeded. How much work was done is computed below."
     }
   ],
   "tools": {
