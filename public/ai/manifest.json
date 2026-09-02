@@ -4053,6 +4053,96 @@
       "path": "/ai/examples/656-the-worker-restarted-and-the-poison-message-came-back.eml.md",
       "title": "The worker restarted and the poison message came back",
       "description": "`the_worker_restarted_and_the_poison_message_came_back.eml` - The supervisor restarted the worker twelve hundred times this hour and every restart succeeded. How much work was done is computed below."
+    },
+    {
+      "id": "657-the-backup-was-encrypted-and-the-key-was-in-the-backup",
+      "path": "/ai/examples/657-the-backup-was-encrypted-and-the-key-was-in-the-backup.eml.md",
+      "title": "The backup was encrypted and the key was in the backup",
+      "description": "`the_backup_was_encrypted_and_the_key_was_in_the_backup.eml` - Every backup is encrypted at rest and the restore drill passes quarterly. What an archive contains is computed below."
+    },
+    {
+      "id": "658-the-canary-was-healthy-and-it-served-the-easy-requests",
+      "path": "/ai/examples/658-the-canary-was-healthy-and-it-served-the-easy-requests.eml.md",
+      "title": "The canary was healthy and it served the easy requests",
+      "description": "`the_canary_was_healthy_and_it_served_the_easy_requests.eml` - The canary took one percent of traffic for an hour and beat the baseline on every metric. What it was asked to do is computed below."
+    },
+    {
+      "id": "659-the-clock-was-monotonic-and-the-process-restarted",
+      "path": "/ai/examples/659-the-clock-was-monotonic-and-the-process-restarted.eml.md",
+      "title": "The clock was monotonic and the process restarted",
+      "description": "`the_clock_was_monotonic_and_the_process_restarted.eml` - Durations use a monotonic clock, which is the correct choice and immune to every wall-clock hazard. How long a thirty-second lease lasts is computed below."
+    },
+    {
+      "id": "660-the-compression-was-lossless-and-the-schema-was-not",
+      "path": "/ai/examples/660-the-compression-was-lossless-and-the-schema-was-not.eml.md",
+      "title": "The compression was lossless and the schema was not",
+      "description": "`the_compression_was_lossless_and_the_schema_was_not.eml` - Every archived byte comes back identical and ninety restores prove it. What cannot be recovered is computed below."
+    },
+    {
+      "id": "661-the-error-was-logged-and-the-caller-got-a-success-code",
+      "path": "/ai/examples/661-the-error-was-logged-and-the-caller-got-a-success-code.eml.md",
+      "title": "The error was logged and the caller got a success code",
+      "description": "`the_error_was_logged_and_the_caller_got_a_success_code.eml` - The enrichment failure is caught, logged with a stack trace, and does not fail the request. What the caller can tell is computed below."
+    },
+    {
+      "id": "662-the-index-covered-the-query-and-the-sort-was-in-memory",
+      "path": "/ai/examples/662-the-index-covered-the-query-and-the-sort-was-in-memory.eml.md",
+      "title": "The index covered the query and the sort was in memory",
+      "description": "`the_index_covered_the_query_and_the_sort_was_in_memory.eml` - The plan is an index-only scan with zero heap fetches, which is what the index was designed for. Where the time goes is computed below."
+    },
+    {
+      "id": "663-the-limit-was-per-user-and-the-attacker-had-many",
+      "path": "/ai/examples/663-the-limit-was-per-user-and-the-attacker-had-many.eml.md",
+      "title": "The limit was per user and the attacker had many",
+      "description": "`the_limit_was_per_user_and_the_attacker_had_many.eml` - The rate limit is a hundred requests a minute per authenticated user and it has never been exceeded. What one actor can send is computed below."
+    },
+    {
+      "id": "664-the-migration-was-online-and-the-reads-took-a-lock",
+      "path": "/ai/examples/664-the-migration-was-online-and-the-reads-took-a-lock.eml.md",
+      "title": "The migration was online and the reads took a lock",
+      "description": "`the_migration_was_online_and_the_reads_took_a_lock.eml` - The migration is online, took forty milliseconds, and rewrote nothing. How long the table was unavailable is computed below."
+    },
+    {
+      "id": "665-the-quota-renewed-monthly-and-the-billing-cycle-did-not",
+      "path": "/ai/examples/665-the-quota-renewed-monthly-and-the-billing-cycle-did-not.eml.md",
+      "title": "The quota renewed monthly and the billing cycle did not",
+      "description": "`the_quota_renewed_monthly_and_the_billing_cycle_did_not.eml` - The quota resets on the first of each month and the customer never exceeded it. What the invoice charges for is computed below."
+    },
+    {
+      "id": "666-the-report-was-signed-off-and-the-query-changed",
+      "path": "/ai/examples/666-the-report-was-signed-off-and-the-query-changed.eml.md",
+      "title": "The report was signed off and the query changed",
+      "description": "`the_report_was_signed_off_and_the_query_changed.eml` - Three people reviewed the quarterly report and signed it. What re-running it gives today is computed below."
+    },
+    {
+      "id": "667-the-schema-allowed-the-field-and-the-parser-ignored-it",
+      "path": "/ai/examples/667-the-schema-allowed-the-field-and-the-parser-ignored-it.eml.md",
+      "title": "The schema allowed the field and the parser ignored it",
+      "description": "`the_schema_allowed_the_field_and_the_parser_ignored_it.eml` - The new field is in the schema, validates on every message, and is documented. How many consumers act on it is computed below."
+    },
+    {
+      "id": "668-the-secret-was-in-a-vault-and-the-process-list-was-not",
+      "path": "/ai/examples/668-the-secret-was-in-a-vault-and-the-process-list-was-not.eml.md",
+      "title": "The secret was in a vault and the process list was not",
+      "description": "`the_secret_was_in_a_vault_and_the_process_list_was_not.eml` - No secret is in the source, the scanner proves it over forty-one thousand commits, and every one is fetched from a vault at boot. How many copies exist is computed below."
+    },
+    {
+      "id": "669-the-shard-key-was-uniform-and-the-traffic-was-not",
+      "path": "/ai/examples/669-the-shard-key-was-uniform-and-the-traffic-was-not.eml.md",
+      "title": "The shard key was uniform and the traffic was not",
+      "description": "`the_shard_key_was_uniform_and_the_traffic_was_not.eml` - The shard key distributes forty million keys across sixty-four shards to within three parts in a thousand. What one shard serves is computed below."
+    },
+    {
+      "id": "670-the-token-was-refreshed-early-and-the-refresh-needed-the-old-one",
+      "path": "/ai/examples/670-the-token-was-refreshed-early-and-the-refresh-needed-the-old-one.eml.md",
+      "title": "The token was refreshed early and the refresh needed the old one",
+      "description": "`the_token_was_refreshed_early_and_the_refresh_needed_the_old_one.eml` - The client refreshes five minutes before expiry, which is the right pattern. What happens on a client whose clock is wrong is computed below."
+    },
+    {
+      "id": "671-the-worker-scaled-with-the-queue-and-the-database-did-not",
+      "path": "/ai/examples/671-the-worker-scaled-with-the-queue-and-the-database-did-not.eml.md",
+      "title": "The worker scaled with the queue and the database did not",
+      "description": "`the_worker_scaled_with_the_queue_and_the_database_did_not.eml` - The autoscaler scales workers on queue depth, which is the right signal, and it responded within a minute. How many of them can work is computed below."
     }
   ],
   "tools": {
