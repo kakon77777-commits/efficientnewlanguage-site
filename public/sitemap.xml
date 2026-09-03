@@ -694,4 +694,19 @@
   <url><loc>https://efficientnewlanguage.org/ai/examples/669-the-shard-key-was-uniform-and-the-traffic-was-not.eml.md</loc><lastmod>2026-09-02</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/examples/670-the-token-was-refreshed-early-and-the-refresh-needed-the-old-one.eml.md</loc><lastmod>2026-09-02</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/examples/671-the-worker-scaled-with-the-queue-and-the-database-did-not.eml.md</loc><lastmod>2026-09-02</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/672-the-average-was-weighted-and-the-weights-were-stale.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/673-the-batch-was-atomic-and-the-batches-were-not.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/674-the-benchmark-was-isolated-and-the-machine-was-shared.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/675-the-cache-was-invalidated-and-the-cdn-was-not.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/676-the-check-ran-on-commit-and-the-merge-was-a-squash.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/677-the-column-was-dropped-and-the-cascade-took-the-view.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/678-the-diff-was-reviewed-and-the-generated-file-was-not.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/679-the-file-was-locked-and-the-copy-was-not.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/680-the-log-had-the-request-id-and-the-worker-did-not.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/681-the-parser-was-strict-and-the-generator-was-lenient.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/682-the-partition-was-dropped-and-the-query-scanned-it.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/683-the-permission-was-revoked-and-the-session-lived-on.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/684-the-schema-was-strict-and-the-defaults-filled-it-in.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/685-the-shutdown-was-graceful-and-the-signal-went-to-the-wrapper.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://efficientnewlanguage.org/ai/examples/686-the-value-was-validated-on-the-client-and-trusted-on-the-server.eml.md</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
 </urlset>

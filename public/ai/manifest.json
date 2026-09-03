@@ -4143,6 +4143,96 @@
       "path": "/ai/examples/671-the-worker-scaled-with-the-queue-and-the-database-did-not.eml.md",
       "title": "The worker scaled with the queue and the database did not",
       "description": "`the_worker_scaled_with_the_queue_and_the_database_did_not.eml` - The autoscaler scales workers on queue depth, which is the right signal, and it responded within a minute. How many of them can work is computed below."
+    },
+    {
+      "id": "672-the-average-was-weighted-and-the-weights-were-stale",
+      "path": "/ai/examples/672-the-average-was-weighted-and-the-weights-were-stale.eml.md",
+      "title": "The average was weighted and the weights were stale",
+      "description": "`the_average_was_weighted_and_the_weights_were_stale.eml` - The fleet latency is a weighted average, which is the right shape, and the arithmetic is exact. What it reports is computed below."
+    },
+    {
+      "id": "673-the-batch-was-atomic-and-the-batches-were-not",
+      "path": "/ai/examples/673-the-batch-was-atomic-and-the-batches-were-not.eml.md",
+      "title": "The batch was atomic and the batches were not",
+      "description": "`the_batch_was_atomic_and_the_batches_were_not.eml` - Each batch is a transaction and no batch has ever half-applied. What one interrupted run leaves behind is computed below."
+    },
+    {
+      "id": "674-the-benchmark-was-isolated-and-the-machine-was-shared",
+      "path": "/ai/examples/674-the-benchmark-was-isolated-and-the-machine-was-shared.eml.md",
+      "title": "The benchmark was isolated and the machine was shared",
+      "description": "`the_benchmark_was_isolated_and_the_machine_was_shared.eml` - The benchmark pins a core, disables frequency scaling, warms the caches and reports a confidence interval of four parts in a thousand. What it measures is computed below."
+    },
+    {
+      "id": "675-the-cache-was-invalidated-and-the-cdn-was-not",
+      "path": "/ai/examples/675-the-cache-was-invalidated-and-the-cdn-was-not.eml.md",
+      "title": "The cache was invalidated and the cdn was not",
+      "description": "`the_cache_was_invalidated_and_the_cdn_was_not.eml` - The application purges its cache on every write and the purge is verified within the request. What a user sees is computed below."
+    },
+    {
+      "id": "676-the-check-ran-on-commit-and-the-merge-was-a-squash",
+      "path": "/ai/examples/676-the-check-ran-on-commit-and-the-merge-was-a-squash.eml.md",
+      "title": "The check ran on commit and the merge was a squash",
+      "description": "`the_check_ran_on_commit_and_the_merge_was_a_squash.eml` - Every commit on the branch was checked and every check passed. What was never checked is computed below."
+    },
+    {
+      "id": "677-the-column-was-dropped-and-the-cascade-took-the-view",
+      "path": "/ai/examples/677-the-column-was-dropped-and-the-cascade-took-the-view.eml.md",
+      "title": "The column was dropped and the cascade took the view",
+      "description": "`the_column_was_dropped_and_the_cascade_took_the_view.eml` - Thirty-four repositories were searched for references to the column and none was found. What the drop removed is computed below."
+    },
+    {
+      "id": "678-the-diff-was-reviewed-and-the-generated-file-was-not",
+      "path": "/ai/examples/678-the-diff-was-reviewed-and-the-generated-file-was-not.eml.md",
+      "title": "The diff was reviewed and the generated file was not",
+      "description": "`the_diff_was_reviewed_and_the_generated_file_was_not.eml` - Two people reviewed every line of the change and approved it. How many lines were in the change is computed below."
+    },
+    {
+      "id": "679-the-file-was-locked-and-the-copy-was-not",
+      "path": "/ai/examples/679-the-file-was-locked-and-the-copy-was-not.eml.md",
+      "title": "The file was locked and the copy was not",
+      "description": "`the_file_was_locked_and_the_copy_was_not.eml` - Two writers can never interleave, the lock has held for three years, and no torn write has ever been observed. How many backups are torn is computed below."
+    },
+    {
+      "id": "680-the-log-had-the-request-id-and-the-worker-did-not",
+      "path": "/ai/examples/680-the-log-had-the-request-id-and-the-worker-did-not.eml.md",
+      "title": "The log had the request id and the worker did not",
+      "description": "`the_log_had_the_request_id_and_the_worker_did_not.eml` - Every log line in the request path carries a correlation id and tracing across four services works. What share of the work is traceable is computed below."
+    },
+    {
+      "id": "681-the-parser-was-strict-and-the-generator-was-lenient",
+      "path": "/ai/examples/681-the-parser-was-strict-and-the-generator-was-lenient.eml.md",
+      "title": "The parser was strict and the generator was lenient",
+      "description": "`the_parser_was_strict_and_the_generator_was_lenient.eml` - The parser rejects anything the specification does not require it to accept, deliberately. How many times that strictness has fired is computed below."
+    },
+    {
+      "id": "682-the-partition-was-dropped-and-the-query-scanned-it",
+      "path": "/ai/examples/682-the-partition-was-dropped-and-the-query-scanned-it.eml.md",
+      "title": "The partition was dropped and the query scanned it",
+      "description": "`the_partition_was_dropped_and_the_query_scanned_it.eml` - Retention dropped three hundred and ten partitions and the query got four times faster. What it still scans is computed below."
+    },
+    {
+      "id": "683-the-permission-was-revoked-and-the-session-lived-on",
+      "path": "/ai/examples/683-the-permission-was-revoked-and-the-session-lived-on.eml.md",
+      "title": "The permission was revoked and the session lived on",
+      "description": "`the_permission_was_revoked_and_the_session_lived_on.eml` - A revocation propagates in forty milliseconds and the offboarding target is fifteen minutes. How long the access lasts is computed below."
+    },
+    {
+      "id": "684-the-schema-was-strict-and-the-defaults-filled-it-in",
+      "path": "/ai/examples/684-the-schema-was-strict-and-the-defaults-filled-it-in.eml.md",
+      "title": "The schema was strict and the defaults filled it in",
+      "description": "`the_schema_was_strict_and_the_defaults_filled_it_in.eml` - The configuration is validated against a strict schema and has never failed validation. How much of it anybody chose is computed below."
+    },
+    {
+      "id": "685-the-shutdown-was-graceful-and-the-signal-went-to-the-wrapper",
+      "path": "/ai/examples/685-the-shutdown-was-graceful-and-the-signal-went-to-the-wrapper.eml.md",
+      "title": "The shutdown was graceful and the signal went to the wrapper",
+      "description": "`the_shutdown_was_graceful_and_the_signal_went_to_the_wrapper.eml` - The process handles the termination signal, drains in six seconds, and fourteen tests cover it. How many requests are killed per deploy is computed below."
+    },
+    {
+      "id": "686-the-value-was-validated-on-the-client-and-trusted-on-the-server",
+      "path": "/ai/examples/686-the-value-was-validated-on-the-client-and-trusted-on-the-server.eml.md",
+      "title": "The value was validated on the client and trusted on the server",
+      "description": "`the_value_was_validated_on_the_client_and_trusted_on_the_server.eml` - The client checks every field before submitting and catches twenty-six thousand bad inputs a day. How many submissions reach the server unchecked is computed below."
     }
   ],
   "tools": {
