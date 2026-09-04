@@ -4233,6 +4233,96 @@
       "path": "/ai/examples/686-the-value-was-validated-on-the-client-and-trusted-on-the-server.eml.md",
       "title": "The value was validated on the client and trusted on the server",
       "description": "`the_value_was_validated_on_the_client_and_trusted_on_the_server.eml` - The client checks every field before submitting and catches twenty-six thousand bad inputs a day. How many submissions reach the server unchecked is computed below."
+    },
+    {
+      "id": "687-the-allocation-was-pooled-and-the-fragmentation-was-not",
+      "path": "/ai/examples/687-the-allocation-was-pooled-and-the-fragmentation-was-not.eml.md",
+      "title": "The allocation was pooled and the fragmentation was not",
+      "description": "`the_allocation_was_pooled_and_the_fragmentation_was_not.eml` - The object pool cut allocations by ninety-eight percent and the measurement is right. What resident memory did is computed below."
+    },
+    {
+      "id": "688-the-audit-covered-every-table-and-the-view-was-not-a-table",
+      "path": "/ai/examples/688-the-audit-covered-every-table-and-the-view-was-not-a-table.eml.md",
+      "title": "The audit covered every table and the view was not a table",
+      "description": "`the_audit_covered_every_table_and_the_view_was_not_a_table.eml` - Every table in the database is covered by the access audit and the coverage is enumerated rather than asserted. What is not covered is computed below."
+    },
+    {
+      "id": "689-the-checksum-covered-the-plaintext-and-the-archive-kept-the-compressed",
+      "path": "/ai/examples/689-the-checksum-covered-the-plaintext-and-the-archive-kept-the-compressed.eml.md",
+      "title": "The checksum covered the plaintext and the archive kept the compressed",
+      "description": "`the_checksum_covered_the_plaintext_and_the_archive_kept_the_compressed.eml` - The digest is computed over the plaintext before compression and verified after decompression, end to end. What the storage migration verified is computed below."
+    },
+    {
+      "id": "690-the-config-was-per-environment-and-the-secret-was-shared",
+      "path": "/ai/examples/690-the-config-was-per-environment-and-the-secret-was-shared.eml.md",
+      "title": "The config was per environment and the secret was shared",
+      "description": "`the_config_was_per_environment_and_the_secret_was_shared.eml` - Three environments have three configuration files and forty-nine of fifty-two keys differ between them. What the three identical keys are is computed below."
+    },
+    {
+      "id": "691-the-crontab-was-utc-and-the-report-was-local",
+      "path": "/ai/examples/691-the-crontab-was-utc-and-the-report-was-local.eml.md",
+      "title": "The crontab was utc and the report was local",
+      "description": "`the_crontab_was_utc_and_the_report_was_local.eml` - The scheduler runs in UTC, which is the right choice and was made deliberately. What the daily report covers is computed below."
+    },
+    {
+      "id": "692-the-dependency-was-optional-and-the-import-was-at-the-top",
+      "path": "/ai/examples/692-the-dependency-was-optional-and-the-import-was-at-the-top.eml.md",
+      "title": "The dependency was optional and the import was at the top",
+      "description": "`the_dependency_was_optional_and_the_import_was_at_the_top.eml` - The feature checks whether its optional dependency is available before using it, in seven places, and every check is correct. How many of those checks run is computed below."
+    },
+    {
+      "id": "693-the-encryption-was-end-to-end-and-the-metadata-was-not",
+      "path": "/ai/examples/693-the-encryption-was-end-to-end-and-the-metadata-was-not.eml.md",
+      "title": "The encryption was end to end and the metadata was not",
+      "description": "`the_encryption_was_end_to_end_and_the_metadata_was_not.eml` - The server cannot read a single message body and the cryptography is not the weak part. What the server does hold is computed below."
+    },
+    {
+      "id": "694-the-fix-was-behind-a-flag-and-the-flag-was-read-once",
+      "path": "/ai/examples/694-the-fix-was-behind-a-flag-and-the-flag-was-read-once.eml.md",
+      "title": "The fix was behind a flag and the flag was read once",
+      "description": "`the_fix_was_behind_a_flag_and_the_flag_was_read_once.eml` - The fix is behind a flag and the flag service propagates a change in thirty seconds. How long turning it on takes is computed below."
+    },
+    {
+      "id": "695-the-form-was-accessible-and-the-error-was-a-colour",
+      "path": "/ai/examples/695-the-form-was-accessible-and-the-error-was-a-colour.eml.md",
+      "title": "The form was accessible and the error was a colour",
+      "description": "`the_form_was_accessible_and_the_error_was_a_colour.eml` - The form passes every automated accessibility check, a hundred and forty-eight of them. How a user is told a field is wrong is computed below."
+    },
+    {
+      "id": "696-the-hash-was-salted-and-the-salt-was-constant",
+      "path": "/ai/examples/696-the-hash-was-salted-and-the-salt-was-constant.eml.md",
+      "title": "The hash was salted and the salt was constant",
+      "description": "`the_hash_was_salted_and_the_salt_was_constant.eml` - Passwords are salted and stretched with a tuned work factor, and no password is stored. How many users share a stored value is computed below."
+    },
+    {
+      "id": "697-the-limit-was-on-concurrency-and-the-work-was-queued",
+      "path": "/ai/examples/697-the-limit-was-on-concurrency-and-the-work-was-queued.eml.md",
+      "title": "The limit was on concurrency and the work was queued",
+      "description": "`the_limit_was_on_concurrency_and_the_work_was_queued.eml` - The downstream never sees more than thirty-two concurrent requests and it never has. What a caller waits is computed below."
+    },
+    {
+      "id": "698-the-numbers-were-anonymised-and-the-combination-was-unique",
+      "path": "/ai/examples/698-the-numbers-were-anonymised-and-the-combination-was-unique.eml.md",
+      "title": "The numbers were anonymised and the combination was unique",
+      "description": "`the_numbers_were_anonymised_and_the_combination_was_unique.eml` - Every direct identifier was removed and the removal was verified field by field. How many records identify one person is computed below."
+    },
+    {
+      "id": "699-the-page-was-server-rendered-and-the-price-was-client-side",
+      "path": "/ai/examples/699-the-page-was-server-rendered-and-the-price-was-client-side.eml.md",
+      "title": "The page was server rendered and the price was client side",
+      "description": "`the_page_was_server_rendered_and_the_price_was_client_side.eml` - The page is rendered on the server and arrives complete, which the performance work measured and confirmed. Where the price comes from is computed below."
+    },
+    {
+      "id": "700-the-rollout-was-gradual-and-the-write-was-not",
+      "path": "/ai/examples/700-the-rollout-was-gradual-and-the-write-was-not.eml.md",
+      "title": "The rollout was gradual and the write was not",
+      "description": "`the_rollout_was_gradual_and_the_write_was_not.eml` - The feature is on for five percent of users behind a kill switch that has been exercised. How many users are exposed to it is computed below."
+    },
+    {
+      "id": "701-the-search-index-was-fresh-and-the-permissions-were-cached",
+      "path": "/ai/examples/701-the-search-index-was-fresh-and-the-permissions-were-cached.eml.md",
+      "title": "The search index was fresh and the permissions were cached",
+      "description": "`the_search_index_was_fresh_and_the_permissions_were_cached.eml` - A document is searchable two seconds after it is written and the freshness is measured continuously. How old the access rules in the index are is computed below."
     }
   ],
   "tools": {
