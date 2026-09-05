@@ -4323,6 +4323,96 @@
       "path": "/ai/examples/701-the-search-index-was-fresh-and-the-permissions-were-cached.eml.md",
       "title": "The search index was fresh and the permissions were cached",
       "description": "`the_search_index_was_fresh_and_the_permissions_were_cached.eml` - A document is searchable two seconds after it is written and the freshness is measured continuously. How old the access rules in the index are is computed below."
+    },
+    {
+      "id": "702-the-callback-was-registered-and-the-object-was-collected",
+      "path": "/ai/examples/702-the-callback-was-registered-and-the-object-was-collected.eml.md",
+      "title": "The callback was registered and the object was collected",
+      "description": "`the_callback_was_registered_and_the_object_was_collected.eml` - The event registry is typed, tested, and delivers every event it dispatches with no recorded failures. What the delivery rate is a rate over is computed below."
+    },
+    {
+      "id": "703-the-consent-was-recorded-and-the-purpose-was-not",
+      "path": "/ai/examples/703-the-consent-was-recorded-and-the-purpose-was-not.eml.md",
+      "title": "The consent was recorded and the purpose was not",
+      "description": "`the_consent_was_recorded_and_the_purpose_was_not.eml` - Consent is recorded for every subject, versioned, timestamped and revocable, and an audit sample reconciled completely. How much processing it covers is computed below."
+    },
+    {
+      "id": "704-the-cursor-was-stable-and-the-filter-changed",
+      "path": "/ai/examples/704-the-cursor-was-stable-and-the-filter-changed.eml.md",
+      "title": "The cursor was stable and the filter changed",
+      "description": "`the_cursor_was_stable_and_the_filter_changed.eml` - Keyset pagination returns no duplicates and skips no row, which offset pagination did both of. How many rows a full scan misses is computed below."
+    },
+    {
+      "id": "705-the-endpoint-was-versioned-and-the-error-shape-was-not",
+      "path": "/ai/examples/705-the-endpoint-was-versioned-and-the-error-shape-was-not.eml.md",
+      "title": "The endpoint was versioned and the error shape was not",
+      "description": "`the_endpoint_was_versioned_and_the_error_shape_was_not.eml` - The API is versioned with discipline and no success schema has broken outside a major bump in three years. What is outside the version is computed below."
+    },
+    {
+      "id": "706-the-image-was-scanned-at-build-and-the-advisories-arrived-later",
+      "path": "/ai/examples/706-the-image-was-scanned-at-build-and-the-advisories-arrived-later.eml.md",
+      "title": "The image was scanned at build and the advisories arrived later",
+      "description": "`the_image_was_scanned_at_build_and_the_advisories_arrived_later.eml` - Every image is scanned before it can be pushed and eleven builds were blocked this quarter. How many running images carry a known advisory is computed below."
+    },
+    {
+      "id": "707-the-index-was-unique-and-the-writes-were-in-two-regions",
+      "path": "/ai/examples/707-the-index-was-unique-and-the-writes-were-in-two-regions.eml.md",
+      "title": "The index was unique and the writes were in two regions",
+      "description": "`the_index_was_unique_and_the_writes_were_in_two_regions.eml` - Uniqueness is a database constraint rather than an application check, and it has rejected every duplicate it saw. Where it is evaluated is computed below."
+    },
+    {
+      "id": "708-the-quota-was-checked-at-submit-and-spent-at-run",
+      "path": "/ai/examples/708-the-quota-was-checked-at-submit-and-spent-at-run.eml.md",
+      "title": "The quota was checked at submit and spent at run",
+      "description": "`the_quota_was_checked_at_submit_and_spent_at_run.eml` - Every job is checked against its tenant's remaining budget before it is accepted, and no submission has bypassed the check. What the check compares is computed below."
+    },
+    {
+      "id": "709-the-refactor-preserved-behaviour-and-the-timing-was-behaviour",
+      "path": "/ai/examples/709-the-refactor-preserved-behaviour-and-the-timing-was-behaviour.eml.md",
+      "title": "The refactor preserved behaviour and the timing was behaviour",
+      "description": "`the_refactor_preserved_behaviour_and_the_timing_was_behaviour.eml` - A refactor was validated by replaying millions of production inputs through both implementations. What the replay compared is computed below."
+    },
+    {
+      "id": "710-the-review-caught-the-bug-and-the-revert-was-partial",
+      "path": "/ai/examples/710-the-review-caught-the-bug-and-the-revert-was-partial.eml.md",
+      "title": "The review caught the bug and the revert was partial",
+      "description": "`the_review_caught_the_bug_and_the_revert_was_partial.eml` - A reviewer found the defect, the author agreed, and the commit was reverted cleanly before release. What the revert removed is computed below."
+    },
+    {
+      "id": "711-the-sample-was-stratified-and-the-strata-were-stale",
+      "path": "/ai/examples/711-the-sample-was-stratified-and-the-strata-were-stale.eml.md",
+      "title": "The sample was stratified and the strata were stale",
+      "description": "`the_sample_was_stratified_and_the_strata_were_stale.eml` - The quality sample is stratified with proportional allocation and weighted estimation, reviewed by a statistician. What the weights reconstruct is computed below."
+    },
+    {
+      "id": "712-the-test-used-a-fixed-seed-and-the-library-changed-its-generator",
+      "path": "/ai/examples/712-the-test-used-a-fixed-seed-and-the-library-changed-its-generator.eml.md",
+      "title": "The test used a fixed seed and the library changed its generator",
+      "description": "`the_test_used_a_fixed_seed_and_the_library_changed_its_generator.eml` - Every test seeds the generator, so every failure reproduces and the flaky-test problem is gone. What the suite has actually explored is computed below."
+    },
+    {
+      "id": "713-the-total-was-checked-and-the-currencies-were-mixed",
+      "path": "/ai/examples/713-the-total-was-checked-and-the-currencies-were-mixed.eml.md",
+      "title": "The total was checked and the currencies were mixed",
+      "description": "`the_total_was_checked_and_the_currencies_were_mixed.eml` - Every invoice is reconciled nightly against the sum of its lines, in exact integer arithmetic, and no invoice mismatches. What the sum is a sum of is computed below."
+    },
+    {
+      "id": "714-the-two-writers-used-the-same-key-and-different-clocks",
+      "path": "/ai/examples/714-the-two-writers-used-the-same-key-and-different-clocks.eml.md",
+      "title": "The two writers used the same key and different clocks",
+      "description": "`the_two_writers_used_the_same_key_and_different_clocks.eml` - Conflicts resolve deterministically by last-write-wins and both hosts run a disciplined clock. How often the later write loses is computed below."
+    },
+    {
+      "id": "715-the-user-was-deleted-and-the-backup-had-them",
+      "path": "/ai/examples/715-the-user-was-deleted-and-the-backup-had-them.eml.md",
+      "title": "The user was deleted and the backup had them",
+      "description": "`the_user_was_deleted_and_the_backup_had_them.eml` - Erasure cascades across every table and a post-deletion probe confirms zero rows remain. Which stores the probe reads is computed below."
+    },
+    {
+      "id": "716-the-worker-was-stateless-and-the-filesystem-was-not",
+      "path": "/ai/examples/716-the-worker-was-stateless-and-the-filesystem-was-not.eml.md",
+      "title": "The worker was stateless and the filesystem was not",
+      "description": "`the_worker_was_stateless_and_the_filesystem_was_not.eml` - The workers hold no session state, any request can go to any pod, and a chaos test kills one every five minutes without a failed request. What persists is computed below."
     }
   ],
   "tools": {
