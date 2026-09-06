@@ -4413,6 +4413,96 @@
       "path": "/ai/examples/716-the-worker-was-stateless-and-the-filesystem-was-not.eml.md",
       "title": "The worker was stateless and the filesystem was not",
       "description": "`the_worker_was_stateless_and_the_filesystem_was_not.eml` - The workers hold no session state, any request can go to any pod, and a chaos test kills one every five minutes without a failed request. What persists is computed below."
+    },
+    {
+      "id": "717-the-backup-was-tested-and-the-restore-was-to-an-empty-cluster",
+      "path": "/ai/examples/717-the-backup-was-tested-and-the-restore-was-to-an-empty-cluster.eml.md",
+      "title": "The backup was tested and the restore was to an empty cluster",
+      "description": "`the_backup_was_tested_and_the_restore_was_to_an_empty_cluster.eml` - Backups are not merely taken, they are restored weekly and the restored copy is checksummed, counted and smoke-tested. Which recovery that rehearses is computed below."
+    },
+    {
+      "id": "718-the-cache-was-keyed-on-the-url-and-the-header-varied-the-answer",
+      "path": "/ai/examples/718-the-cache-was-keyed-on-the-url-and-the-header-varied-the-answer.eml.md",
+      "title": "The cache was keyed on the url and the header varied the answer",
+      "description": "`the_cache_was_keyed_on_the_url_and_the_header_varied_the_answer.eml` - The cache key is the full URL with query parameters sorted and allowlisted, the hit rate is ninety-four percent, and purges on deploy are verified. What the key omits is computed below."
+    },
+    {
+      "id": "719-the-contract-was-generated-and-the-server-was-both-parties",
+      "path": "/ai/examples/719-the-contract-was-generated-and-the-server-was-both-parties.eml.md",
+      "title": "The contract was generated and the server was both parties",
+      "description": "`the_contract_was_generated_and_the_server_was_both_parties.eml` - Every endpoint has a contract test, the contract is generated so it cannot drift from the code, and twenty-three client repositories test against a mock built from it. Who authored the expectations is computed below."
+    },
+    {
+      "id": "720-the-dashboard-was-real-time-and-the-pipeline-was-hourly",
+      "path": "/ai/examples/720-the-dashboard-was-real-time-and-the-pipeline-was-hourly.eml.md",
+      "title": "The dashboard was real time and the pipeline was hourly",
+      "description": "`the_dashboard_was_real_time_and_the_pipeline_was_hourly.eml` - The dashboard refreshes every five seconds over a push connection and shows when it last updated. What that timestamp is the age of is computed below."
+    },
+    {
+      "id": "721-the-licence-was-checked-at-install-and-the-machine-was-cloned",
+      "path": "/ai/examples/721-the-licence-was-checked-at-install-and-the-machine-was-cloned.eml.md",
+      "title": "The licence was checked at install and the machine was cloned",
+      "description": "`the_licence_was_checked_at_install_and_the_machine_was_cloned.eml` - The licence file is signed, verified against a public key at install, bound to a hardware fingerprint, and the installer refuses without a valid one. How many running machines verified it is computed below."
+    },
+    {
+      "id": "722-the-limit-was-on-the-upload-and-the-cost-was-after-decompression",
+      "path": "/ai/examples/722-the-limit-was-on-the-upload-and-the-cost-was-after-decompression.eml.md",
+      "title": "The limit was on the upload and the cost was after decompression",
+      "description": "`the_limit_was_on_the_upload_and_the_cost_was_after_decompression.eml` - The upload limit is enforced at the edge while the body streams, so an oversized request is refused without being buffered. What the limit is a limit on is computed below."
+    },
+    {
+      "id": "723-the-migration-ran-forward-and-the-code-deployed-first",
+      "path": "/ai/examples/723-the-migration-ran-forward-and-the-code-deployed-first.eml.md",
+      "title": "The migration ran forward and the code deployed first",
+      "description": "`the_migration_ran_forward_and_the_code_deployed_first.eml` - Every migration is expand-contract, reviewed, run by CI against a copy of production, and none has needed downtime or a rollback. What runs during the deploy is computed below."
+    },
+    {
+      "id": "724-the-permission-was-inherited-and-the-link-bypassed-the-parent",
+      "path": "/ai/examples/724-the-permission-was-inherited-and-the-link-bypassed-the-parent.eml.md",
+      "title": "The permission was inherited and the link bypassed the parent",
+      "description": "`the_permission_was_inherited_and_the_link_bypassed_the_parent.eml` - Access is decided server-side by walking to the parent folder, with no client-side hiding, and a red team found no way past it. What that walk decides is computed below."
+    },
+    {
+      "id": "725-the-plan-was-empty-and-the-state-file-was-the-comparison",
+      "path": "/ai/examples/725-the-plan-was-empty-and-the-state-file-was-the-comparison.eml.md",
+      "title": "The plan was empty and the state file was the comparison",
+      "description": "`the_plan_was_empty_and_the_state_file_was_the_comparison.eml` - Infrastructure is declarative, every change is reviewed as a plan, and a nightly job alerts on any plan that is not empty. What the plan compares is computed below."
+    },
+    {
+      "id": "726-the-queue-was-ordered-and-the-consumers-were-parallel",
+      "path": "/ai/examples/726-the-queue-was-ordered-and-the-consumers-were-parallel.eml.md",
+      "title": "The queue was ordered and the consumers were parallel",
+      "description": "`the_queue_was_ordered_and_the_consumers_were_parallel.eml` - The log is ordered per partition and the producer partitions by entity, so every event for one entity arrives in order. What happens after arrival is computed below."
+    },
+    {
+      "id": "727-the-runbook-was-followed-and-the-topology-had-changed",
+      "path": "/ai/examples/727-the-runbook-was-followed-and-the-topology-had-changed.eml.md",
+      "title": "The runbook was followed and the topology had changed",
+      "description": "`the_runbook_was_followed_and_the_topology_had_changed.eml` - The runbook was written after a real incident, drilled, and used successfully twenty-three times. How much of it still describes the system is computed below."
+    },
+    {
+      "id": "728-the-span-was-traced-and-the-async-boundary-lost-the-context",
+      "path": "/ai/examples/728-the-span-was-traced-and-the-async-boundary-lost-the-context.eml.md",
+      "title": "The span was traced and the async boundary lost the context",
+      "description": "`the_span_was_traced_and_the_async_boundary_lost_the_context.eml` - Every service is instrumented, trace context crosses every HTTP hop, errors are sampled at a hundred percent, and the traces have found real latency problems. What a trace covers is computed below."
+    },
+    {
+      "id": "729-the-tests-were-parallel-and-the-fixture-was-shared",
+      "path": "/ai/examples/729-the-tests-were-parallel-and-the-fixture-was-shared.eml.md",
+      "title": "The tests were parallel and the fixture was shared",
+      "description": "`the_tests_were_parallel_and_the_fixture_was_shared.eml` - Every test runs inside a transaction that is rolled back afterwards, so no test can see another's rows. What a rollback restores is computed below."
+    },
+    {
+      "id": "730-the-timeout-was-set-and-the-pool-had-its-own",
+      "path": "/ai/examples/730-the-timeout-was-set-and-the-pool-had-its-own.eml.md",
+      "title": "The timeout was set and the pool had its own",
+      "description": "`the_timeout_was_set_and_the_pool_had_its_own.eml` - Every outbound call has an explicit timeout and a lint rule fails the build without one. What that timeout bounds is computed below."
+    },
+    {
+      "id": "731-the-vendor-was-audited-and-the-subprocessor-was-not",
+      "path": "/ai/examples/731-the-vendor-was-audited-and-the-subprocessor-was-not.eml.md",
+      "title": "The vendor was audited and the subprocessor was not",
+      "description": "`the_vendor_was_audited_and_the_subprocessor_was_not.eml` - Every vendor is audited annually, the reports are read rather than filed, and two vendors were rejected on the strength of it. How far the audit reaches is computed below."
     }
   ],
   "tools": {
