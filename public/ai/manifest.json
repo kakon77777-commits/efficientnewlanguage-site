@@ -4503,6 +4503,96 @@
       "path": "/ai/examples/731-the-vendor-was-audited-and-the-subprocessor-was-not.eml.md",
       "title": "The vendor was audited and the subprocessor was not",
       "description": "`the_vendor_was_audited_and_the_subprocessor_was_not.eml` - Every vendor is audited annually, the reports are read rather than filed, and two vendors were rejected on the strength of it. How far the audit reaches is computed below."
+    },
+    {
+      "id": "732-each-job-fit-in-memory-and-eight-ran-at-once",
+      "path": "/ai/examples/732-each-job-fit-in-memory-and-eight-ran-at-once.eml.md",
+      "title": "Each job fit in memory and eight ran at once",
+      "description": "`each_job_fit_in_memory_and_eight_ran_at_once.eml` - Every report job has a measured memory cap asserted in CI against a real run, and none has ever exceeded it. What the host is asked for is computed below."
+    },
+    {
+      "id": "733-the-breaker-was-per-instance-and-the-dependency-was-shared",
+      "path": "/ai/examples/733-the-breaker-was-per-instance-and-the-dependency-was-shared.eml.md",
+      "title": "The breaker was per instance and the dependency was shared",
+      "description": "`the_breaker_was_per_instance_and_the_dependency_was_shared.eml` - The circuit breaker is per dependency, trips on consecutive failures, probes with a single half-open call, and it demonstrably shed load during a real outage. Where it lives is computed below."
+    },
+    {
+      "id": "734-the-budget-alert-was-on-spend-and-the-commitment-was-on-capacity",
+      "path": "/ai/examples/734-the-budget-alert-was-on-spend-and-the-commitment-was-on-capacity.eml.md",
+      "title": "The budget alert was on spend and the commitment was on capacity",
+      "description": "`the_budget_alert_was_on_spend_and_the_commitment_was_on_capacity.eml` - Budget alerts are configured at two thresholds, tested with a real charge, and routed to a person who acknowledges them. What they can move with is computed below."
+    },
+    {
+      "id": "735-the-comparison-had-a-control-group-on-the-same-build",
+      "path": "/ai/examples/735-the-comparison-had-a-control-group-on-the-same-build.eml.md",
+      "title": "The comparison had a control group on the same build",
+      "description": "`the_comparison_had_a_control_group_on_the_same_build.eml` - Every deploy runs a canary analysis against a control group across forty-one metrics and it has rolled back seven real regressions. What the two groups differ in is computed below."
+    },
+    {
+      "id": "736-the-crash-reporter-was-installed-and-the-worst-crashes-took-it-too",
+      "path": "/ai/examples/736-the-crash-reporter-was-installed-and-the-worst-crashes-took-it-too.eml.md",
+      "title": "The crash reporter was installed and the worst crashes took it too",
+      "description": "`the_crash_reporter_was_installed_and_the_worst_crashes_took_it_too.eml` - The crash reporter ships in every build, symbolicates, deduplicates by stack, and the top five crashes it ranked were found and fixed. What it can report is computed below."
+    },
+    {
+      "id": "737-the-inventory-was-built-from-the-agents-that-checked-in",
+      "path": "/ai/examples/737-the-inventory-was-built-from-the-agents-that-checked-in.eml.md",
+      "title": "The inventory was built from the agents that checked in",
+      "description": "`the_inventory_was_built_from_the_agents_that_checked_in.eml` - The asset inventory refreshes hourly from a reporting agent, shows full agent coverage, and found forty-one unpatched hosts. Where its host list comes from is computed below."
+    },
+    {
+      "id": "738-the-limit-was-in-rows-and-the-cost-was-in-bytes",
+      "path": "/ai/examples/738-the-limit-was-in-rows-and-the-cost-was-in-bytes.eml.md",
+      "title": "The limit was in rows and the cost was in bytes",
+      "description": "`the_limit_was_in_rows_and_the_cost_was_in_bytes.eml` - The export endpoint caps a result at ten thousand rows, enforced in the query rather than after it, and there is no way to ask for more. What ten thousand rows weigh is computed below."
+    },
+    {
+      "id": "739-the-policy-applied-at-admission-and-the-old-resources-stayed",
+      "path": "/ai/examples/739-the-policy-applied-at-admission-and-the-old-resources-stayed.eml.md",
+      "title": "The policy applied at admission and the old resources stayed",
+      "description": "`the_policy_applied_at_admission_and_the_old_resources_stayed.eml` - A policy engine sits in the admission path, refuses non-compliant resources rather than reporting them, has no exemption mechanism, and has blocked nineteen hundred creations. Which resources it has seen is computed below."
+    },
+    {
+      "id": "740-the-progress-counted-files-and-the-work-was-in-one-of-them",
+      "path": "/ai/examples/740-the-progress-counted-files-and-the-work-was-in-one-of-them.eml.md",
+      "title": "The progress counted files and the work was in one of them",
+      "description": "`the_progress_counted_files_and_the_work_was_in_one_of_them.eml` - The migration shows a progress bar that updates after every file, never goes backwards, and reports exactly what it has finished. What it is a fraction of is computed below."
+    },
+    {
+      "id": "741-the-query-was-under-the-threshold-and-the-page-made-three-hundred",
+      "path": "/ai/examples/741-the-query-was-under-the-threshold-and-the-page-made-three-hundred.eml.md",
+      "title": "The query was under the threshold and the page made three hundred",
+      "description": "`the_query_was_under_the_threshold_and_the_page_made_three_hundred.eml` - The slow-query log has a fifty millisecond threshold and has not recorded an entry in a month. What one page render costs is computed below."
+    },
+    {
+      "id": "742-the-reconciliation-was-run-by-the-copier",
+      "path": "/ai/examples/742-the-reconciliation-was-run-by-the-copier.eml.md",
+      "title": "The reconciliation was run by the copier",
+      "description": "`the_reconciliation_was_run_by_the_copier.eml` - A nightly reconciliation compares the operational database to the warehouse and has reported no discrepancy in two years. Which two things it compares is computed below."
+    },
+    {
+      "id": "743-the-retention-was-promised-in-days-and-the-buffer-held-events",
+      "path": "/ai/examples/743-the-retention-was-promised-in-days-and-the-buffer-held-events.eml.md",
+      "title": "The retention was promised in days and the buffer held events",
+      "description": "`the_retention_was_promised_in_days_and_the_buffer_held_events.eml` - The log retention policy says thirty days, is written down, is cited in three audits, and the store enforces it. What the store enforces is computed below."
+    },
+    {
+      "id": "744-the-sandbox-blocked-the-network-and-the-lookup-was-the-channel",
+      "path": "/ai/examples/744-the-sandbox-blocked-the-network-and-the-lookup-was-the-channel.eml.md",
+      "title": "The sandbox blocked the network and the lookup was the channel",
+      "description": "`the_sandbox_blocked_the_network_and_the_lookup_was_the_channel.eml` - The build sandbox denies outbound network by default, the denial is asserted by a test rather than assumed, and it caught two dependencies calling home. What remains reachable is computed below."
+    },
+    {
+      "id": "745-the-signature-was-verified-and-the-parser-ran-first",
+      "path": "/ai/examples/745-the-signature-was-verified-and-the-parser-ran-first.eml.md",
+      "title": "The signature was verified and the parser ran first",
+      "description": "`the_signature_was_verified_and_the_parser_ran_first.eml` - Every webhook verifies an HMAC with a constant-time compare, inside a replay window, against a rotated secret. Where in the request path that happens is computed below."
+    },
+    {
+      "id": "746-the-sla-counted-responses-and-the-answers-were-wrong",
+      "path": "/ai/examples/746-the-sla-counted-responses-and-the-answers-were-wrong.eml.md",
+      "title": "The sla counted responses and the answers were wrong",
+      "description": "`the_sla_counted_responses_and_the_answers_were_wrong.eml` - Availability is measured from twelve regions every thirty seconds and from the real error rate, and credits were paid the two times it was missed. What counts as available is computed below."
     }
   ],
   "tools": {

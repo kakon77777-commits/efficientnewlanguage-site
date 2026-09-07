@@ -1,0 +1,371 @@
+<!-- canonical: efficientnewlanguage.org/ai/examples/740-the-progress-counted-files-and-the-work-was-in-one-of-them | ai_layer_version: 0.1.0 | updated: 2026-09-07 -->
+
+# Example 740 — The progress counted files and the work was in one of them
+
+`the_progress_counted_files_and_the_work_was_in_one_of_them.eml` - The migration shows a progress bar that updates after every file, never goes backwards, and reports exactly what it has finished. What it is a fraction of is computed below.
+
+## EML
+
+```eml
+# Self-authored for the EML case corpus (no external origin). The migration
+# shows a progress bar that updates after every file, never goes backwards, and
+# reports exactly what it has finished. What it is a fraction of is computed
+# below.
+#
+# The bar is honestly built. It is not a fake animation and not an estimate
+# from a model: it counts files that are completely written and verified, it
+# never moves backwards, it does not jump to ninety and wait, and if the job
+# dies the count is the true number of files that are done. An operator who
+# reads it as "this many files are finished" is reading it correctly.
+#
+# It counts FILES. The sizes are not uniform - one file holds most of the bytes
+# - so the fraction of files done and the fraction of work done are different
+# numbers, and only the first is displayed.
+#
+# The bar reads complete when one file is left.
+
+1240 => files
+1239 => files_done_when_one_remains
+4100 => total_gigabytes
+61 => percent_of_bytes_in_the_largest_file
+100 => a_whole_percent
+40 => minutes_elapsed_at_that_point
+96 => minutes_still_remaining
+0 => progress_measured_in_bytes
+
+int(files_done_when_one_remains * 10000 / files) => files_done_per_myriad
+int(total_gigabytes * percent_of_bytes_in_the_largest_file / a_whole_percent) => gigabytes_in_the_largest_file
+a_whole_percent - percent_of_bytes_in_the_largest_file => percent_of_bytes_in_the_rest
+minutes_elapsed_at_that_point + minutes_still_remaining => total_minutes
+int(minutes_elapsed_at_that_point * 10000 / total_minutes) => time_elapsed_per_myriad
+
+"files                           : " + str(files) ^0
+"files done when one remains     : " + str(files_done_when_one_remains) ^0
+"  the bar then reads            : " + str(files_done_per_myriad) + " per ten thousand" ^0
+"progress measured in bytes      : " + str(progress_measured_in_bytes) ^0
+"" ^0
+"total gigabytes                 : " + str(total_gigabytes) ^0
+"  in the largest file, percent  : " + str(percent_of_bytes_in_the_largest_file) ^0
+"  in the largest file, GB       : " + str(gigabytes_in_the_largest_file) ^0
+"  in all the rest, percent      : " + str(percent_of_bytes_in_the_rest) ^0
+"" ^0
+"minutes elapsed at that point   : " + str(minutes_elapsed_at_that_point) ^0
+"minutes still remaining         : " + str(minutes_still_remaining) ^0
+"total minutes                   : " + str(total_minutes) ^0
+"  elapsed share                 : " + str(time_elapsed_per_myriad) + " per ten thousand" ^0
+"" ^0
+
+# ---- what the bar verified ----
+
+"the progress bar" ^0
+"  what it counts : files completely written and verified" ^0
+"  does it move backwards : no" ^0
+"  does it jump to ninety and wait : no" ^0
+"  if the job dies, is the count true : yes; that many" ^0
+"    files are done" ^0
+"  is it an estimate : no" ^0
+"  verdict : ACCURATE" ^0
+"" ^0
+"  counting completed and verified work rather than issued" ^0
+"  work is the honest choice and it is the one made" ^0
+"" ^0
+
+# ---- what it is a fraction of ----
+
+"the denominator" ^0
+"  what the fraction is over : files" ^0
+"  what the operator is deciding with it : time" ^0
+"  what relates the two : bytes per file" ^0
+"  distribution of those : one file holds " + str(percent_of_bytes_in_the_largest_file) + " percent" ^0
+"  bars measured in bytes : " + str(progress_measured_in_bytes) ^0
+"  the two fractions at the same instant : " + str(files_done_per_myriad) + " and" ^0
+"    " + str(time_elapsed_per_myriad) + " per ten thousand" ^0
+"" ^0
+"  both fractions are correct and they are fractions of" ^0
+"  different things" ^0
+"" ^0
+# ---- what the operator does with it ----
+
+# The number is used to decide whether to stay. At the point the bar reads
+# almost complete, more of the remaining time is ahead than behind, and the
+# decision it informs is the one it is worst at.
+"the decision" ^0
+"  what the operator asks : can I go home" ^0
+"  what the bar answers   : how many files are done" ^0
+"  bar reading            : " + str(files_done_per_myriad) + " per ten thousand" ^0
+"  time actually elapsed  : " + str(time_elapsed_per_myriad) + " per ten thousand" ^0
+"  minutes still to run   : " + str(minutes_still_remaining) ^0
+"  is the bar lying       : no" ^0
+"" ^0
+
+# ---- the distribution is the data, not a bug ----
+
+# Nothing is wrong with the files. A migration of real data has one enormous
+# table and a long tail of small ones, and that is what the source looked like
+# before anyone wrote the migration.
+"the file sizes" ^0
+"  uniform : no, and there was never a reason to expect it" ^0
+"  largest file, GB : " + str(gigabytes_in_the_largest_file) ^0
+"  everything else, percent of bytes : " + str(percent_of_bytes_in_the_rest) ^0
+"  is that a defect in the data : no" ^0
+"  did the bar's author know the distribution : it is" ^0
+"    knowable with one query, which the bar does not run" ^0
+"" ^0
+
+# ---- what a byte-weighted bar would cost ----
+
+"weighting by bytes" ^0
+"  what it needs : the size of each file, before starting" ^0
+"  is that available : yes, from the source listing" ^0
+"  what it would show at the same instant : " + str(time_elapsed_per_myriad) ^0
+"    per ten thousand, roughly" ^0
+"  what it gives up : nothing; the count is still exact" ^0
+"  why it was not done : the count was the obvious thing" ^0
+"    to increment" ^0
+"" ^0
+
+# ---- null control ----
+
+# The same bar, with each file weighted by its size and the fraction taken over
+# bytes.
+1 => nc_progress_measured_in_bytes
+time_elapsed_per_myriad => nc_bar_reading_when_one_file_remains
+
+"null control - the fraction is taken over bytes" ^0
+"  files done : " + str(files_done_when_one_remains) + ", unchanged and still exact" ^0
+"  progress measured in bytes : " + str(nc_progress_measured_in_bytes) ^0
+"  bar reading when one file remains : " + str(nc_bar_reading_when_one_file_remains) + " per ten" ^0
+"    thousand" ^0
+"  the bar did not become more truthful; its denominator" ^0
+"  became the thing the operator is waiting for" ^0
+"" ^0
+
+# ---- the rule ----
+
+"what an honest progress bar guarantees" ^0
+"  this fraction of the items is finished : exactly, never" ^0
+"    backwards, true even if the job dies" ^0
+"  this fraction of the wait is over : not addressed; the" ^0
+"    fraction is over items and the wait is over work" ^0
+"" ^0
+"a fraction is only as informative as the uniformity of what" ^0
+"it counts; counting items is exact and counting them is a" ^0
+"proxy for time only when the items are the same size, which" ^0
+"is a property of the data rather than of the counter" ^0
+"" ^0
+
+"The bar counts files that are completely written and verified, never moves" ^0
+"backwards, and stays true if the job dies. It is a fraction over " + str(files) + " files" ^0
+"whose bytes are not uniform - one holds " + str(gigabytes_in_the_largest_file) + " of " + str(total_gigabytes) + " GB - so with one file" ^0
+"left it reads " + str(files_done_per_myriad) + " per ten thousand while " + str(time_elapsed_per_myriad) + " per ten thousand of the time has" ^0
+"passed, and " + str(minutes_still_remaining) + " of " + str(total_minutes) + " minutes are still ahead." ^0
+```
+
+## Python (deterministic transpilation)
+
+```python
+files = 1240
+files_done_when_one_remains = 1239
+total_gigabytes = 4100
+percent_of_bytes_in_the_largest_file = 61
+a_whole_percent = 100
+minutes_elapsed_at_that_point = 40
+minutes_still_remaining = 96
+progress_measured_in_bytes = 0
+files_done_per_myriad = int(files_done_when_one_remains * 10000 / files)
+gigabytes_in_the_largest_file = int(total_gigabytes * percent_of_bytes_in_the_largest_file / a_whole_percent)
+percent_of_bytes_in_the_rest = a_whole_percent - percent_of_bytes_in_the_largest_file
+total_minutes = minutes_elapsed_at_that_point + minutes_still_remaining
+time_elapsed_per_myriad = int(minutes_elapsed_at_that_point * 10000 / total_minutes)
+print("files                           : " + str(files))
+print("files done when one remains     : " + str(files_done_when_one_remains))
+print("  the bar then reads            : " + str(files_done_per_myriad) + " per ten thousand")
+print("progress measured in bytes      : " + str(progress_measured_in_bytes))
+print("")
+print("total gigabytes                 : " + str(total_gigabytes))
+print("  in the largest file, percent  : " + str(percent_of_bytes_in_the_largest_file))
+print("  in the largest file, GB       : " + str(gigabytes_in_the_largest_file))
+print("  in all the rest, percent      : " + str(percent_of_bytes_in_the_rest))
+print("")
+print("minutes elapsed at that point   : " + str(minutes_elapsed_at_that_point))
+print("minutes still remaining         : " + str(minutes_still_remaining))
+print("total minutes                   : " + str(total_minutes))
+print("  elapsed share                 : " + str(time_elapsed_per_myriad) + " per ten thousand")
+print("")
+print("the progress bar")
+print("  what it counts : files completely written and verified")
+print("  does it move backwards : no")
+print("  does it jump to ninety and wait : no")
+print("  if the job dies, is the count true : yes; that many")
+print("    files are done")
+print("  is it an estimate : no")
+print("  verdict : ACCURATE")
+print("")
+print("  counting completed and verified work rather than issued")
+print("  work is the honest choice and it is the one made")
+print("")
+print("the denominator")
+print("  what the fraction is over : files")
+print("  what the operator is deciding with it : time")
+print("  what relates the two : bytes per file")
+print("  distribution of those : one file holds " + str(percent_of_bytes_in_the_largest_file) + " percent")
+print("  bars measured in bytes : " + str(progress_measured_in_bytes))
+print("  the two fractions at the same instant : " + str(files_done_per_myriad) + " and")
+print("    " + str(time_elapsed_per_myriad) + " per ten thousand")
+print("")
+print("  both fractions are correct and they are fractions of")
+print("  different things")
+print("")
+print("the decision")
+print("  what the operator asks : can I go home")
+print("  what the bar answers   : how many files are done")
+print("  bar reading            : " + str(files_done_per_myriad) + " per ten thousand")
+print("  time actually elapsed  : " + str(time_elapsed_per_myriad) + " per ten thousand")
+print("  minutes still to run   : " + str(minutes_still_remaining))
+print("  is the bar lying       : no")
+print("")
+print("the file sizes")
+print("  uniform : no, and there was never a reason to expect it")
+print("  largest file, GB : " + str(gigabytes_in_the_largest_file))
+print("  everything else, percent of bytes : " + str(percent_of_bytes_in_the_rest))
+print("  is that a defect in the data : no")
+print("  did the bar's author know the distribution : it is")
+print("    knowable with one query, which the bar does not run")
+print("")
+print("weighting by bytes")
+print("  what it needs : the size of each file, before starting")
+print("  is that available : yes, from the source listing")
+print("  what it would show at the same instant : " + str(time_elapsed_per_myriad))
+print("    per ten thousand, roughly")
+print("  what it gives up : nothing; the count is still exact")
+print("  why it was not done : the count was the obvious thing")
+print("    to increment")
+print("")
+nc_progress_measured_in_bytes = 1
+nc_bar_reading_when_one_file_remains = time_elapsed_per_myriad
+print("null control - the fraction is taken over bytes")
+print("  files done : " + str(files_done_when_one_remains) + ", unchanged and still exact")
+print("  progress measured in bytes : " + str(nc_progress_measured_in_bytes))
+print("  bar reading when one file remains : " + str(nc_bar_reading_when_one_file_remains) + " per ten")
+print("    thousand")
+print("  the bar did not become more truthful; its denominator")
+print("  became the thing the operator is waiting for")
+print("")
+print("what an honest progress bar guarantees")
+print("  this fraction of the items is finished : exactly, never")
+print("    backwards, true even if the job dies")
+print("  this fraction of the wait is over : not addressed; the")
+print("    fraction is over items and the wait is over work")
+print("")
+print("a fraction is only as informative as the uniformity of what")
+print("it counts; counting items is exact and counting them is a")
+print("proxy for time only when the items are the same size, which")
+print("is a property of the data rather than of the counter")
+print("")
+print("The bar counts files that are completely written and verified, never moves")
+print("backwards, and stays true if the job dies. It is a fraction over " + str(files) + " files")
+print("whose bytes are not uniform - one holds " + str(gigabytes_in_the_largest_file) + " of " + str(total_gigabytes) + " GB - so with one file")
+print("left it reads " + str(files_done_per_myriad) + " per ten thousand while " + str(time_elapsed_per_myriad) + " per ten thousand of the time has")
+print("passed, and " + str(minutes_still_remaining) + " of " + str(total_minutes) + " minutes are still ahead.")
+```
+
+## stdout (executed)
+
+```text
+files                           : 1240
+files done when one remains     : 1239
+  the bar then reads            : 9991 per ten thousand
+progress measured in bytes      : 0
+
+total gigabytes                 : 4100
+  in the largest file, percent  : 61
+  in the largest file, GB       : 2501
+  in all the rest, percent      : 39
+
+minutes elapsed at that point   : 40
+minutes still remaining         : 96
+total minutes                   : 136
+  elapsed share                 : 2941 per ten thousand
+
+the progress bar
+  what it counts : files completely written and verified
+  does it move backwards : no
+  does it jump to ninety and wait : no
+  if the job dies, is the count true : yes; that many
+    files are done
+  is it an estimate : no
+  verdict : ACCURATE
+
+  counting completed and verified work rather than issued
+  work is the honest choice and it is the one made
+
+the denominator
+  what the fraction is over : files
+  what the operator is deciding with it : time
+  what relates the two : bytes per file
+  distribution of those : one file holds 61 percent
+  bars measured in bytes : 0
+  the two fractions at the same instant : 9991 and
+    2941 per ten thousand
+
+  both fractions are correct and they are fractions of
+  different things
+
+the decision
+  what the operator asks : can I go home
+  what the bar answers   : how many files are done
+  bar reading            : 9991 per ten thousand
+  time actually elapsed  : 2941 per ten thousand
+  minutes still to run   : 96
+  is the bar lying       : no
+
+the file sizes
+  uniform : no, and there was never a reason to expect it
+  largest file, GB : 2501
+  everything else, percent of bytes : 39
+  is that a defect in the data : no
+  did the bar's author know the distribution : it is
+    knowable with one query, which the bar does not run
+
+weighting by bytes
+  what it needs : the size of each file, before starting
+  is that available : yes, from the source listing
+  what it would show at the same instant : 2941
+    per ten thousand, roughly
+  what it gives up : nothing; the count is still exact
+  why it was not done : the count was the obvious thing
+    to increment
+
+null control - the fraction is taken over bytes
+  files done : 1239, unchanged and still exact
+  progress measured in bytes : 1
+  bar reading when one file remains : 2941 per ten
+    thousand
+  the bar did not become more truthful; its denominator
+  became the thing the operator is waiting for
+
+what an honest progress bar guarantees
+  this fraction of the items is finished : exactly, never
+    backwards, true even if the job dies
+  this fraction of the wait is over : not addressed; the
+    fraction is over items and the wait is over work
+
+a fraction is only as informative as the uniformity of what
+it counts; counting items is exact and counting them is a
+proxy for time only when the items are the same size, which
+is a property of the data rather than of the counter
+
+The bar counts files that are completely written and verified, never moves
+backwards, and stays true if the job dies. It is a fraction over 1240 files
+whose bytes are not uniform - one holds 2501 of 4100 GB - so with one file
+left it reads 9991 per ten thousand while 2941 per ten thousand of the time has
+passed, and 96 of 136 minutes are still ahead.
+```
+
+## Round-trip
+
+`ok: true` — round-trip fixpoint reached (python1 == python2)
+
+## Trace event types
+
+eml:run:start · eml:assign · eml:output · eml:run:done
