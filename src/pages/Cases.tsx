@@ -3,6 +3,7 @@ import { Nav } from '../components/Nav';
 import { Footer } from '../components/Footer';
 import { Section, Kicker, cn } from '../components/ui';
 import { useLang } from '../i18n';
+import { casesPage, casesPageHref, caseHref, CASES_PAGE_SIZE } from '../routes';
 
 export interface CaseEntry {
   id: string;
@@ -11,78 +12,121 @@ export interface CaseEntry {
   description?: string;
 }
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = CASES_PAGE_SIZE;
+const pageHref = casesPageHref;
 
 function readPageFromUrl(): number {
   if (typeof window === 'undefined') return 1;
-  const n = Number(new URLSearchParams(window.location.search).get('page'));
-  return Number.isInteger(n) && n > 0 ? n : 1;
+  return casesPage(window.location.pathname, window.location.search);
 }
 
-/** Reads the case data the prerender script embedded as a JSON island
- *  (scripts/prerender.mjs) — present only on a real hydrating client page
- *  load of the prerendered /cases HTML, absent under SSR (no `document`)
- *  and absent in plain `vite dev`/non-prerendered builds. */
-function readCasesFromDom(): CaseEntry[] | null {
+/** Reads the slice of case data the prerender script embedded for THIS page
+ *  (scripts/prerender.mjs) — present only on a real hydrating client page load
+ *  of a prerendered /cases document, absent under SSR (no `document`) and
+ *  absent in plain `vite dev`/non-prerendered builds.
+ *
+ *  It carries this page's twelve cards and the totals, not all 762 entries.
+ *  Embedding the whole manifest made every index page 333KB; at one page that
+ *  was merely wasteful, and at 64 pages it would have been 21MB of the same
+ *  JSON repeated. The client only ever renders the twelve. */
+interface CasesIsland {
+  items: CaseEntry[];
+  page: number;
+  totalPages: number;
+  total: number;
+}
+
+function readIslandFromDom(): CasesIsland | null {
   if (typeof document === 'undefined') return null;
   const el = document.getElementById('eml-cases-data');
   if (!el?.textContent) return null;
   try {
-    return JSON.parse(el.textContent);
+    const parsed = JSON.parse(el.textContent);
+    return Array.isArray(parsed?.items) ? parsed : null;
   } catch {
     return null;
   }
 }
 
 interface CasesProps {
-  /** Pre-loaded case data — only ever passed by entry-server.tsx's SSR
-   *  render call (which has no `document` to read a data island from).
-   *  The client's own hydration path instead finds the same data via
-   *  readCasesFromDom(). Absent in plain `vite dev`/non-prerendered builds,
-   *  where the existing client fetch below is the only data source. */
-  initialCases?: CaseEntry[];
+  /** This page's cards, plus the totals the pagination needs. Passed by
+   *  entry-server.tsx under SSR (which has no `document` to read an island
+   *  from) and by the island on the client, so the two first renders are
+   *  identical and hydration keeps the prerendered markup. Absent in plain
+   *  `vite dev`, where the manifest fetch below is the only data source. */
+  initialItems?: CaseEntry[];
+  initialPage?: number;
+  initialTotalPages?: number;
+  initialTotal?: number;
 }
 
 /** The case-index (/cases) — a simple, generated list of every verified EML
  *  case in the corpus, human-browsable, paginated 12-per-page once the corpus
  *  outgrows a single screen. Data comes from /ai/manifest.json, the same
  *  manifest the machine/agent layer reads, so this page and the
- *  crawler-facing corpus never drift. */
-export default function Cases({ initialCases }: CasesProps = {}) {
+ *  crawler-facing corpus never drift.
+ *
+ *  Pagination is `<a href>`, not `<button onClick>`. It was buttons plus
+ *  history.replaceState until 2026-09-08, which meant pages 2..N had no URL a
+ *  crawler could follow: Search Console had discovered 23 of 762 cases and
+ *  indexed none, and the entire link graph into the corpus was the 12 cards on
+ *  this page. A control that changes what document you are reading is a link. */
+export default function Cases({
+  initialItems,
+  initialPage,
+  initialTotalPages,
+  initialTotal,
+}: CasesProps = {}) {
   const { lang } = useLang();
   const t = (en: string, zh: string) => (lang === 'zh' ? zh : en);
-  const [cases, setCases] = useState<CaseEntry[] | null>(() => initialCases ?? readCasesFromDom());
+  const [island] = useState<CasesIsland | null>(readIslandFromDom);
+  // Only used by the `vite dev` fallback path, where no page slice was handed in.
+  const [fetched, setFetched] = useState<CaseEntry[] | null>(null);
   const [error, setError] = useState(false);
-  const [page, setPage] = useState(() => readPageFromUrl());
+
+  const given = initialItems ?? island?.items ?? null;
+  const shown = initialPage ?? island?.page ?? readPageFromUrl();
+
+  // Pagination used to live in `?page=N`, so links and bookmarks to that form
+  // exist. The prerendered document at /cases/ is page 1 whatever the query
+  // says, so without this a bookmarked ?page=7 silently shows page 1. Sending
+  // it to the path form fixes the reader's view AND leaves one canonical URL
+  // per page rather than two spellings of it.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const q = new URLSearchParams(window.location.search).get('page');
+    const n = Number(q);
+    if (q !== null && Number.isInteger(n) && n > 0 && casesPageHref(n) !== window.location.pathname) {
+      window.location.replace(casesPageHref(n));
+    }
+  }, []);
 
   useEffect(() => {
-    if (cases) return; // already have real data (SSR prop or hydrated data island)
+    if (given) return; // already have real data (SSR prop or hydrated data island)
     fetch('/ai/manifest.json')
       .then((r) => r.json())
-      .then((m) => setCases(m.examples ?? []))
+      .then((m) => setFetched(m.examples ?? []))
       .catch(() => setError(true));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const totalPages = cases ? Math.max(1, Math.ceil(cases.length / PAGE_SIZE)) : 1;
+  const totalPages =
+    initialTotalPages ??
+    island?.totalPages ??
+    (fetched ? Math.max(1, Math.ceil(fetched.length / PAGE_SIZE)) : 1);
+  const total = initialTotal ?? island?.total ?? fetched?.length ?? 0;
 
-  // Clamp once the real case count is known (e.g. a stale ?page=99 link).
-  useEffect(() => {
-    if (cases && page > totalPages) setPage(totalPages);
-  }, [cases, page, totalPages]);
+  // A stale /cases/page/99 asks for a page that does not exist; the fetched
+  // fallback also has to slice for itself. Clamping rather than 404ing is
+  // deliberate — the content is a generated list, not a promise about N.
+  const pageCases = useMemo(() => {
+    if (given) return given;
+    if (!fetched) return [];
+    const n = Math.min(Math.max(1, shown), Math.max(1, Math.ceil(fetched.length / PAGE_SIZE)));
+    return fetched.slice((n - 1) * PAGE_SIZE, n * PAGE_SIZE);
+  }, [given, fetched, shown]);
 
-  const pageCases = useMemo(
-    () => (cases ? cases.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE) : []),
-    [cases, page],
-  );
-
-  function goToPage(n: number): void {
-    const clamped = Math.min(Math.max(1, n), totalPages);
-    setPage(clamped);
-    const url = clamped === 1 ? '/cases' : `/cases?page=${clamped}`;
-    window.history.replaceState(null, '', url);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  const cases = given ?? fetched;
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
@@ -96,8 +140,8 @@ export default function Cases({ initialCases }: CasesProps = {}) {
           </h1>
           <p className="mt-3 max-w-2xl text-[15px] leading-7 text-muted">
             {t(
-              'Real, runnable programs — each one transpiled, executed, and checked against real Python before it lands here. Generated directly from the source repository, so this list and the machine-readable corpus never drift apart.',
-              '真實、可執行的程式——每一個都經過轉譯、執行，並對照真實 Python 驗證過才會出現在這裡。直接從原始碼版本庫產生，所以這份清單跟給機器讀的語料永遠不會脫節。',
+              `${total || ''} real, runnable programs — each one transpiled, executed, and checked against real Python before it lands here. Generated directly from the source repository, so this list and the machine-readable corpus never drift apart.`.trim(),
+              `${total || ''} 個真實、可執行的程式——每一個都經過轉譯、執行，並對照真實 Python 驗證過才會出現在這裡。直接從原始碼版本庫產生，所以這份清單跟給機器讀的語料永遠不會脫節。`.trim(),
             )}
           </p>
 
@@ -119,9 +163,9 @@ export default function Cases({ initialCases }: CasesProps = {}) {
                     key={c.id}
                     className="group flex flex-col rounded-xl border border-line bg-surface/60 p-5 transition-colors duration-200 hover:border-symbol/40"
                   >
-                    <a href={c.path} target="_blank" rel="noreferrer" className="flex-1">
+                    <a href={caseHref(c.id)} className="flex-1">
                       <span className="font-mono text-xs text-symbol">{c.id}</span>
-                      <h3 className="mt-2 text-base font-semibold text-fg">{c.title ?? c.id}</h3>
+                      <h2 className="mt-2 text-base font-semibold text-fg">{c.title ?? c.id}</h2>
                       {c.description && (
                         <p className="mt-1.5 line-clamp-3 text-sm leading-6 text-muted">{c.description}</p>
                       )}
@@ -149,43 +193,50 @@ export default function Cases({ initialCases }: CasesProps = {}) {
                   aria-label={t('Case pages', '案例分頁')}
                   className="mt-10 flex flex-wrap items-center justify-center gap-2"
                 >
-                  <button
-                    type="button"
-                    onClick={() => goToPage(page - 1)}
-                    disabled={page === 1}
-                    className="rounded-md border border-line bg-surface/60 px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:border-symbol/40 hover:text-fg disabled:cursor-not-allowed disabled:opacity-40"
-                  >
-                    {t('Previous', '上一頁')}
-                  </button>
+                  {shown > 1 ? (
+                    <a
+                      href={pageHref(shown - 1)}
+                      className="rounded-md border border-line bg-surface/60 px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:border-symbol/40 hover:text-fg"
+                    >
+                      {t('Previous', '上一頁')}
+                    </a>
+                  ) : (
+                    <span className="cursor-not-allowed rounded-md border border-line bg-surface/60 px-3 py-1.5 text-sm text-muted opacity-40">
+                      {t('Previous', '上一頁')}
+                    </span>
+                  )}
 
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-                    <button
+                    <a
                       key={n}
-                      type="button"
-                      onClick={() => goToPage(n)}
-                      aria-current={n === page ? 'page' : undefined}
+                      href={pageHref(n)}
+                      aria-current={n === shown ? 'page' : undefined}
                       className={cn(
-                        'h-9 min-w-9 rounded-md border px-2.5 text-sm font-mono transition-colors duration-200',
-                        n === page
+                        'h-9 min-w-9 rounded-md border px-2.5 text-sm font-mono leading-8 transition-colors duration-200',
+                        n === shown
                           ? 'border-symbol/40 bg-symbol/10 text-symbol'
                           : 'border-line bg-surface/60 text-muted hover:border-symbol/40 hover:text-fg',
                       )}
                     >
                       {n}
-                    </button>
+                    </a>
                   ))}
 
-                  <button
-                    type="button"
-                    onClick={() => goToPage(page + 1)}
-                    disabled={page === totalPages}
-                    className="rounded-md border border-line bg-surface/60 px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:border-symbol/40 hover:text-fg disabled:cursor-not-allowed disabled:opacity-40"
-                  >
-                    {t('Next', '下一頁')}
-                  </button>
+                  {shown < totalPages ? (
+                    <a
+                      href={pageHref(shown + 1)}
+                      className="rounded-md border border-line bg-surface/60 px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:border-symbol/40 hover:text-fg"
+                    >
+                      {t('Next', '下一頁')}
+                    </a>
+                  ) : (
+                    <span className="cursor-not-allowed rounded-md border border-line bg-surface/60 px-3 py-1.5 text-sm text-muted opacity-40">
+                      {t('Next', '下一頁')}
+                    </span>
+                  )}
 
                   <span className="ml-2 font-mono text-xs text-faint">
-                    {t(`Page ${page} of ${totalPages}`, `第 ${page} / ${totalPages} 頁`)}
+                    {t(`Page ${shown} of ${totalPages}`, `第 ${shown} / ${totalPages} 頁`)}
                   </span>
                 </nav>
               )}

@@ -3,7 +3,7 @@ import { I18nProvider } from './i18n';
 import { ThemeProvider } from './theme';
 import { AppErrorBoundary } from './app/AppErrorBoundary';
 import { AppLoading } from './app/AppLoading';
-import { matchRoute, relatedSlug } from './routes';
+import { matchRoute, relatedSlug, caseSlug } from './routes';
 
 // Code-split per route so the showcase landing doesn't bundle the engineering
 // app / docs (and vice versa). Cross-route navigation uses plain links (full
@@ -12,6 +12,7 @@ const Showcase = lazy(() => import('./pages/Showcase'));
 const Engineering = lazy(() => import('./pages/Engineering'));
 const Docs = lazy(() => import('./pages/Docs'));
 const Cases = lazy(() => import('./pages/Cases'));
+const CaseDetail = lazy(() => import('./pages/CaseDetail'));
 const Terminal = lazy(() => import('./pages/Terminal'));
 const Origins = lazy(() => import('./pages/Origins'));
 const Related = lazy(() => import('./pages/Related'));
@@ -25,6 +26,8 @@ function currentPage(pathname: string = window.location.pathname) {
       return <Docs />;
     case 'cases':
       return <Cases />;
+    case 'case-detail':
+      return <CaseDetail caseId={caseSlug(pathname)} />;
     case 'terminal':
       return <Terminal />;
     case 'origins':

@@ -118,7 +118,7 @@ export class AppErrorBoundary extends Component<{ children: ReactNode }, State> 
               {t('Go to homepage', '回到首頁')}
             </button>
             <a
-              href="/docs"
+              href="/docs/"
               className="cursor-pointer rounded-lg border border-line bg-panel/60 px-4 py-2 text-sm text-muted transition-colors duration-200 hover:border-symbol/40 hover:text-fg"
             >
               {t('Docs', '文件')}

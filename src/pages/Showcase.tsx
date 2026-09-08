@@ -298,7 +298,7 @@ export default function Showcase() {
             <a href="/app#playground" className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-run px-6 py-3 text-sm font-semibold text-base transition-colors duration-200 hover:bg-run/90">
               <Terminal size={16} /> {t('Open Playground', '打開示範區')}
             </a>
-            <a href="/docs" className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-line bg-panel/40 px-6 py-3 text-sm font-medium text-fg transition-colors duration-200 hover:border-symbol/50 hover:text-symbol">
+            <a href="/docs/" className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-line bg-panel/40 px-6 py-3 text-sm font-medium text-fg transition-colors duration-200 hover:border-symbol/50 hover:text-symbol">
               <BookText size={16} /> {t('Read the spec', '閱讀規格')}
             </a>
             <a href={LINKS.github} target="_blank" rel="noreferrer" className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-line bg-panel/40 px-6 py-3 text-sm font-medium text-fg transition-colors duration-200 hover:border-symbol/50 hover:text-symbol">

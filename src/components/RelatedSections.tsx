@@ -90,7 +90,7 @@ export function RelatedHubGrid() {
         return (
           <a
             key={p.slug}
-            href={`/related/${p.slug}`}
+            href={`/related/${p.slug}/`}
             className={cn(
               'group flex cursor-pointer flex-col rounded-xl border border-line bg-surface/60 p-6 transition-colors duration-200',
               a.hover,
@@ -378,7 +378,7 @@ export function RelatedOtherProjects({ current }: { current: string }) {
           return (
             <a
               key={p.slug}
-              href={`/related/${p.slug}`}
+              href={`/related/${p.slug}/`}
               className={cn(
                 'group flex cursor-pointer items-start gap-4 rounded-xl border border-line bg-surface/60 p-5 transition-colors duration-200',
                 a.hover,
@@ -395,7 +395,7 @@ export function RelatedOtherProjects({ current }: { current: string }) {
         })}
       </div>
       <p className="mt-6">
-        <a href="/related" className="cursor-pointer text-sm text-symbol underline decoration-symbol/30 underline-offset-2 hover:decoration-symbol">
+        <a href="/related/" className="cursor-pointer text-sm text-symbol underline decoration-symbol/30 underline-offset-2 hover:decoration-symbol">
           {RELATED_PAGE.backToHub[lang]}
         </a>
       </p>

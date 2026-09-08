@@ -50,19 +50,19 @@ export function Nav() {
             </a>
           ))}
           <a
-            href="/cases"
+            href="/cases/"
             className="cursor-pointer rounded-md px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:bg-panel hover:text-fg"
           >
             {c.nav.cases}
           </a>
           <a
-            href="/origins"
+            href="/origins/"
             className="cursor-pointer rounded-md px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:bg-panel hover:text-fg"
           >
             {c.nav.origins}
           </a>
           <a
-            href="/related"
+            href="/related/"
             className="cursor-pointer rounded-md px-3 py-1.5 text-sm text-muted transition-colors duration-200 hover:bg-panel hover:text-fg"
           >
             {c.nav.related}

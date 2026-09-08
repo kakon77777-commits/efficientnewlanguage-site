@@ -15,6 +15,7 @@ import { transpileEmlToPython } from '@eml/transpiler-python';
 import { roundTripFromEml } from '@eml/transpiler-eml';
 import { interpret } from '@eml/interp';
 import { resolveEmlRepo } from './lib/eml-repo.mjs';
+import { CASES_PAGE_SIZE, casesPageHref, caseHref } from '../src/routes';
 
 const EML_REPO = resolveEmlRepo();
 const EXAMPLES_DIR = join(EML_REPO, 'examples');
@@ -223,10 +224,34 @@ function regenerateManifestAndSitemap(): void {
   console.log(`[generate-corpus] manifest.json examples array: ${examples.length} entries`);
 
   const sitemap = readFileSync(SITEMAP_PATH, 'utf8');
-  const nonExampleLines = sitemap
+
+  // What the sitemap advertises is the HTML surface, not the machine layer.
+  //
+  // Until 2026-09-08 this file listed all 762 `/ai/examples/*.eml.md` URLs.
+  // They are served as `text/markdown`, which is not a document type Google
+  // indexes: Search Console had crawled 23 of them successfully over three
+  // weeks and indexed none, reporting "indexing allowed? N/A" for pages it had
+  // fetched fine. So 97% of the sitemap was asking a search engine to index
+  // files it will never index, and the sitemap's job — telling a crawler which
+  // pages exist — was being done for pages that do not exist as pages.
+  //
+  // The corpus is now published at /cases/<id>/ as real HTML, one page per
+  // case, each linking to its own `.eml.md`. The markdown files are unchanged,
+  // still served, still listed in /ai/manifest.json and reachable from every
+  // case page: they remain the agent layer, they are just no longer offered to
+  // Google as web pages.
+  //
+  // Every generated line is stripped before regenerating, so re-running this
+  // script is idempotent rather than cumulative.
+  const staticLines = sitemap
     .split('\n')
-    .filter((line) => !line.includes('/ai/examples/'));
-  const closeTagIdx = nonExampleLines.findIndex((l) => l.trim() === '</urlset>');
+    .filter((line) => !line.includes('/ai/examples/') && !/<loc>[^<]*\/cases\//.test(line));
+  const closeTagIdx = staticLines.findIndex((l) => l.trim() === '</urlset>');
+  if (closeTagIdx < 0) throw new Error('[generate-corpus] sitemap.xml has no </urlset>');
+
+  const url = (loc: string, lastmod: string, changefreq: string, priority: string) =>
+    `  <url><loc>https://efficientnewlanguage.org${loc}</loc><lastmod>${lastmod}</lastmod>` +
+    `<changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
 
   // `lastmod` is the page's OWN `updated:` stamp, not the clock.
   //
@@ -243,13 +268,30 @@ function regenerateManifestAndSitemap(): void {
   // Reading it from the page rather than preserving the old sitemap value is
   // the point: there is then ONE date, in one place, and the sitemap is a
   // projection of it instead of an independent claim that can drift.
+  const today = new Date().toISOString().slice(0, 10);
   let unstamped = 0;
-  const exampleLines = examples.map((e) => {
+  const stampFor = (e: { path: string }): string => {
     const lastmod = lastmodByPath.get(e.path);
     if (!lastmod) unstamped += 1;
-    const stamp = lastmod ?? new Date().toISOString().slice(0, 10);
-    return `  <url><loc>https://efficientnewlanguage.org${e.path}</loc><lastmod>${stamp}</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>`;
-  });
+    return lastmod ?? today;
+  };
+
+  const caseLines = examples.map((e) => url(caseHref(e.id), stampFor(e), 'monthly', '0.5'));
+
+  // The index and its pages. Their lastmod is the newest case they can reach,
+  // which is true by construction rather than asserted: page 1 changes whenever
+  // any case is added, and page N changes when its own slice does.
+  const newest = (slice: { path: string }[]): string =>
+    slice.map((e) => lastmodByPath.get(e.path) ?? today).sort().at(-1) ?? today;
+  const totalPages = Math.max(1, Math.ceil(examples.length / CASES_PAGE_SIZE));
+  const indexLines: string[] = [];
+  for (let n = 1; n <= totalPages; n += 1) {
+    const slice = examples.slice((n - 1) * CASES_PAGE_SIZE, n * CASES_PAGE_SIZE);
+    indexLines.push(
+      url(casesPageHref(n), n === 1 ? newest(examples) : newest(slice), n === 1 ? 'daily' : 'weekly', n === 1 ? '0.9' : '0.3'),
+    );
+  }
+
   // The fallback above is the failure this comment exists for: a page whose
   // frontmatter stopped parsing would silently go back to being stamped with
   // today, which is the exact bug being fixed and would look like nothing.
@@ -259,13 +301,18 @@ function regenerateManifestAndSitemap(): void {
         `\`updated:\` and fell back to today's date — the sitemap is only as good as that stamp`,
     );
   }
+
   const newSitemap = [
-    ...nonExampleLines.slice(0, closeTagIdx),
-    ...exampleLines,
-    ...nonExampleLines.slice(closeTagIdx),
+    ...staticLines.slice(0, closeTagIdx),
+    ...indexLines,
+    ...caseLines,
+    ...staticLines.slice(closeTagIdx),
   ].join('\n');
   writeFileSync(SITEMAP_PATH, newSitemap);
-  console.log(`[generate-corpus] sitemap.xml: ${examples.length} example entries`);
+  console.log(
+    `[generate-corpus] sitemap.xml: ${caseLines.length} case page(s) + ${indexLines.length} index page(s)` +
+      ` + ${staticLines.length - 3} other URL(s)`,
+  );
 }
 
 generateCases();

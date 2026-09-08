@@ -39,7 +39,7 @@ export default function RelatedProject({ slug }: { slug: string }) {
       <main>
         <Section className="pt-32 pb-4 sm:pt-36">
           <nav aria-label="breadcrumb" className="mb-6 flex items-center gap-1.5 font-mono text-xs text-faint">
-            <a href="/related" className="cursor-pointer transition-colors duration-200 hover:text-fg">
+            <a href="/related/" className="cursor-pointer transition-colors duration-200 hover:text-fg">
               {RELATED_PAGE.kicker[lang]}
             </a>
             <ChevronRight size={13} />

@@ -142,6 +142,158 @@ if (relatedSlugs.length === 0) {
   }
 }
 
+// 10. The case corpus is crawlable, and every page says which page it is.
+//
+// Written 2026-09-08 against a measured failure, not a hypothetical one. Search
+// Console had 13 URLs indexed and 41 not, out of 784 in the sitemap, because:
+//   - /cases paginated with <button onClick> + history.replaceState, so pages
+//     2..64 had no URL a crawler could follow and 750 of 762 cases had no
+//     inbound link anywhere on the site;
+//   - every prerendered page carried the template's head verbatim, so all of
+//     them declared <link rel="canonical" href="…org/"> — each page telling
+//     Google it was the homepage — under one shared <title>.
+// Both are the kind of defect that leaves the site looking completely fine.
+{
+  const manifestFile = join(dist, 'ai/manifest.json');
+  const cases = existsSync(manifestFile)
+    ? JSON.parse(readFileSync(manifestFile, 'utf8')).examples ?? []
+    : [];
+  const PAGE_SIZE = 12; // must match src/pages/Cases.tsx's PAGE_SIZE
+  const totalPages = Math.max(1, Math.ceil(cases.length / PAGE_SIZE));
+
+  // 10a. One static document per index page, and one per case.
+  const indexPages = ['cases/index.html'];
+  for (let n = 2; n <= totalPages; n += 1) indexPages.push(`cases/page/${n}/index.html`);
+  let missingIndex = 0;
+  for (const rel of indexPages) {
+    if (!existsSync(join(dist, rel))) missingIndex += 1;
+  }
+  if (missingIndex > 0) fail(`${missingIndex} of ${indexPages.length} case-index page(s) not prerendered`);
+
+  let missingCase = 0;
+  let unrendered = 0;
+  for (const c of cases) {
+    const p = join(dist, `cases/${c.id}/index.html`);
+    if (!existsSync(p)) {
+      missingCase += 1;
+      continue;
+    }
+    if (!readFileSync(p, 'utf8').includes('eml-case-data')) unrendered += 1;
+  }
+  if (missingCase > 0) fail(`${missingCase} of ${cases.length} case page(s) missing under dist/cases/<id>/`);
+  if (unrendered > 0) fail(`${unrendered} case page(s) exist but were not prerendered (no eml-case-data island)`);
+
+  // 10b. Reachability, walked rather than summed.
+  //
+  // The property that matters is not "these links exist somewhere" but "a
+  // crawler starting at /cases/ arrives at all of them". Those differ: an
+  // earlier version of this check unioned the links across all 64 index pages,
+  // and a mutation that stripped every pagination link from page 1 alone still
+  // passed, because pages 2..64 still linked to each other and nothing noticed
+  // that no one could get to them. So this walks the graph from the one entry
+  // point the site actually links to, and only counts what the walk reaches.
+  const readIndex = (n) => {
+    const rel = n === 1 ? 'cases/index.html' : `cases/page/${n}/index.html`;
+    const p = join(dist, rel);
+    return existsSync(p) ? readFileSync(p, 'utf8') : null;
+  };
+
+  const linked = new Set();
+  const reached = new Set([1]);
+  const queue = [1];
+  let unslashed = 0;
+  while (queue.length > 0) {
+    const n = queue.shift();
+    const html = readIndex(n);
+    if (html === null) continue;
+    for (const m of html.matchAll(/href="\/cases\/([^"/]+)\/"/g)) linked.add(m[1]);
+    // The trailing slash is load-bearing: Cloudflare Pages 308-redirects
+    // /cases/<id> to /cases/<id>/, so an unslashed link is a redirect on every
+    // navigation and an unslashed sitemap entry lands in Search Console's
+    // "page with redirect" bucket.
+    unslashed += [...html.matchAll(/href="\/cases\/[^"]*[^/"]"/g)].length;
+    for (const m of html.matchAll(/href="\/cases\/page\/(\d+)\/"/g)) {
+      const next = Number(m[1]);
+      if (!reached.has(next)) {
+        reached.add(next);
+        queue.push(next);
+      }
+    }
+  }
+
+  if (reached.size !== totalPages) {
+    const missing = [];
+    for (let n = 1; n <= totalPages; n += 1) if (!reached.has(n)) missing.push(n);
+    fail(
+      `${missing.length} of ${totalPages} index page(s) unreachable by following links from /cases/ ` +
+        `(first: ${missing.slice(0, 8).join(', ')}) — pagination must be <a href>, not a click handler`,
+    );
+  }
+  if (linked.size !== cases.length) {
+    fail(
+      `walking /cases/ reaches ${linked.size} of ${cases.length} cases — every case must be linked ` +
+        'from the index page it belongs to',
+    );
+  }
+  if (unslashed > 0) {
+    fail(`${unslashed} case link(s) written without a trailing slash — each one is a 308 redirect`);
+  }
+  console.log(
+    `[verify-dist] case corpus: ${cases.length} case page(s), ${indexPages.length} index page(s); ` +
+      `walking from /cases/ reaches ${reached.size} index page(s) and ${linked.size} case(s)`,
+  );
+}
+
+// 11. Every prerendered page describes ITSELF: its own canonical, its own
+// title. Uniqueness is the check because the failure mode was sameness — 833
+// pages sharing one canonical and one title looks identical to a working build
+// from every other angle.
+{
+  const htmlFiles = [];
+  const walk = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const p = join(dir, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.name === 'index.html') htmlFiles.push(p);
+    }
+  };
+  walk(dist);
+
+  const titles = new Map();
+  const canonicals = new Map();
+  let noCanonical = 0;
+  for (const p of htmlFiles) {
+    const html = readFileSync(p, 'utf8');
+    const t = /<title>([\s\S]*?)<\/title>/.exec(html);
+    const c = /<link rel="canonical" href="([^"]*)"/.exec(html);
+    if (!c) {
+      noCanonical += 1;
+      continue;
+    }
+    titles.set(t ? t[1] : '(none)', (titles.get(t ? t[1] : '(none)') ?? 0) + 1);
+    canonicals.set(c[1], (canonicals.get(c[1]) ?? 0) + 1);
+  }
+  if (noCanonical > 0) fail(`${noCanonical} prerendered page(s) have no <link rel="canonical">`);
+
+  const dupTitles = [...titles].filter(([, n]) => n > 1);
+  const dupCanonicals = [...canonicals].filter(([, n]) => n > 1);
+  if (dupCanonicals.length > 0) {
+    const [url, n] = dupCanonicals.sort((a, b) => b[1] - a[1])[0];
+    fail(
+      `${dupCanonicals.length} canonical URL(s) claimed by more than one page — worst: ${n} pages ` +
+        `all declaring "${url}". A page whose canonical is not its own URL asks to be dropped.`,
+    );
+  }
+  if (dupTitles.length > 0) {
+    const [title, n] = dupTitles.sort((a, b) => b[1] - a[1])[0];
+    fail(`${dupTitles.length} duplicated <title>(s) — worst: ${n} pages titled "${title}"`);
+  }
+  console.log(
+    `[verify-dist] heads: ${htmlFiles.length} page(s), ${titles.size} distinct title(s), ` +
+      `${canonicals.size} distinct canonical(s)`,
+  );
+}
+
 if (failures.length > 0) {
   console.error(`[verify-dist] FAILED (${failures.length}):`);
   for (const f of failures) console.error(`  - ${f}`);
