@@ -4593,6 +4593,96 @@
       "path": "/ai/examples/746-the-sla-counted-responses-and-the-answers-were-wrong.eml.md",
       "title": "The sla counted responses and the answers were wrong",
       "description": "`the_sla_counted_responses_and_the_answers_were_wrong.eml` - Availability is measured from twelve regions every thirty seconds and from the real error rate, and credits were paid the two times it was missed. What counts as available is computed below."
+    },
+    {
+      "id": "747-each-region-had-headroom-and-the-failover-chose-one",
+      "path": "/ai/examples/747-each-region-had-headroom-and-the-failover-chose-one.eml.md",
+      "title": "Each region had headroom and the failover chose one",
+      "description": "`each_region_had_headroom_and_the_failover_chose_one.eml` - Every region runs at sixty percent and the capacity plan requires forty percent headroom in each, checked weekly. What a failover asks for is computed below."
+    },
+    {
+      "id": "748-the-accuracy-was-measured-where-the-model-was-confident",
+      "path": "/ai/examples/748-the-accuracy-was-measured-where-the-model-was-confident.eml.md",
+      "title": "The accuracy was measured where the model was confident",
+      "description": "`the_accuracy_was_measured_where_the_model_was_confident.eml` - The classifier abstains below a confidence threshold rather than guessing, and on what it does answer it is right 99.4 percent of the time. What that rate is over is computed below."
+    },
+    {
+      "id": "749-the-approval-was-required-above-a-diff-size",
+      "path": "/ai/examples/749-the-approval-was-required-above-a-diff-size.eml.md",
+      "title": "The approval was required above a diff size",
+      "description": "`the_approval_was_required_above_a_diff_size.eml` - A change above two hundred lines needs a second approver from another team, enforced in the pipeline, and that review has found twelve real problems. Which changes it sees is computed below."
+    },
+    {
+      "id": "750-the-backlog-was-counted-in-items-and-the-items-grew",
+      "path": "/ai/examples/750-the-backlog-was-counted-in-items-and-the-items-grew.eml.md",
+      "title": "The backlog was counted in items and the items grew",
+      "description": "`the_backlog_was_counted_in_items_and_the_items_grew.eml` - The backlog is tracked as a count of unprocessed items, charted daily, and it has been flat for a year. What a flat count means is computed below."
+    },
+    {
+      "id": "751-the-capacity-was-sold-in-seats-and-the-load-arrived-in-sessions",
+      "path": "/ai/examples/751-the-capacity-was-sold-in-seats-and-the-load-arrived-in-sessions.eml.md",
+      "title": "The capacity was sold in seats and the load arrived in sessions",
+      "description": "`the_capacity_was_sold_in_seats_and_the_load_arrived_in_sessions.eml` - Capacity is planned from seats sold, the model was fitted against two years of measured load, and it has predicted the last six months within four percent. What a seat is a proxy for is computed below."
+    },
+    {
+      "id": "752-the-changelog-listed-the-merges-and-a-revert-is-a-merge",
+      "path": "/ai/examples/752-the-changelog-listed-the-merges-and-a-revert-is-a-merge.eml.md",
+      "title": "The changelog listed the merges and a revert is a merge",
+      "description": "`the_changelog_listed_the_merges_and_a_revert_is_a_merge.eml` - The changelog is generated from merged pull requests rather than written by hand, so nothing that shipped is missing from it. What \"shipped\" means to the generator is computed below."
+    },
+    {
+      "id": "753-the-dependencies-were-pinned-and-the-transitive-set-was-resolved",
+      "path": "/ai/examples/753-the-dependencies-were-pinned-and-the-transitive-set-was-resolved.eml.md",
+      "title": "The dependencies were pinned and the transitive set was resolved",
+      "description": "`the_dependencies_were_pinned_and_the_transitive_set_was_resolved.eml` - Every direct dependency is pinned to an exact version, reviewed on change, and the build fails on a range. How much of the tree that fixes is computed below."
+    },
+    {
+      "id": "754-the-feedback-widget-was-on-the-page-that-helped",
+      "path": "/ai/examples/754-the-feedback-widget-was-on-the-page-that-helped.eml.md",
+      "title": "The feedback widget was on the page that helped",
+      "description": "`the_feedback_widget_was_on_the_page_that_helped.eml` - Every help article ends with \"was this useful?\", the responses are stored with the article and the query that led there, and 94 percent say yes. Who answers is computed below."
+    },
+    {
+      "id": "755-the-integrity-check-read-the-backups-own-manifest",
+      "path": "/ai/examples/755-the-integrity-check-read-the-backups-own-manifest.eml.md",
+      "title": "The integrity check read the backups own manifest",
+      "description": "`the_integrity_check_read_the_backups_own_manifest.eml` - Every backup is verified rather than assumed: each file's checksum is recomputed after upload and the count is compared against the manifest, which caught three truncated uploads. What the manifest is a list of is computed below."
+    },
+    {
+      "id": "756-the-key-was-rotated-and-the-old-key-was-still-required",
+      "path": "/ai/examples/756-the-key-was-rotated-and-the-old-key-was-still-required.eml.md",
+      "title": "The key was rotated and the old key was still required",
+      "description": "`the_key_was_rotated_and_the_old_key_was_still_required.eml` - Encryption keys rotate every ninety days, automatically, verified by a canary decrypt after each rotation, with no failed decrypts in eight rotations. What rotation changes is computed below."
+    },
+    {
+      "id": "757-the-migration-ran-on-the-primary-and-the-replica-had-its-own-queue",
+      "path": "/ai/examples/757-the-migration-ran-on-the-primary-and-the-replica-had-its-own-queue.eml.md",
+      "title": "The migration ran on the primary and the replica had its own queue",
+      "description": "`the_migration_ran_on_the_primary_and_the_replica_had_its_own_queue.eml` - Schema changes use an online tool that never takes a table lock, and three hundred and forty have run with no downtime. Where \"no downtime\" was measured is computed below."
+    },
+    {
+      "id": "758-the-probe-ran-inside-the-container-and-the-sidecar-was-the-dependency",
+      "path": "/ai/examples/758-the-probe-ran-inside-the-container-and-the-sidecar-was-the-dependency.eml.md",
+      "title": "The probe ran inside the container and the sidecar was the dependency",
+      "description": "`the_probe_ran_inside_the_container_and_the_sidecar_was_the_dependency.eml` - The liveness probe executes inside the container, exercises a real code path rather than a static handler, and has restarted forty-one genuinely wedged processes. What it can observe is computed below."
+    },
+    {
+      "id": "759-the-queue-age-was-measured-on-what-was-still-queued",
+      "path": "/ai/examples/759-the-queue-age-was-measured-on-what-was-still-queued.eml.md",
+      "title": "The queue age was measured on what was still queued",
+      "description": "`the_queue_age_was_measured_on_what_was_still_queued.eml` - The queue's oldest message is sampled every ten seconds and pages above five minutes, and it has caught eleven real stalls. What it can report is computed below."
+    },
+    {
+      "id": "760-the-quota-was-enforced-at-the-gateway-and-the-caller-was-internal",
+      "path": "/ai/examples/760-the-quota-was-enforced-at-the-gateway-and-the-caller-was-internal.eml.md",
+      "title": "The quota was enforced at the gateway and the caller was internal",
+      "description": "`the_quota_was_enforced_at_the_gateway_and_the_caller_was_internal.eml` - Per-tenant quotas are enforced at the gateway with no bypass header and no exempt caller, and they refuse nine thousand four hundred requests a day. Which requests reach the gateway is computed below."
+    },
+    {
+      "id": "761-the-rotation-covered-the-services-in-the-registry",
+      "path": "/ai/examples/761-the-rotation-covered-the-services-in-the-registry.eml.md",
+      "title": "The rotation covered the services in the registry",
+      "description": "`the_rotation_covered_the_services_in_the_registry.eml` - Every service in the registry has a named on-call rotation with a tested escalation path, and no page has gone unanswered in fourteen months. Which services are in the registry is computed below."
     }
   ],
   "tools": {
