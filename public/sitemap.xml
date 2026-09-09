@@ -22,7 +22,7 @@
   <url><loc>https://efficientnewlanguage.org/ai/tools/tools.md</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/tools/tool-catalog.json</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/tools/openapi.json</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://efficientnewlanguage.org/cases/</loc><lastmod>2026-09-08</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/</loc><lastmod>2026-09-09</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/2/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/3/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/4/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
@@ -85,7 +85,8 @@
   <url><loc>https://efficientnewlanguage.org/cases/page/61/</loc><lastmod>2026-09-06</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/62/</loc><lastmod>2026-09-07</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/63/</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://efficientnewlanguage.org/cases/page/64/</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/page/64/</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/page/65/</loc><lastmod>2026-09-09</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/000-arithmetic/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/001-summation/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/002-conditional/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
@@ -848,4 +849,19 @@
   <url><loc>https://efficientnewlanguage.org/cases/759-the-queue-age-was-measured-on-what-was-still-queued/</loc><lastmod>2026-09-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/760-the-quota-was-enforced-at-the-gateway-and-the-caller-was-internal/</loc><lastmod>2026-09-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/761-the-rotation-covered-the-services-in-the-registry/</loc><lastmod>2026-09-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/762-the-alert-was-tested-by-firing-it-and-the-delivery-was-not/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/763-the-books-balanced-and-the-difference-went-to-suspense/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/764-the-count-was-of-users-and-the-identity-was-the-device/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/765-the-drill-was-run-on-a-tuesday-afternoon/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/766-the-envelope-was-validated-and-the-payload-was-a-string/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/767-the-freshness-was-read-from-the-timestamp-and-the-copy-preserved-it/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/768-the-integration-was-tested-against-the-vendor-sandbox/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/769-the-migration-was-complete-over-the-rows-that-could-be-migrated/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/770-the-on-time-rate-was-over-the-parcels-that-arrived/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/771-the-renewal-was-automated-and-the-automation-had-its-own-credential/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/772-the-review-approved-the-diff-and-the-merge-used-a-different-base/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/773-the-score-came-from-the-surveys-sent-on-resolution/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/774-the-spend-stayed-under-budget-and-the-request-was-refused-at-the-door/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/775-the-template-was-reviewed-and-the-value-was-interpolated-after/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/776-the-upgrade-was-rehearsed-from-the-version-nobody-is-on/</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>

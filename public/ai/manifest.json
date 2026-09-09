@@ -4683,6 +4683,96 @@
       "path": "/ai/examples/761-the-rotation-covered-the-services-in-the-registry.eml.md",
       "title": "The rotation covered the services in the registry",
       "description": "`the_rotation_covered_the_services_in_the_registry.eml` - Every service in the registry has a named on-call rotation with a tested escalation path, and no page has gone unanswered in fourteen months. Which services are in the registry is computed below."
+    },
+    {
+      "id": "762-the-alert-was-tested-by-firing-it-and-the-delivery-was-not",
+      "path": "/ai/examples/762-the-alert-was-tested-by-firing-it-and-the-delivery-was-not.eml.md",
+      "title": "The alert was tested by firing it and the delivery was not",
+      "description": "`the_alert_was_tested_by_firing_it_and_the_delivery_was_not.eml` - Alert rules are tested rather than trusted: a synthetic metric is injected, the rule is expected to fire, and a rule that does not fire fails the build. Where the test stops is computed below."
+    },
+    {
+      "id": "763-the-books-balanced-and-the-difference-went-to-suspense",
+      "path": "/ai/examples/763-the-books-balanced-and-the-difference-went-to-suspense.eml.md",
+      "title": "The books balanced and the difference went to suspense",
+      "description": "`the_books_balanced_and_the_difference_went_to_suspense.eml` - The daily reconciliation between the processor's settlement file and the internal ledger has balanced to the cent every day for four years. What balancing consists of is computed below."
+    },
+    {
+      "id": "764-the-count-was-of-users-and-the-identity-was-the-device",
+      "path": "/ai/examples/764-the-count-was-of-users-and-the-identity-was-the-device.eml.md",
+      "title": "The count was of users and the identity was the device",
+      "description": "`the_count_was_of_users_and_the_identity_was_the_device.eml` - The daily active user figure is deduplicated, bot-filtered, timezone-corrected and reconciled against billing every month, and it has been computed the same way for thirty-four months. What it counts one of is computed below."
+    },
+    {
+      "id": "765-the-drill-was-run-on-a-tuesday-afternoon",
+      "path": "/ai/examples/765-the-drill-was-run-on-a-tuesday-afternoon.eml.md",
+      "title": "The drill was run on a tuesday afternoon",
+      "description": "`the_drill_was_run_on_a_tuesday_afternoon.eml` - The regional failover is drilled every quarter with real traffic, timed end to end, and the recovery time has been under half an hour every time. When the drills happen is computed below."
+    },
+    {
+      "id": "766-the-envelope-was-validated-and-the-payload-was-a-string",
+      "path": "/ai/examples/766-the-envelope-was-validated-and-the-payload-was-a-string.eml.md",
+      "title": "The envelope was validated and the payload was a string",
+      "description": "`the_envelope_was_validated_and_the_payload_was_a_string.eml` - Every message on the event bus is validated against a registered schema before the broker will accept it, and the broker rejects what fails. What the schema describes is computed below."
+    },
+    {
+      "id": "767-the-freshness-was-read-from-the-timestamp-and-the-copy-preserved-it",
+      "path": "/ai/examples/767-the-freshness-was-read-from-the-timestamp-and-the-copy-preserved-it.eml.md",
+      "title": "The freshness was read from the timestamp and the copy preserved it",
+      "description": "`the_freshness_was_read_from_the_timestamp_and_the_copy_preserved_it.eml` - Every feed in the data lake is watched for staleness against a six-hour SLA, the check runs every five minutes, and in twenty months it has caught thirty-one real outages. What the check reads is computed below."
+    },
+    {
+      "id": "768-the-integration-was-tested-against-the-vendor-sandbox",
+      "path": "/ai/examples/768-the-integration-was-tested-against-the-vendor-sandbox.eml.md",
+      "title": "The integration was tested against the vendor sandbox",
+      "description": "`the_integration_was_tested_against_the_vendor_sandbox.eml` - The payment integration has three hundred and forty tests that run against the vendor's sandbox on every commit, and they cover the vendor's documented error codes rather than our own wrapper. Which counterparty answers them is computed below."
+    },
+    {
+      "id": "769-the-migration-was-complete-over-the-rows-that-could-be-migrated",
+      "path": "/ai/examples/769-the-migration-was-complete-over-the-rows-that-could-be-migrated.eml.md",
+      "title": "The migration was complete over the rows that could be migrated",
+      "description": "`the_migration_was_complete_over_the_rows_that_could_be_migrated.eml` - The migration reported complete after eleven months, and the work behind that report was done properly. What complete was measured against is computed below."
+    },
+    {
+      "id": "770-the-on-time-rate-was-over-the-parcels-that-arrived",
+      "path": "/ai/examples/770-the-on-time-rate-was-over-the-parcels-that-arrived.eml.md",
+      "title": "The on time rate was over the parcels that arrived",
+      "description": "`the_on_time_rate_was_over_the_parcels_that_arrived.eml` - On-time delivery has been measured the same way for five years, from a scan taken at the customer's door, against a promise the customers themselves agreed. What a delivery is is computed below."
+    },
+    {
+      "id": "771-the-renewal-was-automated-and-the-automation-had-its-own-credential",
+      "path": "/ai/examples/771-the-renewal-was-automated-and-the-automation-had-its-own-credential.eml.md",
+      "title": "The renewal was automated and the automation had its own credential",
+      "description": "`the_renewal_was_automated_and_the_automation_had_its_own_credential.eml` - Certificate renewal is fully automated across two thousand one hundred certificates, runs thirty days before expiry, and has gone four years without an expiry incident. What the automation needs in order to run is computed below."
+    },
+    {
+      "id": "772-the-review-approved-the-diff-and-the-merge-used-a-different-base",
+      "path": "/ai/examples/772-the-review-approved-the-diff-and-the-merge-used-a-different-base.eml.md",
+      "title": "The review approved the diff and the merge used a different base",
+      "description": "`the_review_approved_the_diff_and_the_merge_used_a_different_base.eml` - Nothing reaches the payments service without two approvals, a green build and somebody other than the author pressing merge, and the policy has held for forty months. What the approval was given against is computed below."
+    },
+    {
+      "id": "773-the-score-came-from-the-surveys-sent-on-resolution",
+      "path": "/ai/examples/773-the-score-came-from-the-surveys-sent-on-resolution.eml.md",
+      "title": "The score came from the surveys sent on resolution",
+      "description": "`the_score_came_from_the_surveys_sent_on_resolution.eml` - The support satisfaction score has sat at 4.72 out of 5 for three years, and the survey behind it is carefully run. When it is sent is computed below."
+    },
+    {
+      "id": "774-the-spend-stayed-under-budget-and-the-request-was-refused-at-the-door",
+      "path": "/ai/examples/774-the-spend-stayed-under-budget-and-the-request-was-refused-at-the-door.eml.md",
+      "title": "The spend stayed under budget and the request was refused at the door",
+      "description": "`the_spend_stayed_under_budget_and_the_request_was_refused_at_the_door.eml` - The research cluster has not exceeded its monthly budget once in three years, and the control that holds it there is a real one. How it holds is computed below."
+    },
+    {
+      "id": "775-the-template-was-reviewed-and-the-value-was-interpolated-after",
+      "path": "/ai/examples/775-the-template-was-reviewed-and-the-value-was-interpolated-after.eml.md",
+      "title": "The template was reviewed and the value was interpolated after",
+      "description": "`the_template_was_reviewed_and_the_value_was_interpolated_after.eml` - No notification template reaches production without a security review, the review has run for twenty-six months, and it has caught and fixed seven injections. What the review reads is computed below."
+    },
+    {
+      "id": "776-the-upgrade-was-rehearsed-from-the-version-nobody-is-on",
+      "path": "/ai/examples/776-the-upgrade-was-rehearsed-from-the-version-nobody-is-on.eml.md",
+      "title": "The upgrade was rehearsed from the version nobody is on",
+      "description": "`the_upgrade_was_rehearsed_from_the_version_nobody_is_on.eml` - The database upgrade was rehearsed twelve times on restored copies of production, timed to the minute, with the rollback rehearsed alongside it. Which upgrade was rehearsed is computed below."
     }
   ],
   "tools": {
