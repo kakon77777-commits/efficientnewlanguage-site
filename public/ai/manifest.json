@@ -4773,6 +4773,96 @@
       "path": "/ai/examples/776-the-upgrade-was-rehearsed-from-the-version-nobody-is-on.eml.md",
       "title": "The upgrade was rehearsed from the version nobody is on",
       "description": "`the_upgrade_was_rehearsed_from_the_version_nobody_is_on.eml` - The database upgrade was rehearsed twelve times on restored copies of production, timed to the minute, with the rollback rehearsed alongside it. Which upgrade was rehearsed is computed below."
+    },
+    {
+      "id": "777-the-access-review-asked-the-person-who-granted-it",
+      "path": "/ai/examples/777-the-access-review-asked-the-person-who-granted-it.eml.md",
+      "title": "The access review asked the person who granted it",
+      "description": "`the_access_review_asked_the_person_who_granted_it.eml` - Every entitlement is re-approved by its owner every quarter, eleven quarters running, and an entitlement nobody answers for is revoked automatically. Who the owner is is computed below."
+    },
+    {
+      "id": "778-the-alert-count-fell-and-the-thresholds-were-raised",
+      "path": "/ai/examples/778-the-alert-count-fell-and-the-thresholds-were-raised.eml.md",
+      "title": "The alert count fell and the thresholds were raised",
+      "description": "`the_alert_count_fell_and_the_thresholds_were_raised.eml` - The noise programme cut alerts from four thousand one hundred a week to six hundred and twenty, and every change was reviewed. Which changes they were is computed below."
+    },
+    {
+      "id": "779-the-audit-sampled-by-row-and-the-money-was-in-a-few",
+      "path": "/ai/examples/779-the-audit-sampled-by-row-and-the-money-was-in-a-few.eml.md",
+      "title": "The audit sampled by row and the money was in a few",
+      "description": "`the_audit_sampled_by_row_and_the_money_was_in_a_few.eml` - The expense audit draws a genuine random sample every quarter, and the sampling is the part it gets right. What the sample is a sample of is computed below."
+    },
+    {
+      "id": "780-the-availability-was-four-nines-and-one-tenant-had-none",
+      "path": "/ai/examples/780-the-availability-was-four-nines-and-one-tenant-had-none.eml.md",
+      "title": "The availability was four nines and one tenant had none",
+      "description": "`the_availability_was_four_nines_and_one_tenant_had_none.eml` - Availability has been above its target for twenty-two months, measured from real requests rather than from a synthetic probe. What the number is an average over is computed below."
+    },
+    {
+      "id": "781-the-capacity-was-sufficient-and-one-hour-a-week-was-not",
+      "path": "/ai/examples/781-the-capacity-was-sufficient-and-one-hour-a-week-was-not.eml.md",
+      "title": "The capacity was sufficient and one hour a week was not",
+      "description": "`the_capacity_was_sufficient_and_one_hour_a_week_was_not.eml` - Capacity planning has shown comfortable headroom for fourteen months, and the planning is careful. What the headroom is an average over is computed below."
+    },
+    {
+      "id": "782-the-checklist-was-published-and-the-failures-moved-off-it",
+      "path": "/ai/examples/782-the-checklist-was-published-and-the-failures-moved-off-it.eml.md",
+      "title": "The checklist was published and the failures moved off it",
+      "description": "`the_checklist_was_published_and_the_failures_moved_off_it.eml` - The internal audit checklist was published so teams could prepare, and findings per audit fell by three quarters in the two years since. What moved is computed below."
+    },
+    {
+      "id": "783-the-coverage-target-was-met-and-the-assertions-thinned",
+      "path": "/ai/examples/783-the-coverage-target-was-met-and-the-assertions-thinned.eml.md",
+      "title": "The coverage target was met and the assertions thinned",
+      "description": "`the_coverage_target_was_met_and_the_assertions_thinned.eml` - Line coverage on the semantics packages has been above its eighty-five percent target for nine quarters, and the gate that enforces it is real. What rose with it is computed below."
+    },
+    {
+      "id": "784-the-error-budget-was-spent-evenly-and-one-endpoint-ate-it",
+      "path": "/ai/examples/784-the-error-budget-was-spent-evenly-and-one-endpoint-ate-it.eml.md",
+      "title": "The error budget was spent evenly and one endpoint ate it",
+      "description": "`the_error_budget_was_spent_evenly_and_one_endpoint_ate_it.eml` - The service has stayed inside its quarterly error budget for eleven quarters, and the budget is a real constraint rather than a slogan. What it is a budget over is computed below."
+    },
+    {
+      "id": "785-the-first-response-time-was-met-by-an-acknowledgement",
+      "path": "/ai/examples/785-the-first-response-time-was-met-by-an-acknowledgement.eml.md",
+      "title": "The first response time was met by an acknowledgement",
+      "description": "`the_first_response_time_was_met_by_an_acknowledgement.eml` - Every ticket gets a first response within fifteen minutes, and the target has been met every month for fourteen months. What counts as a response is computed below."
+    },
+    {
+      "id": "786-the-intake-form-got-longer-and-the-queue-got-shorter",
+      "path": "/ai/examples/786-the-intake-form-got-longer-and-the-queue-got-shorter.eml.md",
+      "title": "The intake form got longer and the queue got shorter",
+      "description": "`the_intake_form_got_longer_and_the_queue_got_shorter.eml` - The platform team rewrote its request form to capture what it actually needed, and the queue wait fell from twenty-one days to five. What else changed is computed below."
+    },
+    {
+      "id": "787-the-model-reported-its-own-confidence",
+      "path": "/ai/examples/787-the-model-reported-its-own-confidence.eml.md",
+      "title": "The model reported its own confidence",
+      "description": "`the_model_reported_its_own_confidence.eml` - The classifier decides a document only when it is confident, and everything below the threshold goes to a person. Where the confidence comes from is computed below."
+    },
+    {
+      "id": "788-the-provenance-was-signed-by-the-builder",
+      "path": "/ai/examples/788-the-provenance-was-signed-by-the-builder.eml.md",
+      "title": "The provenance was signed by the builder",
+      "description": "`the_provenance_was_signed_by_the_builder.eml` - Nothing deploys without a signed provenance statement naming its source commit, its builder image and every step that ran, and the admission controller refuses anything that does not verify. Who writes the statement is computed below."
+    },
+    {
+      "id": "789-the-questionnaire-was-answered-by-the-vendor",
+      "path": "/ai/examples/789-the-questionnaire-was-answered-by-the-vendor.eml.md",
+      "title": "The questionnaire was answered by the vendor",
+      "description": "`the_questionnaire_was_answered_by_the_vendor.eml` - Every vendor that touches customer data completes a one-hundred-and-eighty-question security review before a contract is signed, and forty-one have been rejected or made to remediate. Who writes the answers is computed below."
+    },
+    {
+      "id": "790-the-refund-rate-was-normal-and-one-cohort-was-all-of-it",
+      "path": "/ai/examples/790-the-refund-rate-was-normal-and-one-cohort-was-all-of-it.eml.md",
+      "title": "The refund rate was normal and one cohort was all of it",
+      "description": "`the_refund_rate_was_normal_and_one_cohort_was_all_of_it.eml` - The refund rate has been at or below its historical level for nineteen months, and it is measured carefully. What it is an average over is computed below."
+    },
+    {
+      "id": "791-the-severity-was-set-by-the-team-that-owed-the-postmortem",
+      "path": "/ai/examples/791-the-severity-was-set-by-the-team-that-owed-the-postmortem.eml.md",
+      "title": "The severity was set by the team that owed the postmortem",
+      "description": "`the_severity_was_set_by_the_team_that_owed_the_postmortem.eml` - Incident severity is written down, exemplified, and cannot be lowered after the fact without a second approver, and it has worked that way for four years. Who assigns it is computed below."
     }
   ],
   "tools": {
