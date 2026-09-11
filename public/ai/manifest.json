@@ -4863,6 +4863,96 @@
       "path": "/ai/examples/791-the-severity-was-set-by-the-team-that-owed-the-postmortem.eml.md",
       "title": "The severity was set by the team that owed the postmortem",
       "description": "`the_severity_was_set_by_the_team_that_owed_the_postmortem.eml` - Incident severity is written down, exemplified, and cannot be lowered after the fact without a second approver, and it has worked that way for four years. Who assigns it is computed below."
+    },
+    {
+      "id": "792-the-average-speed-was-the-mean-of-the-legs",
+      "path": "/ai/examples/792-the-average-speed-was-the-mean-of-the-legs.eml.md",
+      "title": "The average speed was the mean of the legs",
+      "description": "`the_average_speed_was_the_mean_of_the_legs.eml` - The trip was 30 km/h out and 60 km/h back over the same road, and both speeds are measured correctly. What the average over the whole trip is is computed below."
+    },
+    {
+      "id": "793-the-backup-counted-the-files-it-chose",
+      "path": "/ai/examples/793-the-backup-counted-the-files-it-chose.eml.md",
+      "title": "The backup counted the files it chose",
+      "description": "`the_backup_counted_the_files_it_chose.eml` - The nightly backup has reported success with zero errors for the whole quarter, and every count it reports is true. What it never enumerated is computed below."
+    },
+    {
+      "id": "794-the-cursor-was-saved-after-the-effect",
+      "path": "/ai/examples/794-the-cursor-was-saved-after-the-effect.eml.md",
+      "title": "The cursor was saved after the effect",
+      "description": "`the_cursor_was_saved_after_the_effect.eml` - The poller has processed every record in order without skipping one, and the ordering is correct. What the saved cursor and the effect straddle is computed below."
+    },
+    {
+      "id": "795-the-dedup-hash-included-the-timestamp",
+      "path": "/ai/examples/795-the-dedup-hash-included-the-timestamp.eml.md",
+      "title": "The dedup hash included the timestamp",
+      "description": "`the_dedup_hash_included_the_timestamp.eml` - The event store deduplicates by content hash, and the hashing is correct. What the hash is taken over is computed below."
+    },
+    {
+      "id": "796-the-delivery-was-confirmed-by-the-senders-receipt",
+      "path": "/ai/examples/796-the-delivery-was-confirmed-by-the-senders-receipt.eml.md",
+      "title": "The delivery was confirmed by the senders receipt",
+      "description": "`the_delivery_was_confirmed_by_the_senders_receipt.eml` - The delivery rate has been at 100 per hundred for the whole quarter, and every delivery it counts is real. What a delivery is counted at is computed below."
+    },
+    {
+      "id": "797-the-delivery-was-exactly-once-and-the-effect-was-not",
+      "path": "/ai/examples/797-the-delivery-was-exactly-once-and-the-effect-was-not.eml.md",
+      "title": "The delivery was exactly once and the effect was not",
+      "description": "`the_delivery_was_exactly_once_and_the_effect_was_not.eml` - The queue delivers each message to the handler exactly once, and that property holds. Where the handler's effect lands relative to it is computed below."
+    },
+    {
+      "id": "798-the-growth-was-the-mean-of-the-monthly-rates",
+      "path": "/ai/examples/798-the-growth-was-the-mean-of-the-monthly-rates.eml.md",
+      "title": "The growth was the mean of the monthly rates",
+      "description": "`the_growth_was_the_mean_of_the_monthly_rates.eml` - The average monthly growth rate is reported correctly, and each monthly figure is a true rate. What the annual number is a combination of is computed below."
+    },
+    {
+      "id": "799-the-idempotency-key-was-regenerated-on-each-retry",
+      "path": "/ai/examples/799-the-idempotency-key-was-regenerated-on-each-retry.eml.md",
+      "title": "The idempotency key was regenerated on each retry",
+      "description": "`the_idempotency_key_was_regenerated_on_each_retry.eml` - Every charge went through an idempotent endpoint, and the server's dedup is correct. What the key is per is computed below."
+    },
+    {
+      "id": "800-the-lease-expired-and-the-write-had-no-fence",
+      "path": "/ai/examples/800-the-lease-expired-and-the-write-had-no-fence.eml.md",
+      "title": "The lease expired and the write had no fence",
+      "description": "`the_lease_expired_and_the_write_had_no_fence.eml` - The distributed lock hands out a lease, and the lease logic is correct. What the store checks when a write arrives is computed below."
+    },
+    {
+      "id": "801-the-liveness-probe-was-answered-from-cache",
+      "path": "/ai/examples/801-the-liveness-probe-was-answered-from-cache.eml.md",
+      "title": "The liveness probe was answered from cache",
+      "description": "`the_liveness_probe_was_answered_from_cache.eml` - The liveness probe has returned 200 on every check for the whole day, and each 200 is true. What the probe actually exercised is computed below."
+    },
+    {
+      "id": "802-the-payload-was-valid-against-the-schema-it-carried",
+      "path": "/ai/examples/802-the-payload-was-valid-against-the-schema-it-carried.eml.md",
+      "title": "The payload was valid against the schema it carried",
+      "description": "`the_payload_was_valid_against_the_schema_it_carried.eml` - Every message this month validated, and each validation is a true statement. What it was true against is computed below."
+    },
+    {
+      "id": "803-the-percentile-was-averaged-across-the-shards",
+      "path": "/ai/examples/803-the-percentile-was-averaged-across-the-shards.eml.md",
+      "title": "The percentile was averaged across the shards",
+      "description": "`the_percentile_was_averaged_across_the_shards.eml` - The dashboard p99 latency has been under the 300 ms SLO all quarter, and each per-shard number it combines is true. How the one figure is combined is computed below."
+    },
+    {
+      "id": "804-the-total-was-the-sum-of-the-rounded-rows",
+      "path": "/ai/examples/804-the-total-was-the-sum-of-the-rounded-rows.eml.md",
+      "title": "The total was the sum of the rounded rows",
+      "description": "`the_total_was_the_sum_of_the_rounded_rows.eml` - Every line on the invoice run is correct to the cent, and so is each rounding. What the total is a sum of is computed below."
+    },
+    {
+      "id": "805-the-two-discounts-were-added",
+      "path": "/ai/examples/805-the-two-discounts-were-added.eml.md",
+      "title": "The two discounts were added",
+      "description": "`the_two_discounts_were_added.eml` - The promotion is \"20% off, then 30% off\", and each discount is applied correctly. What the two together come to is computed below."
+    },
+    {
+      "id": "806-the-uptime-was-measured-from-inside-the-service",
+      "path": "/ai/examples/806-the-uptime-was-measured-from-inside-the-service.eml.md",
+      "title": "The uptime was measured from inside the service",
+      "description": "`the_uptime_was_measured_from_inside_the_service.eml` - The uptime monitor recorded no failed checks all month, and every check it recorded is true. What it could not record is computed below."
     }
   ],
   "tools": {
