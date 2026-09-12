@@ -4953,6 +4953,96 @@
       "path": "/ai/examples/806-the-uptime-was-measured-from-inside-the-service.eml.md",
       "title": "The uptime was measured from inside the service",
       "description": "`the_uptime_was_measured_from_inside_the_service.eml` - The uptime monitor recorded no failed checks all month, and every check it recorded is true. What it could not record is computed below."
+    },
+    {
+      "id": "807-the-amounts-were-summed-at-each-days-rate",
+      "path": "/ai/examples/807-the-amounts-were-summed-at-each-days-rate.eml.md",
+      "title": "The amounts were summed at each days rate",
+      "description": "`the_amounts_were_summed_at_each_days_rate.eml` - The multi-currency balance is summed correctly to a single dollar figure, and each conversion is right. What rate each line was converted at is computed below."
+    },
+    {
+      "id": "808-the-balance-was-non-negative-at-every-commit",
+      "path": "/ai/examples/808-the-balance-was-non-negative-at-every-commit.eml.md",
+      "title": "The balance was non negative at every commit",
+      "description": "`the_balance_was_non_negative_at_every_commit.eml` - Every committed transaction left the account non-negative, and each check is real. What two concurrent withdrawals each validated against is computed below."
+    },
+    {
+      "id": "809-the-day-boundary-was-the-servers-and-the-user-was-elsewhere",
+      "path": "/ai/examples/809-the-day-boundary-was-the-servers-and-the-user-was-elsewhere.eml.md",
+      "title": "The day boundary was the servers and the user was elsewhere",
+      "description": "`the_day_boundary_was_the_servers_and_the_user_was_elsewhere.eml` - The daily active count is computed correctly every day, and no event is counted twice. What defines the day it lands in is computed below."
+    },
+    {
+      "id": "810-the-eta-was-linear-and-the-work-was-not",
+      "path": "/ai/examples/810-the-eta-was-linear-and-the-work-was-not.eml.md",
+      "title": "The eta was linear and the work was not",
+      "description": "`the_eta_was_linear_and_the_work_was_not.eml` - The job is 90 per hundred done and the ETA says ten minutes, and the arithmetic is right. What the ETA assumes is computed below."
+    },
+    {
+      "id": "811-the-freshness-was-measured-from-publish-not-event",
+      "path": "/ai/examples/811-the-freshness-was-measured-from-publish-not-event.eml.md",
+      "title": "The freshness was measured from publish not event",
+      "description": "`the_freshness_was_measured_from_publish_not_event.eml` - The dashboard data has been under its three-second freshness SLA all quarter, and the number is real. What instant freshness is measured from is computed below."
+    },
+    {
+      "id": "812-the-migration-steps-were-each-reversible-and-the-sequence-was-not",
+      "path": "/ai/examples/812-the-migration-steps-were-each-reversible-and-the-sequence-was-not.eml.md",
+      "title": "The migration steps were each reversible and the sequence was not",
+      "description": "`the_migration_steps_were_each_reversible_and_the_sequence_was_not.eml` - Every step of the migration ships with a down-migration, and each reverse is correct on its own. What happens when the sequence is rolled back is computed below."
+    },
+    {
+      "id": "813-the-model-was-validated-on-the-data-it-was-trained-on",
+      "path": "/ai/examples/813-the-model-was-validated-on-the-data-it-was-trained-on.eml.md",
+      "title": "The model was validated on the data it was trained on",
+      "description": "`the_model_was_validated_on_the_data_it_was_trained_on.eml` - The classifier scored 98 per hundred at validation, and the score is real. What set it was scored on is computed below."
+    },
+    {
+      "id": "814-the-modules-each-compiled-and-the-imports-formed-a-cycle",
+      "path": "/ai/examples/814-the-modules-each-compiled-and-the-imports-formed-a-cycle.eml.md",
+      "title": "The modules each compiled and the imports formed a cycle",
+      "description": "`the_modules_each_compiled_and_the_imports_formed_a_cycle.eml` - Every module in the build compiles on its own, and each compile is real. What the import graph does is computed below."
+    },
+    {
+      "id": "815-the-page-was-assembled-from-fragments-each-fresh",
+      "path": "/ai/examples/815-the-page-was-assembled-from-fragments-each-fresh.eml.md",
+      "title": "The page was assembled from fragments each fresh",
+      "description": "`the_page_was_assembled_from_fragments_each_fresh.eml` - Every fragment on the page was within its cache TTL when it was read, and each freshness check is real. When the fragments were read relative to each other is computed below."
+    },
+    {
+      "id": "816-the-reconciliation-matched-the-ledger-to-its-own-export",
+      "path": "/ai/examples/816-the-reconciliation-matched-the-ledger-to-its-own-export.eml.md",
+      "title": "The reconciliation matched the ledger to its own export",
+      "description": "`the_reconciliation_matched_the_ledger_to_its_own_export.eml` - The daily reconciliation has matched to the cent for the whole quarter, and the match is real. What the two sides of it are is computed below."
+    },
+    {
+      "id": "817-the-shares-were-rounded-and-summed-to-101",
+      "path": "/ai/examples/817-the-shares-were-rounded-and-summed-to-101.eml.md",
+      "title": "The shares were rounded and summed to 101",
+      "description": "`the_shares_were_rounded_and_summed_to_101.eml` - Three shares of a whole are each rounded to a correct whole percent, and each rounding is right. What they sum to is computed below."
+    },
+    {
+      "id": "818-the-target-was-per-calendar-month-and-the-months-were-unequal",
+      "path": "/ai/examples/818-the-target-was-per-calendar-month-and-the-months-were-unequal.eml.md",
+      "title": "The target was per calendar month and the months were unequal",
+      "description": "`the_target_was_per_calendar_month_and_the_months_were_unequal.eml` - The team hit its monthly target in July and missed it in February, and both counts are right. What the target is denominated in is computed below."
+    },
+    {
+      "id": "819-the-three-checks-agreed-and-read-one-feed",
+      "path": "/ai/examples/819-the-three-checks-agreed-and-read-one-feed.eml.md",
+      "title": "The three checks agreed and read one feed",
+      "description": "`the_three_checks_agreed_and_read_one_feed.eml` - Three independent checks confirm the reference price before a trade, and they have agreed on every trade this quarter. What they read is computed below."
+    },
+    {
+      "id": "820-the-translation-was-checked-by-translating-it-back",
+      "path": "/ai/examples/820-the-translation-was-checked-by-translating-it-back.eml.md",
+      "title": "The translation was checked by translating it back",
+      "description": "`the_translation_was_checked_by_translating_it_back.eml` - The translation passed its round-trip check on 97 of every 100 sentences, and the check is real. What does the translating back is computed below."
+    },
+    {
+      "id": "821-the-two-sensors-agreed-and-shared-a-calibration",
+      "path": "/ai/examples/821-the-two-sensors-agreed-and-shared-a-calibration.eml.md",
+      "title": "The two sensors agreed and shared a calibration",
+      "description": "`the_two_sensors_agreed_and_shared_a_calibration.eml` - The two pressure sensors have agreed within one unit all year, and the agreement is real. What they were zeroed against is computed below."
     }
   ],
   "tools": {

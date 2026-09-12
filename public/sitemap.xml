@@ -22,7 +22,7 @@
   <url><loc>https://efficientnewlanguage.org/ai/tools/tools.md</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/tools/tool-catalog.json</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/tools/openapi.json</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://efficientnewlanguage.org/cases/</loc><lastmod>2026-09-11</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/</loc><lastmod>2026-09-12</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/2/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/3/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/4/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
@@ -89,7 +89,8 @@
   <url><loc>https://efficientnewlanguage.org/cases/page/65/</loc><lastmod>2026-09-10</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/66/</loc><lastmod>2026-09-10</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/67/</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://efficientnewlanguage.org/cases/page/68/</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/page/68/</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/page/69/</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/000-arithmetic/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/001-summation/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/002-conditional/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
@@ -897,4 +898,19 @@
   <url><loc>https://efficientnewlanguage.org/cases/804-the-total-was-the-sum-of-the-rounded-rows/</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/805-the-two-discounts-were-added/</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/806-the-uptime-was-measured-from-inside-the-service/</loc><lastmod>2026-09-11</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/807-the-amounts-were-summed-at-each-days-rate/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/808-the-balance-was-non-negative-at-every-commit/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/809-the-day-boundary-was-the-servers-and-the-user-was-elsewhere/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/810-the-eta-was-linear-and-the-work-was-not/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/811-the-freshness-was-measured-from-publish-not-event/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/812-the-migration-steps-were-each-reversible-and-the-sequence-was-not/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/813-the-model-was-validated-on-the-data-it-was-trained-on/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/814-the-modules-each-compiled-and-the-imports-formed-a-cycle/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/815-the-page-was-assembled-from-fragments-each-fresh/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/816-the-reconciliation-matched-the-ledger-to-its-own-export/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/817-the-shares-were-rounded-and-summed-to-101/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/818-the-target-was-per-calendar-month-and-the-months-were-unequal/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/819-the-three-checks-agreed-and-read-one-feed/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/820-the-translation-was-checked-by-translating-it-back/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/821-the-two-sensors-agreed-and-shared-a-calibration/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>
