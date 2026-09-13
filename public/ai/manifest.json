@@ -5043,6 +5043,96 @@
       "path": "/ai/examples/821-the-two-sensors-agreed-and-shared-a-calibration.eml.md",
       "title": "The two sensors agreed and shared a calibration",
       "description": "`the_two_sensors_agreed_and_shared_a_calibration.eml` - The two pressure sensors have agreed within one unit all year, and the agreement is real. What they were zeroed against is computed below."
+    },
+    {
+      "id": "822-the-cache-served-through-the-origin-outage",
+      "path": "/ai/examples/822-the-cache-served-through-the-origin-outage.eml.md",
+      "title": "The cache served through the origin outage",
+      "description": "`the_cache_served_through_the_origin_outage.eml` - The service stayed healthy through the forty minutes under review, and every health signal it read was real. What health is measured on is computed below."
+    },
+    {
+      "id": "823-the-constraint-was-added-going-forward",
+      "path": "/ai/examples/823-the-constraint-was-added-going-forward.eml.md",
+      "title": "The constraint was added going forward",
+      "description": "`the_constraint_was_added_going_forward.eml` - The column has a NOT NULL constraint and every write since it was added has honored it. What the constraint applies to is computed below."
+    },
+    {
+      "id": "824-the-empty-result-was-cached-as-the-answer",
+      "path": "/ai/examples/824-the-empty-result-was-cached-as-the-answer.eml.md",
+      "title": "The empty result was cached as the answer",
+      "description": "`the_empty_result_was_cached_as_the_answer.eml` - The lookup service served every request from cache with a 300-second freshness window, and every value it served was within that window. What a failed fetch stored is computed below."
+    },
+    {
+      "id": "825-the-gauge-was-polled-by-the-minute-and-billed-by-the-second",
+      "path": "/ai/examples/825-the-gauge-was-polled-by-the-minute-and-billed-by-the-second.eml.md",
+      "title": "The gauge was polled by the minute and billed by the second",
+      "description": "`the_gauge_was_polled_by_the_minute_and_billed_by_the_second.eml` - The bandwidth monitor showed a comfortable peak under the alert threshold all month, and every sample it took was real. What resolution the monitor reads at, against what resolution the bill is computed at, is computed below."
+    },
+    {
+      "id": "826-the-heartbeat-stopped-and-the-status-stayed-green",
+      "path": "/ai/examples/826-the-heartbeat-stopped-and-the-status-stayed-green.eml.md",
+      "title": "The heartbeat stopped and the status stayed green",
+      "description": "`the_heartbeat_stopped_and_the_status_stayed_green.eml` - The service status board has shown green for the whole shift, and every status it displayed was the one the service reported. What a stopped report displays as is computed below."
+    },
+    {
+      "id": "827-the-missing-metric-was-read-as-zero",
+      "path": "/ai/examples/827-the-missing-metric-was-read-as-zero.eml.md",
+      "title": "The missing metric was read as zero",
+      "description": "`the_missing_metric_was_read_as_zero.eml` - The load alert has not fired in the sixty minutes under review, and every sample it read was under the threshold. What a sample that was not read counts as is computed below."
+    },
+    {
+      "id": "828-the-queue-was-empty-because-the-producer-died",
+      "path": "/ai/examples/828-the-queue-was-empty-because-the-producer-died.eml.md",
+      "title": "The queue was empty because the producer died",
+      "description": "`the_queue_was_empty_because_the_producer_died.eml` - The consumer autoscaler scaled down to its floor when the queue drained, and its rule read the depth correctly. What a depth of zero means is computed below."
+    },
+    {
+      "id": "829-the-rate-rounded-to-zero",
+      "path": "/ai/examples/829-the-rate-rounded-to-zero.eml.md",
+      "title": "The rate rounded to zero",
+      "description": "`the_rate_rounded_to_zero.eml` - The error rate reads zero per ten thousand and the arithmetic that produced it is exact. What resolution that unit has, against how rare the errors are, is computed below."
+    },
+    {
+      "id": "830-the-second-incident-was-deduplicated-into-the-first",
+      "path": "/ai/examples/830-the-second-incident-was-deduplicated-into-the-first.eml.md",
+      "title": "The second incident was deduplicated into the first",
+      "description": "`the_second_incident_was_deduplicated_into_the_first.eml` - Every distinct alert fingerprint paged on-call this shift, and the dedup that suppressed the rest removed only exact repeats. What a fingerprint groups together is computed below."
+    },
+    {
+      "id": "831-the-signature-was-over-a-set-and-the-order-mattered",
+      "path": "/ai/examples/831-the-signature-was-over-a-set-and-the-order-mattered.eml.md",
+      "title": "The signature was over a set and the order mattered",
+      "description": "`the_signature_was_over_a_set_and_the_order_mattered.eml` - The change detector reported the routing ruleset unchanged across a deploy, and its signature was computed correctly. What the signature is over is computed below."
+    },
+    {
+      "id": "832-the-spike-fit-between-two-samples",
+      "path": "/ai/examples/832-the-spike-fit-between-two-samples.eml.md",
+      "title": "The spike fit between two samples",
+      "description": "`the_spike_fit_between_two_samples.eml` - The utilisation gauge stayed under its ceiling for the whole hour, and every sample it took was real. How often it samples, against how long the spike lasted, is computed below."
+    },
+    {
+      "id": "833-the-two-events-shared-a-timestamp-and-the-tie-decided",
+      "path": "/ai/examples/833-the-two-events-shared-a-timestamp-and-the-tie-decided.eml.md",
+      "title": "The two events shared a timestamp and the tie decided",
+      "description": "`the_two_events_shared_a_timestamp_and_the_tie_decided.eml` - Conflicts are resolved last-write-wins by timestamp, and the timestamps are real and correct. What resolution the timestamp has, against how close the events were, is computed below."
+    },
+    {
+      "id": "834-the-validation-ran-after-the-write",
+      "path": "/ai/examples/834-the-validation-ran-after-the-write.eml.md",
+      "title": "The validation ran after the write",
+      "description": "`the_validation_ran_after_the_write.eml` - The validation job flagged every invalid record it was given, and its rules are correct. When it runs relative to the write is computed below."
+    },
+    {
+      "id": "835-the-value-round-tripped-through-json-and-lost-precision",
+      "path": "/ai/examples/835-the-value-round-tripped-through-json-and-lost-precision.eml.md",
+      "title": "The value round tripped through json and lost precision",
+      "description": "`the_value_round_tripped_through_json_and_lost_precision.eml` - The account ids survived every hop of the pipeline unchanged, and each hop's check passed. What format carries them between hops is computed below."
+    },
+    {
+      "id": "836-the-values-were-equal-as-floats",
+      "path": "/ai/examples/836-the-values-were-equal-as-floats.eml.md",
+      "title": "The values were equal as floats",
+      "description": "`the_values_were_equal_as_floats.eml` - The reconciliation passed on every pair it compared, and each comparison ran without error. What the comparison treats as equal is computed below."
     }
   ],
   "tools": {

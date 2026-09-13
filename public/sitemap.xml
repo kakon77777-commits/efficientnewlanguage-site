@@ -22,7 +22,7 @@
   <url><loc>https://efficientnewlanguage.org/ai/tools/tools.md</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/tools/tool-catalog.json</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/tools/openapi.json</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://efficientnewlanguage.org/cases/</loc><lastmod>2026-09-12</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/</loc><lastmod>2026-09-13</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/2/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/3/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/4/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
@@ -90,7 +90,8 @@
   <url><loc>https://efficientnewlanguage.org/cases/page/66/</loc><lastmod>2026-09-10</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/67/</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/68/</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://efficientnewlanguage.org/cases/page/69/</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/page/69/</loc><lastmod>2026-09-13</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/page/70/</loc><lastmod>2026-09-13</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/000-arithmetic/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/001-summation/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/002-conditional/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
@@ -913,4 +914,19 @@
   <url><loc>https://efficientnewlanguage.org/cases/819-the-three-checks-agreed-and-read-one-feed/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/820-the-translation-was-checked-by-translating-it-back/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/821-the-two-sensors-agreed-and-shared-a-calibration/</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/822-the-cache-served-through-the-origin-outage/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/823-the-constraint-was-added-going-forward/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/824-the-empty-result-was-cached-as-the-answer/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/825-the-gauge-was-polled-by-the-minute-and-billed-by-the-second/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/826-the-heartbeat-stopped-and-the-status-stayed-green/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/827-the-missing-metric-was-read-as-zero/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/828-the-queue-was-empty-because-the-producer-died/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/829-the-rate-rounded-to-zero/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/830-the-second-incident-was-deduplicated-into-the-first/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/831-the-signature-was-over-a-set-and-the-order-mattered/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/832-the-spike-fit-between-two-samples/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/833-the-two-events-shared-a-timestamp-and-the-tie-decided/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/834-the-validation-ran-after-the-write/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/835-the-value-round-tripped-through-json-and-lost-precision/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/836-the-values-were-equal-as-floats/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>
