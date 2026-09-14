@@ -5133,6 +5133,96 @@
       "path": "/ai/examples/836-the-values-were-equal-as-floats.eml.md",
       "title": "The values were equal as floats",
       "description": "`the_values_were_equal_as_floats.eml` - The reconciliation passed on every pair it compared, and each comparison ran without error. What the comparison treats as equal is computed below."
+    },
+    {
+      "id": "837-all-the-candidates-passed-after-the-filter-emptied-the-set",
+      "path": "/ai/examples/837-all-the-candidates-passed-after-the-filter-emptied-the-set.eml.md",
+      "title": "All the candidates passed after the filter emptied the set",
+      "description": "`all_the_candidates_passed_after_the_filter_emptied_the_set.eml` - Every candidate release passed the safety gate this quarter, and each gate check is real. How many candidates reached the gate is computed below."
+    },
+    {
+      "id": "838-every-eligible-record-was-processed-and-none-were-eligible",
+      "path": "/ai/examples/838-every-eligible-record-was-processed-and-none-were-eligible.eml.md",
+      "title": "Every eligible record was processed and none were eligible",
+      "description": "`every_eligible_record_was_processed_and_none_were_eligible.eml` - The nightly job reports 100 per hundred of eligible records processed, and the count is honest. How many records were eligible is computed below."
+    },
+    {
+      "id": "839-the-amount-was-parsed-in-the-wrong-locale",
+      "path": "/ai/examples/839-the-amount-was-parsed-in-the-wrong-locale.eml.md",
+      "title": "The amount was parsed in the wrong locale",
+      "description": "`the_amount_was_parsed_in_the_wrong_locale.eml` - The importer parses every amount in the vendor file and rejects anything unparseable, and the parser is correct. What locale it parses in is computed below."
+    },
+    {
+      "id": "840-the-count-excluded-the-nulls",
+      "path": "/ai/examples/840-the-count-excluded-the-nulls.eml.md",
+      "title": "The count excluded the nulls",
+      "description": "`the_count_excluded_the_nulls.eml` - The average rating is 8.00 and the query that produced it is correct SQL. What the denominator counts is computed below."
+    },
+    {
+      "id": "841-the-filter-was-not-equal-and-the-nulls-vanished",
+      "path": "/ai/examples/841-the-filter-was-not-equal-and-the-nulls-vanished.eml.md",
+      "title": "The filter was not equal and the nulls vanished",
+      "description": "`the_filter_was_not_equal_and_the_nulls_vanished.eml` - The query for rows that are not closed returns exactly the rows whose status differs from 'closed', and the SQL is correct. What a NULL status does to that test is computed below."
+    },
+    {
+      "id": "842-the-flag-was-the-string-false",
+      "path": "/ai/examples/842-the-flag-was-the-string-false.eml.md",
+      "title": "The flag was the string false",
+      "description": "`the_flag_was_the_string_false.eml` - The feature is gated behind a config flag and the gate reads the flag on every request. What the flag's value is is computed below."
+    },
+    {
+      "id": "843-the-ids-were-sorted-as-text",
+      "path": "/ai/examples/843-the-ids-were-sorted-as-text.eml.md",
+      "title": "The ids were sorted as text",
+      "description": "`the_ids_were_sorted_as_text.eml` - The export lists records in ascending id order and the sort is correct. What kind of order it is is computed below."
+    },
+    {
+      "id": "844-the-invariant-held-over-an-empty-collection",
+      "path": "/ai/examples/844-the-invariant-held-over-an-empty-collection.eml.md",
+      "title": "The invariant held over an empty collection",
+      "description": "`the_invariant_held_over_an_empty_collection.eml` - The property test asserts that every open position nets to within the risk limit, and it has passed on every run for the quarter. How many positions it quantifies over is computed below."
+    },
+    {
+      "id": "845-the-migration-touched-no-rows-and-passed-every-check",
+      "path": "/ai/examples/845-the-migration-touched-no-rows-and-passed-every-check.eml.md",
+      "title": "The migration touched no rows and passed every check",
+      "description": "`the_migration_touched_no_rows_and_passed_every_check.eml` - The data migration passed every post-migration check, and each check is real. How many rows the migration touched is computed below."
+    },
+    {
+      "id": "846-the-not-in-list-had-a-null",
+      "path": "/ai/examples/846-the-not-in-list-had-a-null.eml.md",
+      "title": "The not in list had a null",
+      "description": "`the_not_in_list_had_a_null.eml` - The query returns the accounts that are not on the block list, and the SQL is correct. What one NULL in that list does is computed below."
+    },
+    {
+      "id": "847-the-outer-join-became-inner",
+      "path": "/ai/examples/847-the-outer-join-became-inner.eml.md",
+      "title": "The outer join became inner",
+      "description": "`the_outer_join_became_inner.eml` - The orders report joins every order to its shipment and the LEFT JOIN is written correctly. What a WHERE on the shipment column does to it is computed below."
+    },
+    {
+      "id": "848-the-slo-was-met-over-a-window-with-no-requests",
+      "path": "/ai/examples/848-the-slo-was-met-over-a-window-with-no-requests.eml.md",
+      "title": "The slo was met over a window with no requests",
+      "description": "`the_slo_was_met_over_a_window_with_no_requests.eml` - The latency SLO reads 100 per hundred met for the hour under review, and the computation is honest. How many requests that hour is computed below."
+    },
+    {
+      "id": "849-the-timestamps-were-ordered-as-text",
+      "path": "/ai/examples/849-the-timestamps-were-ordered-as-text.eml.md",
+      "title": "The timestamps were ordered as text",
+      "description": "`the_timestamps_were_ordered_as_text.eml` - The audit log is ordered by timestamp and the sort is correct. What kind of order it is is computed below."
+    },
+    {
+      "id": "850-the-top-rows-were-the-nulls",
+      "path": "/ai/examples/850-the-top-rows-were-the-nulls.eml.md",
+      "title": "The top rows were the nulls",
+      "description": "`the_top_rows_were_the_nulls.eml` - The leaderboard shows the top ten by score, ordered descending, and the ORDER BY is correct. Where a NULL score sorts is computed below."
+    },
+    {
+      "id": "851-the-versions-were-compared-as-strings",
+      "path": "/ai/examples/851-the-versions-were-compared-as-strings.eml.md",
+      "title": "The versions were compared as strings",
+      "description": "`the_versions_were_compared_as_strings.eml` - The deploy picks the latest version by taking the maximum of the version column, and the maximum is computed correctly. What kind of maximum it is is computed below."
     }
   ],
   "tools": {

@@ -22,7 +22,7 @@
   <url><loc>https://efficientnewlanguage.org/ai/tools/tools.md</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/tools/tool-catalog.json</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/tools/openapi.json</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://efficientnewlanguage.org/cases/</loc><lastmod>2026-09-13</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/</loc><lastmod>2026-09-14</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/2/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/3/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/4/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
@@ -91,7 +91,8 @@
   <url><loc>https://efficientnewlanguage.org/cases/page/67/</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/68/</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/69/</loc><lastmod>2026-09-13</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://efficientnewlanguage.org/cases/page/70/</loc><lastmod>2026-09-13</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/page/70/</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/page/71/</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/000-arithmetic/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/001-summation/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/002-conditional/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
@@ -929,4 +930,19 @@
   <url><loc>https://efficientnewlanguage.org/cases/834-the-validation-ran-after-the-write/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/835-the-value-round-tripped-through-json-and-lost-precision/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/836-the-values-were-equal-as-floats/</loc><lastmod>2026-09-13</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/837-all-the-candidates-passed-after-the-filter-emptied-the-set/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/838-every-eligible-record-was-processed-and-none-were-eligible/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/839-the-amount-was-parsed-in-the-wrong-locale/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/840-the-count-excluded-the-nulls/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/841-the-filter-was-not-equal-and-the-nulls-vanished/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/842-the-flag-was-the-string-false/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/843-the-ids-were-sorted-as-text/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/844-the-invariant-held-over-an-empty-collection/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/845-the-migration-touched-no-rows-and-passed-every-check/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/846-the-not-in-list-had-a-null/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/847-the-outer-join-became-inner/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/848-the-slo-was-met-over-a-window-with-no-requests/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/849-the-timestamps-were-ordered-as-text/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/850-the-top-rows-were-the-nulls/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/851-the-versions-were-compared-as-strings/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>
