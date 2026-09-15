@@ -22,7 +22,7 @@
   <url><loc>https://efficientnewlanguage.org/ai/tools/tools.md</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/tools/tool-catalog.json</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/ai/tools/openapi.json</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://efficientnewlanguage.org/cases/</loc><lastmod>2026-09-14</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/</loc><lastmod>2026-09-15</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/2/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/3/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/4/</loc><lastmod>2026-07-19</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
@@ -93,6 +93,8 @@
   <url><loc>https://efficientnewlanguage.org/cases/page/69/</loc><lastmod>2026-09-13</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/70/</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/page/71/</loc><lastmod>2026-09-14</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/page/72/</loc><lastmod>2026-09-15</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/page/73/</loc><lastmod>2026-09-15</lastmod><changefreq>weekly</changefreq><priority>0.3</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/000-arithmetic/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/001-summation/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/002-conditional/</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
@@ -945,4 +947,19 @@
   <url><loc>https://efficientnewlanguage.org/cases/849-the-timestamps-were-ordered-as-text/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/850-the-top-rows-were-the-nulls/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://efficientnewlanguage.org/cases/851-the-versions-were-compared-as-strings/</loc><lastmod>2026-09-14</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/852-the-ages-were-bucketed-and-the-mean-used-the-midpoints/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/853-the-anchor-bound-to-one-alternative/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/854-the-character-class-was-a-range-not-a-number/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/855-the-dollar-sign-matched-the-end-of-a-line/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/856-the-first-seen-was-read-as-the-first-time/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/857-the-launch-rode-a-trend-that-was-already-there/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/858-the-long-runs-were-oversampled-by-the-sampler/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/859-the-open-cases-were-left-out-of-the-average/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/860-the-pattern-matched-a-prefix-and-passed-the-whole/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/861-the-quantifier-was-greedy-and-ate-the-delimiter/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/862-the-readings-below-the-limit-were-recorded-as-zero/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/863-the-selected-set-made-two-causes-look-opposed/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/864-the-treatment-group-had-already-survived/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/865-the-volunteers-differed-before-they-volunteered/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://efficientnewlanguage.org/cases/866-the-worst-performers-improved-on-their-own/</loc><lastmod>2026-09-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>

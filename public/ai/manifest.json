@@ -5223,6 +5223,96 @@
       "path": "/ai/examples/851-the-versions-were-compared-as-strings.eml.md",
       "title": "The versions were compared as strings",
       "description": "`the_versions_were_compared_as_strings.eml` - The deploy picks the latest version by taking the maximum of the version column, and the maximum is computed correctly. What kind of maximum it is is computed below."
+    },
+    {
+      "id": "852-the-ages-were-bucketed-and-the-mean-used-the-midpoints",
+      "path": "/ai/examples/852-the-ages-were-bucketed-and-the-mean-used-the-midpoints.eml.md",
+      "title": "The ages were bucketed and the mean used the midpoints",
+      "description": "`the_ages_were_bucketed_and_the_mean_used_the_midpoints.eml` - A survey reports the average age, computed as the weighted mean of the age-bucket midpoints, and the arithmetic is correct over every respondent. What a bucket midpoint stands in for is computed below."
+    },
+    {
+      "id": "853-the-anchor-bound-to-one-alternative",
+      "path": "/ai/examples/853-the-anchor-bound-to-one-alternative.eml.md",
+      "title": "The anchor bound to one alternative",
+      "description": "`the_anchor_bound_to_one_alternative.eml` - A whitelist accepts a value only if it is exactly \"cat\" or \"dog\", and it uses the regex engine correctly on every value. What the anchors bind to is computed below."
+    },
+    {
+      "id": "854-the-character-class-was-a-range-not-a-number",
+      "path": "/ai/examples/854-the-character-class-was-a-range-not-a-number.eml.md",
+      "title": "The character class was a range not a number",
+      "description": "`the_character_class_was_a_range_not_a_number.eml` - A validator checks that a day-of-month value is in 1 to 31, and it uses the regex engine correctly on every value. What the character class actually denotes is computed below."
+    },
+    {
+      "id": "855-the-dollar-sign-matched-the-end-of-a-line",
+      "path": "/ai/examples/855-the-dollar-sign-matched-the-end-of-a-line.eml.md",
+      "title": "The dollar sign matched the end of a line",
+      "description": "`the_dollar_sign_matched_the_end_of_a_line.eml` - A validator checks that a field is digits and nothing else, and it uses the regex engine correctly on every submission. What the end-anchor matches is computed below."
+    },
+    {
+      "id": "856-the-first-seen-was-read-as-the-first-time",
+      "path": "/ai/examples/856-the-first-seen-was-read-as-the-first-time.eml.md",
+      "title": "The first seen was read as the first time",
+      "description": "`the_first_seen_was_read_as_the_first_time.eml` - A cohort report counts accounts acquired in the first month, and it reads the earliest recorded activity for every account correctly. What the earliest record actually marks is computed below."
+    },
+    {
+      "id": "857-the-launch-rode-a-trend-that-was-already-there",
+      "path": "/ai/examples/857-the-launch-rode-a-trend-that-was-already-there.eml.md",
+      "title": "The launch rode a trend that was already there",
+      "description": "`the_launch_rode_a_trend_that_was_already_there.eml` - A feature launched in November and conversions rose 20 percent. The counts are real and the before-and-after is honest. Whether the feature caused the rise is computed below."
+    },
+    {
+      "id": "858-the-long-runs-were-oversampled-by-the-sampler",
+      "path": "/ai/examples/858-the-long-runs-were-oversampled-by-the-sampler.eml.md",
+      "title": "The long runs were oversampled by the sampler",
+      "description": "`the_long_runs_were_oversampled_by_the_sampler.eml` - A profiler estimates the average request latency by sampling the currently-running request at random instants, and it averages the samples correctly. How a request comes to be sampled is computed below."
+    },
+    {
+      "id": "859-the-open-cases-were-left-out-of-the-average",
+      "path": "/ai/examples/859-the-open-cases-were-left-out-of-the-average.eml.md",
+      "title": "The open cases were left out of the average",
+      "description": "`the_open_cases_were_left_out_of_the_average.eml` - A report gives the average time to resolve a ticket, and it averages the real resolution times of every resolved ticket correctly. Which tickets can be in the average is computed below."
+    },
+    {
+      "id": "860-the-pattern-matched-a-prefix-and-passed-the-whole",
+      "path": "/ai/examples/860-the-pattern-matched-a-prefix-and-passed-the-whole.eml.md",
+      "title": "The pattern matched a prefix and passed the whole",
+      "description": "`the_pattern_matched_a_prefix_and_passed_the_whole.eml` - A validator checks that a submitted code is a six-digit number, and it uses the regex engine correctly on every submission. What the pattern is anchored to is computed below."
+    },
+    {
+      "id": "861-the-quantifier-was-greedy-and-ate-the-delimiter",
+      "path": "/ai/examples/861-the-quantifier-was-greedy-and-ate-the-delimiter.eml.md",
+      "title": "The quantifier was greedy and ate the delimiter",
+      "description": "`the_quantifier_was_greedy_and_ate_the_delimiter.eml` - A parser extracts the first quoted field from each record, and it uses the regex engine correctly on every record. What the quantifier does at the delimiter is computed below."
+    },
+    {
+      "id": "862-the-readings-below-the-limit-were-recorded-as-zero",
+      "path": "/ai/examples/862-the-readings-below-the-limit-were-recorded-as-zero.eml.md",
+      "title": "The readings below the limit were recorded as zero",
+      "description": "`the_readings_below_the_limit_were_recorded_as_zero.eml` - A water-quality report gives the average contaminant level, and it averages the real recorded readings of every sample correctly. What a recorded zero means is computed below."
+    },
+    {
+      "id": "863-the-selected-set-made-two-causes-look-opposed",
+      "path": "/ai/examples/863-the-selected-set-made-two-causes-look-opposed.eml.md",
+      "title": "The selected set made two causes look opposed",
+      "description": "`the_selected_set_made_two_causes_look_opposed.eml` - Among admitted students, academic and athletic scores are negatively related: the weaker a student is academically, the stronger athletically. The correlation is real and correctly computed. What the sample was conditioned on is computed below."
+    },
+    {
+      "id": "864-the-treatment-group-had-already-survived",
+      "path": "/ai/examples/864-the-treatment-group-had-already-survived.eml.md",
+      "title": "The treatment group had already survived",
+      "description": "`the_treatment_group_had_already_survived.eml` - Patients in a follow-up program lived longer than patients not in it, and the survival times are real and correctly averaged. What defines who is 'in the program' is computed below."
+    },
+    {
+      "id": "865-the-volunteers-differed-before-they-volunteered",
+      "path": "/ai/examples/865-the-volunteers-differed-before-they-volunteered.eml.md",
+      "title": "The volunteers differed before they volunteered",
+      "description": "`the_volunteers_differed_before_they_volunteered.eml` - Employees who joined the wellness program are 20 points healthier than those who did not. The scores are real and the comparison is honest. What made someone a participant is computed below."
+    },
+    {
+      "id": "866-the-worst-performers-improved-on-their-own",
+      "path": "/ai/examples/866-the-worst-performers-improved-on-their-own.eml.md",
+      "title": "The worst performers improved on their own",
+      "description": "`the_worst_performers_improved_on_their_own.eml` - A coaching program was given to the 100 worst-performing stores, and the next quarter they improved. The improvement is real and correctly measured. Whether the coaching caused it is computed below."
     }
   ],
   "tools": {
